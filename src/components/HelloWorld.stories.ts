@@ -7,9 +7,6 @@ const meta = {
   title: 'Example/HelloWorld',
   component: HelloWorld,
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 } satisfies Meta<typeof HelloWorld>
 
 export default meta
