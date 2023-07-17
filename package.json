@@ -3,6 +3,18 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "description": "Biblioteca de Componentes da SwitchDreams",
+  "repository": "https://github.com/SwitchDreams/switch-ui.git",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/switch-ui.es.js",
+      "require": "./dist/switch-ui.umd.js"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -13,6 +25,9 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "peerDependencies": {
     "react": "^18.2.0",
