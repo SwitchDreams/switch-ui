@@ -56,7 +56,7 @@ const colors = {
     "950": "#403A33",
   },
   coolGray: {
-    "white": "#FFFFFF",
+    white: "#FFFFFF",
     "50": "#F7F7F7",
     "100": "#DFDFDF",
     "200": "#C6C6C6",
@@ -67,10 +67,10 @@ const colors = {
     "700": "#4A4A4A",
     "800": "#323232",
     "900": "#191919",
-    "black": "#000000",
+    black: "#000000",
   },
   gray: {
-    "white": "#FFFFFF",
+    white: "#FFFFFF",
     "50": "#FBFBFB",
     "100": "#E5E6E7",
     "200": "#CDCFD1",
@@ -125,6 +125,6 @@ const colors = {
     "900": "#054F31",
     "950": "#043421",
   },
-}
+};
 
 export default colors;

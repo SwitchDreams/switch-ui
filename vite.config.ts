@@ -24,9 +24,9 @@ export default defineConfig((configEnv) => ({
   build: {
     lib: {
       entry: resolve("src", "components/index.ts"),
-      name: "ReactViteLibrary",
+      name: "SwitchUI",
       formats: ["es", "umd"],
-      fileName: (format) => `react-vite-library.${format}.js`,
+      fileName: (format) => `switch-ui.${format}.js`,
     },
     rollupOptions: {
       external: [...Object.keys(packageJson.peerDependencies)],
