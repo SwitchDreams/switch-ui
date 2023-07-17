@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-import theme from './src/constants/theme';
+import colors from './src/constants/colors';
 
 export default {
   content: [
@@ -7,7 +7,7 @@ export default {
   ],
   theme: {
     extend: {
-      colors: theme
+      colors: colors
     },
   },
   plugins: [],
