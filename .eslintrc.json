@@ -8,7 +8,7 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:storybook/recommended",
-    "prettier"
+    "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -39,6 +39,10 @@
   "settings": {
     "import/resolver": {
       "typescript": {}
+    },
+    "react": {
+      "pragma": "React",  // Pragma to use, default to "React"
+      "version": "detect" // React version. "detect" automatically picks the version you have installed.
     }
   }
 }
