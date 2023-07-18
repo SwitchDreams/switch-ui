@@ -1,10 +1,13 @@
 {
-  "name": "switch-ui",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@switchdreams/ui",
+  "private": false,
+  "version": "0.0.1",
   "type": "module",
   "description": "Biblioteca de Componentes da SwitchDreams",
-  "repository": "https://github.com/SwitchDreams/switch-ui.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SwitchDreams/switch-ui.git"
+  },
   "files": [
     "dist"
   ],
