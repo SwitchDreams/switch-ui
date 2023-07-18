@@ -78,5 +78,9 @@
     "vite-plugin-linter": "^2.0.2",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^0.33.0"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.0",
+    "tailwind-merge": "^1.14.0"
   }
 }
