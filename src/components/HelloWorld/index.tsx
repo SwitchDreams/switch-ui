@@ -9,12 +9,12 @@ export interface IHelloWorld {
 const helloWorldVariants = cva("button", {
   variants: {
     intent: {
-      primary: ["bg-blue-500", "text-white", "border-transparent", "hover:bg-blue-600"],
-      secondary: ["bg-white", "text-gray-800", "border-gray-400", "hover:bg-gray-100"],
+      primary: "border-transparent bg-blue-500 text-white hover:bg-blue-600",
+      secondary: "border-gray-400 bg-white text-gray-800 hover:bg-gray-100",
     },
     size: {
-      small: ["text-sm", "py-1", "px-2"],
-      medium: ["text-base", "py-2", "px-4"],
+      small: "px-2 py-1 text-sm",
+      medium: "px-4 py-2 text-base",
     },
   },
   defaultVariants: {
