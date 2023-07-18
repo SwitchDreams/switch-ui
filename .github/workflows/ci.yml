@@ -1,0 +1,22 @@
+name: CI
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@master
+        with:
+          cache: 'yarn'
+
+      - name: Install modules
+        run: yarn
+      - name: Run ESLint
+        run: yarn lint
+      - name: Run Type script
+        run: yarn tsc
+      - name: Run Tests
+        run: yarn test
