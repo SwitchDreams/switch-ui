@@ -1,15 +1,16 @@
+import { ElementType } from "react";
 export interface SimpleButtonProps {
   variant: VariantType;
   size: SizeType;
-  status?: StatusType;
+  disabled: boolean;
   label: string;
-  iconSide?: 'left';
-  icon?: '';
+  iconSide?: 'left' | 'right';
+  icon?: ElementType;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
 export type VariantType = 
-| 'tonal' 
+| 'primary' 
 | 'primary' 
 | 'primary-outlined' 
 | 'gray-outlined' 
@@ -18,12 +19,6 @@ export type VariantType =
 | 'primary-link'
 | 'gray-link';
 
-export type StatusType = 
-| 'default'
-| 'hover' 
-| 'pressed' 
-| 'focused' 
-| 'disabled';
 
 export type SizeType = 
 | 'extra-large'
@@ -32,92 +27,109 @@ export type SizeType =
 | 'small' 
 | 'extra-small';
 
-export const BackgroundColor = ({status, variant} : SimpleButtonProps) => {
-  if(status =='default') {
-    return backgroundColorDefault[variant];
-  }
-  if(status =='hover') {
-    return backgroundColorHover[variant];
-  }
-  if(status =='pressed') {
-    return backgroundColorPressed[variant];
-  }
-  if(status =='focused' || 'disabled') {
-    return backgroundColorFocused[variant];
-  }
+export const classGenerator = (variant: VariantType, size: SizeType, disabled: boolean) => {
+  const background = backgroundColorDefault[variant];
+  const backgroundHover = backgroundColorHover[variant];
+  const backgroundPrecessed = backgroundColorPressed[variant];
+  const backgroundFocus = backgroundColorFocused[variant];
+  const textSizeValue = textSize[size];
+  const textColorHex = textColor[variant];
+  const height = variantHeight[size];
+  const weight = variantWidth[size];
+  const backgroundOpacity = disabled ? 'opacity-40' : '';
+
+  const classNames = `${background} ${textSizeValue} ${textColorHex} ${height} ${weight} ${backgroundHover} ${backgroundPrecessed} ${backgroundFocus} ${backgroundOpacity}`;
+  return classNames
 }
 
+
+export const textSize: { [id: string]: string } = {
+  'extra-large': 'text-base',
+  'large': 'text-sm',
+  'medium': 'text-sm',
+  'small': 'text-sm',
+  'extra-small': 'text-xl',
+};
+
+export const variantWidth: { [id: string]: string } = {
+  'extra-large': 'w-182',
+  'large': 'w-155',
+  'medium': 'w-147',
+  'small': 'w-139',
+  'extra-small': 'w-108',
+};
+
 export const variantHeight: { [id: string]: string } = {
-  'extra-large': '56',
-  'large': '48',
-  'medium': '44',
-  'small': '40',
-  'extra-small': '34',
+  'extra-large': 'h-56',
+  'large': 'h-48',
+  'medium': 'h-44',
+  'small': 'h-40',
+  'extra-small': 'h-34',
 };
 
-export const backgroundColorDefault: { [id: string]: string } = {
-  'tonal': 'primary-300',
-  'primary': 'primary-25',
-  'primary-outlined': 'white',
-  'gray-outlined': 'white',
-  'primary-text': 'white',
-  'gray-test': 'white',
-  'primary-link':'white',
-  'gray-link': 'white',
+const backgroundColorDefault: { [id: string]: string } = {
+  'primary': 'bg-primary-300',
+  'tonal': 'bg-primary-25',
+  'primary-outlined': 'bg-white',
+  'gray-outlined': 'bg-white',
+  'primary-text': 'bg-white',
+  'gray-test': 'bg-white',
+  'primary-link':'bg-white',
+  'gray-link': 'bg-white',
 };
 
-export const backgroundColorHover: { [id: string]: string } = {
-  'tonal': 'primary-400',
-  'primary': 'primary-50',
-  'primary-outlined': 'primary-25',
-  'gray-outlined': 'gray-50',
-  'primary-text': 'primary-25',
-  'gray-test': 'gray-50',
-  'primary-link':'white',
-  'gray-link': 'white',
+const backgroundColorHover: { [id: string]: string } = {
+  'primary': 'hover:bg-primary-400',
+  'tonal': 'hover:bg-primary-50',
+  'primary-outlined': 'hover:bg-primary-25',
+  'gray-outlined': 'hover:bg-gray-50',
+  'primary-text': 'hover:bg-primary-25',
+  'gray-test': 'hover:bg-gray-50',
+  'primary-link':'hover:bg-white',
+  'gray-link': 'hover:bg-white',
 };
 
-export const backgroundColorPressed: { [id: string]: string } = {
-  'tonal': 'primary-500',
-  'primary': 'primary-100',
-  'primary-outlined': 'primary-100',
-  'gray-outlined': 'gray-100',
-  'primary-text': 'primary-50',
-  'gray-test': 'gray-100',
-  'primary-link':'white',
-  'gray-link': 'white',
+const backgroundColorPressed: { [id: string]: string } = {
+  'primary': 'active:bg-primary-500',
+  'tonal': 'active:bg-primary-100',
+  'primary-outlined': 'active:bg-primary-100',
+  'gray-outlined': 'active:bg-gray-100',
+  'primary-text': 'active:bg-primary-50',
+  'gray-test': 'active:bg-gray-100',
+  'primary-link':'active:bg-white',
+  'gray-link': 'active:bg-white',
 };
 
-export const backgroundColorFocused: { [id: string]: string } = {
-  'tonal': 'primary-300',
-  'primary': 'primary-25',
-  'primary-outlined': 'white',
-  'gray-outlined': 'white',
-  'primary-text': 'white',
-  'gray-test': 'white',
-  'primary-link':'white',
-  'gray-link': 'white',
+const backgroundColorFocused: { [id: string]: string } = {
+  'primary': 'focus:bg-primary-300',
+  'tonal': 'focus:bg-primary-25',
+  'primary-outlined': 'focus:bg-white',
+  'gray-outlined': 'focus:bg-white',
+  'primary-text': 'focus:bg-white',
+  'gray-test': 'focus:bg-white',
+  'primary-link':'focus:bg-white',
+  'gray-link': 'focus:bg-white',
 };
 
-export const borderColor: { [id: string]: string } = {
-  'tonal': 'none',
-  'primary': 'none',
-  'primary-outlined': 'primary-50',
-  'gray-outlined': 'gray-100',
-  'primary-text': 'none',
-  'gray-test': 'none',
-  'primary-link':'none',
-  'gray-link': 'none',
+const borderColor: { [id: string]: string } = {
+  'primary': 'border-none',
+  'tonal': 'border-none',
+  'primary-outlined': 'border-primary-50',
+  'gray-outlined': 'border-gray-100',
+  'primary-text': 'border-none',
+  'gray-test': 'border-none',
+  'primary-link':'border-none',
+  'gray-link': 'border-none',
 };
 
-export const textColor: { [id: string]: string } = {
-  'tonal': 'white',
-  'primary': 'primary-500',
-  'primary-outlined': 'primary-50',
-  'gray-outlined': 'gray-800',
-  'primary-text': 'primary-300',
-  'gray-test': 'gray-800',
-  'primary-link':'primary-300',
-  'gray-link': 'gray-800',
+const textColor: { [id: string]: string } = {
+  'primary': 'text-white',
+  'tonal': 'text-primary-500',
+  'primary-outlined': 'text-primary-50',
+  'gray-outlined': 'text-gray-800',
+  'primary-text': 'text-primary-300',
+  'gray-test': 'text-gray-800',
+  'primary-link':'text-primary-300',
+  'gray-link': 'text-gray-800',
 };
 
