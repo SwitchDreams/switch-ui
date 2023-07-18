@@ -26,9 +26,9 @@ export const Badge = ({
     case "success": {
       className +=
         outline && opacity
-          ? " border-2 text-success-600 border-success-600 bg-success50"
+          ? " border text-success-600 border-success-600 bg-success-50"
           : outline
-          ? " border-2 text-success-600 border-success-600"
+          ? " border text-success-600 border-success-600"
           : opacity
           ? " text-success-600 bg-success-50"
           : " text-gray-white bg-success-600"
@@ -37,9 +37,9 @@ export const Badge = ({
     case "danger": {
       className +=
         outline && opacity
-          ? " border-2 text-error-600 border-error-600 bg-error-50"
+          ? " border text-error-600 border-error-600 bg-error-50"
           : outline
-          ? " border-2 text-error-600 border-error-600"
+          ? " border text-error-600 border-error-600"
           : opacity
           ? " text-error-600 bg-error-50"
           : " text-gray-white bg-error-600"
@@ -48,9 +48,9 @@ export const Badge = ({
     case "warning": {
       className +=
         outline && opacity
-          ? " border-2 text-orange-500 border-orange-500 bg-orange-50"
+          ? " border text-orange-500 border-orange-500 bg-orange-50"
           : outline
-          ? " border-2 text-orange-500 border-orange-500"
+          ? " border text-orange-500 border-orange-500"
           : opacity
           ? " text-orange-500 bg-orange-50"
           : " text-black bg-orange-500"
