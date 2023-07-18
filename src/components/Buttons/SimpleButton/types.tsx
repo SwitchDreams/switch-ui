@@ -1,5 +1,5 @@
-import { ElementType } from "react";
-export interface SimpleButtonProps {
+import React, { ElementType } from "react";
+export interface ButtonType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant: VariantType;
   size: SizeType;
   disabled: boolean;
@@ -21,50 +21,41 @@ export type VariantType =
 
 
 export type SizeType = 
-| 'extra-large'
-| 'large' 
-| 'medium' 
-| 'small' 
-| 'extra-small';
+| 'xl'
+| 'lg' 
+| 'md' 
+| 'sm' 
+| 'xs';
 
 export const classGenerator = (variant: VariantType, size: SizeType, disabled: boolean) => {
   const background = backgroundColorDefault[variant];
   const backgroundHover = backgroundColorHover[variant];
-  const backgroundPrecessed = backgroundColorPressed[variant];
+  const backgroundPrecessed = backgroundColorActive[variant];
   const backgroundFocus = backgroundColorFocused[variant];
   const textSizeValue = textSize[size];
   const textColorHex = textColor[variant];
-  const height = variantHeight[size];
-  const weight = variantWidth[size];
+  const padding = variantPadding[size];
+  const border = borderColor[variant];
   const backgroundOpacity = disabled ? 'opacity-40' : '';
 
-  const classNames = `${background} ${textSizeValue} ${textColorHex} ${height} ${weight} ${backgroundHover} ${backgroundPrecessed} ${backgroundFocus} ${backgroundOpacity}`;
-  return classNames
+  const classNames = `${background} ${textSizeValue} ${textColorHex} ${padding} ${backgroundHover} ${backgroundPrecessed} ${backgroundFocus} ${backgroundOpacity} ${border}`;
+  return classNames;
 }
 
-
 export const textSize: { [id: string]: string } = {
-  'extra-large': 'text-base',
-  'large': 'text-sm',
-  'medium': 'text-sm',
+  'xl': 'text-base',
+  'lg': 'text-sm',
+  'md': 'text-sm',
   'small': 'text-sm',
   'extra-small': 'text-xl',
 };
 
-export const variantWidth: { [id: string]: string } = {
-  'extra-large': 'w-182',
-  'large': 'w-155',
-  'medium': 'w-147',
+export const variantPadding: { [id: string]: string } = {
+  'xl': 'w-182',
+  'lg': 'w-155',
+  'md': 'w-147',
   'small': 'w-139',
   'extra-small': 'w-108',
-};
-
-export const variantHeight: { [id: string]: string } = {
-  'extra-large': 'h-56',
-  'large': 'h-48',
-  'medium': 'h-44',
-  'small': 'h-40',
-  'extra-small': 'h-34',
 };
 
 const backgroundColorDefault: { [id: string]: string } = {
@@ -89,7 +80,7 @@ const backgroundColorHover: { [id: string]: string } = {
   'gray-link': 'hover:bg-white',
 };
 
-const backgroundColorPressed: { [id: string]: string } = {
+const backgroundColorActive: { [id: string]: string } = {
   'primary': 'active:bg-primary-500',
   'tonal': 'active:bg-primary-100',
   'primary-outlined': 'active:bg-primary-100',
@@ -114,8 +105,8 @@ const backgroundColorFocused: { [id: string]: string } = {
 const borderColor: { [id: string]: string } = {
   'primary': 'border-none',
   'tonal': 'border-none',
-  'primary-outlined': 'border-primary-50',
-  'gray-outlined': 'border-gray-100',
+  'primary-outlined': 'border border-solid border-primary-50',
+  'gray-outlined': ' border border-solid border-gray-100',
   'primary-text': 'border-none',
   'gray-test': 'border-none',
   'primary-link':'border-none',
@@ -125,7 +116,7 @@ const borderColor: { [id: string]: string } = {
 const textColor: { [id: string]: string } = {
   'primary': 'text-white',
   'tonal': 'text-primary-500',
-  'primary-outlined': 'text-primary-50',
+  'primary-outlined': 'text-primary-300',
   'gray-outlined': 'text-gray-800',
   'primary-text': 'text-primary-300',
   'gray-test': 'text-gray-800',

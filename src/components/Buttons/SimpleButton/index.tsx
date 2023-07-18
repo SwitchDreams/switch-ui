@@ -1,21 +1,21 @@
-import { SimpleButtonProps, classGenerator } from "./types"
+import { ButtonType, classGenerator } from "./types";
 
-const SimpleButton = ({
+const Button = ({
   variant = 'primary',
-  size = 'medium',
+  size = 'md',
   disabled = false,
   label,
   iconSide,
   icon: Icon,
   onClick
-}: SimpleButtonProps) => {
+}: ButtonType) => {
   return (
-    <button className={classGenerator(variant, size, disabled) + " rounded-md"}>
+    <button className={classGenerator(variant, size, disabled) + " rounded-md flex items-center justify-center"}>
       {(Icon && iconSide == 'right') && <Icon className="" />}
-      <p>{label}</p>
+      {label}
       {(Icon && iconSide == 'left') && <Icon className="" />}
     </button>
   )
 }
 
-export default SimpleButton;
+export default Button;

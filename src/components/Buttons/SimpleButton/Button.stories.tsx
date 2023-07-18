@@ -1,5 +1,5 @@
 import SimpleButton from './index';
-import { SimpleButtonProps } from './types';
+import { ButtonType } from './types';
 import { StoryFn } from '@storybook/react';
 import { Meta } from '@storybook/react';
 
@@ -32,7 +32,7 @@ export default {
   },
 } as Meta<typeof SimpleButton>;
 
-const Template: StoryFn<typeof SimpleButton> = (args: SimpleButtonProps) => (
+const Template: StoryFn<typeof SimpleButton> = (args: ButtonType) => (
   <SimpleButton {...args} />
 );
 
@@ -42,6 +42,6 @@ Variations.args = {
   variant: 'primary',
   label: 'botao',
   disabled: false,
-  size: 'medium',
+  size: 'md',
   onClick: undefined,
 };
