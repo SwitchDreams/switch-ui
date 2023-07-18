@@ -1,17 +1,36 @@
 {
-  "name": "switch-ui",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@switchdreams/ui",
+  "private": false,
+  "version": "0.0.1",
   "type": "module",
+  "description": "Biblioteca de Componentes da SwitchDreams",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SwitchDreams/switch-ui.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/switch-ui.es.js",
+      "require": "./dist/switch-ui.umd.js"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "test": "vitest",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "eslint --fix 'src/**/*.{jsx,ts,tsx}'",
     "format": "prettier --write src/**/*.{ts,tsx,css} --config ./.prettierrc",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -25,8 +44,11 @@
     "@storybook/react": "^7.0.27",
     "@storybook/react-vite": "^7.0.27",
     "@storybook/testing-library": "^0.0.14-next.2",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "@types/testing-library__jest-dom": "^5.14.8",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.0.1",
@@ -39,8 +61,11 @@
     "eslint-plugin-react-refresh": "^0.4.1",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-storybook": "^0.6.12",
+    "eslint-plugin-tailwindcss": "^3.13.0",
+    "jsdom": "^22.1.0",
     "postcss": "^8.4.26",
     "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.4.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -51,6 +76,7 @@
     "vite": "^4.4.0",
     "vite-plugin-dts": "^3.3.1",
     "vite-plugin-linter": "^2.0.2",
-    "vite-tsconfig-paths": "^4.2.0"
+    "vite-tsconfig-paths": "^4.2.0",
+    "vitest": "^0.33.0"
   }
 }
