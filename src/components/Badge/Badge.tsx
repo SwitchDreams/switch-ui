@@ -26,46 +26,46 @@ export const Badge = ({
     case "success": {
       className +=
         outline && opacity
-          ? " border-2 text-success600 border-success600 bg-success50"
+          ? " border-2 text-success-600 border-success-600 bg-success50"
           : outline
-          ? " border-2 text-success600 border-success600"
+          ? " border-2 text-success-600 border-success-600"
           : opacity
-          ? " text-success600 bg-success50"
-          : " text-white bg-success600"
+          ? " text-success-600 bg-success-50"
+          : " text-gray-white bg-success-600"
       break
     }
     case "danger": {
       className +=
         outline && opacity
-          ? " border-2 text-error600 border-error600 bg-error50"
+          ? " border-2 text-error-600 border-error-600 bg-error-50"
           : outline
-          ? " border-2 text-error600 border-error600"
+          ? " border-2 text-error-600 border-error-600"
           : opacity
-          ? " text-error600 bg-error50"
-          : " text-white bg-error600"
+          ? " text-error-600 bg-error-50"
+          : " text-gray-white bg-error-600"
       break
     }
     case "warning": {
       className +=
         outline && opacity
-          ? " border-2 text-orange500 border-orange500 bg-orange50"
+          ? " border-2 text-orange-500 border-orange-500 bg-orange-50"
           : outline
-          ? " border-2 text-orange500 border-orange500"
+          ? " border-2 text-orange-500 border-orange-500"
           : opacity
-          ? " text-orange500 bg-orange50"
-          : " text-black bg-orange500"
+          ? " text-orange-500 bg-orange-50"
+          : " text-black bg-orange-500"
       break
     }
     default: {
       if (switchCore === "primary") {
         className =
-          "h-7 w-fit text-xs font-medium flex justify-center items-center gap-1 px-3 rounded-3xl text-primary300 bg-primary25"
+          "h-7 w-fit text-xs font-medium flex justify-center items-center gap-1 px-3 rounded-3xl text-primary-300 bg-primary-25"
       } else if (switchCore === "secondary") {
         className =
-          "h-7 w-fit text-xs font-medium flex justify-center items-center gap-1 px-3 rounded-3xl text-secondary800 bg-secondary25"
+          "h-7 w-fit text-xs font-medium flex justify-center items-center gap-1 px-3 rounded-3xl text-secondary-800 bg-secondary-25"
       } else {
         className =
-          "h-7 w-fit text-xs font-medium flex justify-center items-center gap-1 px-3 rounded-3xl text-orange700 bg-orange25"
+          "h-7 w-fit text-xs font-medium flex justify-center items-center gap-1 px-3 rounded-3xl text-orange-700 bg-orange-25"
       }
     }
   }

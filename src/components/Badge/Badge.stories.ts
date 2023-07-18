@@ -18,11 +18,3 @@ export const Default: Story = {
     label: "Hello World",
   },
 }
-export const Personal: Story = {
-  args: {
-    label: "Hello World",
-    backgroundColor: "#010809",
-    textColor: "#ECE2FF",
-    opacityColor: "#DFFFF5",
-  },
-}
