@@ -14,7 +14,7 @@ const helloWorldVariants = cva("button", {
     },
     size: {
       small: "px-2 py-1 text-sm",
-      medium: "px-4 py-2 text-base",
+      medium: "text-base px-4 py-2",
     },
   },
   defaultVariants: {
