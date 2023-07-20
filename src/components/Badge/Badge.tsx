@@ -28,6 +28,14 @@ const badgeVariants = cva(
       opacity: {
         true: "bg-opacity-50",
       },
+      full: {
+        true: "",
+      },
+    },
+    defaultVariants: {
+      color: "primary",
+      outline: false,
+      opacity: false,
     },
     compoundVariants: [
       {
@@ -116,7 +124,7 @@ export const Badge = ({
   return (
     <div className={badgeClasses} {...rest}>
       {iconSide === "left" && icon && <XMarkIcon className="h-4 w-4 font-bold" />}
-      <p>{label}</p>
+      {label}
       {iconSide === "right" && icon && <XMarkIcon className="h-4 w-4 font-bold" />}
     </div>
   );
