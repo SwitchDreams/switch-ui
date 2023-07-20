@@ -92,9 +92,17 @@ export const ToggleSwitch = ({
   size = "md",
 }: ToggleSwitchProps) => {
   return (
-    <Switch checked={externalChecked} onChange={onChange} as={Fragment}>
+    <Switch
+      checked={externalChecked}
+      onChange={onChange}
+      as={Fragment}
+      defaultChecked={externalChecked}
+    >
       {({ checked }) => (
-        <button className={twMerge(switchVariants({ checked, disabled, size }))}>
+        <button
+          disabled={disabled}
+          className={twMerge(switchVariants({ checked, disabled, size }))}
+        >
           <span className={twMerge(dotVariants({ checked, size }))}>
             {withIcon &&
               (checked ? (
