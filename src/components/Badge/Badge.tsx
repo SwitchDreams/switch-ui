@@ -9,97 +9,107 @@ export interface IBadgeProps {
   iconSide?: "right" | "left";
   outline?: boolean;
   opacity?: boolean;
-  switchCore?: "primary" | "secondary" | "tertiary";
 }
 
-const badgeVariants = cva("badge", {
-  variants: {
-    type: {
-      default: {
-        switchCore: {
-          primary:
-            "flex h-7 w-fit items-center justify-center gap-1 rounded-3xl bg-primary-25 px-3 text-xs font-medium text-primary-300",
-          secondary:
-            "flex h-7 w-fit items-center justify-center gap-1 rounded-3xl bg-secondary-25 px-3 text-xs font-medium text-secondary-800",
-          tertiary:
-            "flex h-7 w-fit items-center justify-center gap-1 rounded-3xl bg-orange-25 px-3 text-xs font-medium text-orange-700",
-        },
+const badgeVariants = cva(
+  "flex h-7 w-fit items-center justify-center gap-1 rounded-3xl px-3 text-xs font-medium",
+  {
+    variants: {
+      color: {
+        primary: "bg-primary-25 text-primary-300",
+        secondary: "bg-secondary-25 text-secondary-800",
+        success: "bg-success-50 text-success-700",
+        warning: "bg-warning-50 text-warning-700",
+        danger: "bg-error-50 text-error-700",
       },
-      success: {
-        outline: {
-          true: {
-            opacity: {
-              true: "flex h-7 w-fit items-center justify-center gap-1 rounded-3xl border border-success-600 bg-success-50 px-3 text-xs font-medium text-success-600",
-              false:
-                "flex h-7 w-fit items-center justify-center gap-1 rounded-3xl border border-success-600 px-3 text-xs font-medium text-success-600",
-            },
-          },
-          false: {
-            opacity: {
-              true: "flex h-7 w-fit items-center justify-center gap-1 rounded-3xl bg-success-50 px-3 text-xs font-medium text-success-600",
-              false:
-                "flex h-7 w-fit items-center justify-center gap-1 rounded-3xl bg-success-600 px-3 text-xs font-medium text-gray-white",
-            },
-          },
-        },
+      outline: {
+        true: "border",
       },
-      warning: {
-        outline: {
-          true: {
-            opacity: {
-              true: "flex h-7 w-fit items-center justify-center gap-1 rounded-3xl border border-orange-500 bg-orange-50 px-3 text-xs font-medium text-orange-500",
-              false:
-                "flex h-7 w-fit items-center justify-center gap-1 rounded-3xl border border-orange-500 px-3 text-xs font-medium text-orange-500",
-            },
-          },
-          false: {
-            opacity: {
-              true: "flex h-7 w-fit items-center justify-center gap-1 rounded-3xl bg-orange-50 px-3 text-xs font-medium text-orange-500",
-              false:
-                "flex h-7 w-fit items-center justify-center gap-1 rounded-3xl bg-orange-500 px-3 text-xs font-medium text-black",
-            },
-          },
-        },
-      },
-      danger: {
-        outline: {
-          true: {
-            opacity: {
-              true: "flex h-7 w-fit items-center justify-center gap-1 rounded-3xl border border-error-600 bg-error-50 px-3 text-xs font-medium text-error-600",
-              false:
-                "flex h-7 w-fit items-center justify-center gap-1 rounded-3xl border border-error-600 px-3 text-xs font-medium text-error-600",
-            },
-          },
-          false: {
-            opacity: {
-              true: "flex h-7 w-fit items-center justify-center gap-1 rounded-3xl bg-error-50 px-3 text-xs font-medium text-error-600",
-              false:
-                "flex h-7 w-fit items-center justify-center gap-1 rounded-3xl bg-error-600 px-3 text-xs font-medium text-gray-white",
-            },
-          },
-        },
+      opacity: {
+        true: "bg-opacity-50",
       },
     },
+    compoundVariants: [
+      {
+        color: "primary",
+        outline: true,
+        opacity: false,
+        class: "border-primary-300 bg-transparent",
+      },
+      {
+        color: "primary",
+        outline: true,
+        opacity: true,
+        class: "border-primary-300",
+      },
+      {
+        color: "secondary",
+        outline: true,
+        opacity: false,
+        class: "border-secondary-800 bg-transparent",
+      },
+      {
+        color: "secondary",
+        outline: true,
+        opacity: true,
+        class: "border border-secondary-25",
+      },
+      {
+        color: "success",
+        outline: true,
+        opacity: false,
+        class: "border-success-600 bg-transparent",
+      },
+      {
+        color: "success",
+        outline: true,
+        opacity: true,
+        class: "border-success-50 border-success-600",
+      },
+      {
+        color: "warning",
+        outline: true,
+        opacity: false,
+        class: "border-warning-700 bg-transparent",
+      },
+      {
+        color: "warning",
+        outline: true,
+        opacity: true,
+        class: "border-warning-50 border-warning-700",
+      },
+      {
+        color: "danger",
+        outline: true,
+        opacity: false,
+        class: "border-error-700 bg-transparent",
+      },
+      {
+        color: "danger",
+        outline: true,
+        opacity: true,
+        class: "border-error-50 border-error-700",
+      },
+    ],
   },
-});
+);
 
 type BadgeVariantProps = VariantProps<typeof badgeVariants>;
 
 export interface BadgeProps
-  extends Omit<React.HTMLProps<HTMLDivElement>, "type" | "label" | "outline">,
-    BadgeVariantProps,
+  extends Omit<React.HTMLProps<HTMLDivElement>, "color" | "label">,
+    Omit<BadgeVariantProps, "outline" | "opacity">,
     IBadgeProps {}
 
 export const Badge = ({
   label,
   icon = false,
   iconSide = "right",
-  type,
+  color,
   outline = false,
   opacity = false,
-  switchCore = "primary",
-}: BadgeProps & BadgeVariantProps) => {
-  const badgeClasses = twMerge(badgeVariants({ type, outline, opacity, switchCore }));
+}: BadgeProps) => {
+  const badgeClasses = twMerge(badgeVariants({ color, outline, opacity }));
 
   return (
     <div className={badgeClasses}>

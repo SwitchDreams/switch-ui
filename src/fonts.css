@@ -26,8 +26,8 @@
   font-style: semibold;
 }
 
-@layer base {
+/* @layer base {
   html {
     font-family: Poppins;
   }
-}
+} */
