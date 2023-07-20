@@ -108,11 +108,13 @@ export const Badge = ({
   color,
   outline = false,
   opacity = false,
+  className,
+  ...rest
 }: BadgeProps) => {
-  const badgeClasses = twMerge(badgeVariants({ color, outline, opacity }));
+  const badgeClasses = twMerge(badgeVariants({ color, outline, opacity }), className);
 
   return (
-    <div className={badgeClasses}>
+    <div className={badgeClasses} {...rest}>
       {iconSide === "left" && icon && <XMarkIcon className="h-4 w-4 font-bold" />}
       <p>{label}</p>
       {iconSide === "right" && icon && <XMarkIcon className="h-4 w-4 font-bold" />}
