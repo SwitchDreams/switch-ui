@@ -1,50 +1,43 @@
+import { fireEvent, render, screen } from "@testing-library/react";
+import { ElementType } from "react";
+import { vitest } from "vitest";
 
-import { screen, fireEvent, render } from '@testing-library/react';
-import Button from '../index';
-import { ElementType } from 'react';
+import Button from "../index";
 
-describe('Button', () => {
-  // const onClickMock = jest.fn();
+describe("Button", () => {
+  const onClickMock = vitest.fn();
 
   const component = (
-    variant: 'primary' | 'invisible'| 'outline'| 'danger',
-    size: 'xl' | 'lg' | 'md'| 'sm' | 'xs', 
-    disabled: boolean) => {
+    variant: "primary" | "invisible" | "outline" | "danger",
+    size: "xl" | "lg" | "md" | "sm" | "xs",
+    disabled: boolean,
+  ) => {
     return (
       <Button
         variant={variant}
         size={size}
         disabled={disabled}
         label="botão"
-        // onClick={onClickMock}
+        onClick={onClickMock}
       />
     );
   };
 
-  const componentWithIcon = (icon: ElementType, iconSide: 'right'| 'left') => {
-    return (
-      <Button
-        variant='primary'
-        size='md'
-        icon={icon}
-        iconSide={iconSide}
-        label="botão"
-      />
-    );
+  const componentWithIcon = (icon: ElementType, iconSide: "right" | "left") => {
+    return <Button variant="primary" size="md" icon={icon} iconSide={iconSide} label="botão" />;
   };
-
 
   describe("tests the label", () => {
-    it('test the label props', () => {
-      render(component('primary', 'md', false));
-      const label = screen.getByText('botão');
+    it("test the label props", () => {
+      render(component("primary", "md", false));
+      const label = screen.getByText("botão");
       expect(label).toBeInTheDocument();
     });
   });
 
-  describe('test the colors', () => {
-    it('primary variant enable', () => {
-      render(component('primary', 'md', false));
+  describe("test the colors", () => {
+    it("primary variant enable", () => {
+      render(component("primary", "md", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("bg-primary-300");
       expect(buttonElement).toHaveClass("hover:bg-primary-400");
@@ -54,8 +47,8 @@ describe('Button', () => {
       expect(buttonElement).toHaveClass("opacity-100");
     });
 
-    it('outline variant enable', () => {
-      render(component('outline', 'md', false));
+    it("outline variant enable", () => {
+      render(component("outline", "md", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("bg-white");
       expect(buttonElement).toHaveClass("hover:bg-primary-25");
@@ -66,8 +59,8 @@ describe('Button', () => {
       expect(buttonElement).toHaveClass("border border-solid border-primary-50");
     });
 
-    it('invisible variant enable', () => {
-      render(component('invisible', 'md', false));
+    it("invisible variant enable", () => {
+      render(component("invisible", "md", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("bg-white");
       expect(buttonElement).toHaveClass("hover:bg-gray-50");
@@ -77,8 +70,8 @@ describe('Button', () => {
       expect(buttonElement).toHaveClass("opacity-100");
     });
 
-    it('danger variant enable', () => {
-      render(component('danger', 'md', false));
+    it("danger variant enable", () => {
+      render(component("danger", "md", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("bg-error-600");
       expect(buttonElement).toHaveClass("hover:bg-error-700");
@@ -88,8 +81,8 @@ describe('Button', () => {
       expect(buttonElement).toHaveClass("opacity-100");
     });
 
-    it('primary variant disabled', () => {
-      render(component('primary', 'md', true));
+    it("primary variant disabled", () => {
+      render(component("primary", "md", true));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("bg-primary-300");
       expect(buttonElement).toHaveClass("hover:bg-primary-400");
@@ -99,8 +92,8 @@ describe('Button', () => {
       expect(buttonElement).toHaveClass("opacity-40");
     });
 
-    it('outline variant disabled', () => {
-      render(component('outline', 'md', true));
+    it("outline variant disabled", () => {
+      render(component("outline", "md", true));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("bg-white");
       expect(buttonElement).toHaveClass("hover:bg-primary-25");
@@ -111,8 +104,8 @@ describe('Button', () => {
       expect(buttonElement).toHaveClass("border border-solid border-primary-50");
     });
 
-    it('invisible variant disabled', () => {
-      render(component('invisible', 'md', true));
+    it("invisible variant disabled", () => {
+      render(component("invisible", "md", true));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("bg-white");
       expect(buttonElement).toHaveClass("hover:bg-gray-50");
@@ -122,8 +115,8 @@ describe('Button', () => {
       expect(buttonElement).toHaveClass("opacity-40");
     });
 
-    it('danger variant disabled', () => {
-      render(component('danger', 'md', true));
+    it("danger variant disabled", () => {
+      render(component("danger", "md", true));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("bg-error-600");
       expect(buttonElement).toHaveClass("hover:bg-error-700");
@@ -133,70 +126,69 @@ describe('Button', () => {
       expect(buttonElement).toHaveClass("opacity-40");
     });
   });
-  
-  describe('test the sizes', () => {
-    it('xl size', () => {
-      render(component('primary', 'xl', false));
+
+  describe("test the sizes", () => {
+    it("xl size", () => {
+      render(component("primary", "xl", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("text-xl");
       expect(buttonElement).toHaveClass("px-9 py-6");
     });
 
-    it('lg size', () => {
-      render(component('primary', 'lg', false));
+    it("lg size", () => {
+      render(component("primary", "lg", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("text-sm");
       expect(buttonElement).toHaveClass("px-8 py-5");
     });
 
-    it('md size', () => {
-      render(component('primary', 'md', false));
+    it("md size", () => {
+      render(component("primary", "md", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("text-sm");
       expect(buttonElement).toHaveClass("px-7 py-4");
     });
 
-    it('sm size', () => {
-      render(component('primary', 'sm', false));
+    it("sm size", () => {
+      render(component("primary", "sm", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("text-sm");
       expect(buttonElement).toHaveClass("px-6 py-3");
     });
 
-    it('xs size', () => {
-      render(component('primary', 'xs', false));
+    it("xs size", () => {
+      render(component("primary", "xs", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("text-xs");
       expect(buttonElement).toHaveClass("px-5 py-2");
     });
-  })
+  });
 
-  describe('test the icon', () => {
-    it('right side', () => {
+  describe("test the icon", () => {
+    it("right side", () => {
       const MockIcon = () => <div data-testid="mock-icon" />;
-      render(componentWithIcon(MockIcon, 'right'));
-      
+      render(componentWithIcon(MockIcon, "right"));
+
       const iconElement = screen.getByTestId("mock-icon");
       expect(iconElement).toBeInTheDocument();
     });
 
-    it('left side', () => {
+    it("left side", () => {
       const MockIcon = () => <div data-testid="mock-icon" />;
-      render(componentWithIcon(MockIcon, 'left'));
-      
+      render(componentWithIcon(MockIcon, "left"));
+
       const iconElement = screen.getByTestId("mock-icon");
       expect(iconElement).toBeInTheDocument();
     });
-  })
+  });
 
-  // describe('test click', () => {
-    // it('tests the onClick', () => {
-    //   render(component('primary', 'xs', false));
-    //   const buttonElement = screen.getByText("botão");
-      
-    //   fireEvent.click(buttonElement);
-    //   expect(onClickMock).toHaveBeenCalledTimes(1);
+  describe("test click", () => {
+    it("tests the onClick", () => {
+      render(component("primary", "xs", false));
+      const buttonElement = screen.getByText("botão");
 
-    // });
-  // })
+      fireEvent.click(buttonElement);
+      expect(onClickMock).toHaveBeenCalledTimes(1);
+    });
+  });
 });
