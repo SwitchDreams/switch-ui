@@ -80,6 +80,7 @@
     "vitest": "^0.33.0"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.15",
     "@heroicons/react": "^2.0.18",
     "class-variance-authority": "^0.7.0",
     "tailwind-merge": "^1.14.0"
