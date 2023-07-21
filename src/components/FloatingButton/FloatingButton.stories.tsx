@@ -1,5 +1,6 @@
 import { Meta, StoryFn } from "@storybook/react";
 import FloatingButton, { FloatingButtonProps } from "./index";
+import { ArrowDownLeftIcon } from "@heroicons/react/24/outline";
 
 export default {
   title: "Buttons/FloatingButton",
@@ -25,3 +26,11 @@ export default {
 const Template: StoryFn<FloatingButtonProps> = (args) => <FloatingButton {...args} />;
 
 export const Variations = Template.bind({});
+
+Variations.args = {
+  variant: "primary",
+  label: "floating buton",
+  size: "md",
+  icon: ArrowDownLeftIcon,
+  onClick: undefined,
+};

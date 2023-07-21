@@ -73,9 +73,9 @@ const Button = ({
   const buttonClasses = twMerge(buttonVariants({ variant, size, disabled }), className);
   return (
     <button className={buttonClasses} onClick={onClick}>
-      {Icon && iconSide == "right" && <Icon className="h-4 w-4" />}
+      {Icon && iconSide == "right" && <Icon className="h-4 w-4 stroke-2" />}
       {label}
-      {Icon && iconSide == "left" && <Icon className="h-4 w-4" />}
+      {Icon && iconSide == "left" && <Icon className="h-4 w-4 stroke-2" />}
     </button>
   );
 };

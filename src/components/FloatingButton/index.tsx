@@ -1,22 +1,22 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import React, { ElementType } from "react";
 import { twMerge } from "tailwind-merge";
+
 interface FloatingButtonType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
-  icon?: ElementType;
+  icon: ElementType;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
 export type FloatingButtonVariantProps = VariantProps<typeof buttonVariants>;
 
-export const buttonVariants = cva("flex items-center justify-center gap-2 rounded-full", {
+export const buttonVariants = cva("flex items-center justify-center gap-2 rounded-full drop-shadow-lg", {
   variants: {
     variant: {
       primary: [
         "bg-primary-25",
         "hover:bg-primary-50",
         "focus:bg-primary-100",
-        "text-white",
         "text-gray-800",
       ],
 
@@ -48,8 +48,8 @@ const FloatingButton = ({
   const buttonClasses = twMerge(buttonVariants({ variant, size }), className);
   return (
     <button className={buttonClasses} onClick={onClick}>
-      {Icon && <Icon className="h-4 w-4" />}
-      {label}
+      {<Icon className="h-4 w-4 stroke-2"/>}
+      {label && label}
     </button>
   );
 };
