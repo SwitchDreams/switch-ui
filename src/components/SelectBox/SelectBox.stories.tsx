@@ -21,7 +21,7 @@ export const Variations = Template.bind({});
 Variations.args = {
   size: "md",
   options: ["um", "dois", "tres"],
-  label: 'Selecione:',
+  label: "Selecione:",
   disabled: false,
-  supportText: 'texto de suporte'
+  supportText: "texto de suporte",
 };
