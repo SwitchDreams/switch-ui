@@ -1,6 +1,7 @@
-import { Meta, StoryFn } from "@storybook/react";
-import FloatingButton, { FloatingButtonProps } from "./index";
 import { ArrowDownLeftIcon } from "@heroicons/react/24/outline";
+import { Meta, StoryFn } from "@storybook/react";
+
+import FloatingButton, { FloatingButtonProps } from "./index";
 
 export default {
   title: "Buttons/FloatingButton",

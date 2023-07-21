@@ -10,32 +10,27 @@ interface FloatingButtonType extends React.ButtonHTMLAttributes<HTMLButtonElemen
 
 export type FloatingButtonVariantProps = VariantProps<typeof buttonVariants>;
 
-export const buttonVariants = cva("flex items-center justify-center gap-2 rounded-full drop-shadow-lg", {
-  variants: {
-    variant: {
-      primary: [
-        "bg-primary-25",
-        "hover:bg-primary-50",
-        "focus:bg-primary-100",
-        "text-gray-800",
-      ],
+export const buttonVariants = cva(
+  "flex items-center justify-center gap-2 rounded-full drop-shadow-lg",
+  {
+    variants: {
+      variant: {
+        primary: ["bg-primary-25", "hover:bg-primary-50", "focus:bg-primary-100", "text-gray-800"],
 
-      invisible: [
-        "bg-white",
-        "hover:bg-gray-50",
-        "focus:bg-gray-100",
-        "text-gray-800",
-      ],
-    },
-    size: {
-      lg: ["text-sm", "p-5"],
-      md: ["text-sm", "p-4"],
-      sm: ["text-sm", "p-3"],
+        invisible: ["bg-white", "hover:bg-gray-50", "focus:bg-gray-100", "text-gray-800"],
+      },
+      size: {
+        lg: ["text-sm", "p-5"],
+        md: ["text-sm", "p-4"],
+        sm: ["text-sm", "p-3"],
+      },
     },
   },
-});
+);
 
-export interface FloatingButtonProps extends Omit<FloatingButtonVariantProps, 'variant' & 'size'>, FloatingButtonType {}
+export interface FloatingButtonProps
+  extends Omit<FloatingButtonVariantProps, "variant" & "size">,
+    FloatingButtonType {}
 
 const FloatingButton = ({
   variant = "primary",
@@ -48,7 +43,7 @@ const FloatingButton = ({
   const buttonClasses = twMerge(buttonVariants({ variant, size }), className);
   return (
     <button className={buttonClasses} onClick={onClick}>
-      {<Icon className="h-4 w-4 stroke-2"/>}
+      {<Icon className="h-4 w-4 stroke-2" />}
       {label && label}
     </button>
   );

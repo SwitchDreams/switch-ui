@@ -8,10 +8,7 @@ describe("Button", () => {
   const onClickMock = vitest.fn();
   const MockIcon = () => <div data-testid="mock-icon" />;
 
-  const component = (
-    variant: "primary" | "invisible",
-    icon: ElementType
-  ) => {
+  const component = (variant: "primary" | "invisible", icon: ElementType) => {
     return (
       <FloatingButton
         variant={variant}
