@@ -183,7 +183,7 @@ describe("Button", () => {
   });
 
   describe("test click", () => {
-    it("tests the onClick", () => {
+    it("test the onClick props", () => {
       render(component("primary", "xs", false));
       const buttonElement = screen.getByText("botão");
 
