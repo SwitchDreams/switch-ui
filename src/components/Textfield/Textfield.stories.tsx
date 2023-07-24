@@ -19,6 +19,7 @@ export const Default: Story = {
     label: "Label",
     placeholder: "Hello World",
     leftIcon: XMarkIcon,
+    name: "name",
     disabled: false,
   },
 };

@@ -11,6 +11,7 @@ describe("Textfield render", () => {
         placeholder="Enter your username"
         leftIcon={XMarkIcon}
         support="Enter your username."
+        name="name"
       />,
     );
     const labelElement = screen.getByText("Username");
@@ -29,6 +30,7 @@ describe("Textfield render", () => {
         leftIcon={XMarkIcon}
         support="Enter your username."
         className="text-orange-100"
+        name="name"
         disabled
       />,
     );
@@ -41,8 +43,9 @@ describe("Textfield render", () => {
         label="Username"
         placeholder="Enter your username"
         leftIcon={XMarkIcon}
-        support="Enter your username."
+        errorMsg="Enter your username."
         className="text-orange-100"
+        name="name"
         error
       />,
     );
@@ -60,12 +63,13 @@ describe("Textfield sizes", () => {
         placeholder="Enter your username"
         leftIcon={XMarkIcon}
         support="Enter your username."
+        name="name"
         size="large"
       />,
     );
     const inputElement = screen.getByPlaceholderText("Enter your username");
 
-    expect(inputElement).toHaveClass("h-[52px]");
+    expect(inputElement).toHaveClass("h-14");
   });
   it("renders with size medium", () => {
     render(
@@ -74,12 +78,13 @@ describe("Textfield sizes", () => {
         placeholder="Enter your username"
         leftIcon={XMarkIcon}
         support="Enter your username."
+        name="name"
         size="medium"
       />,
     );
     const inputElement = screen.getByPlaceholderText("Enter your username");
 
-    expect(inputElement).toHaveClass("h-[48px]");
+    expect(inputElement).toHaveClass("h-12");
   });
   it("renders with size small", () => {
     render(
@@ -88,12 +93,13 @@ describe("Textfield sizes", () => {
         placeholder="Enter your username"
         leftIcon={XMarkIcon}
         support="Enter your username."
+        name="name"
         size="small"
       />,
     );
     const inputElement = screen.getByPlaceholderText("Enter your username");
 
-    expect(inputElement).toHaveClass("h-[44px]");
+    expect(inputElement).toHaveClass("h-11");
   });
 });
 describe("Textfield renders with custom class 'text-orange-100'", () => {
@@ -104,6 +110,7 @@ describe("Textfield renders with custom class 'text-orange-100'", () => {
         placeholder="Enter your username"
         leftIcon={XMarkIcon}
         support="Enter your username."
+        name="name"
         className="text-orange-100"
       />,
     );

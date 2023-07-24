@@ -2,14 +2,17 @@ import { cva, VariantProps } from "class-variance-authority";
 import React, { ElementType } from "react";
 import { twMerge } from "tailwind-merge";
 
-export interface ITextfield {
+export interface ITextfield
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "label" | "placeholder" | "size"> {
   label: string;
+  name: string;
   support?: string;
-  placeholder: string;
-  leftIcon: ElementType;
+  placeholder?: string;
+  leftIcon?: ElementType;
   rightIcon?: ElementType;
   disabled?: boolean;
   error?: boolean;
+  errorMsg?: string;
 }
 
 const TextfieldVariants = cva(
@@ -17,9 +20,9 @@ const TextfieldVariants = cva(
   {
     variants: {
       size: {
-        small: "h-[44px]",
-        medium: "h-[48px]",
-        large: "h-[52px]",
+        small: "h-11",
+        medium: "h-12",
+        large: "h-14",
       },
     },
     defaultVariants: {
@@ -30,10 +33,7 @@ const TextfieldVariants = cva(
 
 type TextfieldVariantProps = VariantProps<typeof TextfieldVariants>;
 
-export interface TextfieldProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "label" | "placeholder" | "size">,
-    TextfieldVariantProps,
-    ITextfield {}
+export interface TextfieldProps extends TextfieldVariantProps, ITextfield {}
 
 export const Textfield = ({
   leftIcon: LeftIcon,
@@ -45,18 +45,20 @@ export const Textfield = ({
   support,
   disabled,
   error,
+  name,
+  errorMsg,
   ...rest
 }: TextfieldProps) => {
   const textfieldClasses = twMerge(TextfieldVariants({ size }), className);
 
   return (
     <div className={`${disabled && "opacity-50"}`}>
-      <label htmlFor="switchTextfield" className="text-sm font-medium text-gray-900">
+      <label htmlFor={name} className="text-sm font-medium text-gray-900">
         {label}
       </label>
       <input
         disabled={disabled}
-        id="switchTextfield"
+        name={name}
         type="text"
         placeholder={placeholder}
         className={`${textfieldClasses} relative my-2 ${
@@ -64,12 +66,12 @@ export const Textfield = ({
         }`}
         {...rest}
       />
-      <label
-        htmlFor="switchTextfield"
-        className={`text-sm  ${error ? "text-error-500" : "text-gray-600"}`}
-      >
-        {support}
-      </label>
+      {error ? (
+        <span className="text-sm text-error-500">{errorMsg}</span>
+      ) : (
+        <span className="text-sm  text-gray-600">{support}</span>
+      )}
+
       {LeftIcon && (
         <LeftIcon
           className="absolute left-[2.4rem] top-[5.25rem] h-6 w-6 
