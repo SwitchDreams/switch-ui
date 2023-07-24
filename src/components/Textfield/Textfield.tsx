@@ -6,7 +6,7 @@ export interface ITextfield
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "label" | "placeholder" | "size"> {
   label: string;
   name: string;
-  support?: string;
+  supportText?: string;
   placeholder?: string;
   leftIcon?: ElementType;
   rightIcon?: ElementType;
@@ -42,7 +42,7 @@ export const Textfield = ({
   size,
   label,
   className,
-  support,
+  supportText,
   disabled,
   error,
   name,
@@ -69,7 +69,7 @@ export const Textfield = ({
       {error ? (
         <span className="text-sm text-error-500">{errorMsg}</span>
       ) : (
-        <span className="text-sm  text-gray-600">{support}</span>
+        <span className="text-sm  text-gray-600">{supportText}</span>
       )}
 
       {LeftIcon && (

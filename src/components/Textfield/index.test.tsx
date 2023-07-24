@@ -10,7 +10,7 @@ describe("Textfield render", () => {
         label="Username"
         placeholder="Enter your username"
         leftIcon={XMarkIcon}
-        support="Enter your username."
+        supportText="Enter your username."
         name="name"
       />,
     );
@@ -28,7 +28,7 @@ describe("Textfield render", () => {
         label="Username"
         placeholder="Enter your username"
         leftIcon={XMarkIcon}
-        support="Enter your username."
+        supportText="Enter your username."
         className="text-orange-100"
         name="name"
         disabled
@@ -62,7 +62,7 @@ describe("Textfield sizes", () => {
         label="Username"
         placeholder="Enter your username"
         leftIcon={XMarkIcon}
-        support="Enter your username."
+        supportText="Enter your username."
         name="name"
         size="large"
       />,
@@ -77,7 +77,7 @@ describe("Textfield sizes", () => {
         label="Username"
         placeholder="Enter your username"
         leftIcon={XMarkIcon}
-        support="Enter your username."
+        supportText="Enter your username."
         name="name"
         size="medium"
       />,
@@ -92,7 +92,7 @@ describe("Textfield sizes", () => {
         label="Username"
         placeholder="Enter your username"
         leftIcon={XMarkIcon}
-        support="Enter your username."
+        supportText="Enter your username."
         name="name"
         size="small"
       />,
@@ -109,7 +109,7 @@ describe("Textfield renders with custom class 'text-orange-100'", () => {
         label="Username"
         placeholder="Enter your username"
         leftIcon={XMarkIcon}
-        support="Enter your username."
+        supportText="Enter your username."
         name="name"
         className="text-orange-100"
       />,
