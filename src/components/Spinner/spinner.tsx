@@ -20,11 +20,11 @@ const spinnerVariants = cva(
   },
 );
 
-export interface HelloWorldProps
+export interface SpinnerProps
   extends Omit<HTMLProps<HTMLDivElement>, "size">,
     VariantProps<typeof spinnerVariants> {}
 
-export const Spinner = ({ size, className, ...rest }: HelloWorldProps) => {
+export const Spinner = ({ size, className, ...rest }: SpinnerProps) => {
   return (
     <div
       data-testid="spinner"
