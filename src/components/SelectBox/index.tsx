@@ -6,10 +6,10 @@ import { twMerge } from "tailwind-merge";
 
 interface SelectBoxType extends React.ButtonHTMLAttributes<HTMLSelectElement> {
   options: string[];
-  size: "lg" | "md" | "sm";
+  size?: "lg" | "md" | "sm";
   label: string;
-  disabled: boolean;
-  supportText: string;
+  disabled?: boolean;
+  supportText?: string;
 }
 
 export type SelectBoxVariantProps = VariantProps<typeof selectBoxVariants>;
@@ -17,9 +17,9 @@ export type SelectBoxVariantProps = VariantProps<typeof selectBoxVariants>;
 export const selectBoxVariants = cva("", {
   variants: {
     size: {
-      lg: ["text-md", "px-1 py-3"],
-      md: ["text-md", "px-0.5 py-2"],
-      sm: ["text-md", "px py-1"],
+      lg: "text-md x-1 py-3",
+      md: "text-md x-0.5 py-2",
+      sm: "text-md x py-1",
     },
   },
 });
@@ -28,7 +28,7 @@ export interface SelectBoxProps extends Omit<SelectBoxVariantProps, "size">, Sel
 
 function SelectBox({
   options,
-  size,
+  size = 'md',
   label,
   disabled = false,
   className,
