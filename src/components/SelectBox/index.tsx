@@ -152,7 +152,7 @@ function SelectBox({
           </Transition>
         </div>
       </Listbox>
-      {supportText && <Text className={supportTextClass} text={supportText} as="p" />}
+      {supportText && <Text className={supportTextClass} text={supportText} as="span" />}
     </div>
   );
 }
