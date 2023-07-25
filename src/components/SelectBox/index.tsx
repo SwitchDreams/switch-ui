@@ -66,7 +66,6 @@ function SelectBox({
   ...rest
 }: SelectBoxProps) {
   const [selected, setSelected] = useState<SetStateAction<any>>(options[0].option);
-  const [isOpenClass, setIsOpenClass] = useState("");
   const [open, setOpen] = useState(false);
   const seletBoxClass = twMerge(selectBoxVariants({ size }), className);
   const selectBoxDisabledClass = twMerge(
