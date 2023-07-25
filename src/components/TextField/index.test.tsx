@@ -1,7 +1,7 @@
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import { render, screen } from "@testing-library/react";
 
-import { TextField } from "./TextField";
+import TextField from "./TextField";
 
 describe("Textfield render", () => {
   it("render textfield", () => {
