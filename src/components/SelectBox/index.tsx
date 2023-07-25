@@ -91,7 +91,7 @@ function SelectBox({
       <label className="mb-1 block text-md text-gray-900">{label}</label>
       <Listbox value={selected} onChange={setSelected} disabled={disabled} {...rest}>
         <div className="relative">
-          <Listbox.Button className={selectBoxDisabledClass + isOpenClass}>
+          <Listbox.Button className={selectBoxDisabledClass}>
             <span className="flex gap-2 truncate pl-3">
               <EnvelopeIcon className="h-6 w-6 text-gray-700" />
               {selected}
