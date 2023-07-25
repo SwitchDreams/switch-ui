@@ -28,8 +28,8 @@ const TextFieldBaseVariants = cva(
         large: "h-14",
       },
       error: {
-        true: "border-error-500",
-        false: "",
+        true: "border-error-500 caret-error-500",
+        false: "caret-primary-100",
       },
       leftIconPresent: {
         true: "pl-9",
@@ -71,7 +71,7 @@ export const TextFieldBase = ({
   className,
   supportText,
   disabled,
-  error,
+  error = false,
   name,
   errorMsg,
   ...rest
