@@ -29,7 +29,7 @@ const TextFieldBaseVariants = cva(
       },
       error: {
         true: "border-error-500",
-        false: "border-gray-100",
+        false: "",
       },
       leftIconPresent: {
         true: "pl-9",
@@ -41,6 +41,19 @@ const TextFieldBaseVariants = cva(
     },
   },
 );
+
+const IconVariants = cva("absolute top-1/2 h-6 w-6 text-gray-500", {
+  variants: {
+    error: {
+      true: "text-error-500",
+      false: "text-gray-500",
+    },
+    position: {
+      left: "left-2",
+      right: "right-2",
+    },
+  },
+});
 
 type TextfieldVariantProps = VariantProps<typeof TextFieldBaseVariants>;
 
@@ -69,7 +82,7 @@ export const TextFieldBase = ({
     TextFieldBaseVariants({ size, error, leftIconPresent }),
     className,
   );
-  const opacityClass = disabled ? "opacity-50" : "";
+  const opacityClass = disabled ? "opacity-50 relative" : "relative";
 
   return (
     <div className={opacityClass}>
@@ -86,19 +99,11 @@ export const TextFieldBase = ({
       {error ? (
         <span className="text-sm text-error-500">{errorMsg}</span>
       ) : (
-        <span className="text-sm  text-gray-600">{supportText}</span>
+        <span className="text-sm text-gray-600">{supportText}</span>
       )}
 
-      {LeftIcon && (
-        <LeftIcon className="absolute left-[2.4rem] top-[5.25rem] h-6 w-6 text-gray-200" />
-      )}
-      {RightIcon && (
-        <RightIcon
-          className={`absolute right-[2.4rem] top-[5.25rem] h-6 w-6 ${
-            error ? "text-error-500" : "text-gray-200"
-          } `}
-        />
-      )}
+      {LeftIcon && <LeftIcon className={IconVariants({ error, position: "left" })} />}
+      {RightIcon && <RightIcon className={IconVariants({ error, position: "right" })} />}
     </div>
   );
 };

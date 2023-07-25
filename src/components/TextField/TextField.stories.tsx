@@ -23,11 +23,22 @@ export const Default: Story = {
   },
 };
 
-export const WithIcon: Story = {
+export const WithIconLeft: Story = {
   args: {
     label: "Label",
     placeholder: "Hello World",
     leftIcon: XMarkIcon,
+    name: "name",
+    disabled: false,
+  },
+};
+
+export const WithTwoIcons: Story = {
+  args: {
+    label: "Label",
+    placeholder: "Hello World",
+    leftIcon: XMarkIcon,
+    rightIcon: XMarkIcon,
     name: "name",
     disabled: false,
   },
