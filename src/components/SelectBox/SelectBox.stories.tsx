@@ -1,3 +1,4 @@
+import { EnvelopeIcon } from "@heroicons/react/24/outline";
 import { Meta, StoryFn } from "@storybook/react";
 
 import SelectBox, { SelectBoxProps } from "./index";
@@ -30,4 +31,6 @@ Variations.args = {
   label: "Selecione:",
   disabled: false,
   supportText: "texto de suporte",
+  leftIcon: EnvelopeIcon,
+  error: true,
 };

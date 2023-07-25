@@ -4,7 +4,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 
 import SelectBox from "../index";
 
-describe("Button", () => {
+describe("SelectBox", () => {
   const component = () => {
     const options = [
       { id: 1, option: "Option 1" },
