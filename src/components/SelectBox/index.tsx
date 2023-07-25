@@ -46,6 +46,10 @@ export const selectBoxDisabledVariants = cva(
         md: "x-0.5 py-2 text-md",
         sm: "x py-1 text-md",
       },
+      open: {
+        true: "border border-primary-100",
+        false: "border-none",
+      },
     },
   },
 );
@@ -63,20 +67,21 @@ function SelectBox({
 }: SelectBoxProps) {
   const [selected, setSelected] = useState<SetStateAction<any>>(options[0].option);
   const [isOpenClass, setIsOpenClass] = useState("");
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const seletBoxClass = twMerge(selectBoxVariants({ size }), className);
-  const selectBoxDisabledClass = twMerge(selectBoxDisabledVariants({ disabled, size }), className);
+  const selectBoxDisabledClass = twMerge(
+    selectBoxDisabledVariants({ disabled, size, open }),
+    className,
+  );
 
   const isOpen = () => {
     const buttonElement = document.querySelector("button[aria-expanded]");
     const ariaExpandedValue = buttonElement?.getAttribute("aria-expanded");
 
     if (ariaExpandedValue == "true") {
-      setIsOpenClass(" border border-primary-100");
-      setIsDropdownOpen(true);
+      setOpen(true);
     } else {
-      setIsOpenClass("");
-      setIsDropdownOpen(false);
+      setOpen(false);
     }
   };
 
@@ -93,7 +98,7 @@ function SelectBox({
               {selected}
             </span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-              {isDropdownOpen ? (
+              {open ? (
                 <ChevronDownIcon className="h-6 w-6 text-gray-700" aria-hidden="true" />
               ) : (
                 <ChevronUpIcon className="h-6 w-6 text-gray-700" aria-hidden="true" />
