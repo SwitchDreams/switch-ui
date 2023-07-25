@@ -1,15 +1,19 @@
 import "@testing-library/jest-dom/extend-expect"; // Importante para estender as asserções do Jest-Dom
 
 import { fireEvent, render, screen } from "@testing-library/react";
-import React from "react";
 
 import SelectBox from "../index";
 
 describe("Button", () => {
   const component = () => {
+    const options = [
+      { id: 1, option: 'Option 1' },
+      { id: 2, option: 'Option 2' },
+      { id: 3, option: 'Option 3' },
+    ]
     return (
       <SelectBox
-        options={["Option 1", "Option 2", "Option 3"]}
+        options={options}
         size="md"
         label="Select an option"
         disabled={false}
