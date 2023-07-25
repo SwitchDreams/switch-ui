@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 type InputElement = "input" | "textarea";
 
 export interface ITextFieldBase
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "label" | "placeholder" | "size"> {
+  extends Omit<React.InputHTMLAttributes<any>, "label" | "placeholder" | "size"> {
   label: string;
   name: string;
   inputElement: InputElement;

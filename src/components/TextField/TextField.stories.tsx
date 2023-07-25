@@ -5,7 +5,7 @@ import TextField from "./TextField";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  title: "Example/Textfield",
+  title: "Example/TextField",
   component: TextField,
   tags: ["autodocs"],
 } satisfies Meta<typeof TextField>;
