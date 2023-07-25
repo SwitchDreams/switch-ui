@@ -91,6 +91,7 @@ export const TextFieldBase = ({
       </label>
       <InputElement
         disabled={disabled}
+        id={name}
         name={name}
         placeholder={placeholder}
         className={textfieldClasses}
