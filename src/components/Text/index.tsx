@@ -1,14 +1,18 @@
 import { cva, VariantProps } from "class-variance-authority";
+import { HTMLAttributes, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
-export interface IText {
-  as: keyof JSX.IntrinsicElements;
-  text: string;
+type Element = "dt" | "dd" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "legend";
+
+export interface IText extends HTMLAttributes<any> {
+  as: Element;
+  children?: ReactNode;
+  className?: string;
 }
 
 const TextVariants = cva("text", {
   variants: {
-    textSize: {
+    size: {
       sm: "text-sm",
       md: "text-md",
       lg: "text-lg",
@@ -22,22 +26,19 @@ const TextVariants = cva("text", {
     },
   },
   defaultVariants: {
-    textSize: "md",
+    size: "md",
   },
 });
 
-export interface TextProps extends IText, VariantProps<typeof TextVariants> {
-  className?: string;
-}
+export interface TextProps extends IText, VariantProps<typeof TextVariants> {}
 
-export const Text = ({ text, as = "p", className, ...rest }: TextProps) => {
+export const Text = ({ children, size = "md", as = "p", className, ...rest }: TextProps) => {
   const TextComponent = as;
-  const variantClassName = TextVariants(rest);
-  const mergedClassName = twMerge(variantClassName, className);
+  const variantClassName = TextVariants({ size });
 
   return (
-    <TextComponent className={mergedClassName} {...rest}>
-      {text}
+    <TextComponent className={twMerge(variantClassName, className)} {...rest}>
+      {children}
     </TextComponent>
   );
 };
