@@ -7,10 +7,10 @@ import SelectBox from "../index";
 describe("Button", () => {
   const component = () => {
     const options = [
-      { id: 1, option: 'Option 1' },
-      { id: 2, option: 'Option 2' },
-      { id: 3, option: 'Option 3' },
-    ]
+      { id: 1, option: "Option 1" },
+      { id: 2, option: "Option 2" },
+      { id: 3, option: "Option 3" },
+    ];
     return (
       <SelectBox
         options={options}

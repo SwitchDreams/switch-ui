@@ -19,10 +19,10 @@ const Template: StoryFn<typeof SelectBox> = (args: SelectBoxProps) => <SelectBox
 export const Variations = Template.bind({});
 
 const options = [
-  { id: 1, option: 'Option 1' },
-  { id: 2, option: 'Option 2' },
-  { id: 3, option: 'Option 3' },
-]
+  { id: 1, option: "Option 1" },
+  { id: 2, option: "Option 2" },
+  { id: 3, option: "Option 3" },
+];
 
 Variations.args = {
   size: "md",
