@@ -35,7 +35,7 @@ type TextfieldVariantProps = VariantProps<typeof TextfieldVariants>;
 
 export interface TextfieldProps extends TextfieldVariantProps, ITextfield {}
 
-export const Textfield = ({
+export const TextField = ({
   leftIcon: LeftIcon,
   rightIcon: RightIcon,
   placeholder,

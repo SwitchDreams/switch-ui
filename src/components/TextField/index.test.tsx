@@ -1,12 +1,12 @@
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import { render, screen } from "@testing-library/react";
 
-import { Textfield } from "./Textfield";
+import { TextField } from "./TextField";
 
 describe("Textfield render", () => {
   it("render textfield", () => {
     render(
-      <Textfield
+      <TextField
         label="Username"
         placeholder="Enter your username"
         leftIcon={XMarkIcon}
@@ -24,7 +24,7 @@ describe("Textfield render", () => {
   });
   it("render textfield disbled", () => {
     render(
-      <Textfield
+      <TextField
         label="Username"
         placeholder="Enter your username"
         leftIcon={XMarkIcon}
@@ -39,7 +39,7 @@ describe("Textfield render", () => {
   });
   it("render textfield error", () => {
     render(
-      <Textfield
+      <TextField
         label="Username"
         placeholder="Enter your username"
         leftIcon={XMarkIcon}
@@ -58,7 +58,7 @@ describe("Textfield render", () => {
 describe("Textfield sizes", () => {
   it("renders with size large", () => {
     render(
-      <Textfield
+      <TextField
         label="Username"
         placeholder="Enter your username"
         leftIcon={XMarkIcon}
@@ -73,7 +73,7 @@ describe("Textfield sizes", () => {
   });
   it("renders with size medium", () => {
     render(
-      <Textfield
+      <TextField
         label="Username"
         placeholder="Enter your username"
         leftIcon={XMarkIcon}
@@ -88,7 +88,7 @@ describe("Textfield sizes", () => {
   });
   it("renders with size small", () => {
     render(
-      <Textfield
+      <TextField
         label="Username"
         placeholder="Enter your username"
         leftIcon={XMarkIcon}
@@ -105,7 +105,7 @@ describe("Textfield sizes", () => {
 describe("Textfield renders with custom class 'text-orange-100'", () => {
   it("render textfield", () => {
     render(
-      <Textfield
+      <TextField
         label="Username"
         placeholder="Enter your username"
         leftIcon={XMarkIcon}

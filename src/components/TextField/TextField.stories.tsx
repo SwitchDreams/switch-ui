@@ -1,14 +1,14 @@
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Textfield } from "./Textfield";
+import { TextField } from "./TextField";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
   title: "Example/Textfield",
-  component: Textfield,
+  component: TextField,
   tags: ["autodocs"],
-} satisfies Meta<typeof Textfield>;
+} satisfies Meta<typeof TextField>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
