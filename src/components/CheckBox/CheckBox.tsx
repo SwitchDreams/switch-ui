@@ -4,44 +4,67 @@ import { twMerge } from "tailwind-merge";
 
 export interface ICheckBox {
   disabled?: boolean;
+  name: string;
 }
 
-const checkBoxVariants = cva(
-  "relative appearance-none rounded-full border border-gray-200 checked:border-primary-300  checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:rounded-full checked:after:border-primary-300 checked:after:bg-primary-300 checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:border-primary-300 hover:bg-primary-25 focus:ring-4 focus:ring-primary-25",
-  {
-    variants: {
-      size: {
-        small: "h-4 w-4 checked:after:h-[0.4rem] checked:after:w-[0.4rem]",
-        medium: "h-5 w-5 checked:after:h-[0.54rem] checked:after:w-[0.54rem]",
-        large: "h-6 w-6 checked:after:h-[0.6rem] checked:after:w-[0.6rem]",
-      },
+const checkBoxVariants = cva("peer appearance-none transition-all duration-200", {
+  variants: {
+    shape: {
+      circle: "rounded-full",
+      square: "rounded-sm",
     },
-    defaultVariants: {
-      size: "medium",
+    size: {
+      small: " h-4 w-4",
+      medium: " h-5 w-5",
+      large: "h-6 w-6",
+    },
+    color: {
+      primary:
+        "border border-primary-300 checked:bg-primary-300 hover:bg-primary-25 checked:hover:bg-primary-200 focus:ring-4 focus:ring-primary-25",
+      secundary:
+        "border border-error-600 checked:bg-error-700 hover:bg-error-100 checked:hover:bg-error-600 focus:ring-4 focus:ring-error-100",
     },
   },
-);
+  defaultVariants: {
+    size: "medium",
+    shape: "square",
+    color: "primary",
+  },
+});
 
 export interface CheckBoxProps
-  extends Omit<HTMLProps<HTMLInputElement>, "size" | "disabled">,
+  extends Omit<HTMLProps<HTMLInputElement>, "size" | "disabled" | "shape" | "color" | "name">,
     ICheckBox,
     VariantProps<typeof checkBoxVariants> {}
 
-export const CheckBox = ({ size, disabled = false, className, ...rest }: CheckBoxProps) => {
+export const CheckBox = ({
+  size,
+  shape,
+  disabled = false,
+  color,
+  className,
+  name,
+  ...rest
+}: CheckBoxProps) => {
   return (
-    <input
-      type="radio"
-      disabled={disabled}
-      className={
-        disabled
-          ? twMerge(
-              checkBoxVariants({ size }),
-              className,
-              "border-gray-200 bg-gray-100 checked:border-gray-200 checked:after:bg-gray-500 hover:border-gray-200 hover:bg-gray-100",
-            )
-          : twMerge(checkBoxVariants({ size }), className)
-      }
-      {...rest}
-    ></input>
+    <label className="relative" htmlFor={name}>
+      <input
+        name={name}
+        type="checkbox"
+        disabled={disabled}
+        className={twMerge(checkBoxVariants({ size, shape, color }), className)}
+        {...rest}
+      ></input>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2.5"
+        stroke="currentColor"
+        className="absolute left-[0.3rem] top-[-0.05rem] z-[-1] h-3 w-3 font-bold text-white peer-checked:z-10 peer-checked:text-opacity-100"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+      </svg>
+    </label>
   );
 };
