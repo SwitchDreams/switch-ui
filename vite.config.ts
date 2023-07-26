@@ -18,7 +18,7 @@ export default defineConfig((configEnv) => ({
       linters: [new EsLinter({ configEnv })],
     }),
     dts({
-      include: ["src/component/"],
+      include: ["src/components/"],
     }),
   ],
   build: {
@@ -26,7 +26,7 @@ export default defineConfig((configEnv) => ({
       entry: resolve("src", "components/index.ts"),
       name: "SwitchUI",
       formats: ["es", "umd"],
-      fileName: (format) => `switch-ui.${format}.js`,
+      fileName: (format) => `@switchdreams/ui.${format}.js`,
     },
     rollupOptions: {
       external: [...Object.keys(packageJson.peerDependencies)],
