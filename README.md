@@ -3,6 +3,16 @@ A SwitchUI é a biblioteca de componentes em React para os produtos SwitchDreams
 
 [Figma](https://www.figma.com/file/tygmPPx4ux69Uu3MzLKvtb/Switch-UI?node-id=0%3A1&mode=dev)
 
+## Instalação
+
+- Instale o pacote utilizando `yarn install @switchdreams/ui`
+
+- Importe o arquivo css: `import '@switchdreams/ui/dist/style.css'`
+
+## Configurações das Fontes
+
+### TODO...
+
 ## Ferramentas
 
 - React
