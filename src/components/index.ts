@@ -1,7 +1,7 @@
 // Export css
 import "../index.css";
-import "../fonts.css";
 
+//import "../fonts.css";
 import colors from "../constants/colors";
 import { Badge } from "./Badge/Badge";
 import Button from "./Buttons/Button";

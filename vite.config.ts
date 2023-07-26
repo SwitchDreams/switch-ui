@@ -1,10 +1,10 @@
-import { resolve } from "node:path"
+import { resolve } from "node:path";
 
-import react from "@vitejs/plugin-react"
-import { defineConfig } from "vite"
-import dts from "vite-plugin-dts"
-import EsLint from "vite-plugin-linter"
-import tsConfigPaths from "vite-tsconfig-paths"
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+import dts from "vite-plugin-dts";
+import EsLint from "vite-plugin-linter";
+import tsConfigPaths from "vite-tsconfig-paths";
 
 const { EsLinter, linterPlugin } = EsLint;
 import * as packageJson from "./package.json";
@@ -14,11 +14,12 @@ export default defineConfig((configEnv) => ({
     react(),
     tsConfigPaths(),
     linterPlugin({
-      include: ["./src}/**/*.{ts,tsx}"],
+      include: ["./src/**/*.{ts,tsx}"],
       linters: [new EsLinter({ configEnv })],
     }),
     dts({
       include: ["src/components/"],
+      exclude: ["**/*.test.tsx", "**/*.stories.tsx"],
     }),
   ],
   build: {
@@ -31,6 +32,7 @@ export default defineConfig((configEnv) => ({
     rollupOptions: {
       external: [...Object.keys(packageJson.peerDependencies)],
     },
+    sourcemap: true,
   },
   test: {
     environment: "jsdom",
