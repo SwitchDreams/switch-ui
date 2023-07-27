@@ -32,5 +32,5 @@ Variations.args = {
   disabled: false,
   supportText: "texto de suporte",
   leftIcon: EnvelopeIcon,
-  error: true,
+  error: false,
 };
