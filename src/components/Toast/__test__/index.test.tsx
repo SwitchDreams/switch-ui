@@ -41,5 +41,25 @@ describe('Toast Component', () => {
       const toastElement = container.querySelector('.toast-component')
       expect(toastElement).toHaveClass("bg-success-50 border-success-200 text-success-700");
     })
+    it('test the warning color with tonal variant', () => {
+      const {container} = render(compontent('tonal', 'warning'));
+      const toastElement = container.querySelector('.toast-component')
+      expect(toastElement).toHaveClass("bg-warning-500 text-gray-950");
+    })
+    it('test the warning color with filled variant', () => {
+      const {container} = render(compontent('filled', 'warning'));
+      const toastElement = container.querySelector('.toast-component')
+      expect(toastElement).toHaveClass("bg-warning-50 border-warning-200 text-warning-700");
+    })
+    it('test the error color with tonal variant', () => {
+      const {container} = render(compontent('tonal', 'error'));
+      const toastElement = container.querySelector('.toast-component')
+      expect(toastElement).toHaveClass("bg-error-500 text-white");
+    })
+    it('test the errpr color with filled variant', () => {
+      const {container} = render(compontent('filled', 'error'));
+      const toastElement = container.querySelector('.toast-component')
+      expect(toastElement).toHaveClass("bg-error-50 border-error-200 text-error-700");
+    })
   })
 });
