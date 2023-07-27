@@ -14,7 +14,7 @@ const checkBoxVariants = cva("peer appearance-none transition-all duration-200",
       square: "rounded-sm",
     },
     size: {
-      small: " h-4 w-4",
+      small: "h-4 w-4",
       medium: " h-5 w-5",
       large: "h-6 w-6",
     },
@@ -61,7 +61,7 @@ export const CheckBox = ({
         viewBox="0 0 24 24"
         stroke-width="2.5"
         stroke="currentColor"
-        className="absolute left-[0.3rem] top-[-0.05rem] z-[-1] h-3 w-3 font-bold text-white peer-checked:z-10 peer-checked:text-opacity-100"
+        className="absolute top-1/2 z-[-1] h-3 w-3 font-bold text-white peer-checked:z-10 peer-checked:text-opacity-100"
       >
         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
       </svg>
