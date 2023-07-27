@@ -78,33 +78,23 @@ function SelectBox({
   ...rest
 }: SelectBoxProps) {
   const [selected, setSelected] = useState<SetStateAction<any>>(options[0].option);
-  const [open, setOpen] = useState(false);
-  const seletBoxClass = twMerge(selectBoxVariants({ size }), className);
+  const selectBoxClass = twMerge(selectBoxVariants({ size }), className);
   const selectBoxDisabledClass = twMerge(
-    selectBoxDisabledVariants({ disabled, size, open, error }),
+    selectBoxDisabledVariants({ disabled, size, error }),
     className,
   );
   const supportTextClass = twMerge(selectBoxSupportTextVariants({ error }), className);
-
-  const isOpen = () => {
-    const buttonElement = document.querySelector("button[aria-expanded]");
-    const ariaExpandedValue = buttonElement?.getAttribute("aria-expanded");
-
-    if (ariaExpandedValue == "true") {
-      setOpen(true);
-    } else {
-      setOpen(false);
-    }
-  };
-
-  document.addEventListener("click", isOpen);
 
   return (
     <div>
       <Listbox value={selected} onChange={setSelected} disabled={disabled} {...rest}>
         <Listbox.Label className="mb-1 block text-md text-gray-900">{label}</Listbox.Label>
         <div className="relative">
-          <Listbox.Button className={selectBoxDisabledClass}>
+          <Listbox.Button
+            className={({ open }) =>
+              `${open ? `border-primary-100 ${selectBoxDisabledClass}` : selectBoxDisabledClass}`
+            }
+          >
             <span className="flex gap-2 truncate pl-3">
               {LeftIcon && <LeftIcon className="h-6 w-6 text-gray-700" />}
               {selected}
@@ -130,7 +120,7 @@ function SelectBox({
                   className={({ active }) =>
                     `relative m-1 cursor-default select-none rounded pl-2 ${
                       active ? " bg-white hover:bg-gray-100" : "text-gray-950"
-                    } ${seletBoxClass}`
+                    } ${selectBoxClass}`
                   }
                   value={option.option}
                 >
