@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import React, { HTMLProps } from "react";
+import { HTMLProps } from "react";
 import { twMerge } from "tailwind-merge";
 
 export interface IHelloWorld {
