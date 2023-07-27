@@ -1,9 +1,9 @@
 
 
 import { cva, type VariantProps } from "class-variance-authority";
-import React, { ElementType, useState } from "react";
+import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { ExclamationCircleIcon, XMarkIcon, CheckBadgeIcon, ExclamationTriangleIcon, ArrowLongRightIcon } from "@heroicons/react/24/outline";
+import { ExclamationCircleIcon, XMarkIcon, CheckCircleIcon, ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 
 
 interface ToastType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -17,7 +17,7 @@ interface ToastType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 export type ToastVariantProps = VariantProps<typeof toastVariants>;
 
 export const toastVariants = cva(
-  "w-[541px] h-auto justify-between px-4 py-5 rounded-md flebg-primary-50 flex gap-3 text-sm", {
+  "toast-component w-[541px] h-auto justify-between px-4 py-5 rounded-md flex bg-primary-50 gap-3 text-sm", {
   variants: {
     color: {  
       primary: "bg-primary-25 border-primary-100 text-primary-400",
@@ -67,7 +67,7 @@ const Toast = ({
       return <ExclamationCircleIcon className="h-5 w-5" />
     }
     if(color == 'success') {
-      return <CheckBadgeIcon className="h-5 w-5" />
+      return <CheckCircleIcon className="h-5 w-5" />
     }
     if(color == 'warning') {
       return <ExclamationTriangleIcon className="h-5 w-5" />
