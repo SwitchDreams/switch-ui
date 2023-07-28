@@ -1,21 +1,22 @@
 import "@testing-library/jest-dom/extend-expect"; // Importante para estender as asserções do Jest-Dom
 
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 
 import SelectBox from "../index";
 
 describe("SelectBox", () => {
   const component = () => {
     const options = [
-      { id: 1, option: "Option 1" },
-      { id: 2, option: "Option 2" },
-      { id: 3, option: "Option 3" },
+      { value: 1, label: "Option 1" },
+      { value: 2, label: "Option 2" },
+      { value: 3, label: "Option 3" },
     ];
     return (
       <SelectBox
         options={options}
         size="md"
         label="Select an option"
+        defaultValue={1}
         disabled={false}
         supportText="Choose an option from the list."
       />
@@ -37,16 +38,19 @@ describe("SelectBox", () => {
   });
 
   describe("test the dropdown", () => {
-    it("test the options", () => {
+    it("test the options", async () => {
       render(component());
       const element = screen.getByText("Option 1");
 
       fireEvent.click(element);
-      const optionsTwo = screen.getByText(/Option 2/i);
-      const optionsThree = screen.getByText(/Option 3/i);
 
-      expect(optionsTwo).toBeInTheDocument();
-      expect(optionsThree).toBeInTheDocument();
+      await waitFor(() => {
+        const optionsTwo = screen.getByText(/Option 2/i);
+        const optionsThree = screen.getByText(/Option 3/i);
+
+        expect(optionsTwo).toBeInTheDocument();
+        expect(optionsThree).toBeInTheDocument();
+      });
     });
   });
 });

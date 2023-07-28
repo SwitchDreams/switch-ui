@@ -7,8 +7,8 @@ import { twMerge } from "tailwind-merge";
 import { Text } from "../Text";
 
 type Options = {
-  id: number;
-  option: string;
+  value: number;
+  label: string;
 };
 
 interface SelectBoxType extends ListboxProps<any, any, any> {
@@ -111,7 +111,7 @@ function SelectBox({
               >
                 <span className="flex gap-2 truncate pl-3">
                   {LeftIcon && <LeftIcon className="h-6 w-6 text-gray-700" />}
-                  {value}
+                  {options.find((option) => option.value === value)?.label}
                 </span>
                 <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                   {renderChevron(open)}
@@ -126,9 +126,9 @@ function SelectBox({
                 <Listbox.Options className="absolute z-30 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 ring-1 ring-gray-100">
                   {options.map((option) => (
                     <Listbox.Option
-                      key={option.id}
+                      key={option.value}
+                      value={option.value}
                       className={({ active }) => selectBoxVariants({ size, active })}
-                      value={option.option}
                     >
                       {({ selected }) => (
                         <span
@@ -136,7 +136,7 @@ function SelectBox({
                             selected ? "flex justify-between text-md" : "text-gray-800"
                           }`}
                         >
-                          {option.option}
+                          {option.label}
                           {selected && <CheckIcon className="mr-3 h-5 w-5 text-gray-700" />}
                         </span>
                       )}
