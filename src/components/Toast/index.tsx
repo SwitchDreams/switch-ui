@@ -72,7 +72,7 @@ const Toast = ({
 
   const closeToast = () => {
     setIsClose(true);
-    if(onClose) onClose;
+    if (onClose) onClose;
   };
 
   const defineIcon = (color: string) => {
@@ -96,7 +96,7 @@ const Toast = ({
       </div>
       <div
         onClick={() => {
-          closeToast()
+          closeToast();
         }}
         className="close-toast h-5 cursor-pointer"
       >
