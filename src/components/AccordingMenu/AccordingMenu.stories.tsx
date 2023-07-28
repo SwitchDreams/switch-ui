@@ -3,7 +3,7 @@ import { Meta, StoryFn } from "@storybook/react";
 import AccordingMenu, { AccordingMenuProps } from ".";
 
 export default {
-  title: "AccordingMenu",
+  title: "Dropdown/AccordingMenu",
   component: AccordingMenu,
   tags: ["autodocs"],
 } as Meta<typeof AccordingMenu>;
