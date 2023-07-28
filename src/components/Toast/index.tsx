@@ -101,7 +101,7 @@ const Toast = ({
         onClick={() => {
           closeToast(), onClose;
         }}
-        className="close-toast cursor-pointer h-5"
+        className="close-toast h-5 cursor-pointer"
       >
         <XMarkIcon className="h-5 w-5" />
       </div>
