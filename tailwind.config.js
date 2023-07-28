@@ -25,5 +25,8 @@ export default {
       xs: "12px",
     },
   },
-  plugins: [],
+  plugins: [
+    require('@headlessui/tailwindcss'),
+    require('@headlessui/tailwindcss')({ prefix: 'ui' })
+  ],
 };
