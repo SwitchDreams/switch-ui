@@ -1,21 +1,33 @@
 import { Disclosure } from "@headlessui/react";
 import { cva, VariantProps } from "class-variance-authority";
 import { HTMLAttributes } from "react";
+import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
+import { twMerge } from "tailwind-merge";
 
 interface AccordingMenuType extends HTMLAttributes<any> {
   title: string;
   infos: string;
-  size: "lg" | "md" | "sm";
+  size?: "lg" | "md" | "sm";
 }
 
 export type AccordingMenuVariantProps = VariantProps<typeof accordingMenuVariants>;
 
-export const accordingMenuVariants = cva("relative m-1 cursor-default select-none rounded pl-2", {
+export const accordingMenuVariants = cva("w-full text-left flex justify-between items-center py-4 text-gray-900 cursor-pointer", {
   variants: {
     size: {
-      lg: "x-1 py-3 text-md",
-      md: "x-0.5 py-2 text-md",
-      sm: "x py-1 text-md",
+      lg: "py-5 text-lg",
+      md: "py-4 text-md",
+      sm: "py-3 text-sm",
+    },
+  },
+});
+
+export const accordingInfosVariants = cva("text-gray-700", {
+  variants: {
+    size: {
+      lg: "pb-6 text-md",
+      md: "pb-5 text-sm",
+      sm: "pb-4 text-xs",
     },
   },
 });
@@ -24,15 +36,23 @@ export interface AccordingMenuProps
   extends Omit<AccordingMenuVariantProps, "size">,
     AccordingMenuType {}
 
-const AccordingMenu = ({ title, infos, size = "md" }: AccordingMenuProps) => {
+const AccordingMenu = ({ title, infos, size = "md", className }: AccordingMenuProps) => {
+  const accordingMenuClasses = twMerge(accordingMenuVariants({size }), className)
   return (
-    <Disclosure>
-      <Disclosure.Button className="border-b-1 border-gray-100 bg-primary-100 py-6 text-gray-900">
-        Is team pricing available?
-      </Disclosure.Button>
-      <Disclosure.Panel className="text-gray-500">
-        Yes! You can purchase a license that you can share with your entire team.
-      </Disclosure.Panel>
+    <Disclosure as='div' className="border border-gray-100 border-x-0 border-t-0">
+      {({ open }) => (
+        <>
+        <Disclosure.Button className={accordingMenuClasses}>
+          {title}
+          {
+            open ? <ChevronDownIcon stroke-width="2" className="w-4 h-4 flex align-center"/> : <ChevronUpIcon stroke-width="2" className="w-4 h-4 flex align-center"/>
+          }
+        </Disclosure.Button>
+        <Disclosure.Panel className={accordingInfosVariants({size})}>
+          {infos}
+        </Disclosure.Panel>
+        </>
+      )}
     </Disclosure>
   );
 };
