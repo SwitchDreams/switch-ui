@@ -62,5 +62,5 @@ export const Variations = Template.bind({});
 Variations.args = {
   size: "md",
   tabs: tabsArray,
-  padding: false
+  padding: false,
 };

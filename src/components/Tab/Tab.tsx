@@ -17,7 +17,7 @@ export interface TabType extends HTMLAttributes<any> {
 export type TabVariantProps = VariantProps<typeof TabVariants>;
 
 export const TabVariants = cva(
-  "w-[130px] item-center flex appearance-none justify-center border border-x-0 border-t-0 border-b-gray-500 text-gray-500 focus:outline-none ui-selected:font-medium ui-selected:text-primary-300",
+  "item-center flex w-[130px] appearance-none justify-center border border-x-0 border-t-0 border-b-gray-500 text-gray-500 focus:outline-none ui-selected:font-medium ui-selected:text-primary-300",
   {
     variants: {
       size: {
@@ -26,8 +26,8 @@ export const TabVariants = cva(
         sm: "text-sm",
       },
       padding: {
-        false: "ui-selected:border-b-2 ui-selected:border-primary-300 pb-4 pt-2",
-        true: "py-0"
+        false: "pb-4 pt-2 ui-selected:border-b-2 ui-selected:border-primary-300",
+        true: "py-0",
       },
     },
   },
@@ -39,15 +39,26 @@ const TabComponent = ({ size = "md", padding = false, tabs, className }: TabProp
   const tabClass = twMerge(TabVariants({ size, padding }), className);
 
   return (
-    <Tab.Group defaultIndex={1} as='div' className='w-full h-[34px]'>
+    <Tab.Group defaultIndex={1} as="div" className="h-[34px] w-full">
       <Tab.List as="div" className="flex pb-8">
         {tabs.map((tab: Tabs) => {
           return (
-            <Tab key={tab.name} data-testid={tab.name} className={tabClass} style={{width: `calc(100% / ${tabs.length})`}} >
-              <div 
-              className={padding ? 'pb-4 border-t-0 border-x-0 ui-selected:border-b-2 ui-selected:border-primary-300 ui-selected:font-medium ui-selected:text-primary-300' : ''}
-              style={padding? {width: `80%`} : {width: '100%'}}
-              >{tab.name}</div>
+            <Tab
+              key={tab.name}
+              data-testid={tab.name}
+              className={tabClass}
+              style={{ width: `calc(100% / ${tabs.length})` }}
+            >
+              <div
+                className={
+                  padding
+                    ? "border-x-0 border-t-0 pb-4 ui-selected:border-b-2 ui-selected:border-primary-300 ui-selected:font-medium ui-selected:text-primary-300"
+                    : ""
+                }
+                style={padding ? { width: `80%` } : { width: "100%" }}
+              >
+                {tab.name}
+              </div>
             </Tab>
           );
         })}

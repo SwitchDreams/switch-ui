@@ -1,10 +1,11 @@
 import { render, screen } from "@testing-library/react";
+
 import TabComponent from "./Tab";
 
 describe("TabComponent", () => {
   const tabs = [
-    { name: "Tab 1", infos: <div>Content for Tab 1</div>, size: "md"},
-    { name: "Tab 2", infos: <div>Content for Tab 2</div>, size: "md"},
+    { name: "Tab 1", infos: <div>Content for Tab 1</div>, size: "md" },
+    { name: "Tab 2", infos: <div>Content for Tab 2</div>, size: "md" },
     { name: "Tab 3", infos: <div>Content for Tab 3</div>, size: "md" },
   ];
 
@@ -53,7 +54,7 @@ describe("TabComponent", () => {
     expect(tab2).toHaveClass("text-sm");
     expect(tab3).toHaveClass("text-sm");
   });
-  
+
   it("applies padding styles to the tabs", () => {
     render(<TabComponent padding={true} tabs={tabs} />);
 
@@ -65,5 +66,4 @@ describe("TabComponent", () => {
     expect(tab2).toHaveClass("pb-4");
     expect(tab3).toHaveClass("pb-4");
   });
-  
 });
