@@ -19,7 +19,7 @@ interface ToastType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 export type ToastVariantProps = VariantProps<typeof toastVariants>;
 
 export const toastVariants = cva(
-  "toast-component flex h-auto w-[541px] justify-between gap-3 rounded-md bg-primary-50 px-4 py-5 text-sm",
+  "toast-component flex h-auto w-[327px] justify-between gap-3 rounded-md bg-primary-50 px-4 py-5 text-sm md:w-[541px]",
   {
     variants: {
       color: {
@@ -101,7 +101,7 @@ const Toast = ({
         onClick={() => {
           closeToast(), onClose;
         }}
-        className="close-toast cursor-pointer"
+        className="close-toast cursor-pointer h-5"
       >
         <XMarkIcon className="h-5 w-5" />
       </div>
