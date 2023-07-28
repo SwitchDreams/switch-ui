@@ -1,15 +1,17 @@
-
-
+import {
+  CheckCircleIcon,
+  ExclamationCircleIcon,
+  ExclamationTriangleIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import { cva, type VariantProps } from "class-variance-authority";
 import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { ExclamationCircleIcon, XMarkIcon, CheckCircleIcon, ExclamationTriangleIcon } from "@heroicons/react/24/outline";
-
 
 interface ToastType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant: 'tonal' | 'filled' ;
+  variant: "tonal" | "filled";
   title: string;
-  color: 'primary' | 'success' | 'warning' | 'error';
+  color: "primary" | "success" | "warning" | "error";
   message: string;
   onClose?: (e: React.MouseEvent<HTMLElement>) => void;
 }
@@ -17,65 +19,75 @@ interface ToastType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 export type ToastVariantProps = VariantProps<typeof toastVariants>;
 
 export const toastVariants = cva(
-  "toast-component w-[541px] h-auto justify-between px-4 py-5 rounded-md flex bg-primary-50 gap-3 text-sm", {
-  variants: {
-    color: {  
-      primary: "bg-primary-25 border-primary-100 text-primary-400",
-      success: "bg-success-50 border-success-200 text-success-700",
-      warning: "bg-warning-50 border-warning-200 text-warning-700",
-      error: "bg-error-50 border-error-200 text-error-700",
+  "toast-component flex h-auto w-[541px] justify-between gap-3 rounded-md bg-primary-50 px-4 py-5 text-sm",
+  {
+    variants: {
+      color: {
+        primary: "border-primary-100 bg-primary-25 text-primary-400",
+        success: "border-success-200 bg-success-50 text-success-700",
+        warning: "border-warning-200 bg-warning-50 text-warning-700",
+        error: "border-error-200 bg-error-50 text-error-700",
+      },
+      variant: {
+        tonal: "border",
+        filled: "",
+      },
     },
-    variant: {
-      tonal: 'border',
-      filled: '',
-    }
+    compoundVariants: [
+      {
+        variant: "tonal",
+        color: "primary",
+        class: "bg-primary-300 text-white",
+      },
+      {
+        variant: "tonal",
+        color: "success",
+        class: "bg-success-500 text-gray-950",
+      },
+      {
+        variant: "tonal",
+        color: "warning",
+        class: "bg-warning-500 text-gray-950",
+      },
+      {
+        variant: "tonal",
+        color: "error",
+        class: "bg-error-500 text-white",
+      },
+    ],
   },
-  compoundVariants: [
-    {
-      variant: 'tonal', color: 'primary', class: "bg-primary-300 text-white"
-    },
-    {
-      variant: 'tonal', color: 'success', class: "bg-success-500 text-gray-950"
-    },
-    {
-      variant: 'tonal', color: 'warning', class: "bg-warning-500 text-gray-950"
-    },
-    {
-      variant: 'tonal', color: 'error', class: "bg-error-500 text-white"
-    }
-  ]
-});
-export interface ToastProps extends Omit<ToastVariantProps, 'color' | 'variant'>, ToastType {}
+);
+export interface ToastProps extends Omit<ToastVariantProps, "color" | "variant">, ToastType {}
 
 const Toast = ({
-  variant = 'tonal',
+  variant = "tonal",
   title,
-  color='primary',
+  color = "primary",
   message,
   onClose,
-  className
+  className,
 }: ToastProps) => {
-  const [isClose, setIsClose] = useState(false)
-  const toastClass = twMerge(toastVariants({ color, variant}), className);
+  const [isClose, setIsClose] = useState(false);
+  const toastClass = twMerge(toastVariants({ color, variant }), className);
 
   const closeToast = () => {
-    setIsClose(true)
-  }
+    setIsClose(true);
+  };
 
   const defineIcon = (color: string) => {
-    if(color == 'primary' || color == 'error') {
-      return <ExclamationCircleIcon className="h-5 w-5" />
+    if (color == "primary" || color == "error") {
+      return <ExclamationCircleIcon className="toast-icon exclamation-circle h-5 w-5" />;
     }
-    if(color == 'success') {
-      return <CheckCircleIcon className="h-5 w-5" />
+    if (color == "success") {
+      return <CheckCircleIcon className="toast-icon check-circle h-5 w-5" />;
     }
-    if(color == 'warning') {
-      return <ExclamationTriangleIcon className="h-5 w-5" />
+    if (color == "warning") {
+      return <ExclamationTriangleIcon className="toast-icon exclamation-triangle h-5 w-5" />;
     }
-  }
+  };
 
   return (
-    <div className={isClose ? 'hidden' : toastClass}>
+    <div className={isClose ? "toast-component hidden" : toastClass}>
       {defineIcon(color)}
       <div className="w-11/12">
         <h1 className="font-semibold">{title}</h1>
@@ -85,11 +97,16 @@ const Toast = ({
           <div>action 2</div>
         </div>
       </div>
-      <div onClick={() => {closeToast(), onClose}} className="cursor-pointer">
+      <div
+        onClick={() => {
+          closeToast(), onClose;
+        }}
+        className="close-toast cursor-pointer"
+      >
         <XMarkIcon className="h-5 w-5" />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Toast;

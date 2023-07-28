@@ -19,8 +19,9 @@ const Template: StoryFn<typeof Toast> = (args: ToastProps) => <Toast {...args} /
 export const Variations = Template.bind({});
 
 Variations.args = {
-  color: 'primary',
-  variant: 'tonal',
-  message: 'Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class',
-  title: 'teste',
+  color: "primary",
+  variant: "tonal",
+  message:
+    "Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class",
+  title: "teste",
 };
