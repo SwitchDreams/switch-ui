@@ -12,7 +12,7 @@ interface AccordingMenuType extends HTMLAttributes<any> {
 
 export type AccordingMenuVariantProps = VariantProps<typeof accordingMenuVariants>;
 
-export const accordingMenuVariants = cva("w-full text-left flex justify-between items-center py-4 text-gray-900 cursor-pointer", {
+export const accordingMenuVariants = cva("w-full font-medium text-left flex justify-between items-center py-4 text-gray-900 cursor-pointer", {
   variants: {
     size: {
       lg: "py-5 text-lg",
@@ -42,10 +42,10 @@ const AccordingMenu = ({ title, infos, size = "md", className }: AccordingMenuPr
     <Disclosure as='div' className="border border-gray-100 border-x-0 border-t-0">
       {({ open }) => (
         <>
-        <Disclosure.Button className={accordingMenuClasses}>
+        <Disclosure.Button className={open ? `${accordingMenuClasses} text-primary-300` : accordingMenuClasses}>
           {title}
           {
-            open ? <ChevronDownIcon stroke-width="2" className="w-4 h-4 flex align-center"/> : <ChevronUpIcon stroke-width="2" className="w-4 h-4 flex align-center"/>
+            open ? <ChevronDownIcon stroke-width="3" className="w-4 h-4 flex align-center"/> : <ChevronUpIcon stroke-width="3" className="w-4 h-4 flex align-center"/>
           }
         </Disclosure.Button>
         <Disclosure.Panel className={accordingInfosVariants({size})}>
