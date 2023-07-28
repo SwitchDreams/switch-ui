@@ -5,7 +5,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { cva, type VariantProps } from "class-variance-authority";
-import React, { useState } from "react";
+import React, { HTMLAttributes, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 interface ToastType extends HTMLAttributes<any> {
