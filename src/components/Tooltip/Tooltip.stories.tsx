@@ -18,7 +18,7 @@ export const Default: Story = {
     children: "Hello",
     title: "hello",
     description:
-      "the biggest desfsfsdsfsfdssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss simple description",
+      "Quando eu era pequenino minha mae me deu um carrinho ele era da cor vermelha assim eu não gostei do carrinho vermelho.",
     position: "top",
   },
 };
