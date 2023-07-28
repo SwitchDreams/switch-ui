@@ -8,10 +8,10 @@ import { cva, type VariantProps } from "class-variance-authority";
 import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-interface ToastType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant: "tonal" | "filled";
+interface ToastType extends HTMLAttributes<any> {
+  variant?: "tonal" | "filled";
   title: string;
-  color: "primary" | "success" | "warning" | "error";
+  color?: "primary" | "success" | "warning" | "error";
   message: string;
   onClose?: (e: React.MouseEvent<HTMLElement>) => void;
 }
@@ -72,6 +72,7 @@ const Toast = ({
 
   const closeToast = () => {
     setIsClose(true);
+    if(onClose) onClose;
   };
 
   const defineIcon = (color: string) => {
@@ -92,14 +93,10 @@ const Toast = ({
       <div className="w-11/12">
         <h1 className="font-semibold">{title}</h1>
         <p>{message}</p>
-        <div className="flex gap-2">
-          <div>action 1</div>
-          <div>action 2</div>
-        </div>
       </div>
       <div
         onClick={() => {
-          closeToast(), onClose;
+          closeToast()
         }}
         className="close-toast h-5 cursor-pointer"
       >
