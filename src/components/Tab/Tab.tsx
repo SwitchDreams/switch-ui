@@ -9,7 +9,7 @@ type Tabs = {
 };
 
 export interface TabType extends HTMLAttributes<any> {
-  size: "lg" | "md" | "sm";
+  size?: "lg" | "md" | "sm";
   padding?: boolean;
   tabs: Tabs[];
 }
@@ -43,7 +43,7 @@ const TabComponent = ({ size = "md", padding = false, tabs, className }: TabProp
       <Tab.List as="div" className="flex pb-8">
         {tabs.map((tab: Tabs) => {
           return (
-            <Tab key={tab.name} className={tabClass} style={{width: `calc(100% / ${tabs.length})`}} >
+            <Tab key={tab.name} data-testid={tab.name} className={tabClass} style={{width: `calc(100% / ${tabs.length})`}} >
               <div 
               className={padding ? 'pb-4 border-t-0 border-x-0 ui-selected:border-b-2 ui-selected:border-primary-300 ui-selected:font-medium ui-selected:text-primary-300' : ''}
               style={padding? {width: `80%`} : {width: '100%'}}
