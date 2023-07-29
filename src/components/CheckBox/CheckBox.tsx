@@ -83,7 +83,7 @@ export const CheckBox = ({
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
-        stroke-width="3.5"
+        strokeWidth="3.5"
         stroke="currentColor"
         className={
           disabled
@@ -95,7 +95,7 @@ export const CheckBox = ({
             : twMerge(iconVariants({ size }), className)
         }
       >
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
       </svg>
     </label>
   );
