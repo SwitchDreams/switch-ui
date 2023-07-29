@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 
 type Tabs = {
   name: string;
-  infos: JSX.Element;
+  info: JSX.Element;
 };
 
 export interface TabType extends HTMLAttributes<any> {
@@ -65,7 +65,7 @@ const TabComponent = ({ size = "md", padding = false, tabs, className }: TabProp
       </Tab.List>
       <Tab.Panels>
         {tabs.map((tab: Tabs) => {
-          return <Tab.Panel key={tab.name}>{tab.infos}</Tab.Panel>;
+          return <Tab.Panel key={tab.name}>{tab.info}</Tab.Panel>;
         })}
       </Tab.Panels>
     </Tab.Group>

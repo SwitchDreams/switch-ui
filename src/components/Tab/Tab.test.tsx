@@ -4,9 +4,9 @@ import TabComponent from "./Tab";
 
 describe("TabComponent", () => {
   const tabs = [
-    { name: "Tab 1", infos: <div>Content for Tab 1</div>, size: "md" },
-    { name: "Tab 2", infos: <div>Content for Tab 2</div>, size: "md" },
-    { name: "Tab 3", infos: <div>Content for Tab 3</div>, size: "md" },
+    { name: "Tab 1", info: <div>Content for Tab 1</div> },
+    { name: "Tab 2", info: <div>Content for Tab 2</div> },
+    { name: "Tab 3", info: <div>Content for Tab 3</div> },
   ];
 
   it("renders the default tab", () => {
