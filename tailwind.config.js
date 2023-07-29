@@ -1,4 +1,6 @@
 /** @type {import("tailwindcss").Config} **/
+import generated from "@headlessui/tailwindcss";
+
 import colors from "./src/constants/colors";
 
 export default {
@@ -25,8 +27,5 @@ export default {
       xs: "12px",
     },
   },
-  plugins: [
-    require('@headlessui/tailwindcss'),
-    require('@headlessui/tailwindcss')({ prefix: 'ui' })
-  ],
+  plugins: [generated({ prefix: "ui" })],
 };
