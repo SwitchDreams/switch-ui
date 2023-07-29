@@ -3,7 +3,7 @@ import { Meta, StoryFn } from "@storybook/react";
 import Toast, { ToastProps } from "./index";
 
 export default {
-  title: "Example/Toast",
+  title: "Overlay/Toast",
   component: Toast,
   tags: ["autodocs"],
   argTypes: {

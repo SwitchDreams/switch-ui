@@ -3,7 +3,7 @@ import { Meta, StoryFn } from "@storybook/react";
 import Avatar, { AvatarProps } from "./index";
 
 export default {
-  title: "Avatar",
+  title: "Others/Avatar",
   component: Avatar,
   tags: ["autodocs"],
 } as Meta<typeof Avatar>;

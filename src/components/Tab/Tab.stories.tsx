@@ -2,7 +2,7 @@ import { Meta, StoryFn } from "@storybook/react";
 
 import TabComponent, { TabProps } from "./Tab";
 export default {
-  title: "Example/TabComponent",
+  title: "Navigation/TabComponent",
   component: TabComponent,
   tags: ["autodocs"],
   argTypes: {
