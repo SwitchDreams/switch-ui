@@ -26,12 +26,12 @@ const TooltipVariants = cva(
       color: {
         primary: "bg-gray-950 text-white",
         secondary: "bg-white text-gray-950",
-        thirteary: "bg-primary-300 text-gray-100",
+        tertiary: "bg-primary-300 text-gray-100",
       },
     },
     defaultVariants: {
       position: "top",
-      color: "thirteary",
+      color: "tertiary",
     },
   },
 );
@@ -52,12 +52,12 @@ const ArrowVariants = cva("absolute hidden border-[6px] group-hover:inline-block
     color: {
       primary: "border-gray-950",
       secondary: "border-white",
-      thirteary: "border-primary-300",
+      tertiary: "border-primary-300",
     },
   },
   defaultVariants: {
     position: "none",
-    color: "thirteary",
+    color: "tertiary",
   },
 });
 
@@ -74,7 +74,7 @@ const Tooltip = ({
   description,
   ...rest
 }: TooltipProps) => (
-  <div id="tooltip" className="group relative h-fit w-fit cursor-pointer">
+  <div className="group relative h-fit w-fit cursor-pointer">
     <div className="mx-1">{children}</div>
     <span className={twMerge(TooltipVariants({ position, color }), className)} {...rest}>
       <div className="flex flex-col p-2">
@@ -82,7 +82,7 @@ const Tooltip = ({
         <span className="pb-2 text-xs font-medium">{description}</span>
       </div>
     </span>
-    <span className={twMerge(ArrowVariants({ position, color }), className)} {...rest}></span>
+    <span className={twMerge(ArrowVariants({ position, color }))} {...rest}></span>
   </div>
 );
 
