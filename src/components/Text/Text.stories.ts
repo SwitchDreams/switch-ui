@@ -4,7 +4,7 @@ import { Text } from "./index";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  title: "Example/Text",
+  title: "Others/Text",
   component: Text,
   tags: ["autodocs"],
 } satisfies Meta<typeof Text>;
