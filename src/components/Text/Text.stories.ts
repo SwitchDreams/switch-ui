@@ -4,7 +4,7 @@ import { Text } from "./index";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  title: "Example/Text",
+  title: "Others/Text",
   component: Text,
   tags: ["autodocs"],
 } satisfies Meta<typeof Text>;
@@ -15,31 +15,31 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: Story = {
   args: {
-    text: "Texto padrão",
+    children: "Texto padrão",
     as: "p",
   },
 };
 
 export const SizeChange: Story = {
   args: {
-    text: "Texto padrão",
+    children: "Texto padrão",
     as: "p",
-    textSize: "7xl",
+    size: "7xl",
   },
 };
 
 export const HtmlChange: Story = {
   args: {
-    text: "Texto padrão",
+    children: "Texto padrão",
     as: "h2",
   },
 };
 
 export const UserChanges: Story = {
   args: {
-    text: "Texto padrão",
+    children: "Texto padrão",
     as: "p",
-    textSize: "2xl",
+    size: "2xl",
     className: "text-orange-100 font-bold",
   },
 };

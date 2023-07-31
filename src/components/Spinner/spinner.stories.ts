@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ToggleSwitch, ToggleSwitchProps } from "./";
+import { Spinner } from "./spinner";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  title: "Forms/ToggleSwitch",
-  component: ToggleSwitch,
+  title: "Progress/Spinner",
+  component: Spinner,
   tags: ["autodocs"],
-} satisfies Meta<ToggleSwitchProps>;
+} satisfies Meta<typeof Spinner>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
