@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-/** @type {import('tailwindcss').Config} */
-=======
-/** @type {import("tailwindcss").Config} **/
-import generated from "@headlessui/tailwindcss";
-
->>>>>>> df4e4eca1ac854f218cee64ca3ab7481975b4be8
+/** @type {import('tailwindcss').Config} **/
 import colors from "./src/constants/colors";
 
 export default {
