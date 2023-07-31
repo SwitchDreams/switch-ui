@@ -19,6 +19,6 @@ export const Default: Story = {
     title: "hello",
     description:
       "Quando eu era pequenino minha mae me deu um carrinho ele era da cor vermelha assim eu não gostei do carrinho vermelho.",
-    position: "top",
+    position: "bottomRight",
   },
 };

@@ -78,8 +78,8 @@ describe("Tooltip", () => {
   });
 
   it("renders the tooltip with thirteary color", () => {
-    render(<Tooltip title="Tooltip (thirteary)" color="thirteary" />);
-    const tooltipTitle = screen.getByText("Tooltip (thirteary)");
+    render(<Tooltip title="Tooltip (tertiary)" color="tertiary" />);
+    const tooltipTitle = screen.getByText("Tooltip (tertiary)");
     expect(tooltipTitle).toBeInTheDocument();
   });
 });
