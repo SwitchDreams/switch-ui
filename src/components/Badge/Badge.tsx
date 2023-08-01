@@ -9,10 +9,11 @@ export interface IBadgeProps {
   iconSide?: "right" | "left";
   outline?: boolean;
   opacity?: boolean;
+  rounded?: boolean;
 }
 
 const badgeVariants = cva(
-  "flex h-7 w-fit items-center justify-center gap-1 rounded-3xl px-3 text-xs font-medium",
+  "flex h-7 w-fit items-center justify-center gap-1 px-3 text-xs font-medium",
   {
     variants: {
       color: {
@@ -30,6 +31,9 @@ const badgeVariants = cva(
       },
       full: {
         true: "",
+      },
+      rounded: {
+        true: "rounded-3xl",
       },
     },
     defaultVariants: {
@@ -106,7 +110,7 @@ type BadgeVariantProps = VariantProps<typeof badgeVariants>;
 
 export interface BadgeProps
   extends Omit<React.HTMLProps<HTMLDivElement>, "color" | "label">,
-    Omit<BadgeVariantProps, "outline" | "opacity">,
+    Omit<BadgeVariantProps, "outline" | "opacity" | "rounded">,
     IBadgeProps {}
 
 export const Badge = ({
@@ -117,9 +121,10 @@ export const Badge = ({
   outline = false,
   opacity = false,
   className,
+  rounded = true,
   ...rest
 }: BadgeProps) => {
-  const badgeClasses = twMerge(badgeVariants({ color, outline, opacity }), className);
+  const badgeClasses = twMerge(badgeVariants({ color, outline, opacity, rounded }), className);
 
   return (
     <div className={badgeClasses} {...rest}>

@@ -13,13 +13,14 @@ interface ToastType extends HTMLAttributes<any> {
   title: string;
   color?: "primary" | "success" | "warning" | "error";
   message: string;
+  rounded?: boolean;
   onClose?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
 export type ToastVariantProps = VariantProps<typeof toastVariants>;
 
 export const toastVariants = cva(
-  "toast-component flex h-auto w-[327px] justify-between gap-3 rounded-md bg-primary-50 px-4 py-5 text-sm md:w-[541px]",
+  "toast-component flex h-auto w-[327px] justify-between gap-3 bg-primary-50 px-4 py-5 text-sm md:w-[541px]",
   {
     variants: {
       color: {
@@ -31,6 +32,9 @@ export const toastVariants = cva(
       variant: {
         tonal: "border",
         filled: "",
+      },
+      rounded: {
+        true: "rounded-md",
       },
     },
     compoundVariants: [
@@ -57,18 +61,21 @@ export const toastVariants = cva(
     ],
   },
 );
-export interface ToastProps extends Omit<ToastVariantProps, "color" | "variant">, ToastType {}
+export interface ToastProps
+  extends Omit<ToastVariantProps, "color" | "variant" | "rounded">,
+    ToastType {}
 
 const Toast = ({
   variant = "tonal",
   title,
   color = "primary",
   message,
+  rounded = true,
   onClose,
   className,
 }: ToastProps) => {
   const [isClose, setIsClose] = useState(false);
-  const toastClass = twMerge(toastVariants({ color, variant }), className);
+  const toastClass = twMerge(toastVariants({ color, variant, rounded }), className);
 
   const closeToast = () => {
     setIsClose(true);

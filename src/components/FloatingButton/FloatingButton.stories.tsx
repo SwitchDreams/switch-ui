@@ -33,5 +33,6 @@ Variations.args = {
   label: "floating buton",
   size: "md",
   icon: ArrowDownLeftIcon,
+  rounded: true,
   onClick: undefined,
 };

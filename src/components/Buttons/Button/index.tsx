@@ -7,11 +7,12 @@ interface ButtonType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   iconSide?: "left" | "right";
   icon?: ElementType;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+  rounded?: boolean;
 }
 
 export type ButtonVariantProps = VariantProps<typeof buttonVariants>;
 
-export const buttonVariants = cva("flex items-center justify-center gap-2 rounded-md", {
+export const buttonVariants = cva("flex items-center justify-center gap-2", {
   variants: {
     variant: {
       primary: [
@@ -55,10 +56,13 @@ export const buttonVariants = cva("flex items-center justify-center gap-2 rounde
       true: ["opacity-40"],
       false: ["opacity-100"],
     },
+    rounded: {
+      true: "rounded-md",
+    },
   },
 });
 
-export interface ButtonProps extends Omit<ButtonVariantProps, "disabled">, ButtonType {}
+export interface ButtonProps extends Omit<ButtonVariantProps, "disabled" | "rounded">, ButtonType {}
 
 const Button = ({
   variant = "primary",
@@ -68,9 +72,10 @@ const Button = ({
   iconSide,
   icon: Icon,
   className,
+  rounded = true,
   onClick,
 }: ButtonProps) => {
-  const buttonClasses = twMerge(buttonVariants({ variant, size, disabled }), className);
+  const buttonClasses = twMerge(buttonVariants({ variant, size, disabled, rounded }), className);
   return (
     <button className={buttonClasses} onClick={onClick}>
       {Icon && iconSide == "right" && <Icon className="h-4 w-4 stroke-2" />}

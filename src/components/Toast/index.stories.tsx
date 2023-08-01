@@ -21,6 +21,7 @@ export const Variations = Template.bind({});
 Variations.args = {
   color: "primary",
   variant: "tonal",
+  rounded: true,
   message:
     "Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class",
   title: "teste",

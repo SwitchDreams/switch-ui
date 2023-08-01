@@ -20,6 +20,7 @@ export const Default: Story = {
     placeholder: "Hello World",
     name: "name",
     disabled: false,
+    rounded: true,
   },
 };
 
@@ -30,6 +31,7 @@ export const WithIconLeft: Story = {
     leftIcon: XMarkIcon,
     name: "name",
     disabled: false,
+    rounded: true,
   },
 };
 
@@ -41,5 +43,6 @@ export const WithTwoIcons: Story = {
     rightIcon: XMarkIcon,
     name: "name",
     disabled: false,
+    rounded: true,
   },
 };

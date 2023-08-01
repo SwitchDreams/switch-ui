@@ -16,10 +16,11 @@ export interface ITextFieldBase
   disabled?: boolean;
   error?: boolean;
   errorMsg?: string;
+  rounded?: boolean;
 }
 
 const TextFieldBaseVariants = cva(
-  "relative my-2 w-full rounded-lg border text-md hover:bg-gray-50 focus:border-primary-100 focus:outline-none",
+  "relative my-2 w-full border text-md hover:bg-gray-50 focus:border-primary-100 focus:outline-none",
   {
     variants: {
       size: {
@@ -34,6 +35,9 @@ const TextFieldBaseVariants = cva(
       leftIconPresent: {
         true: "pl-9",
         false: "pl-3",
+      },
+      rounded: {
+        true: "rounded-lg",
       },
     },
     defaultVariants: {
@@ -58,7 +62,7 @@ const IconVariants = cva("absolute top-1/2 h-6 w-6 text-gray-500", {
 type TextfieldVariantProps = VariantProps<typeof TextFieldBaseVariants>;
 
 export interface TextFieldBaseProps
-  extends Omit<TextfieldVariantProps, "error" | "leftIconPresent">,
+  extends Omit<TextfieldVariantProps, "error" | "leftIconPresent" | "rounded">,
     ITextFieldBase {}
 
 export const TextFieldBase = ({
@@ -74,12 +78,13 @@ export const TextFieldBase = ({
   error = false,
   name,
   errorMsg,
+  rounded = true,
   ...rest
 }: TextFieldBaseProps) => {
   const InputElement = inputElement;
   const leftIconPresent = !!LeftIcon;
   const textfieldClasses = twMerge(
-    TextFieldBaseVariants({ size, error, leftIconPresent }),
+    TextFieldBaseVariants({ size, error, leftIconPresent, rounded }),
     className,
   );
   const opacityClass = disabled ? "opacity-50 relative" : "relative";

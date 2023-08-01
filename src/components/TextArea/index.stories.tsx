@@ -19,5 +19,6 @@ export const Default: Story = {
     placeholder: "Hello World",
     name: "name",
     disabled: false,
+    rounded: true,
   },
 };

@@ -27,5 +27,6 @@ Variations.args = {
   label: "botao",
   disabled: false,
   size: "md",
+  rounded: true,
   onClick: undefined,
 };

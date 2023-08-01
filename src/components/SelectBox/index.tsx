@@ -19,11 +19,12 @@ interface SelectBoxType extends ListboxProps<any, any, any> {
   supportText?: string;
   leftIcon?: ElementType;
   error?: boolean;
+  rounded?: boolean;
 }
 
 export type SelectBoxVariantProps = VariantProps<typeof selectBoxVariants>;
 
-export const selectBoxVariants = cva("relative m-1 cursor-default select-none rounded pl-2", {
+export const selectBoxVariants = cva("relative m-1 cursor-default select-none pl-2", {
   variants: {
     size: {
       lg: "x-1 py-3 text-md",
@@ -34,11 +35,14 @@ export const selectBoxVariants = cva("relative m-1 cursor-default select-none ro
       true: "bg-white hover:bg-gray-100",
       false: "text-gray-950",
     },
+    rounded: {
+      true: "rounded",
+    },
   },
 });
 
 export const selectBoxButtonVariants = cva(
-  "relative w-full cursor-default rounded-lg border text-left hover:bg-gray-100",
+  "relative w-full cursor-default border text-left hover:bg-gray-100",
   {
     variants: {
       disabled: {
@@ -57,6 +61,9 @@ export const selectBoxButtonVariants = cva(
       error: {
         true: "border-error-600",
       },
+      rounded: {
+        true: "rounded-lg",
+      },
     },
   },
 );
@@ -69,7 +76,9 @@ export const selectBoxSupportTextVariants = cva("mb-1 block pt-2 text-xs text-gr
   },
 });
 
-export interface SelectBoxProps extends Omit<SelectBoxVariantProps, "size">, SelectBoxType {}
+export interface SelectBoxProps
+  extends Omit<SelectBoxVariantProps, "size" | "rounded">,
+    SelectBoxType {}
 
 function SelectBox({
   options,
@@ -80,6 +89,7 @@ function SelectBox({
   supportText,
   leftIcon: LeftIcon,
   error = false,
+  rounded = true,
   ...rest
 }: SelectBoxProps) {
   const renderChevron = (open: boolean): ReactNode => {
@@ -105,7 +115,7 @@ function SelectBox({
             <div className="relative">
               <Listbox.Button
                 className={twMerge(
-                  selectBoxButtonVariants({ disabled, size, error, open }),
+                  selectBoxButtonVariants({ disabled, size, error, open, rounded }),
                   className,
                 )}
               >
@@ -128,7 +138,7 @@ function SelectBox({
                     <Listbox.Option
                       key={option.value}
                       value={option.value}
-                      className={({ active }) => selectBoxVariants({ size, active })}
+                      className={({ active }) => selectBoxVariants({ size, active, rounded })}
                     >
                       {({ selected }) => (
                         <span
