@@ -1,19 +1,19 @@
 import { Disclosure } from "@headlessui/react";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { cva, VariantProps } from "class-variance-authority";
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
-interface AccordingMenuType extends HTMLAttributes<any> {
+interface AccordionMenuType extends HTMLAttributes<any> {
   title: string;
-  infos: string;
+  children?: ReactNode;
   size?: "lg" | "md" | "sm";
 }
 
-export type AccordingMenuVariantProps = VariantProps<typeof accordingMenuVariants>;
+export type AccordionMenuVariantProps = VariantProps<typeof accordionMenuVariants>;
 
-export const accordingMenuVariants = cva(
-  "according-button flex w-full cursor-pointer items-center justify-between py-4 text-left font-medium text-gray-900",
+export const accordionMenuVariants = cva(
+  "accordion-button flex w-full cursor-pointer items-center justify-between py-4 text-left font-medium text-gray-900",
   {
     variants: {
       size: {
@@ -25,7 +25,7 @@ export const accordingMenuVariants = cva(
   },
 );
 
-export const accordingInfosVariants = cva("according-infos text-gray-700", {
+export const accordionInfosVariants = cva("accordion-infos text-gray-700", {
   variants: {
     size: {
       lg: "pb-6 text-md",
@@ -35,12 +35,12 @@ export const accordingInfosVariants = cva("according-infos text-gray-700", {
   },
 });
 
-export interface AccordingMenuProps
-  extends Omit<AccordingMenuVariantProps, "size">,
-    AccordingMenuType {}
+export interface AccordionMenuProps
+  extends Omit<AccordionMenuVariantProps, "size">,
+    AccordionMenuType {}
 
-const AccordingMenu = ({ title, infos, size = "md", className }: AccordingMenuProps) => {
-  const accordingMenuClasses = twMerge(accordingMenuVariants({ size }), className);
+const AccordionMenu = ({ title, size = "md", children, className }: AccordionMenuProps) => {
+  const accordionMenuClasses = twMerge(accordionMenuVariants({ size }), className);
   return (
     <Disclosure as="div" className="border border-x-0 border-t-0 border-gray-100">
       {({ open }) => (
@@ -48,8 +48,8 @@ const AccordingMenu = ({ title, infos, size = "md", className }: AccordingMenuPr
           <Disclosure.Button
             className={
               open
-                ? `${accordingMenuClasses} according-button text-primary-300`
-                : accordingMenuClasses
+                ? `${accordionMenuClasses} accordion-button text-primary-300`
+                : accordionMenuClasses
             }
           >
             {title}
@@ -59,11 +59,13 @@ const AccordingMenu = ({ title, infos, size = "md", className }: AccordingMenuPr
               <ChevronUpIcon stroke-width="3" className="align-center flex h-4 w-4" />
             )}
           </Disclosure.Button>
-          <Disclosure.Panel className={accordingInfosVariants({ size })}>{infos}</Disclosure.Panel>
+          <Disclosure.Panel className={accordionInfosVariants({ size })}>
+            {children}
+          </Disclosure.Panel>
         </>
       )}
     </Disclosure>
   );
 };
 
-export default AccordingMenu;
+export default AccordionMenu;

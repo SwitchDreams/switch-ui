@@ -4,7 +4,7 @@ import { Meta, StoryFn } from "@storybook/react";
 import SelectBox, { SelectBoxProps } from "./index";
 
 export default {
-  title: "Dropdown/SelectBox",
+  title: "Forms/SelectBox",
   component: SelectBox,
   tags: ["autodocs"],
   argTypes: {
