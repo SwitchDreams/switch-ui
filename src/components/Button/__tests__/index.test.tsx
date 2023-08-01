@@ -11,7 +11,6 @@ describe("Button", () => {
     variant: "primary" | "invisible" | "outline" | "danger",
     size: "xl" | "lg" | "md" | "sm" | "xs",
     disabled: boolean,
-    rounded: boolean,
   ) => {
     return (
       <Button
@@ -20,7 +19,6 @@ describe("Button", () => {
         disabled={disabled}
         label="botão"
         onClick={onClickMock}
-        rounded={rounded}
       />
     );
   };
@@ -31,7 +29,7 @@ describe("Button", () => {
 
   describe("tests the label", () => {
     it("test the label props", () => {
-      render(component("primary", "md", false, true));
+      render(component("primary", "md", false));
       const label = screen.getByText("botão");
       expect(label).toBeInTheDocument();
     });
@@ -39,7 +37,7 @@ describe("Button", () => {
 
   describe("test the colors", () => {
     it("primary variant enable", () => {
-      render(component("primary", "md", false, true));
+      render(component("primary", "md", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("bg-primary-300");
       expect(buttonElement).toHaveClass("hover:bg-primary-400");
@@ -50,7 +48,7 @@ describe("Button", () => {
     });
 
     it("outline variant enable", () => {
-      render(component("outline", "md", false, true));
+      render(component("outline", "md", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("bg-white");
       expect(buttonElement).toHaveClass("hover:bg-primary-25");
@@ -62,7 +60,7 @@ describe("Button", () => {
     });
 
     it("invisible variant enable", () => {
-      render(component("invisible", "md", false, true));
+      render(component("invisible", "md", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("bg-white");
       expect(buttonElement).toHaveClass("hover:bg-gray-50");
@@ -73,7 +71,7 @@ describe("Button", () => {
     });
 
     it("danger variant enable", () => {
-      render(component("danger", "md", false, true));
+      render(component("danger", "md", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("bg-error-600");
       expect(buttonElement).toHaveClass("hover:bg-error-700");
@@ -84,7 +82,7 @@ describe("Button", () => {
     });
 
     it("primary variant disabled", () => {
-      render(component("primary", "md", true, true));
+      render(component("primary", "md", true));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("bg-primary-300");
       expect(buttonElement).toHaveClass("hover:bg-primary-400");
@@ -95,7 +93,7 @@ describe("Button", () => {
     });
 
     it("outline variant disabled", () => {
-      render(component("outline", "md", true, true));
+      render(component("outline", "md", true));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("bg-white");
       expect(buttonElement).toHaveClass("hover:bg-primary-25");
@@ -107,7 +105,7 @@ describe("Button", () => {
     });
 
     it("invisible variant disabled", () => {
-      render(component("invisible", "md", true, true));
+      render(component("invisible", "md", true));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("bg-white");
       expect(buttonElement).toHaveClass("hover:bg-gray-50");
@@ -118,7 +116,7 @@ describe("Button", () => {
     });
 
     it("danger variant disabled", () => {
-      render(component("danger", "md", true, true));
+      render(component("danger", "md", true));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("bg-error-600");
       expect(buttonElement).toHaveClass("hover:bg-error-700");
@@ -131,35 +129,35 @@ describe("Button", () => {
 
   describe("test the sizes", () => {
     it("xl size", () => {
-      render(component("primary", "xl", false, true));
+      render(component("primary", "xl", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("text-xl");
       expect(buttonElement).toHaveClass("px-9 py-6");
     });
 
     it("lg size", () => {
-      render(component("primary", "lg", false, true));
+      render(component("primary", "lg", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("text-sm");
       expect(buttonElement).toHaveClass("px-8 py-5");
     });
 
     it("md size", () => {
-      render(component("primary", "md", false, true));
+      render(component("primary", "md", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("text-sm");
       expect(buttonElement).toHaveClass("px-7 py-4");
     });
 
     it("sm size", () => {
-      render(component("primary", "sm", false, true));
+      render(component("primary", "sm", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("text-sm");
       expect(buttonElement).toHaveClass("px-6 py-3");
     });
 
     it("xs size", () => {
-      render(component("primary", "xs", false, true));
+      render(component("primary", "xs", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("text-xs");
       expect(buttonElement).toHaveClass("px-5 py-2");
@@ -186,23 +184,11 @@ describe("Button", () => {
 
   describe("test click", () => {
     it("test the onClick props", () => {
-      render(component("primary", "xs", false, true));
+      render(component("primary", "xs", false));
       const buttonElement = screen.getByText("botão");
 
       fireEvent.click(buttonElement);
       expect(onClickMock).toHaveBeenCalledTimes(1);
-    });
-  });
-  describe("test the props rounded", () => {
-    it("test rounded false", () => {
-      const { container } = render(component("primary", "xs", false, false));
-      const buttonElement = container.querySelector(".rounded-md");
-      expect(buttonElement).not.toBeInTheDocument();
-    });
-    it("test rounded true", () => {
-      const { container } = render(component("primary", "xs", false, true));
-      const buttonElement = container.querySelector(".rounded-md");
-      expect(buttonElement).toBeInTheDocument();
     });
   });
 });
