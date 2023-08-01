@@ -31,6 +31,6 @@ export default {
   },
   plugins: [
     generated({ prefix: "ui" }),
-    plugin(RoundsPlugin)
+    plugin(RoundsPlugin),
   ],
 };
