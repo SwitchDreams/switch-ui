@@ -1,7 +1,9 @@
 /** @type {import("tailwindcss").Config} **/
 import generated from "@headlessui/tailwindcss";
-
 import colors from "./src/constants/colors";
+import RoundsPlugin from "./tailwind.rounded";
+
+const plugin = require('tailwindcss/plugin')
 
 export default {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
@@ -27,5 +29,8 @@ export default {
       xs: "12px",
     },
   },
-  plugins: [generated({ prefix: "ui" })],
+  plugins: [
+    generated({ prefix: "ui" }),
+    plugin(RoundsPlugin)
+  ],
 };
