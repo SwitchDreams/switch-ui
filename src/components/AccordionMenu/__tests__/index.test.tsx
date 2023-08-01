@@ -5,18 +5,26 @@ import AccordionMenu from "../index";
 describe("AccordionMenu", () => {
   it("test the props", () => {
     const title = "Título de teste";
-    const children = "Informações de teste";
+    const children = <h1>Informações de teste</h1>;
 
-    render(<AccordionMenu title={title} children={children} size="md" />);
+    render(
+      <AccordionMenu title={title} size="md">
+        {children}
+      </AccordionMenu>,
+    );
 
     expect(screen.getByText(title)).toBeInTheDocument();
   });
 
   it("test the title color", () => {
     const title = "Título de teste";
-    const children = "Informações de teste";
+    const children = <h1>Informações de teste</h1>;
 
-    render(<AccordionMenu title={title} children={children} size="md" />);
+    render(
+      <AccordionMenu title={title} size="md">
+        {children}
+      </AccordionMenu>,
+    );
 
     expect(screen.getByText(title)).not.toHaveClass("text-primary-300");
 
@@ -27,9 +35,13 @@ describe("AccordionMenu", () => {
 
   it("test size lg", () => {
     const title = "Título de teste";
-    const children = "Informações de teste";
+    const children = <h1>Informações de teste</h1>;
 
-    render(<AccordionMenu title={title} children={children} size="lg" />);
+    render(
+      <AccordionMenu title={title} size="lg">
+        {children}
+      </AccordionMenu>,
+    );
 
     const menuButton = document.querySelector(".accordion-button");
     expect(menuButton).toHaveClass("py-5");
@@ -43,9 +55,13 @@ describe("AccordionMenu", () => {
 
   it("test size md", () => {
     const title = "Título de teste";
-    const children = "Informações de teste";
+    const children = <h1>Informações de teste</h1>;
 
-    render(<AccordionMenu title={title} children={children} />);
+    render(
+      <AccordionMenu title={title} size="md">
+        {children}
+      </AccordionMenu>,
+    );
 
     const menuButton = document.querySelector(".accordion-button");
     expect(menuButton).toHaveClass("py-4");
@@ -59,9 +75,13 @@ describe("AccordionMenu", () => {
 
   it("test size sm", () => {
     const title = "Título de teste";
-    const children = "Informações de teste";
+    const children = <h1>Informações de teste</h1>;
 
-    render(<AccordionMenu title={title} children={children} size="sm" />);
+    render(
+      <AccordionMenu title={title} size="sm">
+        {children}
+      </AccordionMenu>,
+    );
 
     const menuButton = document.querySelector(".accordion-button");
     expect(menuButton).toHaveClass("py-3");
