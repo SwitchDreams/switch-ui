@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
 import { vitest } from "vitest";
 
-import TextArea from "./";
+import TextArea from "../index";
 
 describe("TextArea", () => {
   test("renders correct", () => {

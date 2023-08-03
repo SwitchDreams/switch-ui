@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 
-import { Text } from "../Text";
+import { Text } from "../index";
 
 describe("Text", () => {
   it("renders text", () => {

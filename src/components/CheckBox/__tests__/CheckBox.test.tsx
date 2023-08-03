@@ -2,7 +2,7 @@ import "@testing-library/jest-dom/extend-expect";
 
 import { render, screen } from "@testing-library/react";
 
-import { CheckBox } from "./CheckBox";
+import { CheckBox } from "..";
 
 const getTailwindClasses = (element: any) => {
   const classAttribute = element.getAttribute("class");
