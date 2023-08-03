@@ -16,6 +16,7 @@ export interface ITextFieldBase
   disabled?: boolean;
   error?: boolean;
   errorMsg?: string;
+  onClickIcon?: () => void;
 }
 
 const TextFieldBaseVariants = cva(
@@ -74,6 +75,7 @@ export const TextFieldBase = ({
   error = false,
   name,
   errorMsg,
+  onClickIcon = () => {},
   ...rest
 }: TextFieldBaseProps) => {
   const InputElement = inputElement;
@@ -103,8 +105,8 @@ export const TextFieldBase = ({
         <span className="text-sm text-gray-600">{supportText}</span>
       )}
 
-      {LeftIcon && <LeftIcon className={IconVariants({ error, position: "left" })} />}
-      {RightIcon && <RightIcon className={IconVariants({ error, position: "right" })} />}
+      {LeftIcon && <LeftIcon onClick={() => onClickIcon()} className={IconVariants({ error, position: "left" })} />}
+      {RightIcon && <RightIcon onClick={() => onClickIcon()} className={IconVariants({ error, position: "right" })} />}
     </div>
   );
 };
