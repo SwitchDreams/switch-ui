@@ -6,7 +6,7 @@ export type SidebarContextType = {
 };
 
 const defaultContextValue: SidebarContextType = {
-  isOpen: false,
+  isOpen: true,
   setIsOpen: () => {},
 };
 

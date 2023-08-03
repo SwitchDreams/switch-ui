@@ -18,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     children: (
-      <Sidebar desktop>
+      <>
         <Sidebar.Logo logo="https://switchdreams.com.br/og_image.png"></Sidebar.Logo>
         <Sidebar.Group>
           <Sidebar.Item
@@ -79,10 +79,10 @@ export const Default: Story = {
           ></Sidebar.Item>
           <hr className="mb-10 mt-8 h-px w-full" />
           <Sidebar.User>
-            <Avatar name="SD" avatarUrl="" size="sm"></Avatar>
+            <Avatar name="F" avatarUrl="" size="sm"></Avatar>
           </Sidebar.User>
         </Sidebar.Footer>
-      </Sidebar>
+      </>
     ),
   },
 };
