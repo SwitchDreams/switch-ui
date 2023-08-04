@@ -1,7 +1,6 @@
 import { Meta, StoryFn } from "@storybook/react";
 
 import Button, { ButtonProps } from "./index";
-import { EyeIcon } from "@heroicons/react/24/solid";
 
 export default {
   title: "Buttons/Button",

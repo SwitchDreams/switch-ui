@@ -132,35 +132,35 @@ describe("Button", () => {
       render(component("primary", "xl", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("text-xl");
-      expect(buttonElement).toHaveClass("px-9 py-6");
+      expect(buttonElement).toHaveClass("h-[56px] w-full");
     });
 
     it("lg size", () => {
       render(component("primary", "lg", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("text-sm");
-      expect(buttonElement).toHaveClass("px-8 py-5");
+      expect(buttonElement).toHaveClass("h-[48px] w-full");
     });
 
     it("md size", () => {
       render(component("primary", "md", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("text-sm");
-      expect(buttonElement).toHaveClass("px-7 py-4");
+      expect(buttonElement).toHaveClass("h-[44px] w-full");
     });
 
     it("sm size", () => {
       render(component("primary", "sm", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("text-sm");
-      expect(buttonElement).toHaveClass("px-6 py-3");
+      expect(buttonElement).toHaveClass("h-[40px] w-full");
     });
 
     it("xs size", () => {
       render(component("primary", "xs", false));
       const buttonElement = screen.getByText("botão");
       expect(buttonElement).toHaveClass("text-xs");
-      expect(buttonElement).toHaveClass("px-5 py-2");
+      expect(buttonElement).toHaveClass("h-[34px] w-full");
     });
   });
 

@@ -43,7 +43,7 @@ const TextFieldBaseVariants = cva(
   },
 );
 
-const IconVariants = cva("absolute top-1/2 h-6 w-6 text-gray-500", {
+const IconVariants = cva("text-field-icon absolute top-1/2 h-6 w-6 text-gray-500", {
   variants: {
     error: {
       true: "text-error-500",
@@ -105,8 +105,18 @@ export const TextFieldBase = ({
         <span className="text-sm text-gray-600">{supportText}</span>
       )}
 
-      {LeftIcon && <LeftIcon onClick={() => onClickIcon()} className={IconVariants({ error, position: "left" })} />}
-      {RightIcon && <RightIcon onClick={() => onClickIcon()} className={IconVariants({ error, position: "right" })} />}
+      {LeftIcon && (
+        <LeftIcon
+          onClick={() => onClickIcon()}
+          className={IconVariants({ error, position: "left" })}
+        />
+      )}
+      {RightIcon && (
+        <RightIcon
+          onClick={() => onClickIcon()}
+          className={IconVariants({ error, position: "right" })}
+        />
+      )}
     </div>
   );
 };
