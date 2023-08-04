@@ -45,12 +45,13 @@ function SearchInput({
   ...rest
 }: SearchInputProps) {
   const [selectedValue, setSelectedValue] = useState("");
+  const [query, setQuery] = useState("");
 
   const filteredOption =
-    selectedValue === ""
+    query === ""
       ? options
       : options.filter((option) => {
-          return option.info.toLowerCase().includes(selectedValue.toLowerCase());
+          return option.info.toLowerCase().includes(query.toLowerCase());
         });
 
   const handleOptionClick = (value: string) => {
@@ -66,12 +67,13 @@ function SearchInput({
         className={twMerge(SearchInputVariants({ size }), className)}
         {...rest}
         onChange={(e) => {
+          setQuery(e.target.value);
           setSelectedValue(e.target.value);
         }}
       />
       {filteredOption.length !== 0 && (
         <ul className="absolute inset-x-0 top-full mt-1 flex max-h-52 flex-col rounded-lg border border-gray-100 bg-white opacity-0 peer-focus:opacity-100">
-          {options.map((option) => (
+          {filteredOption.map((option) => (
             <div
               key={option.info}
               className="flex h-14 cursor-pointer items-center px-4 text-md text-gray-900 hover:bg-gray-50"
@@ -84,11 +86,12 @@ function SearchInput({
           ))}
         </ul>
       )}
-      {selectedValue != "" && (
+      {selectedValue !== "" && (
         <XMarkIcon
           className="absolute right-2 h-5 w-5 cursor-pointer text-gray-500 peer-focus:text-gray-700"
           onClick={() => {
             setSelectedValue("");
+            setQuery("");
           }}
           data-testid="clear-icon"
         ></XMarkIcon>
