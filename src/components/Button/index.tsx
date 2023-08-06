@@ -11,7 +11,7 @@ interface ButtonType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 export type ButtonVariantProps = VariantProps<typeof buttonVariants>;
 
-export const buttonVariants = cva("flex items-center justify-center gap-2 rounded-md", {
+export const buttonVariants = cva("rounded-plug-md flex items-center justify-center gap-2", {
   variants: {
     variant: {
       primary: [

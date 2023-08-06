@@ -12,7 +12,7 @@ export interface IBadgeProps {
 }
 
 const badgeVariants = cva(
-  "flex h-7 w-fit items-center justify-center gap-1 rounded-3xl px-3 text-xs font-medium",
+  "rounded-plug-full flex h-7 w-fit items-center justify-center gap-1 px-3 text-xs font-medium",
   {
     variants: {
       color: {

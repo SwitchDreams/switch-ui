@@ -6,7 +6,7 @@ import colors from "../constants/colors";
 import Avatar from "./Avatar";
 import { Badge } from "./Badge/Badge";
 // Buttons
-import Button from "./Buttons/Button";
+import Button from "./Button";
 import { CheckBox } from "./CheckBox/CheckBox";
 import FloatingButton from "./FloatingButton";
 import { RadioButton } from "./RadioButton/RadioButton";
