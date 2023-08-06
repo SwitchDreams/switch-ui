@@ -1,7 +1,8 @@
 import { XMarkIcon } from "@heroicons/react/24/solid";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { vitest } from "vitest";
 
-import TextField from "./TextField";
+import TextField from "..";
 
 describe("Textfield render", () => {
   it("render textfield", () => {
@@ -117,5 +118,26 @@ describe("Textfield renders with custom class 'text-orange-100'", () => {
     const inputElement = screen.getByPlaceholderText("Enter your username");
 
     expect(inputElement).toHaveClass("text-orange-100");
+  });
+  describe("Test the click event", () => {
+    it("test the props onClickIcon", () => {
+      const onClickMock = vitest.fn();
+
+      const { container } = render(
+        <TextField
+          label="Username"
+          placeholder="Enter your username"
+          leftIcon={XMarkIcon}
+          name="name"
+          className="text-orange-100"
+          onClickIcon={onClickMock}
+        />,
+      );
+
+      const textFieldElement = container.querySelector(".text-field-icon");
+
+      if (textFieldElement) fireEvent.click(textFieldElement);
+      expect(onClickMock).toHaveBeenCalledTimes(1);
+    });
   });
 });

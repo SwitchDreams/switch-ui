@@ -23,8 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
-.idea
-
 storybook-static
 
 *.tgz
+
+.mjs

@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
 
-import { RadioButton } from "./RadioButton";
+import { RadioButton } from "..";
 
 describe("RadioButton", () => {
   it("renders unchecked RadioButton with default size", () => {

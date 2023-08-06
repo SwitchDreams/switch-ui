@@ -16,10 +16,11 @@ export interface ITextFieldBase
   disabled?: boolean;
   error?: boolean;
   errorMsg?: string;
+  onClickIcon?: () => void;
 }
 
 const TextFieldBaseVariants = cva(
-  "rounded-plug-md relative my-2 w-full border text-md hover:bg-gray-50 focus:border-primary-100 focus:outline-none",
+  "rounded-plug-md relative my-2 w-full text-ellipsis border pr-10 text-md hover:bg-gray-50 focus:border-primary-100 focus:outline-none ",
   {
     variants: {
       size: {
@@ -42,7 +43,7 @@ const TextFieldBaseVariants = cva(
   },
 );
 
-const IconVariants = cva("absolute top-1/2 h-6 w-6 text-gray-500", {
+const IconVariants = cva("text-field-icon absolute top-1/2 h-6 w-6 text-gray-500", {
   variants: {
     error: {
       true: "text-error-500",
@@ -74,6 +75,7 @@ export const TextFieldBase = ({
   error = false,
   name,
   errorMsg,
+  onClickIcon = () => {},
   ...rest
 }: TextFieldBaseProps) => {
   const InputElement = inputElement;
@@ -103,8 +105,18 @@ export const TextFieldBase = ({
         <span className="text-sm text-gray-600">{supportText}</span>
       )}
 
-      {LeftIcon && <LeftIcon className={IconVariants({ error, position: "left" })} />}
-      {RightIcon && <RightIcon className={IconVariants({ error, position: "right" })} />}
+      {LeftIcon && (
+        <LeftIcon
+          onClick={() => onClickIcon()}
+          className={IconVariants({ error, position: "left" })}
+        />
+      )}
+      {RightIcon && (
+        <RightIcon
+          onClick={() => onClickIcon()}
+          className={IconVariants({ error, position: "right" })}
+        />
+      )}
     </div>
   );
 };

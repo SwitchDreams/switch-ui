@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 
-import Tooltip from "./Tooltip";
+import Tooltip from "..";
 
 describe("Tooltip", () => {
   it("renders the default tooltip with title", () => {

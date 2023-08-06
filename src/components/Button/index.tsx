@@ -1,6 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import React, { ElementType } from "react";
 import { twMerge } from "tailwind-merge";
+
 interface ButtonType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   label: string;
@@ -45,11 +46,11 @@ export const buttonVariants = cva("rounded-plug-md flex items-center justify-cen
       ],
     },
     size: {
-      xl: ["text-xl", "px-9 py-6"],
-      lg: ["text-sm", "px-8 py-5"],
-      md: ["text-sm", "px-7 py-4"],
-      sm: ["text-sm", "px-6 py-3"],
-      xs: ["text-xs", "px-5 py-2"],
+      xl: ["text-xl", "h-[56px] w-full"],
+      lg: ["text-sm", "h-[48px] w-full"],
+      md: ["text-sm", "h-[44px] w-full"],
+      sm: ["text-sm", "h-[40px] w-full"],
+      xs: ["text-xs", "h-[34px] w-full"],
     },
     disabled: {
       true: ["opacity-40"],
@@ -73,9 +74,9 @@ const Button = ({
   const buttonClasses = twMerge(buttonVariants({ variant, size, disabled }), className);
   return (
     <button className={buttonClasses} onClick={onClick}>
-      {Icon && iconSide == "right" && <Icon className="h-4 w-4 stroke-2" />}
-      {label}
       {Icon && iconSide == "left" && <Icon className="h-4 w-4 stroke-2" />}
+      {label}
+      {Icon && iconSide == "right" && <Icon className="h-4 w-4 stroke-2" />}
     </button>
   );
 };

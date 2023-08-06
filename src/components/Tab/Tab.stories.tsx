@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from "@storybook/react";
 
-import TabComponent, { TabProps } from "./Tab";
+import TabComponent, { TabProps } from ".";
 export default {
   title: "Navigation/TabComponent",
   component: TabComponent,
