@@ -1,6 +1,6 @@
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { cva, type VariantProps } from "class-variance-authority";
-import { useState } from "react";
+import { InputHTMLAttributes, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 type Options = {
@@ -8,9 +8,9 @@ type Options = {
 };
 
 interface SearchInputType {
+  label: string;
   options?: Options[];
   size?: "lg" | "md" | "sm";
-  label: string;
   disabled?: boolean;
 }
 
@@ -29,7 +29,7 @@ export const SearchInputVariants = cva(
   },
 );
 
-interface SearchInputHTMLAttributes extends React.InputHTMLAttributes<HTMLInputElement> {}
+interface SearchInputHTMLAttributes extends InputHTMLAttributes<HTMLInputElement> {}
 
 export interface SearchInputProps
   extends Omit<SearchInputVariantProps, "size">,
@@ -57,6 +57,7 @@ function SearchInput({
   const handleOptionClick = (value: string) => {
     setSelectedValue(value);
   };
+
   return (
     <div className="relative flex items-center justify-center">
       <input
