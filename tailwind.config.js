@@ -1,9 +1,7 @@
 /** @type {import("tailwindcss").Config} **/
 import generated from "@headlessui/tailwindcss";
-import colors from "./src/constants/colors";
-import RoundsPlugin from "./tailwind.rounded";
 
-const plugin = require('tailwindcss/plugin')
+import colors from "./src/constants/colors";
 
 export default {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
@@ -29,8 +27,11 @@ export default {
       xs: "12px",
     },
   },
+  // eslint-disable-next-line no-undef
   plugins: [
+    require("./tailwind.plugin.js")({
+      roundedComponents: false,
+    }),
     generated({ prefix: "ui" }),
-    plugin(RoundsPlugin),
   ],
 };
