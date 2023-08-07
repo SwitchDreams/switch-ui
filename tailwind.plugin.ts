@@ -1,13 +1,6 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires,no-undef
-const plugin = require("tailwindcss/plugin");
-const { bool } = require("prop-types");
+import plugin from "tailwindcss/plugin";
 
-// eslint-disable-next-line no-undef
-module.exports = plugin.withOptions(function (
-  options = {
-    roundedComponents: bool,
-  },
-) {
+const switchUiPlugin = plugin.withOptions(function (options: { roundedComponents: boolean }) {
   return function ({ addComponents }) {
     const roundedComponents = options.roundedComponents;
     addComponents({
@@ -20,3 +13,5 @@ module.exports = plugin.withOptions(function (
     });
   };
 });
+
+export default switchUiPlugin;

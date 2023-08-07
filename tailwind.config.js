@@ -1,6 +1,6 @@
 /** @type {import("tailwindcss").Config} **/
 import generated from "@headlessui/tailwindcss";
-
+import switchUiPlugin from "./tailwind.plugin";
 import colors from "./src/constants/colors";
 
 export default {
@@ -10,7 +10,7 @@ export default {
       colors: colors,
     },
     fontFamily: {
-      Poppins: ["Poppins", "sans-serif"],
+      default: ["Poppins", "sans-serif"],
     },
     fontSize: {
       "7xl": "72px",
@@ -27,9 +27,8 @@ export default {
       xs: "12px",
     },
   },
-  // eslint-disable-next-line no-undef
   plugins: [
-    require("./tailwind.plugin.js")({
+    switchUiPlugin({
       roundedComponents: false,
     }),
     generated({ prefix: "ui" }),
