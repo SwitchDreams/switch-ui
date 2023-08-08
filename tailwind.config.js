@@ -8,6 +8,10 @@ export default {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      curvature: {
+        md: 0,
+        full: 0,
+      },
       colors: {
         ...colors,
         btn: {
@@ -53,10 +57,5 @@ export default {
       xs: "12px",
     },
   },
-  plugins: [
-    switchUiPlugin({
-      roundedComponents: false,
-    }),
-    generated({ prefix: "ui" }),
-  ],
+  plugins: [switchUiPlugin, generated({ prefix: "ui" })],
 };
