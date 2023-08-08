@@ -12,6 +12,8 @@ interface SearchInputType {
   size?: "lg" | "md" | "sm";
   label: string;
   disabled?: boolean;
+  selectedValue?: string;
+  setSelectedValue: (value: any) => void;
 }
 
 export type SearchInputVariantProps = VariantProps<typeof SearchInputVariants>;
@@ -34,7 +36,7 @@ interface SearchInputHTMLAttributes extends React.InputHTMLAttributes<HTMLInputE
 export interface SearchInputProps
   extends Omit<SearchInputVariantProps, "size">,
     SearchInputType,
-    Omit<SearchInputHTMLAttributes, "size"> {}
+    Omit<SearchInputHTMLAttributes, "size" | "onChange"> {}
 
 function SearchInput({
   options = [],
@@ -42,9 +44,10 @@ function SearchInput({
   label,
   disabled = false,
   className,
+  selectedValue = "",
+  setSelectedValue,
   ...rest
 }: SearchInputProps) {
-  const [selectedValue, setSelectedValue] = useState("");
   const [query, setQuery] = useState("");
 
   const filteredOption =
@@ -68,7 +71,7 @@ function SearchInput({
         {...rest}
         onChange={(e) => {
           setQuery(e.target.value);
-          setSelectedValue(e.target.value);
+          handleOptionClick(e.target.value);
         }}
       />
       {filteredOption.length !== 0 && (
@@ -90,7 +93,7 @@ function SearchInput({
         <XMarkIcon
           className="absolute right-2 h-5 w-5 cursor-pointer text-gray-500 peer-focus:text-gray-700"
           onClick={() => {
-            setSelectedValue("");
+            handleOptionClick("");
             setQuery("");
           }}
           data-testid="clear-icon"

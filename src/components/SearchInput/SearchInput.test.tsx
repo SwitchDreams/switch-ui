@@ -1,63 +1,79 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
+import { expect } from "chai";
 
 import SearchInput from "./SearchInput";
 
-const options = [{ info: "Option 1" }, { info: "Option 2" }, { info: "Option 3" }];
+describe("SearchInput", () => {
+  it("deve exibir a lista de opções filtradas após a digitação", async () => {
+    const options = [{ info: "Opção 1" }, { info: "Opção 2" }, { info: "Opção 3" }];
 
-describe("SearchInput render", () => {
-  it("renders with placeholder", () => {
-    render(<SearchInput label="Search" />);
-    const inputElement = screen.getByPlaceholderText("Search");
-    expect(inputElement).toBeInTheDocument();
-  });
+    const setSelectedValue = () => {};
 
-  it("updates value on input change", () => {
-    render(<SearchInput label="Search" />);
-    const inputElement = screen.getByPlaceholderText("Search");
+    const { getByPlaceholderText, queryByText } = render(
+      <SearchInput options={options} label="Buscar" setSelectedValue={setSelectedValue} />,
+    );
 
-    fireEvent.change(inputElement, { target: { value: "hello" } });
+    const inputElement = getByPlaceholderText("Buscar") as HTMLInputElement;
 
-    expect(inputElement.value).toBe("hello");
-  });
+    fireEvent.change(inputElement, { target: { value: "Opção" } });
 
-  it("shows options on input focus", () => {
-    render(<SearchInput label="Search" options={options} />);
-    const inputElement = screen.getByPlaceholderText("Search");
-
-    fireEvent.focus(inputElement);
-
-    options.forEach((option) => {
-      const optionElement = screen.getByText(option.info);
-      expect(optionElement).toBeInTheDocument();
+    await waitFor(() => {
+      expect(queryByText("Opção 1")).to.exist;
+      expect(queryByText("Opção 2")).to.exist;
+      expect(queryByText("Opção 3")).to.exist;
     });
   });
 
-  it("selects option on click", () => {
-    render(<SearchInput label="Search" options={options} />);
-    const inputElement = screen.getByPlaceholderText("Search");
+  it("deve selecionar uma opção ao clicar nela", async () => {
+    const options = [{ info: "Opção 1" }, { info: "Opção 2" }, { info: "Opção 3" }];
 
-    fireEvent.focus(inputElement);
+    let selectedValue = "";
 
-    const optionElement = screen.getByText("Option 2");
-    fireEvent.click(optionElement);
+    const setSelectedValue = (value: string) => {
+      selectedValue = value;
+    };
 
-    expect(inputElement.value).toBe("Option 2");
+    const { getByPlaceholderText, getByText } = render(
+      <SearchInput options={options} label="Buscar" setSelectedValue={setSelectedValue} />,
+    );
+
+    const inputElement = getByPlaceholderText("Buscar") as HTMLInputElement;
+
+    fireEvent.change(inputElement, { target: { value: "Opção" } });
+
+    await waitFor(() => {
+      const optionElement = getByText("Opção 1");
+      fireEvent.click(optionElement);
+      expect(selectedValue).to.equal("Opção 1");
+    });
   });
 
-  it("clears selected value on XMarkIcon click", () => {
-    render(<SearchInput label="Search" options={options} />);
-    const inputElement = screen.getByPlaceholderText("Search");
+  it("deve limpar a seleção e a entrada ao clicar no ícone de limpar", async () => {
+    const options = [{ info: "Opção 1" }, { info: "Opção 2" }, { info: "Opção 3" }];
 
-    fireEvent.focus(inputElement);
+    let selectedValue = "Opção 1";
 
-    const optionElement = screen.getByText("Option 1");
-    fireEvent.click(optionElement);
+    const setSelectedValue = (value: string) => {
+      selectedValue = value;
+    };
 
-    expect(inputElement.value).toBe("Option 1");
+    const { getByTestId, queryByText } = render(
+      <SearchInput
+        options={options}
+        label="Buscar"
+        selectedValue={selectedValue}
+        setSelectedValue={setSelectedValue}
+      />,
+    );
 
-    const xIcon = screen.getByTestId("clear-icon");
-    fireEvent.click(xIcon);
+    const clearIcon = getByTestId("clear-icon");
 
-    expect(inputElement.value).toBe("");
+    expect(queryByText("Opção 1")).to.exist;
+
+    fireEvent.click(clearIcon);
+
+    await waitFor(() => {
+      expect(selectedValue).to.equal("");
+    });
   });
 });
