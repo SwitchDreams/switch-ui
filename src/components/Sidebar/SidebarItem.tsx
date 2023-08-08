@@ -16,28 +16,28 @@ const SidebarItem = ({ label, icon: Icon, href }: ItemProps) => {
     <>
       {!isOpen && Icon && (
         <a href={href}>
-          <Icon className="flex h-10 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50"></Icon>
+          <Icon className="flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50"></Icon>
         </a>
       )}
       {isOpen && Icon && (
         <a href={href}>
-          <div className="flex h-10 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50">
-            <Icon className="h-7 w-7"></Icon>
+          <div className="flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50">
+            <Icon className="h-10 w-7"></Icon>
             <span>{label}</span>
           </div>
         </a>
       )}
       {isOpen && !Icon && (
         <a href={href}>
-          <div className="flex h-10 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50">
+          <div className="flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50">
             <span>{label}</span>
           </div>
         </a>
       )}
       {!isOpen && !Icon && (
         <a href={href}>
-          <div className="flex h-10 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50">
-            <div className="h-7 w-7 text-center text-lg font-semibold">
+          <div className="flex h-12 w-full items-center justify-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50">
+            <div className="h-10 w-7 text-center text-lg font-semibold">
               {label[0].toUpperCase()}
             </div>
           </div>
