@@ -72,11 +72,14 @@ export const Default: Story = {
             href="https://www.youtube.com/watch?v=z45yFtHivuY"
             icon={XMarkIcon}
           ></Sidebar.Item>
-          <Sidebar.Item
-            label="tamo on"
-            href="https://www.youtube.com/watch?v=z45yFtHivuY"
-            icon={XMarkIcon}
-          ></Sidebar.Item>
+          <Sidebar.Dropdown
+            label="Bom dia"
+            options={[
+              { label: "Pokemon", href: "" },
+              { label: "Digimon", href: "" },
+              { label: "Naruto", href: "" },
+            ]}
+          ></Sidebar.Dropdown>
           <hr className="mb-10 mt-8 h-px w-full" />
           <Sidebar.User>
             <Avatar name="SD" avatarUrl="" size="sm"></Avatar>

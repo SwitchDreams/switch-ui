@@ -3,6 +3,7 @@ import { ComponentProps, PropsWithChildren, useContext } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { SidebarContext, SidebarProvider } from "./SidebarContext";
+import SidebarDrop from "./SidebarDrop";
 import SidebarFooter from "./SidebarFooter";
 import SidebarItemGroup from "./SidebarGroup";
 import SidebarItem from "./SidebarItem";
@@ -49,4 +50,5 @@ export const Sidebar = Object.assign(SidebarComponent, {
   Group: SidebarItemGroup,
   Footer: SidebarFooter,
   User: SidebarUser,
+  Dropdown: SidebarDrop,
 });
