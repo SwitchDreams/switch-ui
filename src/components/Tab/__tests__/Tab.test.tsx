@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 
-import TabComponent from "./Tab";
+import TabComponent from "..";
 
 describe("TabComponent", () => {
   const tabs = [

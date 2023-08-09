@@ -2,7 +2,7 @@ import { fireEvent, render } from "@testing-library/react";
 import React from "react";
 import { vitest } from "vitest";
 
-import ToggleSwitch from "./";
+import ToggleSwitch from "../index";
 
 // Mock the CheckIcon and XMarkIcon components as they're used in the ToggleSwitch component
 vitest.mock("@heroicons/react/20/solid", () => ({

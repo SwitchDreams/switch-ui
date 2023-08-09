@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import { HTMLProps } from "react";
+import { ChangeEvent, HTMLProps, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 export interface IRadioButton {
@@ -28,10 +28,18 @@ export interface RadioButtonProps
     VariantProps<typeof radioButtonVariants> {}
 
 export const RadioButton = ({ size, disabled = false, className, ...rest }: RadioButtonProps) => {
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setChecked(e.target.checked);
+  };
+
   return (
     <input
       type="radio"
       disabled={disabled}
+      checked={checked}
+      onChange={handleChange}
       className={
         disabled
           ? twMerge(

@@ -4,21 +4,21 @@ import "../fonts.css";
 
 import colors from "../constants/colors";
 import Avatar from "./Avatar";
-import { Badge } from "./Badge/Badge";
+import { Badge } from "./Badge";
 // Buttons
-import Button from "./Buttons/Button";
-import { CheckBox } from "./CheckBox/CheckBox";
+import Button from "./Button";
+import { CheckBox } from "./CheckBox";
 import FloatingButton from "./FloatingButton";
-import { RadioButton } from "./RadioButton/RadioButton";
+import { RadioButton } from "./RadioButton";
 import SelectBox from "./SelectBox";
 // Progress
-import { Spinner } from "./Spinner/spinner";
+import { Spinner } from "./Spinner";
 // Navigation
-import Tab from "./Tab/Tab";
+import Tab from "./Tab";
 import { Text } from "./Text";
 // Forms
 import TextArea from "./TextArea";
-import TextField from "./TextField/TextField";
+import TextField from "./TextField";
 // Overlay
 import Toast from "./Toast";
 import ToggleSwitch from "./ToggleSwitch";

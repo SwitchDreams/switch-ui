@@ -23,22 +23,25 @@ interface SelectBoxType extends ListboxProps<any, any, any> {
 
 export type SelectBoxVariantProps = VariantProps<typeof selectBoxVariants>;
 
-export const selectBoxVariants = cva("relative m-1 cursor-default select-none rounded pl-2", {
-  variants: {
-    size: {
-      lg: "x-1 py-3 text-md",
-      md: "x-0.5 py-2 text-md",
-      sm: "x py-1 text-md",
-    },
-    active: {
-      true: "bg-white hover:bg-gray-100",
-      false: "text-gray-950",
+export const selectBoxVariants = cva(
+  "rounded-plug-md relative m-1 cursor-default select-none pl-2",
+  {
+    variants: {
+      size: {
+        lg: "x-1 py-3 text-md",
+        md: "x-0.5 py-2 text-md",
+        sm: "x py-1 text-md",
+      },
+      active: {
+        true: "bg-white hover:bg-gray-100",
+        false: "text-gray-950",
+      },
     },
   },
-});
+);
 
 export const selectBoxButtonVariants = cva(
-  "relative w-full cursor-default rounded-lg border text-left hover:bg-gray-100",
+  "rounded-plug-md relative w-full cursor-default border text-left hover:bg-gray-100",
   {
     variants: {
       disabled: {
@@ -123,7 +126,7 @@ function SelectBox({
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Listbox.Options className="absolute z-30 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 ring-1 ring-gray-100">
+                <Listbox.Options className="rounded-plug-md absolute z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 ring-1 ring-gray-100">
                   {options.map((option) => (
                     <Listbox.Option
                       key={option.value}
