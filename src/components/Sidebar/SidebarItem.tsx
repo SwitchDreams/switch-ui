@@ -36,7 +36,7 @@ const SidebarItem = ({ label, icon: Icon, href }: ItemProps) => {
       )}
       {!isOpen && !Icon && (
         <a href={href}>
-          <div className="flex h-12 w-full items-center justify-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50">
+          <div className="flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50">
             <div className="h-10 w-7 text-center text-lg font-semibold">
               {label[0].toUpperCase()}
             </div>
