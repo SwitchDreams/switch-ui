@@ -39,7 +39,7 @@ const TabComponent = ({ size = "md", padding = false, tabs, className }: TabProp
   const tabClass = twMerge(TabVariants({ size, padding }), className);
 
   return (
-    <Tab.Group defaultIndex={1} as="div" className="h-[34px] w-full">
+    <Tab.Group defaultIndex={0} as="div" className="h-[34px] w-full">
       <Tab.List as="div" className="flex pb-8">
         {tabs.map((tab: Tabs) => {
           return (
