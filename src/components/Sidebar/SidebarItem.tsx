@@ -16,7 +16,7 @@ const SidebarItem = ({ label, icon: Icon, href }: ItemProps) => {
     <>
       {!isOpen && Icon && (
         <a href={href}>
-          <Icon className="flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50"></Icon>
+          <Icon className="flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50 max-md:hidden"></Icon>
         </a>
       )}
       {isOpen && Icon && (
@@ -36,7 +36,7 @@ const SidebarItem = ({ label, icon: Icon, href }: ItemProps) => {
       )}
       {!isOpen && !Icon && (
         <a href={href}>
-          <div className="flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50">
+          <div className="flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50 max-md:hidden">
             <div className="h-10 w-7 text-center text-lg font-semibold">
               {label[0].toUpperCase()}
             </div>

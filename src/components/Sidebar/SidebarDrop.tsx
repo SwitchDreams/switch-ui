@@ -28,7 +28,7 @@ const SidebarDrop = ({ label, icon: Icon, options = [] }: DropProps) => {
     <>
       {!isOpen && Icon && (
         <div>
-          <Icon className="flex h-10 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50"></Icon>
+          <Icon className="flex h-10 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50 max-md:hidden"></Icon>
         </div>
       )}
       {isOpen && Icon && (
@@ -43,7 +43,7 @@ const SidebarDrop = ({ label, icon: Icon, options = [] }: DropProps) => {
               <Icon className="mr-2 h-7 w-7"></Icon>
               <span>{label}</span>
             </div>
-            <ChevronDownIcon className="h-4 w-4"></ChevronDownIcon>
+            <ChevronDownIcon className="h-4 w-4" data-testid="chevron-icon"></ChevronDownIcon>
           </div>
           <div
             className={`w-full transition-all duration-300 ease-in-out ${
@@ -79,7 +79,7 @@ const SidebarDrop = ({ label, icon: Icon, options = [] }: DropProps) => {
             <div className="flex items-center">
               <span>{label}</span>
             </div>
-            <ChevronDownIcon className="h-4 w-4"></ChevronDownIcon>
+            <ChevronDownIcon className="h-4 w-4" data-testid="chevron-icon"></ChevronDownIcon>
           </div>
           <div
             className={`w-full transition-all duration-300 ease-in-out ${
@@ -105,7 +105,7 @@ const SidebarDrop = ({ label, icon: Icon, options = [] }: DropProps) => {
         </div>
       )}
       {!isOpen && !Icon && (
-        <div className="flex h-10 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50">
+        <div className="flex h-10 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50 max-md:hidden">
           <div className="h-7 w-7 text-center text-lg font-semibold">{label[0].toUpperCase()}</div>
         </div>
       )}

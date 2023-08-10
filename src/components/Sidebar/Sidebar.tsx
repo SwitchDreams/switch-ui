@@ -9,10 +9,10 @@ import SidebarLogo from "./SidebarLogo";
 import SidebarMain from "./SidebarMain";
 import SidebarUser from "./SidebarUser";
 
-const SidebarComponent = ({ children, desktop }: PropsWithChildren & any) => {
+const SidebarComponent = ({ children, logo }: PropsWithChildren & any) => {
   return (
     <SidebarProvider>
-      <SidebarMain desktop={desktop}>{children}</SidebarMain>
+      <SidebarMain mobileLogo={logo}>{children}</SidebarMain>
     </SidebarProvider>
   );
 };
