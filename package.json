@@ -87,7 +87,6 @@
     "@headlessui/tailwindcss": "^0.2.0",
     "@heroicons/react": "^2.0.18",
     "class-variance-authority": "^0.7.0",
-    "postcss-preset-env": "^9.1.0",
     "tailwind-merge": "^1.14.0"
   }
 }
