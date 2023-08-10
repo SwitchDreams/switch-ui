@@ -17,7 +17,7 @@ export interface ITextFieldBase
   error?: boolean;
   errorMsg?: string;
   onClickIcon?: () => void;
-  ref: any;
+  ref?: any;
 }
 
 const TextFieldBaseVariants = cva(
