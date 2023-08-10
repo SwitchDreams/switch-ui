@@ -2,7 +2,7 @@
 import generated from "@headlessui/tailwindcss";
 
 import colors from "./src/constants/colors";
-import switchUiPlugin from "./tailwind.plugin";
+import switchUiPlugin from "./src/tailwind.plugin";
 
 export default {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
