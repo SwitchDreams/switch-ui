@@ -8,7 +8,7 @@ describe("Button", () => {
   const onClickMock = vitest.fn();
 
   const component = (
-    variant: "primary" | "secondary" | "invisible" | "outline" | "danger",
+    variant: "primary" | "invisible" | "outline" | "danger",
     size: "xl" | "lg" | "md" | "sm" | "xs",
     disabled: boolean,
   ) => {
@@ -47,16 +47,16 @@ describe("Button", () => {
       expect(buttonElement).toHaveClass("opacity-100");
     });
 
-    it("secondary variant enable", () => {
-      render(component("secondary", "md", false));
-      const buttonElement = screen.getByText("botão");
-      expect(buttonElement).toHaveClass("bg-secondary-300");
-      expect(buttonElement).toHaveClass("hover:bg-secondary-400");
-      expect(buttonElement).toHaveClass("active:bg-secondary-500");
-      expect(buttonElement).toHaveClass("focus:bg-secondary-300");
-      expect(buttonElement).toHaveClass("text-white");
-      expect(buttonElement).toHaveClass("opacity-100");
-    });
+    // it("secondary variant enable", () => {
+    //   render(component("secondary", "md", false));
+    //   const buttonElement = screen.getByText("botão");
+    //   expect(buttonElement).toHaveClass("bg-secondary-300");
+    //   expect(buttonElement).toHaveClass("hover:bg-secondary-400");
+    //   expect(buttonElement).toHaveClass("active:bg-secondary-500");
+    //   expect(buttonElement).toHaveClass("focus:bg-secondary-300");
+    //   expect(buttonElement).toHaveClass("text-white");
+    //   expect(buttonElement).toHaveClass("opacity-100");
+    // });
 
     it("outline variant enable", () => {
       render(component("outline", "md", false));

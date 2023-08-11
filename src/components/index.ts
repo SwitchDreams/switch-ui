@@ -9,7 +9,6 @@ import { SidebarItemGroupProps } from "./Sidebar/SidebarGroup";
 import { ItemProps } from "./Sidebar/SidebarItem";
 import { SidebarLogoProps } from "./Sidebar/SidebarLogo";
 import { SidebarUserProps } from "./Sidebar/SidebarUser";
-import { SidebarProps } from "./Sidebar/SidebarMain";
 
 import colors from "../constants/colors";
 // Others
@@ -79,7 +78,6 @@ export type {
   SidebarFooterProps,
   SidebarItemGroupProps,
   SidebarLogoProps,
-  SidebarProps,
   SidebarUserProps,
   SliderProps,
   SpinnerProps,
