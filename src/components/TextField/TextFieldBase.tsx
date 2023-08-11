@@ -54,6 +54,9 @@ const IconVariants = cva("text-field-icon absolute top-1/2 h-6 w-6 text-gray-500
       left: "left-2",
       right: "right-2",
     },
+    label: {
+      false: "top-1/3",
+    },
   },
 });
 
@@ -112,13 +115,13 @@ export const TextFieldBase = forwardRef(
         {LeftIcon && (
           <LeftIcon
             onClick={() => onClickIcon()}
-            className={`${IconVariants({ error, position: "left" })} ${!label && "top-1/3"}`}
+            className={IconVariants({ error, position: "left", label: !!label })}
           />
         )}
         {RightIcon && (
           <RightIcon
             onClick={() => onClickIcon()}
-            className={`${IconVariants({ error, position: "right" })} ${!label && "top-1/3"}`}
+            className={IconVariants({ error, position: "right", label: !!label })}
           />
         )}
       </div>
