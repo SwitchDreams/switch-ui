@@ -17,7 +17,7 @@ export const buttonVariants = cva("rounded-plug-md flex items-center justify-cen
     variant: {
       primary: "btn-primary",
       outline: "btn-outline border border-solid border-primary-50",
-      invisible: "bg-invisible",
+      invisible: "btn-invisible",
       danger: "bg-error-600 text-white hover:bg-error-700 focus:bg-error-600 active:bg-error-800",
     },
     size: {
