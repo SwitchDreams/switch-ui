@@ -1,6 +1,7 @@
 import { PropsWithChildren } from "react";
 
 import { SidebarProvider } from "./SidebarContext";
+import SidebarDrop from "./SidebarDrop";
 import SidebarFooter from "./SidebarFooter";
 import SidebarItemGroup from "./SidebarGroup";
 import SidebarItem from "./SidebarItem";
@@ -8,10 +9,10 @@ import SidebarLogo from "./SidebarLogo";
 import SidebarMain from "./SidebarMain";
 import SidebarUser from "./SidebarUser";
 
-const SidebarComponent = ({ children }: PropsWithChildren) => {
+const SidebarComponent = ({ children, logo }: PropsWithChildren & any) => {
   return (
     <SidebarProvider>
-      <SidebarMain>{children}</SidebarMain>
+      <SidebarMain mobileLogo={logo}>{children}</SidebarMain>
     </SidebarProvider>
   );
 };
@@ -22,4 +23,5 @@ export const Sidebar = Object.assign(SidebarComponent, {
   Group: SidebarItemGroup,
   Footer: SidebarFooter,
   User: SidebarUser,
+  Dropdown: SidebarDrop,
 });
