@@ -29,7 +29,7 @@ npm login --registry=https://npm.pkg.github.com --scope=@switchdreams
 
 ```js
 import { colors } from '@switchdreams/ui'
-import switchUiPlugin from '@switchdreams/ui/tailwind.config'
+import switchUiPlugin from '@switchdreams/ui/dist/tailwind.config'
 
 module.exports = {
   content: [
@@ -38,6 +38,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      curvature: {
+        md: 0, // Configura a curvatura dos componentes
+        full: 0,
+      },
       colors: colors, // Cores de 0 25 to 950 (altere as cores primaria e secundárias para os projetos)
       fontFamily: {
         default: ['Poppins', 'sans-serif'], //.. Opcional
@@ -45,9 +49,7 @@ module.exports = {
     },
   },
   plugins: [
-    switchUiPlugin({
-      roundedComponents: false, // True para componentes arredondados
-    }),
+    switchUiPlugin(),
   ],
 
 }
@@ -56,6 +58,49 @@ module.exports = {
 ## Para configuração sem tailwind
 
 - Importe o seguinte arquivo css `import '@switchdreams/ui/dist/style.css'`
+
+## Configuração dos componentes
+
+Os componentes em geral são configuráveis pela fonte, no caso especial é o componente do botão que possui um tema
+específico no tailwind, que é possível configurar dessa forma.
+
+```js
+//... tailwind.config.js  
+module.exports = {
+  //...
+  theme: {
+    extend: {
+      colors: {
+        ...colors,
+        btn: {
+          primary: {
+            bg: colors.primary["300"],
+            hover: colors.primary["400"],
+            active: colors.primary["500"],
+            focus: colors.primary["300"],
+            text: colors.gray.white,
+          },
+          outline: {
+            bg: colors.gray.white,
+            hover: colors.primary["25"],
+            active: colors.primary["100"],
+            focus: colors.gray.white,
+            text: colors.primary["300"],
+          },
+          invisible: {
+            bg: colors.gray.white,
+            hover: colors.gray["50"],
+            active: colors.gray["100"],
+            focus: colors.gray["white"],
+            text: colors.gray["800"],
+          },
+        },
+      },
+    },
+    //...
+  },
+}
+```
 
 ## Configurações das Fontes
 
