@@ -1,5 +1,5 @@
 import { cva, VariantProps } from "class-variance-authority";
-import React, { ElementType } from "react";
+import React, { ElementType, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
 type InputElement = "input" | "textarea";
@@ -17,6 +17,7 @@ export interface ITextFieldBase
   error?: boolean;
   errorMsg?: string;
   onClickIcon?: () => void;
+  ref?: any;
 }
 
 const TextFieldBaseVariants = cva(
@@ -53,6 +54,9 @@ const IconVariants = cva("text-field-icon absolute top-1/2 h-6 w-6 text-gray-500
       left: "left-2",
       right: "right-2",
     },
+    label: {
+      false: "top-1/3",
+    },
   },
 });
 
@@ -62,61 +66,65 @@ export interface TextFieldBaseProps
   extends Omit<TextfieldVariantProps, "error" | "leftIconPresent">,
     ITextFieldBase {}
 
-export const TextFieldBase = ({
-  leftIcon: LeftIcon,
-  rightIcon: RightIcon,
-  inputElement = "input",
-  placeholder,
-  size,
-  label,
-  className,
-  supportText,
-  disabled,
-  error = false,
-  name,
-  errorMsg,
-  onClickIcon = () => {},
-  ...rest
-}: TextFieldBaseProps) => {
-  const InputElement = inputElement;
-  const leftIconPresent = !!LeftIcon;
-  const textfieldClasses = twMerge(
-    TextFieldBaseVariants({ size, error, leftIconPresent }),
+export const TextFieldBase = forwardRef(
+  ({
+    leftIcon: LeftIcon,
+    rightIcon: RightIcon,
+    inputElement = "input",
+    placeholder,
+    size,
+    label,
     className,
-  );
-  const opacityClass = disabled ? "opacity-50 relative" : "relative";
+    supportText,
+    disabled,
+    error = false,
+    name,
+    errorMsg,
+    onClickIcon = () => {},
+    ref,
+    ...rest
+  }: TextFieldBaseProps) => {
+    const InputElement = inputElement;
+    const leftIconPresent = !!LeftIcon;
+    const textfieldClasses = twMerge(
+      TextFieldBaseVariants({ size, error, leftIconPresent }),
+      className,
+    );
+    const opacityClass = disabled ? "opacity-50 relative" : "relative";
 
-  return (
-    <div className={opacityClass}>
-      <label htmlFor={name} className="text-sm font-medium text-gray-900">
-        {label}
-      </label>
-      <InputElement
-        disabled={disabled}
-        id={name}
-        name={name}
-        placeholder={placeholder}
-        className={textfieldClasses}
-        {...rest}
-      />
-      {error ? (
-        <span className="text-sm text-error-500">{errorMsg}</span>
-      ) : (
-        <span className="text-sm text-gray-600">{supportText}</span>
-      )}
+    return (
+      <div className={opacityClass}>
+        <label htmlFor={name} className="text-sm font-medium text-gray-900">
+          {label}
+        </label>
+        <InputElement
+          ref={ref}
+          disabled={disabled}
+          id={name}
+          name={name}
+          placeholder={placeholder}
+          className={textfieldClasses}
+          {...rest}
+        />
+        {error ? (
+          <span className="text-sm text-error-500">{errorMsg}</span>
+        ) : (
+          <span className="text-sm text-gray-600">{supportText}</span>
+        )}
 
-      {LeftIcon && (
-        <LeftIcon
-          onClick={() => onClickIcon()}
-          className={IconVariants({ error, position: "left" })}
-        />
-      )}
-      {RightIcon && (
-        <RightIcon
-          onClick={() => onClickIcon()}
-          className={IconVariants({ error, position: "right" })}
-        />
-      )}
-    </div>
-  );
-};
+        {LeftIcon && (
+          <LeftIcon
+            onClick={() => onClickIcon()}
+            className={IconVariants({ error, position: "left", label: !!label })}
+          />
+        )}
+        {RightIcon && (
+          <RightIcon
+            onClick={() => onClickIcon()}
+            className={IconVariants({ error, position: "right", label: !!label })}
+          />
+        )}
+      </div>
+    );
+  },
+);

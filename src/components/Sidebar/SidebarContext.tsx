@@ -3,20 +3,27 @@ import { createContext, useContext, useState } from "react";
 export type SidebarContextType = {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
+  isDesktop: boolean;
+  setIsDesktop: (isOpen: boolean) => void;
 };
 
 const defaultContextValue: SidebarContextType = {
   isOpen: true,
   setIsOpen: () => {},
+  isDesktop: true,
+  setIsDesktop: () => {},
 };
 
 export const SidebarContext = createContext<SidebarContextType>(defaultContextValue);
 
 export function SidebarProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState<boolean>(defaultContextValue.isOpen);
+  const [isDesktop, setIsDesktop] = useState<boolean>(defaultContextValue.isDesktop);
 
   return (
-    <SidebarContext.Provider value={{ isOpen, setIsOpen }}>{children}</SidebarContext.Provider>
+    <SidebarContext.Provider value={{ isOpen, setIsOpen, isDesktop, setIsDesktop }}>
+      {children}
+    </SidebarContext.Provider>
   );
 }
 

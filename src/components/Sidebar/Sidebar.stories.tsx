@@ -17,10 +17,19 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: Story = {
   args: {
+    logo: "https://switchdreams.com.br/og_image.png",
     children: (
       <>
         <Sidebar.Logo logo="https://switchdreams.com.br/og_image.png"></Sidebar.Logo>
         <Sidebar.Group>
+          <Sidebar.Dropdown
+            label="Bom dia"
+            options={[
+              { label: "Pokemon", href: "" },
+              { label: "Digimon", href: "" },
+              { label: "Naruto", href: "" },
+            ]}
+          ></Sidebar.Dropdown>
           <Sidebar.Item
             label="tamo on"
             href="https://www.youtube.com/watch?v=z45yFtHivuY"
@@ -67,11 +76,6 @@ export const Default: Story = {
           ></Sidebar.Item>
         </Sidebar.Group>
         <Sidebar.Footer>
-          <Sidebar.Item
-            label="tamo on"
-            href="https://www.youtube.com/watch?v=z45yFtHivuY"
-            icon={XMarkIcon}
-          ></Sidebar.Item>
           <Sidebar.Item
             label="tamo on"
             href="https://www.youtube.com/watch?v=z45yFtHivuY"

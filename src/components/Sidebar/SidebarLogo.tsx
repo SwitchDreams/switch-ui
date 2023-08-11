@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { SidebarContext } from "./SidebarContext";
 
 export interface SidebarLogoProps {
-  logo: string;
+  logo?: string;
   href?: string;
 }
 

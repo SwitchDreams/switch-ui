@@ -8,7 +8,7 @@ export default {
   tags: ["autodocs"],
   argTypes: {
     variant: {
-      options: ["primary", "outline", "invisible", "danger"],
+      options: ["primary", "secondary", "outline", "invisible", "danger"],
       control: { type: "select" },
     },
     size: {
