@@ -120,7 +120,7 @@ describe("Textfield renders with custom class 'text-orange-100'", () => {
     expect(inputElement).toHaveClass("text-orange-100");
   });
   describe("Test the click event", () => {
-    it("test the props onClickIcon", () => {
+    it("tests the props onClickIcon", () => {
       const onClickMock = vitest.fn();
 
       const { container } = render(

@@ -112,13 +112,13 @@ export const TextFieldBase = forwardRef(
         {LeftIcon && (
           <LeftIcon
             onClick={() => onClickIcon()}
-            className={twMerge(IconVariants({ error, position: "left" }), !label && "top-1/3")}
+            className={`${IconVariants({ error, position: "left" })} ${!label && "top-1/3"}`}
           />
         )}
         {RightIcon && (
           <RightIcon
             onClick={() => onClickIcon()}
-            className={twMerge(IconVariants({ error, position: "right" }), !label && "top-1/3")}
+            className={`${IconVariants({ error, position: "right" })} ${!label && "top-1/3"}`}
           />
         )}
       </div>
