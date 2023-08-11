@@ -22,6 +22,13 @@ export const buttonVariants = cva("rounded-plug-md flex items-center justify-cen
         "focus:bg-primary-300",
         "text-white",
       ],
+      secondary: [
+        "bg-secondary-300",
+        "hover:bg-secondary-400",
+        "active:bg-secondary-500",
+        "focus:bg-secondary-300",
+        "text-white",
+      ],
       outline: [
         "bg-white",
         "hover:bg-primary-25",
