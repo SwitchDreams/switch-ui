@@ -3,7 +3,7 @@ import { Meta, StoryFn } from "@storybook/react";
 import Button, { ButtonProps } from "./index";
 
 export default {
-  title: "Buttons/Button",
+  title: "Forms/Button",
   component: Button,
   tags: ["autodocs"],
   argTypes: {
