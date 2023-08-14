@@ -18,7 +18,7 @@ export const Default: Story = {
     children: "Hello",
     title: "hello",
     description:
-      "Quando eu era pequenino minha mae me deu um carrinho ele era da cor vermelha assim eu não gostei do carrinho vermelho.",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.",
     position: "bottomRight",
   },
 };

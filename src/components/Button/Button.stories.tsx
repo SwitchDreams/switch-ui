@@ -24,7 +24,7 @@ export const Variations = Template.bind({});
 
 Variations.args = {
   variant: "primary",
-  label: "botao",
+  label: "button",
   disabled: false,
   size: "md",
   onClick: undefined,

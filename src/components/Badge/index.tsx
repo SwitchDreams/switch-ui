@@ -9,6 +9,7 @@ export interface IBadgeProps {
   iconSide?: "right" | "left";
   outline?: boolean;
   opacity?: boolean;
+  full?: boolean;
 }
 
 const badgeVariants = cva(
@@ -29,7 +30,7 @@ const badgeVariants = cva(
         true: "bg-opacity-50",
       },
       full: {
-        true: "",
+        true: "rounded-full",
       },
     },
     defaultVariants: {
@@ -106,7 +107,7 @@ type BadgeVariantProps = VariantProps<typeof badgeVariants>;
 
 export interface BadgeProps
   extends Omit<React.HTMLProps<HTMLDivElement>, "color" | "label">,
-    Omit<BadgeVariantProps, "outline" | "opacity">,
+    Omit<BadgeVariantProps, "outline" | "opacity" | "full">,
     IBadgeProps {}
 
 export const Badge = ({
@@ -116,10 +117,11 @@ export const Badge = ({
   color,
   outline = false,
   opacity = false,
+  full = true,
   className,
   ...rest
 }: BadgeProps) => {
-  const badgeClasses = twMerge(badgeVariants({ color, outline, opacity }), className);
+  const badgeClasses = twMerge(badgeVariants({ color, outline, opacity, full }), className);
 
   return (
     <div className={badgeClasses} {...rest}>

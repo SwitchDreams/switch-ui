@@ -28,6 +28,6 @@ export const Default = Template.bind({});
 Default.args = {
   label: "Default",
   selectedValue: "",
-  options: [{ info: "Pokemon" }, { info: "Digimon" }, { info: "Naruto" }],
+  options: [{ info: "Option 1" }, { info: "Option 2" }, { info: "Option 3" }],
   size: "md",
 };

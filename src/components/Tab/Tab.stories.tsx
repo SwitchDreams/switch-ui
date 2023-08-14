@@ -17,7 +17,7 @@ const Template: StoryFn<typeof TabComponent> = (args: TabProps) => <TabComponent
 
 const tabsArray = [
   {
-    name: "teste1",
+    name: "Teste 1",
     info: (
       <div className="h-full w-full rounded bg-primary-100">
         Teste 1 Vorem ipsum dolor sit amet, consectetur Vorem ipsum dolor{" "}
@@ -25,7 +25,7 @@ const tabsArray = [
     ),
   },
   {
-    name: "teste2",
+    name: "Teste 2",
     info: (
       <div className="h-full w-full rounded bg-primary-100">
         Teste 2 Vorem ipsum dolor sit amet, consectetur Vorem ipsum dolor{" "}
@@ -33,7 +33,7 @@ const tabsArray = [
     ),
   },
   {
-    name: "bolo",
+    name: "Teste 3",
     info: (
       <div className="h-full w-full rounded bg-primary-100">
         Teste 3 Vorem ipsum dolor sit amet, consectetur Vorem ipsum dolor{" "}
@@ -41,7 +41,7 @@ const tabsArray = [
     ),
   },
   {
-    name: "brigadeiro",
+    name: "Teste 4",
     info: (
       <div className="h-full w-full rounded bg-primary-100">
         Teste 4 Vorem ipsum dolor sit amet, consectetur Vorem ipsum dolor{" "}
@@ -49,7 +49,7 @@ const tabsArray = [
     ),
   },
   {
-    name: "coxinha",
+    name: "Teste 5",
     info: (
       <div className="h-full w-full rounded bg-primary-100">
         Teste 5 Vorem ipsum dolor sit amet, consectetur Vorem ipsum dolor{" "}
