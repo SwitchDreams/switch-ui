@@ -55,11 +55,11 @@ const SidebarDrop = ({ label, icon: Icon, options = [] }: DropProps) => {
                 isDropdownOpen ? "opacity-100" : "h-0 opacity-0"
               } relative flex-col gap-5 overflow-hidden`}
             >
-              <div className="absolute left-5 top-[15%] h-[75%] w-[2px] bg-gray-100"></div>
+              <div className="absolute left-5 top-[12%] h-[70%] w-[2px] bg-gray-100"></div>
               {options.map((option) => (
                 <div
                   key={option.href}
-                  className="flex h-12 w-full items-center gap-2 rounded-md px-11 text-md font-semibold text-gray-700 hover:bg-gray-50"
+                  className="flex h-12 w-full items-center gap-2 rounded-md px-11 text-md font-semibold text-gray-700 last:mb-4 hover:bg-gray-50"
                 >
                   {option.label}
                 </div>
