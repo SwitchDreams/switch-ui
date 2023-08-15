@@ -3,7 +3,7 @@ import React, { ElementType, forwardRef } from "react";
 import InputMask from "react-input-mask";
 import { twMerge } from "tailwind-merge";
 
-type InputElement = typeof InputMask | "textarea";
+type InputElement = typeof InputMask | "textarea" | "input";
 export interface ITextFieldBase
   extends Omit<React.InputHTMLAttributes<any>, "label" | "placeholder" | "size"> {
   label: string;
@@ -71,7 +71,7 @@ export const TextFieldBase = forwardRef(
   ({
     leftIcon: LeftIcon,
     rightIcon: RightIcon,
-    inputElement = "textarea",
+    inputElement = "input",
     placeholder,
     size,
     label,
