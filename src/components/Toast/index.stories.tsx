@@ -5,7 +5,7 @@ import Toast, { ToastProps } from "./index";
 export default {
   title: "Overlay/Toast",
   component: Toast,
-  tags: ["autodocs"],
+  tags: [],
   argTypes: {
     color: {
       options: ["primary", "success", "warning", "error"],

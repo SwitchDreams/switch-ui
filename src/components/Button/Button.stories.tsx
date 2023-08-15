@@ -3,9 +3,9 @@ import { Meta, StoryFn } from "@storybook/react";
 import Button, { ButtonProps } from "./index";
 
 export default {
-  title: "Buttons/Button",
+  title: "Forms/Button",
   component: Button,
-  tags: ["autodocs"],
+  tags: [],
   argTypes: {
     variant: {
       options: ["primary", "secondary", "outline", "invisible", "danger"],
@@ -24,7 +24,7 @@ export const Variations = Template.bind({});
 
 Variations.args = {
   variant: "primary",
-  label: "botao",
+  label: "button",
   disabled: false,
   size: "md",
   onClick: undefined,

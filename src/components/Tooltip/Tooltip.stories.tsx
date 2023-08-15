@@ -4,9 +4,9 @@ import Tooltip from ".";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  title: "Tooltip",
+  title: "Overlay/Tooltip",
   component: Tooltip,
-  tags: ["autodocs"],
+  tags: [],
 } satisfies Meta<typeof Tooltip>;
 
 export default meta;
@@ -18,7 +18,7 @@ export const Default: Story = {
     children: "Hello",
     title: "hello",
     description:
-      "Quando eu era pequenino minha mae me deu um carrinho ele era da cor vermelha assim eu não gostei do carrinho vermelho.",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.",
     position: "bottomRight",
   },
 };

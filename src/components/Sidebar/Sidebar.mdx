@@ -1,3 +1,7 @@
+import * as SidebarStories from "./Sidebar.stories";
+import {Meta, Controls, Story, Canvas, Description} from "@storybook/blocks";
+import Avatar from "../Avatar";
+import {Sidebar} from "./Sidebar";
 import {
   ChartPieIcon,
   Cog6ToothIcon,
@@ -8,27 +12,17 @@ import {
   NewspaperIcon,
   UsersIcon,
 } from "@heroicons/react/24/outline";
-import type { Meta, StoryObj } from "@storybook/react";
 
-import Avatar from "../Avatar";
-import { Sidebar } from "./Sidebar";
+<Meta of={SidebarStories} />
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
-const meta = {
-  title: "Others/Sidebar",
-  component: Sidebar,
-  tags: [],
-} satisfies Meta<typeof Sidebar>;
+# Sidebar
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+### O componente sidebar é o mais complexo de nossa biblioteca tendo esle de ser adicionado em partes no código.
 
-// More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Default: Story = {
-  args: {
-    logo: "https://switchdreams.com.br/og_image.png",
-    children: (
-      <>
+#### Para iniciar vamos dar um exemlo de sidebar completa.
+
+<Canvas>
+  <Sidebar>
         <Sidebar.Logo logo="https://switchdreams.com.br/og_image.png"></Sidebar.Logo>
         <Sidebar.Group>
           <Sidebar.Item label="Home" href="" icon={HomeIcon}></Sidebar.Item>
@@ -63,7 +57,26 @@ export const Default: Story = {
             <Avatar name="F" avatarUrl="" size="sm"></Avatar>
           </Sidebar.User>
         </Sidebar.Footer>
-      </>
-    ),
-  },
-};
+  </Sidebar>
+</Canvas>
+
+<Controls />
+
+## Cada parte da sidebar possui Props únicas:
+
+### Sidebar Item:
+
+#### Label: É uma string passada para ser o nome exibido.
+#### href: Link para o botão.
+#### Icon: Ícone que será utilizado na frente do botão.
+
+### Sidebar Drop:
+
+#### Label: É uma string passada para ser o nome exibido.
+#### Options: Array de opções contendo um objeto href e label para cada opção desejada no Dropdown.
+#### Icon: Ícone que será utilizado na frente do botão.
+
+### Sidebar.Logo:
+
+#### href: Link para o botão.
+#### Logo: string para a logo a ser utilizada no modo desktop.

@@ -6,7 +6,7 @@ import { Spinner } from ".";
 const meta = {
   title: "Progress/Spinner",
   component: Spinner,
-  tags: ["autodocs"],
+  tags: [],
 } satisfies Meta<typeof Spinner>;
 
 export default meta;
