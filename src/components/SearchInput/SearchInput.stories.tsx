@@ -6,7 +6,7 @@ import SearchInput, { SearchInputProps } from "./SearchInput";
 export default {
   title: "Others/SearchInput",
   component: SearchInput,
-  tags: ["autodocs"],
+  tags: [],
 } as Meta<typeof SearchInput>;
 
 const Template: StoryFn<typeof SearchInput> = (args: SearchInputProps) => {

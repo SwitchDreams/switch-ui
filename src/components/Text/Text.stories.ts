@@ -6,7 +6,7 @@ import { Text } from "./index";
 const meta = {
   title: "Others/Text",
   component: Text,
-  tags: ["autodocs"],
+  tags: [],
 } satisfies Meta<typeof Text>;
 
 export default meta;

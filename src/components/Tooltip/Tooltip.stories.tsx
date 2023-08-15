@@ -6,7 +6,7 @@ import Tooltip from ".";
 const meta = {
   title: "Overlay/Tooltip",
   component: Tooltip,
-  tags: ["autodocs"],
+  tags: [],
 } satisfies Meta<typeof Tooltip>;
 
 export default meta;

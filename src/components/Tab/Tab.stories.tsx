@@ -4,7 +4,7 @@ import TabComponent, { TabProps } from ".";
 export default {
   title: "Navigation/TabComponent",
   component: TabComponent,
-  tags: ["autodocs"],
+  tags: [],
   argTypes: {
     size: {
       options: ["lg", "md", "sm"],

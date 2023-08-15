@@ -6,7 +6,7 @@ import { RadioButton } from ".";
 const meta = {
   title: "Forms/RadioButton",
   component: RadioButton,
-  tags: ["autodocs"],
+  tags: [],
 } satisfies Meta<typeof RadioButton>;
 
 export default meta;

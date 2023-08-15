@@ -5,7 +5,7 @@ import Avatar, { AvatarProps } from "./index";
 export default {
   title: "Others/Avatar",
   component: Avatar,
-  tags: ["autodocs"],
+  tags: [],
 } as Meta<typeof Avatar>;
 
 const Template: StoryFn<typeof Avatar> = (args: AvatarProps) => <Avatar {...args} />;

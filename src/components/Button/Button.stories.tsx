@@ -5,7 +5,7 @@ import Button, { ButtonProps } from "./index";
 export default {
   title: "Forms/Button",
   component: Button,
-  tags: ["autodocs"],
+  tags: [],
   argTypes: {
     variant: {
       options: ["primary", "secondary", "outline", "invisible", "danger"],
