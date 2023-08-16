@@ -19,6 +19,7 @@ interface SelectBoxType extends ListboxProps<any, any, any> {
   supportText?: string;
   leftIcon?: ElementType;
   error?: boolean;
+  placeholder: string;
 }
 
 export type SelectBoxVariantProps = VariantProps<typeof selectBoxVariants>;
@@ -41,7 +42,7 @@ export const selectBoxVariants = cva(
 );
 
 export const selectBoxButtonVariants = cva(
-  "rounded-plug-md relative w-full cursor-default border text-left hover:bg-gray-100",
+  "rounded-plug-md relative my-2 w-full cursor-default border text-left hover:bg-gray-100",
   {
     variants: {
       disabled: {
@@ -49,9 +50,9 @@ export const selectBoxButtonVariants = cva(
         false: "opacity-100",
       },
       size: {
-        lg: "x-1 py-3 text-md",
-        md: "x-0.5 py-2 text-md",
-        sm: "x py-1 text-md",
+        lg: "x-1 h-14 text-md",
+        md: "x-0.5 h-12 text-md",
+        sm: "x h-11 text-md",
       },
       open: {
         true: "border-primary-100",
@@ -83,6 +84,7 @@ function SelectBox({
   supportText,
   leftIcon: LeftIcon,
   error = false,
+  placeholder,
   ...rest
 }: SelectBoxProps) {
   const renderChevron = (open: boolean): ReactNode => {
@@ -104,7 +106,7 @@ function SelectBox({
       <Listbox disabled={disabled} {...rest}>
         {({ open, value }) => (
           <>
-            <Listbox.Label className="mb-1 block text-md text-gray-900">{label}</Listbox.Label>
+            <Listbox.Label className="text-sm font-medium text-gray-900">{label}</Listbox.Label>
             <div className="relative">
               <Listbox.Button
                 className={twMerge(
@@ -114,6 +116,7 @@ function SelectBox({
               >
                 <span className="flex gap-2 truncate pl-3">
                   {LeftIcon && <LeftIcon className="h-6 w-6 text-gray-700" />}
+                  {!value && placeholder}
                   {options.find((option) => option.value === value)?.label}
                 </span>
                 <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
