@@ -7,7 +7,7 @@ import TextFieldMask from "./TextFieldMask";
 const meta = {
   title: "Forms/TextFieldMask",
   component: TextFieldMask,
-  tags: ["autodocs"],
+  tags: [],
 } satisfies Meta<typeof TextFieldMask>;
 
 export default meta;
