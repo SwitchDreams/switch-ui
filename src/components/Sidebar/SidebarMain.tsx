@@ -16,7 +16,7 @@ const SidebarMain = ({ mobileLogo, children, className, ...rest }: SidebarVarian
     <>
       <div className="max-md absolute top-0 z-0 flex w-full items-center justify-between border-b-2 border-gray-100 bg-white py-10 max-md:h-[70px] md:hidden">
         <Bars3Icon
-          className="h-7 w-7"
+          className="ml-4 h-7 w-7"
           onClick={() => {
             setIsOpen(!isOpen);
           }}

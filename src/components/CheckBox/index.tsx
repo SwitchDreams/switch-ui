@@ -33,13 +33,13 @@ const checkBoxVariants = cva("peer appearance-none transition-all duration-200",
 });
 
 const iconVariants = cva(
-  "absolute  z-[-1] font-bold text-white peer-checked:z-10 peer-checked:text-opacity-100",
+  "absolute z-[-1] font-bold text-white peer-checked:z-10 peer-checked:text-opacity-100",
   {
     variants: {
       size: {
-        small: "left-[0.2rem] top-[0.1rem] h-[10px] w-[10px]",
-        medium: "left-[0.25rem] top-[-0.05rem] h-3 w-3",
-        large: "left-[0.25rem] top-[-0.3rem] h-4 w-4",
+        small: "left-[0.2rem] top-[0.25rem] h-[10px] w-[10px]",
+        medium: "left-[0.25rem] top-[0.05rem] h-3 w-3",
+        large: "left-[0.25rem] top-[-0.2rem] h-4 w-4",
       },
     },
     defaultVariants: {
