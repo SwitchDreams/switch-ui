@@ -86,7 +86,7 @@ export const TextFieldBase = forwardRef(
     ref,
     ...rest
   }: TextFieldBaseProps) => {
-    const InputElement = inputElement === "textarea" ? "textarea" : InputMask;
+    const InputElement = inputElement;
     const leftIconPresent = !!LeftIcon;
     const textfieldClasses = twMerge(
       TextFieldBaseVariants({ size, error, leftIconPresent }),
