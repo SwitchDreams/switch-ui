@@ -28,7 +28,7 @@ const SidebarMain = ({ mobileLogo, spacing, children, className, ...rest }: Side
         className={twMerge(
           style,
           `${
-            spacing ? "" : "absolute"
+            spacing ? "max-md:absolute" : "absolute"
           } top-0 z-10 h-full border-r border-gray-100 bg-white transition-all duration-500 ease-in-out`,
           className,
         )}
