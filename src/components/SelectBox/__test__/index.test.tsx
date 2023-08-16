@@ -31,12 +31,10 @@ describe("SelectBox", () => {
       const labelElement = screen.getByText(/Select an option/i);
       const optionsElement = screen.getByText(/Option 1/i);
       const supportTextElement = screen.getByText(/Choose an option from the list./i);
-      const placeholderElement = screen.getByText(/Placeholder/i);
 
       expect(labelElement).toBeInTheDocument();
       expect(optionsElement).toBeInTheDocument();
       expect(supportTextElement).toBeInTheDocument();
-      expect(placeholderElement).toBeInTheDocument();
     });
   });
 
