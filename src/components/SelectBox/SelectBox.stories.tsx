@@ -6,7 +6,7 @@ import SelectBox, { SelectBoxProps } from "./index";
 export default {
   title: "Forms/SelectBox",
   component: SelectBox,
-  tags: ["autodocs"],
+  tags: [],
   argTypes: {
     size: {
       options: ["lg", "md", "sm"],

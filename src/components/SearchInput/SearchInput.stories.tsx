@@ -6,7 +6,7 @@ import SearchInput, { SearchInputProps } from "./SearchInput";
 export default {
   title: "Others/SearchInput",
   component: SearchInput,
-  tags: ["autodocs"],
+  tags: [],
 } as Meta<typeof SearchInput>;
 
 const Template: StoryFn<typeof SearchInput> = (args: SearchInputProps) => {
@@ -28,6 +28,6 @@ export const Default = Template.bind({});
 Default.args = {
   label: "Default",
   selectedValue: "",
-  options: [{ info: "Pokemon" }, { info: "Digimon" }, { info: "Naruto" }],
+  options: [{ info: "Option 1" }, { info: "Option 2" }, { info: "Option 3" }],
   size: "md",
 };

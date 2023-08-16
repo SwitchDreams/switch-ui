@@ -153,3 +153,11 @@ Isaac Newton - "Se eu vi mais longe que outros é porque estive aos ombros de gi
 
 - [Shadcn/ui](https://ui.shadcn.com/docs)
 - [Primer github](https://primer.style/design/)
+
+## Observação:
+
+#### Personalização
+Todos os componentes foram projetados para ser altamente personalizável usando classes CSS da biblioteca Tailwind CSS. Você pode ajustar as cores, fontes e espaçamento de acordo com suas necessidades.
+
+#### Conclusão
+Os componentes da SwitchUI oferecem uma maneira simples e eficaz de componentes interativos e responsivos em seus projetos. Eles combinam o poder do Tailwind CSS e dos códigos mais recentes para criar uma experiência de usuário agradável e elegante. Experimente e adapte-o para se adequar ao seu design e estilo específicos.

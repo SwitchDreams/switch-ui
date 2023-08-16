@@ -4,7 +4,7 @@ import { Meta, StoryFn } from "@storybook/react";
 import FloatingButton, { FloatingButtonProps } from "./index";
 
 export default {
-  title: "Buttons/FloatingButton",
+  title: "Overlay/FloatingButton",
   component: FloatingButton,
   args: {
     variant: "primary",

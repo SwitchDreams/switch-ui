@@ -6,7 +6,7 @@ import { CheckBox } from ".";
 const meta = {
   title: "Forms/CheckBox",
   component: CheckBox,
-  tags: ["autodocs"],
+  tags: [],
 } satisfies Meta<typeof CheckBox>;
 
 export default meta;

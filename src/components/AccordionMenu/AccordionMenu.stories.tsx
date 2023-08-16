@@ -6,7 +6,7 @@ import AccordionMenu, { AccordionMenuProps } from ".";
 export default {
   title: "Navigation/AccordionMenu",
   component: AccordionMenu,
-  tags: ["autodocs"],
+  tags: [],
 } as Meta<typeof AccordionMenu>;
 
 const Template: StoryFn<typeof AccordionMenu> = (args: AccordionMenuProps) => (

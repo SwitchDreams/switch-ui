@@ -6,7 +6,7 @@ import { ToggleSwitch, ToggleSwitchProps } from "./";
 const meta = {
   title: "Forms/ToggleSwitch",
   component: ToggleSwitch,
-  tags: ["autodocs"],
+  tags: [],
 } satisfies Meta<ToggleSwitchProps>;
 
 export default meta;
