@@ -1,9 +1,9 @@
 import { cva, VariantProps } from "class-variance-authority";
 import React, { ElementType, forwardRef } from "react";
+import InputMask from "react-input-mask";
 import { twMerge } from "tailwind-merge";
 
-type InputElement = "input" | "textarea";
-
+type InputElement = typeof InputMask | "textarea" | "input";
 export interface ITextFieldBase
   extends Omit<React.InputHTMLAttributes<any>, "label" | "placeholder" | "size"> {
   label: string;
@@ -17,6 +17,7 @@ export interface ITextFieldBase
   error?: boolean;
   errorMsg?: string;
   onClickIcon?: () => void;
+  mask?: string;
   ref?: any;
 }
 
@@ -80,6 +81,7 @@ export const TextFieldBase = forwardRef(
     error = false,
     name,
     errorMsg,
+    mask = "",
     onClickIcon = () => {},
     ref,
     ...rest
@@ -104,6 +106,7 @@ export const TextFieldBase = forwardRef(
           name={name}
           placeholder={placeholder}
           className={textfieldClasses}
+          mask={mask}
           {...rest}
         />
         {error ? (

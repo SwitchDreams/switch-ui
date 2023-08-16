@@ -52,6 +52,7 @@
     "@testing-library/react": "^14.0.0",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "@types/react-input-mask": "^3.0.2",
     "@types/testing-library__jest-dom": "^5.14.8",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
@@ -89,6 +90,7 @@
     "@headlessui/tailwindcss": "^0.2.0",
     "@heroicons/react": "^2.0.18",
     "class-variance-authority": "^0.7.0",
+    "react-input-mask": "^2.0.4",
     "tailwind-merge": "^1.14.0"
   }
 }
