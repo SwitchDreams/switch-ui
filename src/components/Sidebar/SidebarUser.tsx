@@ -4,19 +4,29 @@ import { twMerge } from "tailwind-merge";
 import { Text } from "../Text";
 import { SidebarContext } from "./SidebarContext";
 
-export interface SidebarUserProps extends PropsWithChildren, ComponentProps<"div"> {}
+export interface SidebarUserProps extends PropsWithChildren, ComponentProps<"div"> {
+  TextColor?: string;
+}
 
-const SidebarUser = ({ children, className, ...rest }: SidebarUserProps) => {
+const SidebarUser = ({
+  children,
+  className,
+  TextColor = "gray-800",
+  ...rest
+}: SidebarUserProps) => {
   const { isOpen } = useContext(SidebarContext);
   return (
     <div className={twMerge("mx-2 flex items-center gap-4", className)} {...rest}>
-      {children}
-      {isOpen && (
-        <div className="flex flex-col">
-          <Text className="text-sm font-semibold text-gray-800">Switch Dreams</Text>
-          <Text className="text-xs text-gray-600">@switch.dreams</Text>
-        </div>
-      )}
+      <div className={`${isOpen ? "" : "flex w-full items-center justify-center"}`}>{children}</div>
+
+      <div
+        className={`flex flex-col transition-opacity ${
+          isOpen ? "opacity-100 duration-[2000ms]" : "opacity-0"
+        } duration-200 ease-in-out`}
+      >
+        <Text className={`${TextColor} text-sm font-semibold`}>Switch Dreams</Text>
+        <Text className={`text-xs ${TextColor}`}>@switch.dreams</Text>
+      </div>
     </div>
   );
 };

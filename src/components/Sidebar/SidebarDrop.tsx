@@ -15,9 +15,11 @@ export interface IDropProps {
   options: Options[];
 }
 
-export interface DropProps extends IDropProps, Omit<ComponentProps<"a">, "href"> {}
+export interface DropProps extends IDropProps, Omit<ComponentProps<"a">, "href"> {
+  TextColor?: string;
+}
 
-const SidebarDrop = ({ label, icon: Icon, options = [] }: DropProps) => {
+const SidebarDrop = ({ label, icon: Icon, TextColor = "gray-700", options = [] }: DropProps) => {
   const { isOpen } = useSidebarContext();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -28,21 +30,23 @@ const SidebarDrop = ({ label, icon: Icon, options = [] }: DropProps) => {
   return (
     <>
       {!isOpen && Icon && (
-        <div>
-          <Icon className="flex h-10 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50 max-md:hidden"></Icon>
+        <div className="h-12">
+          <Icon
+            className={`text-[${TextColor}] mx-2 flex h-7 w-7 items-center rounded-md text-md font-semibold hover:bg-gray-50 max-md:hidden`}
+          ></Icon>
         </div>
       )}
       {isOpen && Icon && (
         <div>
           <div
             onClick={handleDropdownToggle}
-            className={`flex h-10 w-full cursor-pointer items-center justify-between gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50 ${
+            className={`text-[${TextColor}] flex h-10 w-full cursor-pointer items-center justify-between gap-2 rounded-md px-2 text-md font-semibold hover:bg-gray-50 ${
               isDropdownOpen ? "peer-focus:visible" : ""
             }`}
           >
             <div className="flex items-center">
               <Icon className="mr-2 h-7 w-7"></Icon>
-              <Text>{label}</Text>
+              <Text size="sm">{label}</Text>
             </div>
             <ChevronDownIcon className="h-4 w-4" data-testid="chevron-icon"></ChevronDownIcon>
           </div>
@@ -60,9 +64,9 @@ const SidebarDrop = ({ label, icon: Icon, options = [] }: DropProps) => {
               {options.map((option) => (
                 <div
                   key={option.href}
-                  className="flex h-12 w-full items-center gap-2 rounded-md px-11 text-md font-semibold text-gray-700 last:mb-4 hover:bg-gray-50"
+                  className={`text-[${TextColor}] flex h-12 w-full items-center gap-2 rounded-md px-11 text-md font-semibold last:mb-4 hover:bg-gray-50`}
                 >
-                  <Text>{option.label}</Text>
+                  <Text size="sm">{option.label}</Text>
                 </div>
               ))}
             </ul>
@@ -78,7 +82,7 @@ const SidebarDrop = ({ label, icon: Icon, options = [] }: DropProps) => {
             }`}
           >
             <div className="flex items-center">
-              <Text>{label}</Text>
+              <Text size="sm">{label}</Text>
             </div>
             <ChevronDownIcon className="h-4 w-4" data-testid="chevron-icon"></ChevronDownIcon>
           </div>
