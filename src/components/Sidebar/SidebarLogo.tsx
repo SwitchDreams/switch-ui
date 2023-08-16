@@ -18,7 +18,7 @@ const SidebarLogo = ({ logo, href }: SidebarLogoProps) => {
     >
       {isOpen && (
         <a href={href}>
-          <img src={logo} className="h-12 w-52 bg-error-100 object-cover"></img>
+          <img src={logo} className="h-12 w-52 object-cover"></img>
         </a>
       )}
       {isOpen ? (

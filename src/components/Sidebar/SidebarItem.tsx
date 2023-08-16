@@ -1,5 +1,6 @@
 import React, { ComponentProps, ElementType } from "react";
 
+import { Text } from "../Text";
 import { useSidebarContext } from "./SidebarContext";
 
 export interface IItemProps {
@@ -23,14 +24,14 @@ const SidebarItem = ({ label, icon: Icon, href }: ItemProps) => {
         <a href={href}>
           <div className="flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50">
             <Icon className="h-10 w-7"></Icon>
-            <span>{label}</span>
+            <Text>{label}</Text>
           </div>
         </a>
       )}
       {isOpen && !Icon && (
         <a href={href}>
           <div className="flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 hover:bg-gray-50">
-            <span>{label}</span>
+            <Text>{label}</Text>
           </div>
         </a>
       )}

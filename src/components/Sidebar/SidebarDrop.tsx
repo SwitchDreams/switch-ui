@@ -1,6 +1,7 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import React, { ComponentProps, ElementType, useState } from "react";
 
+import { Text } from "../Text";
 import { useSidebarContext } from "./SidebarContext";
 
 type Options = {
@@ -41,7 +42,7 @@ const SidebarDrop = ({ label, icon: Icon, options = [] }: DropProps) => {
           >
             <div className="flex items-center">
               <Icon className="mr-2 h-7 w-7"></Icon>
-              <span>{label}</span>
+              <Text>{label}</Text>
             </div>
             <ChevronDownIcon className="h-4 w-4" data-testid="chevron-icon"></ChevronDownIcon>
           </div>
@@ -61,7 +62,7 @@ const SidebarDrop = ({ label, icon: Icon, options = [] }: DropProps) => {
                   key={option.href}
                   className="flex h-12 w-full items-center gap-2 rounded-md px-11 text-md font-semibold text-gray-700 last:mb-4 hover:bg-gray-50"
                 >
-                  {option.label}
+                  <Text>{option.label}</Text>
                 </div>
               ))}
             </ul>
@@ -77,7 +78,7 @@ const SidebarDrop = ({ label, icon: Icon, options = [] }: DropProps) => {
             }`}
           >
             <div className="flex items-center">
-              <span>{label}</span>
+              <Text>{label}</Text>
             </div>
             <ChevronDownIcon className="h-4 w-4" data-testid="chevron-icon"></ChevronDownIcon>
           </div>
@@ -97,7 +98,7 @@ const SidebarDrop = ({ label, icon: Icon, options = [] }: DropProps) => {
                   key={option.href}
                   className="flex h-12 w-full items-center gap-2 rounded-md px-11 text-md font-semibold text-gray-700 hover:bg-gray-50"
                 >
-                  {option.label}
+                  <Text>{option.label}</Text>
                 </div>
               ))}
             </ul>

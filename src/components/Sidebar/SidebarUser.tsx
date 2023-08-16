@@ -1,6 +1,7 @@
 import { ComponentProps, PropsWithChildren, useContext } from "react";
 import { twMerge } from "tailwind-merge";
 
+import { Text } from "../Text";
 import { SidebarContext } from "./SidebarContext";
 
 export interface SidebarUserProps extends PropsWithChildren, ComponentProps<"div"> {}
@@ -12,8 +13,8 @@ const SidebarUser = ({ children, className, ...rest }: SidebarUserProps) => {
       {children}
       {isOpen && (
         <div className="flex flex-col">
-          <span className="text-sm font-semibold text-gray-800">Switch Dreams</span>
-          <span className="text-xs text-gray-600">@switch.dreams</span>
+          <Text className="text-sm font-semibold text-gray-800">Switch Dreams</Text>
+          <Text className="text-xs text-gray-600">@switch.dreams</Text>
         </div>
       )}
     </div>
