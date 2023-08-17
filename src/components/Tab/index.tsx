@@ -1,6 +1,6 @@
 import { Tab } from "@headlessui/react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 type Tabs = {
@@ -12,6 +12,8 @@ export interface TabType extends HTMLAttributes<any> {
   size?: "lg" | "md" | "sm";
   padding?: boolean;
   tabs: Tabs[];
+  onTabChange?: (index: number) => void;
+  currentIndex?: number
 }
 
 export type TabVariantProps = VariantProps<typeof TabVariants>;
@@ -35,11 +37,17 @@ export const TabVariants = cva(
 
 export interface TabProps extends Omit<TabVariantProps, "size" | "padding">, TabType {}
 
-const TabComponent = ({ size = "md", padding = false, tabs, className }: TabProps) => {
+const TabComponent = ({ size = "md", padding = false, tabs, onTabChange = () => {}, currentIndex = 0, className }: TabProps) => {
   const tabClass = twMerge(TabVariants({ size, padding }), className);
+  const [index, setIndex] = useState(0)
 
   return (
-    <Tab.Group defaultIndex={0} as="div" className="h-[34px] w-full">
+    <Tab.Group defaultIndex={index} as="div" className="h-[34px] w-full"
+      onChange={(index) => {
+        onTabChange(index);
+        setIndex(currentIndex)
+      }}
+    >
       <Tab.List as="div" className="flex pb-8">
         {tabs.map((tab: Tabs) => {
           return (
