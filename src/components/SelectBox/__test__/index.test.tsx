@@ -19,6 +19,7 @@ describe("SelectBox", () => {
         defaultValue={1}
         disabled={false}
         supportText="Choose an option from the list."
+        placeholder="Placeholder"
       />
     );
   };
