@@ -24,7 +24,7 @@ const SidebarMain = ({
 
   const style = isOpen ? "w-72" : "w-20 max-md:w-0 max-md:absolute z-10";
   return (
-    <div className={twMerge(className)} {...rest}>
+    <div>
       <div
         className={`${sideBarColor} ${textColor} absolute top-0 z-0 flex w-full items-center justify-between border-b-2 border-gray-100 py-10 max-md:h-[70px] md:hidden`}
       >

@@ -13,8 +13,8 @@ const SidebarComponent = ({
   children,
   logo,
   absolute,
-  sideBarColor,
-  textColor,
+  sideBarColor = "bg-white",
+  textColor = "text-gray-600",
 }: PropsWithChildren & any) => {
   return (
     <SidebarProvider>
