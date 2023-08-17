@@ -12,18 +12,18 @@ const SidebarLogo = ({ logo, href }: SidebarLogoProps) => {
   const { isOpen, setIsOpen } = useContext(SidebarContext);
   return (
     <div
-      className={`mx-5 flex items-center ${
+      className={`mx-5 flex h-32 items-center py-10 ${
         isOpen ? "justify-between" : "justify-center"
-      } border-b-2 border-gray-200 py-10`}
+      } border-b-2 border-gray-200`}
     >
       {isOpen && (
         <a href={href}>
-          <img src={logo} className="h-12 w-52 bg-error-100 object-cover"></img>
+          <img src={logo} className="h-12 w-52 object-cover"></img>
         </a>
       )}
       {isOpen ? (
         <Bars3BottomRightIcon
-          className="h-7 w-7"
+          className="mx-5 h-7 w-7"
           onClick={() => {
             setIsOpen(!isOpen);
           }}

@@ -26,6 +26,9 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: Story = {
   args: {
+    TextColor: "text-white",
+    sideBarColor: "bg-primary-500",
+    absolute: true,
     logo: "https://switchdreams.com.br/og_image.png",
     children: (
       <>
