@@ -12,6 +12,8 @@ export interface TabType extends HTMLAttributes<any> {
   size?: "lg" | "md" | "sm";
   padding?: boolean;
   tabs: Tabs[];
+  onTabChange?: (index: number) => void;
+  currentIndex?: number;
 }
 
 export type TabVariantProps = VariantProps<typeof TabVariants>;
@@ -35,11 +37,27 @@ export const TabVariants = cva(
 
 export interface TabProps extends Omit<TabVariantProps, "size" | "padding">, TabType {}
 
-const TabComponent = ({ size = "md", padding = false, tabs, className }: TabProps) => {
+const TabComponent = ({
+  size = "md",
+  padding = false,
+  tabs,
+  onTabChange = () => {},
+  currentIndex,
+  className,
+}: TabProps) => {
   const tabClass = twMerge(TabVariants({ size, padding }), className);
 
   return (
-    <Tab.Group defaultIndex={0} as="div" className="h-[34px] w-full">
+    <Tab.Group
+      selectedIndex={currentIndex}
+      onChange={(index) => {
+        if (onTabChange) {
+          onTabChange(index);
+        }
+      }}
+      as="div"
+      className="h-[34px] w-full"
+    >
       <Tab.List as="div" className="flex pb-8">
         {tabs.map((tab: Tabs) => {
           return (
