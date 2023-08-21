@@ -13,13 +13,21 @@ export interface IDropProps {
   label: string;
   icon?: ElementType;
   hoverColor?: string;
+  as?: ElementType;
   options: Options[];
 }
 
 export interface DropProps extends IDropProps, Omit<ComponentProps<"a">, "href"> {}
 
-const SidebarDrop = ({ label, icon: Icon, hoverColor = "bg-gray-50", options = [] }: DropProps) => {
+const SidebarDrop = ({
+  label,
+  icon: Icon,
+  as = "a",
+  hoverColor = "bg-gray-50",
+  options = [],
+}: DropProps) => {
   const { isOpen } = useSidebarContext();
+  const Element = as;
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleDropdownToggle = () => {
@@ -65,7 +73,9 @@ const SidebarDrop = ({ label, icon: Icon, hoverColor = "bg-gray-50", options = [
                   key={option.href}
                   className={`hover:${hoverColor} flex h-12 w-full items-center gap-2 rounded-md px-11 text-md font-semibold last:mb-4 `}
                 >
-                  <Text>{option.label}</Text>
+                  <Element href={option.href}>
+                    <Text>{option.label}</Text>
+                  </Element>
                 </div>
               ))}
             </ul>
@@ -101,7 +111,9 @@ const SidebarDrop = ({ label, icon: Icon, hoverColor = "bg-gray-50", options = [
                   key={option.href}
                   className={`hover:${hoverColor} flex h-12 w-full items-center gap-2 rounded-md px-11 text-md font-semibold text-gray-700`}
                 >
-                  <Text>{option.label}</Text>
+                  <Element href={option.href}>
+                    <Text>{option.label}</Text>
+                  </Element>
                 </div>
               ))}
             </ul>
