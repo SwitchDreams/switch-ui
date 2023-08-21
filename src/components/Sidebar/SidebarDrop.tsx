@@ -12,14 +12,13 @@ type Options = {
 export interface IDropProps {
   label: string;
   icon?: ElementType;
-  hoverColor?: string;
   options: Options[];
 }
 
 export interface DropProps extends IDropProps, Omit<ComponentProps<"a">, "href"> {}
 
-const SidebarDrop = ({ label, icon: Icon, hoverColor = "bg-gray-50", options = [] }: DropProps) => {
-  const { isOpen } = useSidebarContext();
+const SidebarDrop = ({ label, icon: Icon, options = [] }: DropProps) => {
+  const { isOpen, hoverColor } = useSidebarContext();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleDropdownToggle = () => {
@@ -51,7 +50,7 @@ const SidebarDrop = ({ label, icon: Icon, hoverColor = "bg-gray-50", options = [
           </div>
           <div
             className={`w-full transition-all duration-300 ease-in-out ${
-              isDropdownOpen ? "max-w-full opacity-100" : "opacity-0 h-0"
+              isDropdownOpen ? "max-w-full opacity-100" : "h-0 opacity-0"
             }`}
           >
             <ul

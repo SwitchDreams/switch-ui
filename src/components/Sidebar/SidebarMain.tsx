@@ -9,7 +9,6 @@ export interface SidebarVariant extends PropsWithChildren, ComponentProps<"div">
   absolute?: boolean;
   sideBarColor?: string;
   textColor?: string;
-  hoverColor?: string;
 }
 
 const SidebarMain = ({
