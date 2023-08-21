@@ -8,12 +8,7 @@ export interface SidebarUserProps extends PropsWithChildren, ComponentProps<"div
   TextColor?: string;
 }
 
-const SidebarUser = ({
-  children,
-  className,
-  TextColor = "gray-800",
-  ...rest
-}: SidebarUserProps) => {
+const SidebarUser = ({ children, className, ...rest }: SidebarUserProps) => {
   const { isOpen } = useContext(SidebarContext);
   return (
     <div className={twMerge("mx-2 flex items-center gap-4", className)} {...rest}>
@@ -24,8 +19,8 @@ const SidebarUser = ({
           isOpen ? "opacity-100 duration-[2000ms]" : "opacity-0"
         } duration-200 ease-in-out`}
       >
-        <Text className={`${TextColor} text-sm font-semibold`}>Switch Dreams</Text>
-        <Text className={`text-xs ${TextColor}`}>@switch.dreams</Text>
+        <Text className={`text-sm font-semibold`}>Switch Dreams</Text>
+        <Text className={`text-xs`}>@switch.dreams</Text>
       </div>
     </div>
   );

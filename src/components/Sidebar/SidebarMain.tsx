@@ -9,6 +9,7 @@ export interface SidebarVariant extends PropsWithChildren, ComponentProps<"div">
   absolute?: boolean;
   sideBarColor?: string;
   textColor?: string;
+  hoverColor?: string;
 }
 
 const SidebarMain = ({
@@ -24,7 +25,7 @@ const SidebarMain = ({
 
   const style = isOpen ? "w-72" : "w-20 max-md:w-0 max-md:absolute z-10";
   return (
-    <div className={twMerge(className)} {...rest}>
+    <div>
       <div
         className={`${sideBarColor} ${textColor} absolute top-0 z-0 flex w-full items-center justify-between border-b-2 border-gray-100 py-10 max-md:h-[70px] md:hidden`}
       >
@@ -40,7 +41,7 @@ const SidebarMain = ({
         className={twMerge(
           style,
           `${
-            absolute ? "max-md:absolute" : "absolute"
+            absolute ? "absolute" : "max-md:absolute"
           } top-0 z-10 h-full border-r border-gray-100 ${sideBarColor} transition-all duration-500 ease-in-out ${textColor}`,
           className,
         )}

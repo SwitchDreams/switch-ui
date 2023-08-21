@@ -7,26 +7,26 @@ export interface IItemProps {
   label: string;
   href: string;
   icon?: ElementType;
-  TextColor?: string;
+  hoverColor?: string;
 }
 
 export interface ItemProps extends IItemProps, Omit<ComponentProps<"a">, "href"> {}
 
-const SidebarItem = ({ label, icon: Icon, TextColor, href }: ItemProps) => {
+const SidebarItem = ({ label, icon: Icon, hoverColor = "bg-gray-50", href }: ItemProps) => {
   const { isOpen } = useSidebarContext();
   return (
     <>
       {!isOpen && Icon && (
         <a href={href} className="h-12">
           <Icon
-            className={`${TextColor} mx-2 flex h-7 w-7 items-center rounded-md text-md font-semibold hover:bg-gray-50 max-md:hidden`}
+            className={`hover:${hoverColor} mx-2 flex h-7 w-7 items-center rounded-md text-md font-semibold max-md:hidden`}
           ></Icon>
         </a>
       )}
       {isOpen && Icon && (
         <a href={href}>
           <div
-            className={`${TextColor} flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold hover:bg-gray-50`}
+            className={`hover:${hoverColor} flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold`}
           >
             <Icon className="h-7 w-7"></Icon>
             <Text>{label}</Text>
@@ -36,7 +36,7 @@ const SidebarItem = ({ label, icon: Icon, TextColor, href }: ItemProps) => {
       {isOpen && !Icon && (
         <a href={href}>
           <div
-            className={`${TextColor} flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold hover:bg-gray-50`}
+            className={`hover:${hoverColor} flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold`}
           >
             <Text>{label}</Text>
           </div>
@@ -45,7 +45,7 @@ const SidebarItem = ({ label, icon: Icon, TextColor, href }: ItemProps) => {
       {!isOpen && !Icon && (
         <a href={href}>
           <div
-            className={`${TextColor} flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold hover:bg-gray-50 max-md:hidden`}
+            className={`hover:${hoverColor}flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold max-md:hidden`}
           >
             <div className="h-10 w-7 text-center text-lg font-semibold">
               {label[0].toUpperCase()}
