@@ -1,7 +1,9 @@
 name: Publish package to GitHub Packages
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - '*'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,14 +21,12 @@ jobs:
           scope: '@octocat'
       - name: Set package version
         run: |
-          # Get the version from the release tag
-          VERSION=$(echo "${{ github.ref }}" | sed -n 's|^refs/tags/v\(.*\)|\1|p')
           # Update the package.json version
-          npm version "${VERSION}"
+          npm version "${{  github.ref_name }}"
           # Commit the updated package.json
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git commit -am "Set version to ${VERSION}"
+          git commit -am "Set version to ${{  github.ref_name }}"
       - run: npm build
       - run: npm publish
         env:
