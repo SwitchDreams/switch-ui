@@ -24,7 +24,7 @@ jobs:
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
           # Update the package.json version
-          npm version "${{ github.event.release.tag_name }}"
+          npm version ${{ github.event.release.tag_name }}
       - run: npm build
       - run: npm publish
         env:
