@@ -18,14 +18,17 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           # Defaults to the user or organization that owns the workflow file
           scope: '@octocat'
+          cache: 'yarn'
       - name: Set package version
         run: |
           # Commit the updated package.json
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
           # Update the package.json version
-          npm version ${{ github.event.release.tag_name }}
-      - run: npm run build
-      - run: npm publish
+          yarn version --new-version ${{ github.event.release.tag_name }}
+      - name: Install dependencies
+        run: yarn install -frozen-lockfile
+      - run: yarn build
+      - run: yarn publish --new-version ${{ github.event.release.tag_name }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
