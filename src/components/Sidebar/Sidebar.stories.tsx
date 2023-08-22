@@ -97,7 +97,7 @@ export const Default: Story = {
             label="Projects"
             icon={FolderOpenIcon}
             options={[
-              { label: "Project 1", href: "https://www.youtube.com/watch?v=k0lMI7aPJa0" },
+              { label: "Project 1", href: "" },
               { label: "Project 2", href: "" },
               { label: "Project 3", href: "" },
             ]}
