@@ -77,13 +77,13 @@ export const WithPage: Story = Template;
 export const Default: Story = {
   args: {
     logo: "https://switchdreams.com.br/og_image.png",
+    hoverColor: "bg-primary-300",
     children: (
       <>
         <Sidebar.Logo logo="https://switchdreams.com.br/og_image.png"></Sidebar.Logo>
         <Sidebar.Group>
           <Sidebar.Item label="Home" href="" icon={HomeIcon}></Sidebar.Item>
           <Sidebar.Dropdown
-            hoverColor="bg-primary-500"
             label="Dashboard"
             icon={ChartPieIcon}
             options={[

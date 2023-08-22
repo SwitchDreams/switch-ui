@@ -5,6 +5,7 @@ export type SidebarContextType = {
   setIsOpen: (isOpen: boolean) => void;
   isDesktop: boolean;
   setIsDesktop: (isOpen: boolean) => void;
+  hoverColor?: string;
 };
 
 const defaultContextValue: SidebarContextType = {
@@ -16,12 +17,18 @@ const defaultContextValue: SidebarContextType = {
 
 export const SidebarContext = createContext<SidebarContextType>(defaultContextValue);
 
-export function SidebarProvider({ children }: { children: React.ReactNode }) {
+export function SidebarProvider({
+  children,
+  hoverColor,
+}: {
+  children: React.ReactNode;
+  hoverColor?: string;
+}) {
   const [isOpen, setIsOpen] = useState<boolean>(defaultContextValue.isOpen);
   const [isDesktop, setIsDesktop] = useState<boolean>(defaultContextValue.isDesktop);
 
   return (
-    <SidebarContext.Provider value={{ isOpen, setIsOpen, isDesktop, setIsDesktop }}>
+    <SidebarContext.Provider value={{ isOpen, setIsOpen, isDesktop, setIsDesktop, hoverColor }}>
       {children}
     </SidebarContext.Provider>
   );

@@ -12,7 +12,6 @@ type Options = {
 export interface IDropProps {
   label: string;
   icon?: ElementType;
-  hoverColor?: string;
   as?: ElementType;
   options: Options[];
 }
@@ -23,10 +22,9 @@ const SidebarDrop = ({
   label,
   icon: Icon,
   as = "a",
-  hoverColor = "bg-gray-50",
   options = [],
 }: DropProps) => {
-  const { isOpen } = useSidebarContext();
+  const { isOpen, hoverColor } = useSidebarContext();
   const Element = as;
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -39,15 +37,15 @@ const SidebarDrop = ({
       {!isOpen && Icon && (
         <div className="h-12">
           <Icon
-            className={`hover:${hoverColor} mx-2 flex h-7 w-7 items-center rounded-md text-md font-semibold  max-md:hidden`}
+            className={`hover:${hoverColor} mx-2 flex h-7 w-7 items-center rounded-md text-md font-semibold max-md:hidden`}
           ></Icon>
         </div>
       )}
       {isOpen && Icon && (
-        <div>
+        <>
           <div
             onClick={handleDropdownToggle}
-            className={`hover:${hoverColor} flex h-10 w-full cursor-pointer items-center justify-between gap-2 rounded-md px-2 text-md font-semibold ${
+            className={`hover:${hoverColor} flex h-12 w-full cursor-pointer items-center justify-between rounded-md px-2 text-md font-semibold ${
               isDropdownOpen ? "peer-focus:visible" : ""
             }`}
           >
@@ -59,7 +57,7 @@ const SidebarDrop = ({
           </div>
           <div
             className={`w-full transition-all duration-300 ease-in-out ${
-              isDropdownOpen ? "max-w-full opacity-100" : "opacity-0"
+              isDropdownOpen ? "max-w-full opacity-100" : "h-0 opacity-0"
             }`}
           >
             <ul
@@ -68,9 +66,9 @@ const SidebarDrop = ({
               } relative flex-col gap-5 overflow-hidden`}
             >
               <div className="absolute left-5 top-[12%] h-[70%] w-[2px] bg-gray-100"></div>
-              {options.map((option) => (
+              {options.map((option, index) => (
                 <div
-                  key={option.href}
+                  key={index}
                   className={`hover:${hoverColor} flex h-12 w-full items-center gap-2 rounded-md px-11 text-md font-semibold last:mb-4 `}
                 >
                   <Element href={option.href}>
@@ -80,13 +78,13 @@ const SidebarDrop = ({
               ))}
             </ul>
           </div>
-        </div>
+        </>
       )}
       {isOpen && !Icon && (
-        <div>
+        <>
           <div
             onClick={handleDropdownToggle}
-            className={`hover:${hoverColor} flex h-10 w-full cursor-pointer items-center justify-between gap-2 rounded-md px-2 text-md font-semibold text-gray-700  ${
+            className={`hover:${hoverColor} flex h-12 w-full cursor-pointer items-center justify-between gap-2 rounded-md px-2 text-md font-semibold text-gray-700  ${
               isDropdownOpen ? "peer-focus:visible" : ""
             }`}
           >
@@ -106,9 +104,9 @@ const SidebarDrop = ({
               } relative flex-col gap-5 overflow-hidden`}
             >
               <div className="absolute left-5 top-[15%] h-[75%] w-[2px] bg-gray-100"></div>
-              {options.map((option) => (
+              {options.map((option, index) => (
                 <div
-                  key={option.href}
+                  key={index}
                   className={`hover:${hoverColor} flex h-12 w-full items-center gap-2 rounded-md px-11 text-md font-semibold text-gray-700`}
                 >
                   <Element href={option.href}>
@@ -118,7 +116,7 @@ const SidebarDrop = ({
               ))}
             </ul>
           </div>
-        </div>
+        </>
       )}
       {!isOpen && !Icon && (
         <div
