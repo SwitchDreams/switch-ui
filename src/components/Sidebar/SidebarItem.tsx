@@ -7,42 +7,45 @@ export interface IItemProps {
   label: string;
   href: string;
   icon?: ElementType;
+  as?: ElementType;
 }
 
 export interface ItemProps extends IItemProps, Omit<ComponentProps<"a">, "href"> {}
 
-const SidebarItem = ({ label, icon: Icon, href }: ItemProps) => {
+const SidebarItem = ({ label, as = "a", icon: Icon, href }: ItemProps) => {
   const { isOpen, hoverColor } = useSidebarContext();
+  const Element = as;
+
   return (
     <>
       {!isOpen && Icon && (
-        <a href={href} className="h-12">
+        <Element href={href} className="h-12">
           <Icon
             className={`hover:${hoverColor} mx-2 flex h-7 w-7 items-center rounded-md text-md font-semibold max-md:hidden`}
           ></Icon>
-        </a>
+        </Element>
       )}
       {isOpen && Icon && (
-        <a href={href}>
+        <Element href={href}>
           <div
             className={`hover:${hoverColor} flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold`}
           >
             <Icon className="h-7 w-7"></Icon>
             <Text>{label}</Text>
           </div>
-        </a>
+        </Element>
       )}
       {isOpen && !Icon && (
-        <a href={href}>
+        <Element href={href}>
           <div
             className={`hover:${hoverColor} flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold`}
           >
             <Text>{label}</Text>
           </div>
-        </a>
+        </Element>
       )}
       {!isOpen && !Icon && (
-        <a href={href}>
+        <Element href={href}>
           <div
             className={`hover:${hoverColor}flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold max-md:hidden`}
           >
@@ -50,7 +53,7 @@ const SidebarItem = ({ label, icon: Icon, href }: ItemProps) => {
               {label[0].toUpperCase()}
             </div>
           </div>
-        </a>
+        </Element>
       )}
     </>
   );
