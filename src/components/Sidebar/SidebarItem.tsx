@@ -12,12 +12,7 @@ export interface IItemProps {
 
 export interface ItemProps extends IItemProps, Omit<ComponentProps<"a">, "href"> {}
 
-const SidebarItem = ({
-  label,
-  as = "a",
-  icon: Icon,
-  href,
-}: ItemProps) => {
+const SidebarItem = ({ label, as = "a", icon: Icon, href }: ItemProps) => {
   const { isOpen, hoverColor } = useSidebarContext();
   const Element = as;
 

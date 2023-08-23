@@ -18,12 +18,7 @@ export interface IDropProps {
 
 export interface DropProps extends IDropProps, Omit<ComponentProps<"a">, "href"> {}
 
-const SidebarDrop = ({
-  label,
-  icon: Icon,
-  as = "a",
-  options = [],
-}: DropProps) => {
+const SidebarDrop = ({ label, icon: Icon, as = "a", options = [] }: DropProps) => {
   const { isOpen, hoverColor } = useSidebarContext();
   const Element = as;
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
