@@ -10,7 +10,7 @@ export interface SidebarUserProps extends PropsWithChildren, ComponentProps<"div
   subTitle?: string;
 }
 
-const SidebarUser = ({ Title, Subtitle, children, className, ...rest }: SidebarUserProps) => {
+const SidebarUser = ({ title, subTitle, children, className, ...rest }: SidebarUserProps) => {
   const { isOpen } = useContext(SidebarContext);
   return (
     <div className={twMerge("mx-2 flex items-center gap-4", className)} {...rest}>
@@ -21,8 +21,8 @@ const SidebarUser = ({ Title, Subtitle, children, className, ...rest }: SidebarU
           isOpen ? "opacity-100 duration-[2000ms]" : "opacity-0"
         } duration-200 ease-in-out`}
       >
-        <Text className={`text-sm font-semibold`}>{Title}</Text>
-        <Text className={`text-xs`}>{Subtitle}</Text>
+        <Text className={`text-sm font-semibold`}>{title}</Text>
+        <Text className={`text-xs`}>{subTitle}</Text>
       </div>
     </div>
   );

@@ -55,7 +55,7 @@ const Template: StoryFn<any> = () => (
         <Sidebar.Item label="Support" href="" icon={ExclamationCircleIcon}></Sidebar.Item>
         <Sidebar.Item label="Settings" href="" icon={Cog6ToothIcon}></Sidebar.Item>
         <hr className="mb-10 mt-8 h-px w-full" />
-        <Sidebar.User Title="Switch Dreams" Subtitle="@switchDreams">
+        <Sidebar.User title="Switch Dreams" subTitle="@switchDreams">
           <Avatar name="F" avatarUrl="" size="sm"></Avatar>
         </Sidebar.User>
       </Sidebar.Footer>
@@ -110,7 +110,7 @@ export const Default: Story = {
           <Sidebar.Item label="Support" href="" icon={ExclamationCircleIcon}></Sidebar.Item>
           <Sidebar.Item label="Settings" href="" icon={Cog6ToothIcon}></Sidebar.Item>
           <hr className="mb-10 mt-8 h-px w-full" />
-          <Sidebar.User Title="Switch Dreams" Subtitle="@switchDreams">
+          <Sidebar.User title="Switch Dreams" subTitle="@switchDreams">
             <Avatar name="F" avatarUrl="" size="sm"></Avatar>
           </Sidebar.User>
         </Sidebar.Footer>
