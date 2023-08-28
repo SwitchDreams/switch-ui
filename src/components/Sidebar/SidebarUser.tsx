@@ -6,11 +6,11 @@ import { SidebarContext } from "./SidebarContext";
 
 export interface SidebarUserProps extends PropsWithChildren, ComponentProps<"div"> {
   TextColor?: string;
-  Username?: string;
-  Userhash?: string;
+  Title?: string;
+  Subtitle?: string;
 }
 
-const SidebarUser = ({ Username, Userhash, children, className, ...rest }: SidebarUserProps) => {
+const SidebarUser = ({ Title, Subtitle, children, className, ...rest }: SidebarUserProps) => {
   const { isOpen } = useContext(SidebarContext);
   return (
     <div className={twMerge("mx-2 flex items-center gap-4", className)} {...rest}>
@@ -21,8 +21,8 @@ const SidebarUser = ({ Username, Userhash, children, className, ...rest }: Sideb
           isOpen ? "opacity-100 duration-[2000ms]" : "opacity-0"
         } duration-200 ease-in-out`}
       >
-        <Text className={`text-sm font-semibold`}>{Username}</Text>
-        <Text className={`text-xs`}>@{Userhash}</Text>
+        <Text className={`text-sm font-semibold`}>{Title}</Text>
+        <Text className={`text-xs`}>{Subtitle}</Text>
       </div>
     </div>
   );
