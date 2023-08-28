@@ -6,8 +6,8 @@ import { SidebarContext } from "./SidebarContext";
 
 export interface SidebarUserProps extends PropsWithChildren, ComponentProps<"div"> {
   TextColor?: string;
-  Title?: string;
-  Subtitle?: string;
+  title?: string;
+  subTitle?: string;
 }
 
 const SidebarUser = ({ Title, Subtitle, children, className, ...rest }: SidebarUserProps) => {
