@@ -25,7 +25,7 @@ interface SelectBoxType extends ListboxProps<any, any, any> {
 export type SelectBoxVariantProps = VariantProps<typeof selectBoxVariants>;
 
 export const selectBoxVariants = cva(
-  "rounded-plug-md relative m-1 cursor-default select-none pl-2",
+  "rounded-plug-md relative m-1 cursor-default select-none pl-2 text-gray-100",
   {
     variants: {
       size: {
@@ -42,7 +42,7 @@ export const selectBoxVariants = cva(
 );
 
 export const selectBoxButtonVariants = cva(
-  "rounded-plug-md relative my-2 w-full cursor-default border text-left hover:bg-gray-100",
+  "rounded-plug-md relative my-2 w-full cursor-default border text-left text-gray-600 hover:bg-gray-100",
   {
     variants: {
       disabled: {
