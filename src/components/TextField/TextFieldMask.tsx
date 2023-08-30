@@ -5,8 +5,8 @@ import { TextFieldBase, TextFieldBaseProps } from "./TextFieldBase";
 
 export interface TextFieldProps extends Omit<TextFieldBaseProps, "inputElement"> {}
 
-const TextField = (props: TextFieldProps) => {
+const TextFieldMask = (props: TextFieldProps) => {
   return <TextFieldBase inputElement={InputMask} {...props} />;
 };
 
-export default TextField;
+export default TextFieldMask;

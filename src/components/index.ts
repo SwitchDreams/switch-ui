@@ -34,6 +34,7 @@ import { RadioButton, RadioButtonProps } from "./RadioButton";
 import { CheckBox, CheckBoxProps } from "./CheckBox";
 import TextArea, { TextAreaProps } from "./TextArea";
 import TextField, { TextFieldProps } from "./TextField";
+import TextFieldMask from "./TextField/TextFieldMask";
 import ToggleSwitch, { ToggleSwitchProps } from "./ToggleSwitch";
 // Overlay
 import Toast, { ToastProps } from "./Toast";
@@ -57,6 +58,7 @@ export {
   Text,
   TextArea,
   TextField,
+  TextFieldMask,
   Toast,
   ToggleSwitch,
   Tooltip,
