@@ -1,7 +1,9 @@
 /** @type {import("tailwindcss").Config} **/
+const { createThemes } = require("tw-colors");
 import generated from "@headlessui/tailwindcss";
 
 import colors from "./src/constants/colors";
+import defaultTheme from "./.storybook/themes/default";
 import switchUiPlugin from "./src/tailwind.plugin";
 
 export default {
@@ -57,5 +59,11 @@ export default {
       xs: "12px",
     },
   },
-  plugins: [switchUiPlugin, generated({ prefix: "ui" })],
+  plugins: [
+    switchUiPlugin,
+    generated({ prefix: "ui" }),
+    createThemes({
+      default: defaultTheme,
+    }),
+  ],
 };
