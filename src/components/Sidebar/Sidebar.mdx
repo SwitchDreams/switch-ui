@@ -1,7 +1,7 @@
 import * as SidebarStories from "./Sidebar.stories";
-import {Meta, Controls, Story, Canvas, Description} from "@storybook/blocks";
+import { Meta, Controls, Story, Canvas, Description } from "@storybook/blocks";
 import Avatar from "../Avatar";
-import {Sidebar} from "./Sidebar";
+import { Sidebar } from "./Sidebar";
 import {
   ChartPieIcon,
   Cog6ToothIcon,
@@ -17,46 +17,46 @@ import {
 
 # Sidebar
 
-### O componente sidebar é o mais complexo de nossa biblioteca tendo esle de ser adicionado em partes no código.
+### O componente sidebar é o mais complexo de nossa biblioteca tendo de ser adicionado em partes no código.
 
-#### Para iniciar vamos dar um exemlo de sidebar completa.
+#### Para iniciar vamos dar um exemplo de sidebar completa.
 
 <Canvas>
   <Sidebar>
-        <Sidebar.Logo logo="https://switchdreams.com.br/og_image.png"></Sidebar.Logo>
-        <Sidebar.Group>
-          <Sidebar.Item label="Home" href="" icon={HomeIcon}></Sidebar.Item>
-          <Sidebar.Dropdown
-            label="Dashboard"
-            icon={ChartPieIcon}
-            options={[
-              { label: "Overview", href: "" },
-              { label: "Notifications", href: "" },
-              { label: "Analytics", href: "" },
-              { label: "Reports", href: "" },
-            ]}
-          ></Sidebar.Dropdown>
-          <Sidebar.Dropdown
-            label="Projects"
-            icon={FolderOpenIcon}
-            options={[
-              { label: "Project 1", href: "" },
-              { label: "Project 2", href: "" },
-              { label: "Project 3", href: "" },
-            ]}
-          ></Sidebar.Dropdown>
-          <Sidebar.Item label="Tasks" href="" icon={DocumentCheckIcon}></Sidebar.Item>
-          <Sidebar.Item label="Reporting" href="" icon={NewspaperIcon}></Sidebar.Item>
-          <Sidebar.Item label="Users" href="" icon={UsersIcon}></Sidebar.Item>
-        </Sidebar.Group>
-        <Sidebar.Footer>
-          <Sidebar.Item label="Support" href="" icon={ExclamationCircleIcon}></Sidebar.Item>
-          <Sidebar.Item label="Settings" href="" icon={Cog6ToothIcon}></Sidebar.Item>
-          <hr className="mb-10 mt-8 h-px w-full" />
-          <Sidebar.User Username="Switch Dreams" Userhash="switchDreams">
-            <Avatar name="F" avatarUrl="" size="sm"></Avatar>
-          </Sidebar.User>
-        </Sidebar.Footer>
+    <Sidebar.Logo logo="https://switchdreams.com.br/og_image.png"></Sidebar.Logo>
+    <Sidebar.Group>
+      <Sidebar.Item label="Home" href="" icon={HomeIcon}></Sidebar.Item>
+      <Sidebar.Dropdown
+        label="Dashboard"
+        icon={ChartPieIcon}
+        options={[
+          { label: "Overview", href: "" },
+          { label: "Notifications", href: "" },
+          { label: "Analytics", href: "" },
+          { label: "Reports", href: "" },
+        ]}
+      ></Sidebar.Dropdown>
+      <Sidebar.Dropdown
+        label="Projects"
+        icon={FolderOpenIcon}
+        options={[
+          { label: "Project 1", href: "" },
+          { label: "Project 2", href: "" },
+          { label: "Project 3", href: "" },
+        ]}
+      ></Sidebar.Dropdown>
+      <Sidebar.Item label="Tasks" href="" icon={DocumentCheckIcon}></Sidebar.Item>
+      <Sidebar.Item label="Reporting" href="" icon={NewspaperIcon}></Sidebar.Item>
+      <Sidebar.Item label="Users" href="" icon={UsersIcon}></Sidebar.Item>
+    </Sidebar.Group>
+    <Sidebar.Footer>
+      <Sidebar.Item label="Support" href="" icon={ExclamationCircleIcon}></Sidebar.Item>
+      <Sidebar.Item label="Settings" href="" icon={Cog6ToothIcon}></Sidebar.Item>
+      <hr className="mb-10 mt-8 h-px w-full" />
+      <Sidebar.User title="Switch Dreams" subTitle="switchDreams">
+        <Avatar name="F" avatarUrl="" size="sm"></Avatar>
+      </Sidebar.User>
+    </Sidebar.Footer>
   </Sidebar>
 </Canvas>
 
@@ -84,4 +84,4 @@ import {
 ### Sidebar.User
 
 #### title: é o testo que vira ao lado do avatar do usuário.
-#### subTitle: é o testo que vira abaio do title podendo ser qualquer testo.
+#### subTitle: é o testo que vira abaixo do title podendo ser qualquer testo.
