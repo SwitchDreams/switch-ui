@@ -8,6 +8,7 @@ export interface SidebarVariant extends PropsWithChildren, ComponentProps<"div">
   mobileLogo?: string;
   absolute?: boolean;
   sideBarColor?: string;
+  sideBarMobileColor?: string;
   textColor?: string;
 }
 
@@ -16,6 +17,7 @@ const SidebarMain = ({
   absolute,
   children,
   sideBarColor = "bg-white",
+  sideBarMobileColor = "bg-white",
   textColor = "text-gray-100",
   className,
   ...rest
@@ -26,7 +28,7 @@ const SidebarMain = ({
   return (
     <div>
       <div
-        className={`${sideBarColor} ${textColor} absolute top-0 z-0 flex w-full items-center justify-between border-b-2 border-gray-100 py-10 max-md:h-[70px] md:hidden`}
+        className={`${sideBarMobileColor} ${textColor} absolute top-0 z-0 flex w-full items-center justify-between border-b-2 border-gray-100 py-10 max-md:h-[70px] md:hidden`}
       >
         <Bars3Icon
           className="z-10 ml-4 h-7 w-7"
