@@ -14,6 +14,7 @@ const SidebarComponent = ({
   logo,
   absolute,
   sideBarColor = "bg-white",
+  sideBarMobileColor = "bg-white",
   textColor = "text-gray-600",
   hoverColor = "bg-gray-50",
 }: PropsWithChildren & any) => {
@@ -24,6 +25,7 @@ const SidebarComponent = ({
         absolute={absolute}
         sideBarColor={sideBarColor}
         textColor={textColor}
+        sideBarMobileColor={sideBarMobileColor}
       >
         {children}
       </SidebarMain>
