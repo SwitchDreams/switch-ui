@@ -10,9 +10,10 @@ export interface IText extends HTMLAttributes<any> {
   className?: string;
 }
 
-const TextVariants = cva("text font-default", {
+const TextVariants = cva("font-default", {
   variants: {
     size: {
+      xs: "text-xs",
       sm: "text-sm",
       md: "text-md",
       lg: "text-lg",
