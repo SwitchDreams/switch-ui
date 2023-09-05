@@ -8,11 +8,12 @@ export interface IItemProps {
   href: string;
   icon?: ElementType;
   as?: ElementType;
+  active?: boolean;
 }
 
 export interface ItemProps extends IItemProps, Omit<ComponentProps<"a">, "href"> {}
 
-const SidebarItem = ({ label, as = "a", icon: Icon, href }: ItemProps) => {
+const SidebarItem = ({ label, as = "a", icon: Icon, href, active }: ItemProps) => {
   const { isOpen, hoverColor } = useSidebarContext();
   const Element = as;
 
@@ -21,14 +22,22 @@ const SidebarItem = ({ label, as = "a", icon: Icon, href }: ItemProps) => {
       {!isOpen && Icon && (
         <Element href={href} className="h-12">
           <Icon
-            className={`hover:${hoverColor} mx-2 flex h-7 w-7 items-center rounded-md text-md font-semibold max-md:hidden`}
+            className={
+              !active
+                ? `hover:${hoverColor} mx-2 flex h-7 w-7 items-center rounded-md text-md font-semibold max-md:hidden`
+                : `${hoverColor} mx-2 flex h-7 w-7 items-center rounded-md text-md font-semibold max-md:hidden`
+            }
           ></Icon>
         </Element>
       )}
       {isOpen && Icon && (
         <Element href={href}>
           <div
-            className={`hover:${hoverColor} flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold`}
+            className={
+              !active
+                ? `hover:${hoverColor} flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold`
+                : `${hoverColor} flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold`
+            }
           >
             <Icon className="h-7 w-7"></Icon>
             <Text>{label}</Text>
@@ -38,7 +47,11 @@ const SidebarItem = ({ label, as = "a", icon: Icon, href }: ItemProps) => {
       {isOpen && !Icon && (
         <Element href={href}>
           <div
-            className={`hover:${hoverColor} flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold`}
+            className={
+              !active
+                ? `hover:${hoverColor} flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold`
+                : `${hoverColor} flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold`
+            }
           >
             <Text>{label}</Text>
           </div>
@@ -47,7 +60,11 @@ const SidebarItem = ({ label, as = "a", icon: Icon, href }: ItemProps) => {
       {!isOpen && !Icon && (
         <Element href={href}>
           <div
-            className={`hover:${hoverColor}flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold max-md:hidden`}
+            className={
+              !active
+                ? `hover:${hoverColor}flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold max-md:hidden`
+                : `${hoverColor}flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold max-md:hidden`
+            }
           >
             <div className="h-10 w-7 text-center text-lg font-semibold">
               {label[0].toUpperCase()}
