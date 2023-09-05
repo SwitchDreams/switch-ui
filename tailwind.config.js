@@ -37,6 +37,20 @@ export default {
             text: colors.gray["800"],
           },
         },
+        avatar: {
+          primary: {
+            bg: colors.primary["25"],
+            text: colors.secondary["400"],
+          },
+          gray: {
+            bg: colors.primary["100"],
+            text: colors.gray["600"],
+          },
+        },
+        tab: {
+          border: colors.gray["500"],
+          text: colors.gray["500"],
+        },
       },
     },
     fontFamily: {
