@@ -59,6 +59,13 @@ const switchUiPlugin = plugin(function ({ addComponents, theme }) {
       borderBottom: theme("colors.tab.border"),
       color: theme("colors.tab.text"),
     },
+    ".slider": {
+      backgroundColor: theme("colors.slider.bg"),
+      accentColor: theme("colors.slider.accent"),
+      "&:hover": {
+        accentColor: theme("colors.slider.hover"),
+      },
+    },
   });
 });
 export default switchUiPlugin;

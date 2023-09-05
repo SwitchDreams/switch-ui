@@ -2,20 +2,17 @@ import { cva, type VariantProps } from "class-variance-authority";
 import React, { HTMLProps, useRef } from "react";
 import { twMerge } from "tailwind-merge";
 
-const sliderVariants = cva(
-  "relative w-full appearance-none rounded-lg border-0 bg-primary-300 accent-primary-300 hover:accent-primary-400",
-  {
-    variants: {
-      size: {
-        small: "h-1 ",
-        medium: "h-2",
-      },
-    },
-    defaultVariants: {
-      size: "medium",
+const sliderVariants = cva("slider relative w-full appearance-none rounded-lg border-0", {
+  variants: {
+    size: {
+      small: "h-1 ",
+      medium: "h-2",
     },
   },
-);
+  defaultVariants: {
+    size: "medium",
+  },
+});
 
 export interface SliderProps
   extends Omit<HTMLProps<HTMLInputElement>, "size">,

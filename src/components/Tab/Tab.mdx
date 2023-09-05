@@ -25,4 +25,21 @@ O componente `TabComponent` oferece a seguinte funcionalidade:
 - Renderiza as abas com o conteúdo associado a cada aba.
 - Permite que os usuários alternem entre as abas clicando nelas.
 
+#### O componente tab por ser algo que é utilizado em diversas telas tem a capacidade de ser alterado utilizando o plugin da switch ui:
+
+#### plugins:
+
+```javascript
+plugins: [switchUiPlugin, generated({ prefix: "ui" })],
+```
+
+#### Configurado desta forma:
+
+ ```javascript
+ tab: {
+          border: colors.gray["500"],
+          text: colors.gray["500"],
+        },
+```
+
 

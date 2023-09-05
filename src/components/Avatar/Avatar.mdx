@@ -1,6 +1,5 @@
 import * as AvatarStories from "./Avatar.stories";
-import {Meta, Controls, Story, Canvas, Description} from "@storybook/blocks";
-
+import { Meta, Controls, Story, Canvas, Description } from "@storybook/blocks";
 
 <Meta of={AvatarStories} />
 
@@ -14,6 +13,27 @@ import {Meta, Controls, Story, Canvas, Description} from "@storybook/blocks";
 
 <Canvas />
 
-<Controls/>
+<Controls />
 
+#### O componente avatar por ser algo que é utilizado em diversas telas tem a capacidade de ser alterado utilizando o plugin da switch ui:
 
+#### plugins:
+
+```javascript
+plugins: [switchUiPlugin, generated({ prefix: "ui" })],
+```
+
+#### Configurado desta forma:
+
+ ```javascript
+ avatar: {
+          primary: {
+            bg: colors.primary["25"],
+            text: colors.secondary["400"],
+          },
+          gray: {
+            bg: colors.primary["100"],
+            text: colors.gray["600"],
+          },
+        },
+```

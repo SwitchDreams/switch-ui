@@ -51,6 +51,11 @@ export default {
           border: colors.gray["500"],
           text: colors.gray["500"],
         },
+        slider: {
+          bg: colors.primary["300"],
+          accent: colors.primary["300"],
+          hover: colors.primary["400"],
+        },
       },
     },
     fontFamily: {
