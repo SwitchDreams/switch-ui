@@ -37,6 +37,25 @@ export default {
             text: colors.gray["800"],
           },
         },
+        avatar: {
+          primary: {
+            bg: colors.primary["25"],
+            text: colors.secondary["400"],
+          },
+          gray: {
+            bg: colors.primary["100"],
+            text: colors.gray["600"],
+          },
+        },
+        tab: {
+          border: colors.gray["500"],
+          text: colors.gray["500"],
+        },
+        slider: {
+          bg: colors.primary["300"],
+          accent: colors.primary["300"],
+          hover: colors.primary["400"],
+        },
       },
     },
     fontFamily: {
