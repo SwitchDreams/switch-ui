@@ -56,6 +56,14 @@ export default {
           accent: colors.primary["300"],
           hover: colors.primary["400"],
         },
+        checkbox: {
+          border: colors.gray["200"],
+          checked: colors.gray["300"],
+        },
+        input: {
+          carret: colors.gray["200"],
+          focus: colors.gray["300"],
+        },
       },
     },
     fontFamily: {
