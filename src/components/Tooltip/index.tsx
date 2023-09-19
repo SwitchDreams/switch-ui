@@ -7,7 +7,6 @@ export interface ITooltip {
   description?: string;
   children?: ReactNode;
   className?: string;
-  content: ReactNode;
 }
 
 const TooltipVariants = cva(
@@ -64,7 +63,9 @@ const ArrowVariants = cva("absolute hidden border-[6px] group-hover:inline-block
 
 type TooltipVariantProps = VariantProps<typeof TooltipVariants>;
 
-export interface TooltipProps extends TooltipVariantProps, ITooltip {}
+export interface TooltipProps extends TooltipVariantProps, ITooltip {
+  content: ReactNode;
+}
 
 const Tooltip = ({
   title,
