@@ -66,6 +66,18 @@ const switchUiPlugin = plugin(function ({ addComponents, theme }) {
         accentColor: theme("colors.slider.hover"),
       },
     },
+    ".checkbox": {
+      border: theme("colors.checkbox.border"),
+      "&:checked": {
+        background: theme("colors.checkbox.bg"),
+      },
+    },
+    ".input": {
+      caretColor: theme("colors.input.carret"),
+      "&:focus": {
+        borderColor: theme("colors.input.focus"),
+      },
+    },
   });
 });
 export default switchUiPlugin;

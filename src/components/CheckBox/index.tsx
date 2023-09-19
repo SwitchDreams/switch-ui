@@ -7,7 +7,7 @@ export interface ICheckBox {
   name: string;
 }
 
-const checkBoxVariants = cva("peer appearance-none transition-all duration-200", {
+const checkBoxVariants = cva("checkbox peer appearance-none border transition-all duration-200", {
   variants: {
     shape: {
       circle: "rounded-full",
