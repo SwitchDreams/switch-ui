@@ -7,10 +7,11 @@ export interface ITooltip {
   description?: string;
   children?: ReactNode;
   className?: string;
+  content: ReactNode;
 }
 
 const TooltipVariants = cva(
-  "absolute hidden w-[17rem] rounded p-2 text-xs text-white group-hover:flex group-hover:flex-wrap",
+  "absolute hidden w-fit rounded p-2 text-xs text-white group-hover:flex group-hover:flex-wrap",
   {
     variants: {
       position: {
@@ -71,15 +72,22 @@ const Tooltip = ({
   color,
   children,
   className,
+  content,
   description,
   ...rest
 }: TooltipProps) => (
-  <div className="group relative h-fit w-fit cursor-pointer">
-    <div className="mx-1">{children}</div>
-    <span className={twMerge(TooltipVariants({ position, color }), className)} {...rest}>
-      <div className="flex flex-col p-2">
-        <span className="pb-2 text-xs font-semibold">{title}</span>
-        <span className="pb-2 text-xs font-medium">{description}</span>
+  <div className="group relative z-50 h-fit w-fit cursor-pointer">
+    <div className="mx-1">{content}</div>
+    <span className={twMerge(TooltipVariants({ position, color }), className, `z-50`)} {...rest}>
+      <div className="flex flex-col">
+        {children ? (
+          <>{children}</>
+        ) : (
+          <>
+            <span className="pb-2 text-xs font-semibold">{title}</span>
+            <span className="pb-2 text-xs font-medium">{description}</span>
+          </>
+        )}
       </div>
     </span>
     <span className={twMerge(ArrowVariants({ position, color }))} {...rest}></span>
