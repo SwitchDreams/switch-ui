@@ -18,6 +18,7 @@ export interface ITextFieldBase
   errorMsg?: string;
   onClickIcon?: () => void;
   mask?: string;
+  maskChar?: string;
   ref?: any;
 }
 
@@ -82,6 +83,7 @@ export const TextFieldBase = forwardRef(
     name,
     errorMsg,
     mask = "",
+    maskChar = " ",
     onClickIcon = () => {},
     ref,
     ...rest
@@ -107,6 +109,7 @@ export const TextFieldBase = forwardRef(
           placeholder={placeholder}
           className={textfieldClasses}
           mask={mask}
+          maskChar={maskChar}
           {...rest}
         />
         {error ? (
