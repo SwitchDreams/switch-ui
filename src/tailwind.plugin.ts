@@ -56,8 +56,14 @@ const switchUiPlugin = plugin(function ({ addComponents, theme }) {
       color: theme("colors.avatar.gray.text"),
     },
     ".tab": {
-      borderBottom: theme("colors.tab.border"),
+      borderBottomColor: theme("colors.tab.border"),
       color: theme("colors.tab.text"),
+
+      // Uses headlessui
+      "&[data-headlessui-state~=selected]": {
+        borderBottomColor: theme("colors.tab.selectedBorder"),
+        color: theme("colors.tab.selectedText"),
+      },
     },
     ".slider": {
       backgroundColor: theme("colors.slider.bg"),
