@@ -24,13 +24,19 @@ export const SidebarItemVariants = cva(
 export interface ItemProps extends IItemProps, Omit<ComponentProps<"a">, "href"> {}
 
 const SidebarItem = ({ label, as = "a", icon: Icon, href, active }: ItemProps) => {
-  const { isOpen, hoverColor } = useSidebarContext();
+  const { isOpen, hoverColor, setIsOpen } = useSidebarContext();
   const Element = as;
 
   return (
     <>
       {!isOpen && Icon && (
-        <Element href={href} className="h-12">
+        <Element
+          href={href}
+          className="h-12"
+          onClick={() => {
+            setIsOpen(false);
+          }}
+        >
           <Icon
             className={twMerge(
               SidebarIconVariants(),
@@ -40,7 +46,12 @@ const SidebarItem = ({ label, as = "a", icon: Icon, href, active }: ItemProps) =
         </Element>
       )}
       {isOpen && Icon && (
-        <Element href={href}>
+        <Element
+          href={href}
+          onClick={() => {
+            setIsOpen(false);
+          }}
+        >
           <div
             className={twMerge(
               SidebarItemVariants(),
@@ -53,7 +64,12 @@ const SidebarItem = ({ label, as = "a", icon: Icon, href, active }: ItemProps) =
         </Element>
       )}
       {isOpen && !Icon && (
-        <Element href={href}>
+        <Element
+          href={href}
+          onClick={() => {
+            setIsOpen(false);
+          }}
+        >
           <div
             className={twMerge(
               SidebarItemVariants(),
@@ -65,7 +81,12 @@ const SidebarItem = ({ label, as = "a", icon: Icon, href, active }: ItemProps) =
         </Element>
       )}
       {!isOpen && !Icon && (
-        <Element href={href}>
+        <Element
+          href={href}
+          onClick={() => {
+            setIsOpen(false);
+          }}
+        >
           <div
             className={twMerge(
               SidebarItemVariants(),

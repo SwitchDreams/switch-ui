@@ -19,7 +19,7 @@ export interface IDropProps {
 export interface DropProps extends IDropProps, Omit<ComponentProps<"a">, "href"> {}
 
 const SidebarDrop = ({ label, icon: Icon, as = "a", options = [] }: DropProps) => {
-  const { isOpen, hoverColor } = useSidebarContext();
+  const { isOpen, hoverColor, setIsOpen } = useSidebarContext();
   const Element = as;
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -39,7 +39,9 @@ const SidebarDrop = ({ label, icon: Icon, as = "a", options = [] }: DropProps) =
       {isOpen && Icon && (
         <>
           <div
-            onClick={handleDropdownToggle}
+            onClick={() => {
+              handleDropdownToggle();
+            }}
             className={`hover:${hoverColor} flex h-12 w-full cursor-pointer items-center justify-between rounded-md px-2 text-md font-semibold ${
               isDropdownOpen ? "peer-focus:visible" : ""
             }`}
@@ -63,6 +65,7 @@ const SidebarDrop = ({ label, icon: Icon, as = "a", options = [] }: DropProps) =
               <div className="absolute left-5 top-[12%] h-[70%] w-[2px] bg-gray-100"></div>
               {options.map((option, index) => (
                 <div
+                  onClick={() => setIsOpen(false)}
                   key={index}
                   className={`hover:${hoverColor} flex h-12 w-full items-center gap-2 rounded-md px-11 text-md font-semibold last:mb-4 `}
                 >
@@ -78,7 +81,9 @@ const SidebarDrop = ({ label, icon: Icon, as = "a", options = [] }: DropProps) =
       {isOpen && !Icon && (
         <>
           <div
-            onClick={handleDropdownToggle}
+            onClick={() => {
+              handleDropdownToggle();
+            }}
             className={`hover:${hoverColor} flex h-12 w-full cursor-pointer items-center justify-between gap-2 rounded-md px-2 text-md font-semibold text-gray-700  ${
               isDropdownOpen ? "peer-focus:visible" : ""
             }`}
@@ -101,6 +106,7 @@ const SidebarDrop = ({ label, icon: Icon, as = "a", options = [] }: DropProps) =
               <div className="absolute left-5 top-[15%] h-[75%] w-[2px] bg-gray-100"></div>
               {options.map((option, index) => (
                 <div
+                  onClick={() => setIsOpen(false)}
                   key={index}
                   className={`hover:${hoverColor} flex h-12 w-full items-center gap-2 rounded-md px-11 text-md font-semibold text-gray-700`}
                 >
