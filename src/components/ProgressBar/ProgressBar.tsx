@@ -19,9 +19,16 @@ const ProgressBarVariants = cva("rounded-full bg-primary-25", {
 export interface ProgressBarProps extends VariantProps<typeof ProgressBarVariants> {
   percentage: number;
   className?: string;
+  bgColor?: string;
 }
 
-export const ProgressBar = ({ size = "md", percentage, className, ...rest }: ProgressBarProps) => {
+export const ProgressBar = ({
+  size = "md",
+  percentage,
+  bgColor = "bg-primary-300",
+  className,
+  ...rest
+}: ProgressBarProps) => {
   return (
     <div className={twMerge(ProgressBarVariants({ size }), className)} {...rest}>
       <div
@@ -29,7 +36,8 @@ export const ProgressBar = ({ size = "md", percentage, className, ...rest }: Pro
         className={twMerge(
           ProgressBarVariants({ size }),
           className,
-          "rounded-full bg-primary-300 transition-all duration-300 ease-linear",
+          bgColor,
+          "rounded-full transition-all duration-300 ease-linear",
         )}
         style={{ width: `${percentage}%` }}
       />
