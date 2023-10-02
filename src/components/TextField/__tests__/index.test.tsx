@@ -85,7 +85,7 @@ describe("Textfield sizes", () => {
     );
     const inputElement = screen.getByPlaceholderText("Enter your username");
 
-    expect(inputElement).toHaveClass("h-12");
+    expect(inputElement).toHaveClass("h-11");
   });
   it("renders with size small", () => {
     render(
@@ -100,7 +100,7 @@ describe("Textfield sizes", () => {
     );
     const inputElement = screen.getByPlaceholderText("Enter your username");
 
-    expect(inputElement).toHaveClass("h-11");
+    expect(inputElement).toHaveClass("h-10");
   });
 });
 describe("Textfield renders with custom class 'text-orange-100'", () => {

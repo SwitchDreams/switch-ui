@@ -27,8 +27,8 @@ const TextFieldBaseVariants = cva(
   {
     variants: {
       size: {
-        small: "h-11",
-        medium: "h-12",
+        small: "h-10",
+        medium: "h-11",
         large: "h-14",
       },
       error: {
@@ -98,9 +98,11 @@ export const TextFieldBase = forwardRef(
 
     return (
       <div className={opacityClass}>
-        <label htmlFor={name} className="text-sm font-medium text-gray-900">
-          {label}
-        </label>
+        {label && (
+          <label htmlFor={name} className="text-sm font-medium text-gray-900">
+            {label}
+          </label>
+        )}
         <InputElement
           ref={ref}
           disabled={disabled}
