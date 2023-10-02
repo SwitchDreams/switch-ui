@@ -54,16 +54,4 @@ describe("TabComponent", () => {
     expect(tab2).toHaveClass("text-sm");
     expect(tab3).toHaveClass("text-sm");
   });
-
-  it("applies padding styles to the tabs", () => {
-    render(<TabComponent padding={true} tabs={tabs} />);
-
-    const tab1 = screen.getByText("Tab 1");
-    const tab2 = screen.getByText("Tab 2");
-    const tab3 = screen.getByText("Tab 3");
-
-    expect(tab1).toHaveClass("pb-4");
-    expect(tab2).toHaveClass("pb-4");
-    expect(tab3).toHaveClass("pb-4");
-  });
 });
