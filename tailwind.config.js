@@ -50,6 +50,8 @@ export default {
         tab: {
           border: colors.gray["500"],
           text: colors.gray["500"],
+          selectedBorder: colors.primary["300"],
+          selectedText: colors.primary["300"],
         },
         slider: {
           bg: colors.primary["300"],
