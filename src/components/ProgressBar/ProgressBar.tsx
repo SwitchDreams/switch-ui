@@ -36,7 +36,8 @@ export const ProgressBar = ({
         className={twMerge(
           ProgressBarVariants({ size }),
           className,
-          `rounded-full transition-all duration-300 ease-linear ${bgColor}`,
+          bgColor,
+          "rounded-full transition-all duration-300 ease-linear",
         )}
         style={{ width: `${percentage}%` }}
       />
