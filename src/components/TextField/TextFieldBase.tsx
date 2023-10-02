@@ -23,7 +23,7 @@ export interface ITextFieldBase
 }
 
 const TextFieldBaseVariants = cva(
-  "input rounded-plug-md relative my-2 w-full text-ellipsis border pr-10 text-md hover:bg-gray-50 focus:outline-none ",
+  "rounded-plug-md input relative my-2 w-full text-ellipsis border pr-10 text-md hover:bg-gray-50 focus:outline-none ",
   {
     variants: {
       size: {
@@ -98,9 +98,11 @@ export const TextFieldBase = forwardRef(
 
     return (
       <div className={opacityClass}>
-        <label htmlFor={name} className="text-sm font-medium text-gray-900">
-          {label}
-        </label>
+        {label && (
+          <label htmlFor={name} className="text-sm font-medium text-gray-900">
+            {label}
+          </label>
+        )}
         <InputElement
           ref={ref}
           disabled={disabled}
