@@ -27,8 +27,8 @@ const TextFieldBaseVariants = cva(
   {
     variants: {
       size: {
-        small: "h-11",
-        medium: "h-12",
+        small: "h-10",
+        medium: "h-11",
         large: "h-14",
       },
       error: {
