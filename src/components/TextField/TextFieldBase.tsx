@@ -23,7 +23,7 @@ export interface ITextFieldBase
 }
 
 const TextFieldBaseVariants = cva(
-  "input rounded-plug-md relative my-2 w-full text-ellipsis border pr-10 text-md hover:bg-gray-50 focus:outline-none ",
+  "rounded-plug-md input relative my-2 w-full text-ellipsis border pr-10 text-md hover:bg-gray-50 focus:outline-none ",
   {
     variants: {
       size: {

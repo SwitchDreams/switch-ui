@@ -1,5 +1,5 @@
 import * as TabStories from "./Tab.stories";
-import {Meta, Controls, Story, Canvas, Description} from "@storybook/blocks";
+import { Meta, Controls, Canvas } from "@storybook/blocks";
 
 
 <Meta of={TabStories} />
@@ -15,7 +15,7 @@ import {Meta, Controls, Story, Canvas, Description} from "@storybook/blocks";
 
 <Canvas />
 
-<Controls/>
+<Controls />
 
 
 ### Funcionalidade:
@@ -25,7 +25,7 @@ O componente `TabComponent` oferece a seguinte funcionalidade:
 - Renderiza as abas com o conteúdo associado a cada aba.
 - Permite que os usuários alternem entre as abas clicando nelas.
 
-#### O componente tab por ser algo que é utilizado em diversas telas tem a capacidade de ser alterado utilizando o plugin da switch ui:
+#### O componente tab por ser algo que é utilizado em diversas telas consegue ser alterado utilizando o plugin da switch ui:
 
 #### plugins:
 
@@ -35,11 +35,17 @@ plugins: [switchUiPlugin, generated({ prefix: "ui" })],
 
 #### Configurado desta forma:
 
- ```javascript
- tab: {
-          border: colors.gray["500"],
-          text: colors.gray["500"],
-        },
+```javascript
+// tailwind.config.js
+{
+  //...
+  tab: {
+    border: colors.gray["500"],
+    text: colors.gray["500"],
+    selectedBorder: colors.primary["300"],
+    selectedText: colors.primary["300"],
+  },
+}
 ```
 
 

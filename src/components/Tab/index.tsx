@@ -19,7 +19,7 @@ export interface TabType extends HTMLAttributes<any> {
 export type TabVariantProps = VariantProps<typeof TabVariants>;
 
 export const TabVariants = cva(
-  "item-center tab flex w-[130px] appearance-none justify-center border border-x-0 border-t-0 focus:outline-none ui-selected:font-medium ui-selected:text-primary-300",
+  "item-center tab flex appearance-none justify-center border-b focus:outline-none ui-selected:font-medium",
   {
     variants: {
       size: {
@@ -28,7 +28,7 @@ export const TabVariants = cva(
         sm: "text-sm",
       },
       padding: {
-        false: "pb-4 pt-2 ui-selected:border-b-2 ui-selected:border-primary-300",
+        false: "tab pb-4 pt-2 ui-selected:border-b-2",
         true: "py-0",
       },
     },
@@ -56,7 +56,7 @@ const TabComponent = ({
         }
       }}
       as="div"
-      className="h-[34px] w-full"
+      className="w-full"
     >
       <Tab.List as="div" className="flex pb-8">
         {tabs.map((tab: Tabs) => {
@@ -67,16 +67,7 @@ const TabComponent = ({
               className={tabClass}
               style={{ width: `calc(100% / ${tabs.length})` }}
             >
-              <div
-                className={
-                  padding
-                    ? "border-x-0 border-t-0 pb-4 ui-selected:border-b-2 ui-selected:border-primary-300 ui-selected:font-medium ui-selected:text-primary-300"
-                    : ""
-                }
-                style={padding ? { width: `80%` } : { width: "100%" }}
-              >
-                {tab.name}
-              </div>
+              <div style={{ width: padding ? "80%" : "100%" }}>{tab.name}</div>
             </Tab>
           );
         })}
