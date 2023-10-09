@@ -19,7 +19,6 @@ export interface ITextFieldBase
   onClickIcon?: () => void;
   mask?: string;
   maskChar?: string;
-  ref?: any;
 }
 
 const TextFieldBaseVariants = cva(
@@ -69,25 +68,27 @@ export interface TextFieldBaseProps
     ITextFieldBase {}
 
 export const TextFieldBase = forwardRef(
-  ({
-    leftIcon: LeftIcon,
-    rightIcon: RightIcon,
-    inputElement = "input",
-    placeholder,
-    size,
-    label,
-    className,
-    supportText,
-    disabled,
-    error = false,
-    name,
-    errorMsg,
-    mask = "",
-    maskChar = " ",
-    onClickIcon = () => {},
+  (
+    {
+      leftIcon: LeftIcon,
+      rightIcon: RightIcon,
+      inputElement = "input",
+      placeholder,
+      size,
+      label,
+      className,
+      supportText,
+      disabled,
+      error = false,
+      name,
+      errorMsg,
+      mask = "",
+      maskChar = " ",
+      onClickIcon = () => {},
+      ...rest
+    }: TextFieldBaseProps,
     ref,
-    ...rest
-  }: TextFieldBaseProps) => {
+  ) => {
     const InputElement = inputElement;
     const leftIconPresent = !!LeftIcon;
     const textfieldClasses = twMerge(
