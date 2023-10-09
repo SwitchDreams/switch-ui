@@ -19,6 +19,7 @@ export interface ITextFieldBase
   onClickIcon?: () => void;
   mask?: string;
   maskChar?: string;
+  ref?: any;
 }
 
 const TextFieldBaseVariants = cva(
@@ -87,7 +88,7 @@ export const TextFieldBase = forwardRef(
       onClickIcon = () => {},
       ...rest
     }: TextFieldBaseProps,
-    ref,
+    ref: React.Ref<HTMLTextAreaElement>,
   ) => {
     const InputElement = inputElement;
     const leftIconPresent = !!LeftIcon;
