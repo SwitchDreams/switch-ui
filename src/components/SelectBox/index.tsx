@@ -74,7 +74,7 @@ export const selectBoxSupportTextVariants = cva("mb-1 block pt-2 text-xs text-gr
   },
 });
 
-export interface SelectBoxProps extends Omit<SelectBoxVariantProps, "size">, SelectBoxType { }
+export interface SelectBoxProps extends Omit<SelectBoxVariantProps, "size">, SelectBoxType {}
 
 function SelectBox({
   options,
@@ -163,8 +163,9 @@ function SelectBox({
                     >
                       {({ selected }) => (
                         <span
-                          className={`block truncate ${selected ? "flex justify-between text-md" : "text-gray-800"
-                            }`}
+                          className={`block truncate ${
+                            selected ? "flex justify-between text-md" : "text-gray-800"
+                          }`}
                         >
                           {option.label}
                           {selected && <CheckIcon className="mr-3 h-5 w-5 text-gray-700" />}
