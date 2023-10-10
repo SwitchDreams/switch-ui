@@ -28,7 +28,7 @@ const SidebarMain = ({
   return (
     <div>
       <div
-        className={`${sideBarMobileColor} ${textColor} absolute top-0 z-50 flex w-full items-center justify-between border-b-2 border-gray-100 py-10 max-md:h-[70px] md:hidden`}
+        className={`${sideBarMobileColor} ${textColor} absolute top-0 z-10 flex w-full items-center justify-between border-b-2 border-gray-100 py-10 max-md:h-[70px] md:hidden`}
       >
         <Bars3Icon
           className="z-10 ml-4 h-7 w-7"

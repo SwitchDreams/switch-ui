@@ -24,8 +24,12 @@ export const SidebarItemVariants = cva(
 export interface ItemProps extends IItemProps, Omit<ComponentProps<"a">, "href"> {}
 
 const SidebarItem = ({ label, as = "a", icon: Icon, href, active }: ItemProps) => {
-  const { isOpen, hoverColor, setIsOpen } = useSidebarContext();
+  const { isOpen, hoverColor, setIsOpen, isDesktop } = useSidebarContext();
   const Element = as;
+
+  const OnClick = () => {
+    !isDesktop && setIsOpen(false);
+  };
 
   return (
     <>
@@ -34,7 +38,7 @@ const SidebarItem = ({ label, as = "a", icon: Icon, href, active }: ItemProps) =
           href={href}
           className="h-12"
           onClick={() => {
-            setIsOpen(false);
+            OnClick();
           }}
         >
           <Icon
@@ -49,7 +53,7 @@ const SidebarItem = ({ label, as = "a", icon: Icon, href, active }: ItemProps) =
         <Element
           href={href}
           onClick={() => {
-            setIsOpen(false);
+            OnClick();
           }}
         >
           <div
@@ -67,7 +71,7 @@ const SidebarItem = ({ label, as = "a", icon: Icon, href, active }: ItemProps) =
         <Element
           href={href}
           onClick={() => {
-            setIsOpen(false);
+            OnClick();
           }}
         >
           <div
@@ -84,7 +88,7 @@ const SidebarItem = ({ label, as = "a", icon: Icon, href, active }: ItemProps) =
         <Element
           href={href}
           onClick={() => {
-            setIsOpen(false);
+            OnClick();
           }}
         >
           <div
