@@ -106,7 +106,7 @@ export const TextFieldBase = forwardRef(
           </label>
         )}
         <InputElement
-          ref={ref}
+          ref={ref ? ref : undefined}
           disabled={disabled}
           id={name}
           name={name}
