@@ -111,6 +111,15 @@ function SelectBox({
       </span>
     );
   };
+
+  const renderContent = (value: any) => {
+    if (multiple) {
+      return multipleSelect().join(", ");
+    } else {
+      return options.find((option) => option.value === value)?.label;
+    }
+  };
+
   return (
     <div>
       <Listbox disabled={disabled} {...rest} onChange={setSelectValue} multiple={multiple}>
@@ -124,29 +133,16 @@ function SelectBox({
                   className,
                 )}
               >
-                {multiple ? (
-                  <>
-                    <span className="flex gap-2 truncate pl-3">
-                      {LeftIcon && <LeftIcon className="h-6 w-6 text-gray-700" />}
-                      {!value && placeholder}
-                      {multipleSelect().join(", ")}
-                    </span>
-                    <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                      {renderChevron(open)}
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <span className="flex gap-2 truncate pl-3">
-                      {LeftIcon && <LeftIcon className="h-6 w-6 text-gray-700" />}
-                      {!value && placeholder}
-                      {options.find((option) => option.value === value)?.label}
-                    </span>
-                    <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                      {renderChevron(open)}
-                    </span>
-                  </>
-                )}
+                <>
+                  <span className="flex gap-2 truncate pl-3">
+                    {LeftIcon && <LeftIcon className="h-6 w-6 text-gray-700" />}
+                    {!value && placeholder}
+                    {renderContent(value)}
+                  </span>
+                  <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                    {renderChevron(open)}
+                  </span>
+                </>
               </Listbox.Button>
               <Transition
                 as={Fragment}
