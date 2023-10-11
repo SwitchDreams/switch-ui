@@ -87,6 +87,7 @@ function SelectBox({
   error = false,
   placeholder,
   multiple = false,
+  onChange = () => {},
   ...rest
 }: SelectBoxProps) {
   const [selectedValue, setSelectValue] = useState<number[]>([]);
@@ -122,7 +123,14 @@ function SelectBox({
 
   return (
     <div>
-      <Listbox disabled={disabled} {...rest} onChange={setSelectValue} multiple={multiple}>
+      <Listbox
+        disabled={disabled}
+        {...rest}
+        onChange={(e) => {
+          onChange(e), setSelectValue(e);
+        }}
+        multiple={multiple}
+      >
         {({ open, value }) => (
           <>
             <Listbox.Label className="text-sm font-medium text-gray-900">{label}</Listbox.Label>
