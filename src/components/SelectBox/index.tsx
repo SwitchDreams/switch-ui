@@ -1,7 +1,7 @@
 import { Listbox, ListboxProps, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { cva, type VariantProps } from "class-variance-authority";
-import { ElementType, Fragment, ReactNode } from "react";
+import { ElementType, Fragment, ReactNode, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { Text } from "../Text";
@@ -20,6 +20,7 @@ interface SelectBoxType extends ListboxProps<any, any, any> {
   leftIcon?: ElementType;
   error?: boolean;
   placeholder: string;
+  multiple?: boolean;
 }
 
 export type SelectBoxVariantProps = VariantProps<typeof selectBoxVariants>;
@@ -85,8 +86,17 @@ function SelectBox({
   leftIcon: LeftIcon,
   error = false,
   placeholder,
+  multiple = false,
   ...rest
 }: SelectBoxProps) {
+  const [selectedValue, setSelectValue] = useState<number[]>([]);
+
+  const multipleSelect = () => {
+    return options
+      .filter((option) => selectedValue.includes(option.value))
+      .map((option) => option.label);
+  };
+
   const renderChevron = (open: boolean): ReactNode => {
     if (disabled) {
       return <ChevronDownIcon className="h-6 w-6 text-gray-700" aria-hidden="true" />;
@@ -101,9 +111,18 @@ function SelectBox({
       </span>
     );
   };
+
+  const renderContent = (value: any) => {
+    if (multiple) {
+      return multipleSelect().join(", ");
+    } else {
+      return options.find((option) => option.value === value)?.label;
+    }
+  };
+
   return (
     <div>
-      <Listbox disabled={disabled} {...rest}>
+      <Listbox disabled={disabled} {...rest} onChange={setSelectValue} multiple={multiple}>
         {({ open, value }) => (
           <>
             <Listbox.Label className="text-sm font-medium text-gray-900">{label}</Listbox.Label>
@@ -114,14 +133,16 @@ function SelectBox({
                   className,
                 )}
               >
-                <span className="flex gap-2 truncate pl-3">
-                  {LeftIcon && <LeftIcon className="h-6 w-6 text-gray-700" />}
-                  {!value && placeholder}
-                  {options.find((option) => option.value === value)?.label}
-                </span>
-                <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                  {renderChevron(open)}
-                </span>
+                <>
+                  <span className="flex gap-2 truncate pl-3">
+                    {LeftIcon && <LeftIcon className="h-6 w-6 text-gray-700" />}
+                    {!value && placeholder}
+                    {renderContent(value)}
+                  </span>
+                  <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                    {renderChevron(open)}
+                  </span>
+                </>
               </Listbox.Button>
               <Transition
                 as={Fragment}
