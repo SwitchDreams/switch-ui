@@ -69,25 +69,27 @@ export interface TextFieldBaseProps
     ITextFieldBase {}
 
 export const TextFieldBase = forwardRef(
-  ({
-    leftIcon: LeftIcon,
-    rightIcon: RightIcon,
-    inputElement = "input",
-    placeholder,
-    size,
-    label,
-    className,
-    supportText,
-    disabled,
-    error = false,
-    name,
-    errorMsg,
-    mask = "",
-    maskChar = " ",
-    onClickIcon = () => {},
-    ref,
-    ...rest
-  }: TextFieldBaseProps) => {
+  (
+    {
+      leftIcon: LeftIcon,
+      rightIcon: RightIcon,
+      inputElement = "input",
+      placeholder,
+      size,
+      label,
+      className,
+      supportText,
+      disabled,
+      error = false,
+      name,
+      errorMsg,
+      mask = "",
+      maskChar = " ",
+      onClickIcon = () => {},
+      ...rest
+    }: TextFieldBaseProps,
+    ref: React.Ref<HTMLTextAreaElement>,
+  ) => {
     const InputElement = inputElement;
     const leftIconPresent = !!LeftIcon;
     const textfieldClasses = twMerge(
@@ -104,7 +106,7 @@ export const TextFieldBase = forwardRef(
           </label>
         )}
         <InputElement
-          ref={ref}
+          ref={ref ? ref : undefined}
           disabled={disabled}
           id={name}
           name={name}

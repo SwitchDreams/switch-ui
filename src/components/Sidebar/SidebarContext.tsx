@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export type SidebarContextType = {
   isOpen: boolean;
@@ -17,6 +17,10 @@ const defaultContextValue: SidebarContextType = {
 
 export const SidebarContext = createContext<SidebarContextType>(defaultContextValue);
 
+const checkIsDesktop = () => {
+  return window.innerWidth >= 768;
+};
+
 export function SidebarProvider({
   children,
   hoverColor,
@@ -25,7 +29,19 @@ export function SidebarProvider({
   hoverColor?: string;
 }) {
   const [isOpen, setIsOpen] = useState<boolean>(defaultContextValue.isOpen);
-  const [isDesktop, setIsDesktop] = useState<boolean>(defaultContextValue.isDesktop);
+  const [isDesktop, setIsDesktop] = useState<boolean>(checkIsDesktop());
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(checkIsDesktop());
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <SidebarContext.Provider value={{ isOpen, setIsOpen, isDesktop, setIsDesktop, hoverColor }}>
