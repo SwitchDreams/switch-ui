@@ -23,7 +23,7 @@ export interface ITextFieldBase
 }
 
 const TextFieldBaseVariants = cva(
-  "rounded-plug-md input relative my-2 w-full text-ellipsis border pr-10 text-md hover:bg-gray-50 focus:outline-none ",
+  "rounded-plug-md input relative my-2 w-full appearance-none text-ellipsis border text-md hover:bg-gray-50 focus:outline-none",
   {
     variants: {
       size: {
@@ -38,6 +38,9 @@ const TextFieldBaseVariants = cva(
       leftIconPresent: {
         true: "pl-9",
         false: "pl-3",
+      },
+      rightIconPresent: {
+        true: "pr-10",
       },
     },
     defaultVariants: {
@@ -92,8 +95,9 @@ export const TextFieldBase = forwardRef(
   ) => {
     const InputElement = inputElement;
     const leftIconPresent = !!LeftIcon;
+    const rightIconPresent = !!RightIcon;
     const textfieldClasses = twMerge(
-      TextFieldBaseVariants({ size, error, leftIconPresent }),
+      TextFieldBaseVariants({ size, error, leftIconPresent, rightIconPresent }),
       className,
     );
     const opacityClass = disabled ? "opacity-50 relative" : "relative";
