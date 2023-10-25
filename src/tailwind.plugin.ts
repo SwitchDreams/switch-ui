@@ -79,7 +79,7 @@ const switchUiPlugin = plugin(function ({ addComponents, theme }) {
       },
     },
     ".input": {
-      caretColor: theme("colors.input.carret"),
+      caretColor: theme("colors.input.caret"),
       "&:focus": {
         borderColor: theme("colors.input.focus"),
       },
