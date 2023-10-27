@@ -141,3 +141,36 @@ describe("Textfield renders with custom class 'text-orange-100'", () => {
     });
   });
 });
+describe("Test the icon padding", () => {
+  it("should not have padding right", () => {
+    render(
+      <TextField
+        label="Username"
+        placeholder="Enter your username"
+        leftIcon={XMarkIcon}
+        supportText="Enter your username."
+        name="name"
+      />,
+    );
+
+    const inputElement = screen.getByPlaceholderText("Enter your username");
+
+    expect(inputElement).not.toHaveClass("pr-10");
+  });
+  it("should have padding right", () => {
+    render(
+      <TextField
+        label="Username"
+        placeholder="Enter your username"
+        leftIcon={XMarkIcon}
+        rightIcon={XMarkIcon}
+        supportText="Enter your username."
+        name="name"
+      />,
+    );
+
+    const inputElement = screen.getByPlaceholderText("Enter your username");
+
+    expect(inputElement).toHaveClass("pr-10");
+  });
+});
