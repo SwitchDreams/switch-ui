@@ -171,8 +171,12 @@ function SelectBox({
                             selected ? "flex justify-between text-md" : "text-gray-800"
                           }`}
                         >
-                          {option.label}
-                          {selected && <CheckIcon className="mr-3 h-5 w-5 text-gray-700" />}
+                          {selected ? (
+                            <div className="text-secondary-700">{option.label}</div>
+                          ) : (
+                            <div className="text-primary-700">{option.label}</div>
+                          )}
+                          {selected && <CheckIcon className="mr-3 h-5 w-5 text-secondary-700" />}
                         </span>
                       )}
                     </Listbox.Option>

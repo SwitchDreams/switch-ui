@@ -63,7 +63,7 @@ export default {
           checked: colors.gray["300"],
         },
         input: {
-          carret: colors.gray["200"],
+          caret: colors.gray["200"],
           focus: colors.gray["300"],
         },
       },

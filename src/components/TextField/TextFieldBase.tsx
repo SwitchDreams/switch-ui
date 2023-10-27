@@ -23,7 +23,7 @@ export interface ITextFieldBase
 }
 
 const TextFieldBaseVariants = cva(
-  "rounded-plug-md input relative my-2 w-full appearance-none text-ellipsis border text-md hover:bg-gray-50 focus:outline-none",
+  "caretColor rounded-plug-md input relative my-2 w-full text-ellipsis border text-md hover:bg-gray-50 focus:outline-none ",
   {
     variants: {
       size: {
@@ -33,7 +33,7 @@ const TextFieldBaseVariants = cva(
       },
       error: {
         true: "border-error-500 caret-error-500",
-        false: "caret-primary-100",
+        false: "caretColor",
       },
       leftIconPresent: {
         true: "pl-9",
