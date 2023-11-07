@@ -4,6 +4,7 @@ import InputMask from "react-input-mask";
 import { twMerge } from "tailwind-merge";
 
 type InputElement = typeof InputMask | "textarea" | "input";
+
 export interface ITextFieldBase
   extends Omit<React.InputHTMLAttributes<any>, "label" | "placeholder" | "size"> {
   label: string;
@@ -116,8 +117,9 @@ export const TextFieldBase = forwardRef(
           name={name}
           placeholder={placeholder}
           className={textfieldClasses}
-          mask={mask}
-          maskChar={maskChar}
+          // @ts-ignore
+          mask={inputElement === InputMask ? mask : undefined}
+          maskChar={inputElement === InputMask ? maskChar : undefined}
           {...rest}
         />
         {error ? (
