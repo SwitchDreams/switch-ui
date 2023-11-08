@@ -48,6 +48,16 @@ const iconVariants = cva(
   },
 );
 
+const backgroundVariant = cva("relative", {
+  variants: {
+    size: {
+      small: "h-4 w-4",
+      medium: "h-5 w-5",
+      large: "h-6 w-6",
+    },
+  },
+});
+
 export interface CheckBoxProps
   extends Omit<HTMLProps<HTMLInputElement>, "size" | "disabled" | "shape" | "color" | "name">,
     ICheckBox,
@@ -63,12 +73,7 @@ export const CheckBox = ({
   ...rest
 }: CheckBoxProps) => {
   return (
-    <div className={
-      twMerge(
-        "relative",
-        checkBoxVariants({ size, shape }),
-      )
-    }>
+    <div className={backgroundVariant({ size })}>
       <input
         name={name}
         aria-label={name}
