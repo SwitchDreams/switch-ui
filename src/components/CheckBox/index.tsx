@@ -15,7 +15,7 @@ const checkBoxVariants = cva("peer checkbox appearance-none border transition-al
     },
     size: {
       small: "h-4 w-4",
-      medium: " h-5 w-5",
+      medium: "h-5 w-5",
       large: "h-6 w-6",
     },
     color: {
@@ -38,8 +38,8 @@ const iconVariants = cva(
     variants: {
       size: {
         small: "left-[0.2rem] top-[0.25rem] h-[10px] w-[10px]",
-        medium: "left-[0.25rem] top-[0.05rem] h-3 w-3",
-        large: "left-[0.25rem] top-[-0.2rem] h-4 w-4",
+        medium: "left-[0.25rem] top-[0.2rem] h-3 w-3",
+        large: "left-[0.25rem] top-[0.2rem] h-4 w-4",
       },
     },
     defaultVariants: {
@@ -63,7 +63,12 @@ export const CheckBox = ({
   ...rest
 }: CheckBoxProps) => {
   return (
-    <label className="relative" htmlFor={name}>
+    <div className={
+      twMerge(
+        "relative",
+        checkBoxVariants({ size, shape }),
+      )
+    }>
       <input
         name={name}
         aria-label={name}
@@ -97,6 +102,6 @@ export const CheckBox = ({
       >
         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
       </svg>
-    </label>
+    </div>
   );
 };
