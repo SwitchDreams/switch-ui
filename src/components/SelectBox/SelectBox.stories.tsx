@@ -22,8 +22,20 @@ export const Variations = Template.bind({});
 const options = [
   { value: 1, label: "Option 1" },
   { value: 2, label: "Option 2" },
-  { value: 3, label: "Option 3" },
+  { value: 4, label: "Option 3" },
 ];
+
+// Variations.args = {
+//   size: "md",
+//   options: options,
+//   label: "Selecione:",
+//   disabled: false,
+//   supportText: "texto de suporte",
+//   leftIcon: EnvelopeIcon,
+//   error: false,
+//   defaultValue: 4, // element index on the list
+//   placeholder: "teste",
+// };
 
 Variations.args = {
   size: "md",
@@ -33,5 +45,7 @@ Variations.args = {
   supportText: "texto de suporte",
   leftIcon: EnvelopeIcon,
   error: false,
+  multiple: true,
+  // defaultValue: [1,4], // element index on the list
   placeholder: "teste",
 };

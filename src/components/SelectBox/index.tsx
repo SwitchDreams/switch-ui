@@ -19,14 +19,14 @@ interface SelectBoxType extends ListboxProps<any, any, any> {
   supportText?: string;
   leftIcon?: ElementType;
   error?: boolean;
-  placeholder: string;
+  placeholder?: string;
   multiple?: boolean;
 }
 
 export type SelectBoxVariantProps = VariantProps<typeof selectBoxVariants>;
 
 export const selectBoxVariants = cva(
-  "rounded-plug-md relative m-1 cursor-default select-none pl-2 pr-20 text-gray-100",
+  "rounded-plug-md relative m-1 cursor-default select-none pl-2 text-gray-100",
   {
     variants: {
       size: {
@@ -88,113 +88,211 @@ function SelectBox({
   placeholder,
   multiple = false,
   onChange = () => {},
+  defaultValue,
   ...rest
 }: SelectBoxProps) {
-  const [selectedValue, setSelectValue] = useState<number[]>([]);
+  if (!multiple) {
+    let auxDefaultValue = -1;
 
-  const multipleSelect = () => {
-    return options
-      .filter((option) => selectedValue.includes(option.value))
-      .map((option) => option.label);
-  };
-
-  const renderChevron = (open: boolean): ReactNode => {
-    if (disabled) {
-      return <ChevronDownIcon className="h-6 w-6 text-gray-700" aria-hidden="true" />;
+    if (defaultValue) {
+      auxDefaultValue = defaultValue;
     }
+    const [selectedOption, setSelectedOption] = useState(auxDefaultValue);
+
+    const renderChevron = (open: boolean): ReactNode => {
+      if (disabled) {
+        return <ChevronDownIcon className="h-6 w-6 text-gray-700" aria-hidden="true" />;
+      }
+      return (
+        <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+          {open ? (
+            <ChevronDownIcon className="h-6 w-6 text-gray-700" aria-hidden="true" />
+          ) : (
+            <ChevronUpIcon className="h-6 w-6 text-gray-700" aria-hidden="true" />
+          )}
+        </span>
+      );
+    };
+
     return (
-      <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-        {open ? (
-          <ChevronDownIcon className="h-6 w-6 text-gray-700" aria-hidden="true" />
-        ) : (
-          <ChevronUpIcon className="h-6 w-6 text-gray-700" aria-hidden="true" />
+      <div>
+        <Listbox
+          value={selectedOption}
+          onChange={(e) => (setSelectedOption(e), onChange(e))}
+          {...rest}
+        >
+          {({ open }) => (
+            <>
+              <Listbox.Label className="text-sm font-medium text-gray-900">{label}</Listbox.Label>
+              <div className="relative">
+                <Listbox.Button
+                  className={twMerge(
+                    selectBoxButtonVariants({ disabled, size, error, open }),
+                    className,
+                  )}
+                >
+                  <>
+                    <span className="flex gap-2 truncate pl-3">
+                      {LeftIcon && <LeftIcon className="h-6 w-6 text-gray-700" />}
+                      {selectedOption == -1
+                        ? placeholder
+                        : options.map((option) => option.value == selectedOption && option.label)}
+                    </span>
+                    <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                      {renderChevron(open)}
+                    </span>
+                  </>
+                </Listbox.Button>
+                <Transition
+                  as={Fragment}
+                  leave="transition ease-in duration-100"
+                  leaveFrom="opacity-100"
+                  leaveTo="opacity-0"
+                >
+                  <Listbox.Options className="rounded-plug-md absolute z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 ring-1 ring-gray-100">
+                    {options.map((option) => (
+                      <Listbox.Option
+                        key={option.value}
+                        value={option.value}
+                        className={({ active }) => selectBoxVariants({ size, active })}
+                      >
+                        {({ selected }) => (
+                          <span
+                            className={`block truncate ${
+                              selected ? "flex justify-between text-md" : "text-gray-800"
+                            }`}
+                          >
+                            {selected ? (
+                              <div className="text-secondary-700">{option.label}</div>
+                            ) : (
+                              <div className="text-primary-700">{option.label}</div>
+                            )}
+                            {selected && <CheckIcon className="mr-3 h-5 w-5 text-secondary-700" />}
+                          </span>
+                        )}
+                      </Listbox.Option>
+                    ))}
+                  </Listbox.Options>
+                </Transition>
+              </div>
+            </>
+          )}
+        </Listbox>
+        {supportText && (
+          <Text className={selectBoxSupportTextVariants({ error })} as="span">
+            {supportText}
+          </Text>
         )}
-      </span>
+      </div>
     );
-  };
+  } else {
+    let auxDefaultValue: Array<number> = [];
 
-  const renderContent = (value: any) => {
-    if (multiple) {
-      return multipleSelect().join(", ");
-    } else {
-      return options.find((option) => option.value === value)?.label;
+    if (defaultValue) {
+      auxDefaultValue = defaultValue;
     }
-  };
+    const [selectedOption, setSelectedOption] = useState(auxDefaultValue);
 
-  return (
-    <div>
-      <Listbox
-        disabled={disabled}
-        {...rest}
-        onChange={(e) => {
-          onChange(e), setSelectValue(e);
-        }}
-        multiple={multiple}
-      >
-        {({ open, value }) => (
-          <>
-            <Listbox.Label className="text-sm font-medium text-gray-900">{label}</Listbox.Label>
-            <div className="relative">
-              <Listbox.Button
-                className={twMerge(
-                  selectBoxButtonVariants({ disabled, size, error, open }),
-                  className,
-                )}
-              >
-                <>
-                  <span className="flex gap-2 truncate pl-3">
-                    {LeftIcon && <LeftIcon className="h-6 w-6 text-gray-700" />}
-                    {!value && placeholder}
-                    {renderContent(value)}
-                  </span>
-                  <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                    {renderChevron(open)}
-                  </span>
-                </>
-              </Listbox.Button>
-              <Transition
-                as={Fragment}
-                leave="transition ease-in duration-100"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-              >
-                <Listbox.Options className="rounded-plug-md absolute z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 ring-1 ring-gray-100">
-                  {options.map((option) => (
-                    <Listbox.Option
-                      key={option.value}
-                      value={option.value}
-                      className={({ active }) => selectBoxVariants({ size, active })}
-                    >
-                      {({ selected }) => (
-                        <span
-                          className={`block truncate ${
-                            selected ? "flex justify-between text-md" : "text-gray-800"
-                          }`}
-                        >
-                          {selected ? (
-                            <div className="text-secondary-700">{option.label}</div>
-                          ) : (
-                            <div className="text-primary-700">{option.label}</div>
-                          )}
-                          {selected && <CheckIcon className="mr-3 h-5 w-5 text-secondary-700" />}
-                        </span>
-                      )}
-                    </Listbox.Option>
-                  ))}
-                </Listbox.Options>
-              </Transition>
-            </div>
-          </>
+    const renderChevron = (open: boolean): ReactNode => {
+      if (disabled) {
+        return <ChevronDownIcon className="h-6 w-6 text-gray-700" aria-hidden="true" />;
+      }
+      return (
+        <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+          {open ? (
+            <ChevronDownIcon className="h-6 w-6 text-gray-700" aria-hidden="true" />
+          ) : (
+            <ChevronUpIcon className="h-6 w-6 text-gray-700" aria-hidden="true" />
+          )}
+        </span>
+      );
+    };
+
+    const findOption = () => {
+      const optionsArray = [];
+
+      for (const i in options) {
+        for (const j in selectedOption) {
+          if (options[i].value == selectedOption[j]) {
+            optionsArray.push(options[i].label);
+          }
+        }
+      }
+
+      return optionsArray.join(", ");
+    };
+
+    return (
+      <div>
+        <Listbox
+          multiple
+          value={selectedOption}
+          onChange={(e) => (setSelectedOption(e), onChange(e))}
+          {...rest}
+        >
+          {({ open }) => (
+            <>
+              <Listbox.Label className="text-sm font-medium text-gray-900">{label}</Listbox.Label>
+              <div className="relative">
+                <Listbox.Button
+                  className={twMerge(
+                    selectBoxButtonVariants({ disabled, size, error, open }),
+                    className,
+                  )}
+                >
+                  <>
+                    <span className="flex gap-2 truncate pl-3">
+                      {LeftIcon && <LeftIcon className="h-6 w-6 text-gray-700" />}
+                      {selectedOption.length == 0 ? placeholder : findOption()}
+                    </span>
+                    <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                      {renderChevron(open)}
+                    </span>
+                  </>
+                </Listbox.Button>
+                <Transition
+                  as={Fragment}
+                  leave="transition ease-in duration-100"
+                  leaveFrom="opacity-100"
+                  leaveTo="opacity-0"
+                >
+                  <Listbox.Options className="rounded-plug-md absolute z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 ring-1 ring-gray-100">
+                    {options.map((option) => (
+                      <Listbox.Option
+                        key={option.value}
+                        value={option.value}
+                        className={({ active }) => selectBoxVariants({ size, active })}
+                      >
+                        {({ selected }) => (
+                          <span
+                            className={`block truncate ${
+                              selected ? "flex justify-between text-md" : "text-gray-800"
+                            }`}
+                          >
+                            {selected ? (
+                              <div className="text-secondary-700">{option.label}</div>
+                            ) : (
+                              <div className="text-primary-700">{option.label}</div>
+                            )}
+                            {selected && <CheckIcon className="mr-3 h-5 w-5 text-secondary-700" />}
+                          </span>
+                        )}
+                      </Listbox.Option>
+                    ))}
+                  </Listbox.Options>
+                </Transition>
+              </div>
+            </>
+          )}
+        </Listbox>
+        {supportText && (
+          <Text className={selectBoxSupportTextVariants({ error })} as="span">
+            {supportText}
+          </Text>
         )}
-      </Listbox>
-
-      {supportText && (
-        <Text className={selectBoxSupportTextVariants({ error })} as="span">
-          {supportText}
-        </Text>
-      )}
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default SelectBox;

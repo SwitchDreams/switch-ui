@@ -38,11 +38,11 @@ const Template: StoryFn<any> = () => {
         options={options}
         multiple={true}
         value={data}
-        defaultValue={1}
+        defaultValue={[1, 2]}
         onChange={(e) => setData(e)}
       />
     </div>
   );
 };
 
-export const WithState: Story = Template;
+export const MultipleDefaultValues: Story = Template;
