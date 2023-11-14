@@ -25,18 +25,6 @@ const options = [
   { value: 4, label: "Option 3" },
 ];
 
-// Variations.args = {
-//   size: "md",
-//   options: options,
-//   label: "Selecione:",
-//   disabled: false,
-//   supportText: "texto de suporte",
-//   leftIcon: EnvelopeIcon,
-//   error: false,
-//   defaultValue: 4, // element index on the list
-//   placeholder: "teste",
-// };
-
 Variations.args = {
   size: "md",
   options: options,
@@ -46,6 +34,5 @@ Variations.args = {
   leftIcon: EnvelopeIcon,
   error: false,
   multiple: true,
-  // defaultValue: [1,4], // element index on the list
   placeholder: "teste",
 };

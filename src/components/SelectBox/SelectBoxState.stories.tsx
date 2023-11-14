@@ -28,7 +28,7 @@ const options = [
 ];
 
 const Template: StoryFn<any> = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState(1);
   return (
     <div className="w-full">
       <SelectBox
@@ -36,7 +36,6 @@ const Template: StoryFn<any> = () => {
         size="lg"
         placeholder="Escolha o(s) ambiente(s)"
         options={options}
-        multiple={true}
         value={data}
         defaultValue={1}
         onChange={(e) => setData(e)}
