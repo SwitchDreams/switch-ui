@@ -19,14 +19,14 @@ interface SelectBoxType extends ListboxProps<any, any, any> {
   supportText?: string;
   leftIcon?: ElementType;
   error?: boolean;
-  placeholder: string;
+  placeholder?: string;
   multiple?: boolean;
 }
 
 export type SelectBoxVariantProps = VariantProps<typeof selectBoxVariants>;
 
 export const selectBoxVariants = cva(
-  "rounded-plug-md relative m-1 cursor-default select-none pl-2 pr-20 text-gray-100",
+  "rounded-plug-md relative m-1 cursor-default select-none pl-2 text-gray-100",
   {
     variants: {
       size: {
@@ -76,6 +76,25 @@ export const selectBoxSupportTextVariants = cva("mb-1 block pt-2 text-xs text-gr
 
 export interface SelectBoxProps extends Omit<SelectBoxVariantProps, "size">, SelectBoxType {}
 
+// Helper function to render the chevron icon based on the open state
+const renderChevron = (open: boolean): ReactNode => {
+  const icon = open ? <ChevronDownIcon /> : <ChevronUpIcon />;
+  return (
+    <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+      {icon}
+    </span>
+  );
+};
+
+// Helper function to find selected option labels for multiple selection
+const findOption = (options: any[], selectedOption: string | any[]): string => {
+  const selectedLabels = options
+    .filter((option) => selectedOption.includes(option.value))
+    .map((option) => option.label);
+
+  return selectedLabels.join(", ");
+};
+
 function SelectBox({
   options,
   size = "md",
@@ -88,50 +107,24 @@ function SelectBox({
   placeholder,
   multiple = false,
   onChange = () => {},
+  defaultValue,
   ...rest
 }: SelectBoxProps) {
-  const [selectedValue, setSelectValue] = useState<number[]>([]);
+  // Initialize selectedOption state based on multiple prop
+  const [selectedOption, setSelectedOption] = useState(
+    multiple ? defaultValue || [] : defaultValue || -1,
+  );
 
-  const multipleSelect = () => {
-    return options
-      .filter((option) => selectedValue.includes(option.value))
-      .map((option) => option.label);
-  };
-
-  const renderChevron = (open: boolean): ReactNode => {
-    if (disabled) {
-      return <ChevronDownIcon className="h-6 w-6 text-gray-700" aria-hidden="true" />;
-    }
-    return (
-      <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-        {open ? (
-          <ChevronDownIcon className="h-6 w-6 text-gray-700" aria-hidden="true" />
-        ) : (
-          <ChevronUpIcon className="h-6 w-6 text-gray-700" aria-hidden="true" />
-        )}
-      </span>
-    );
-  };
-
-  const renderContent = (value: any) => {
-    if (multiple) {
-      return multipleSelect().join(", ");
-    } else {
-      return options.find((option) => option.value === value)?.label;
-    }
+  // Event handler for option selection change
+  const handleOptionChange = (e: any) => {
+    setSelectedOption(e);
+    onChange(e);
   };
 
   return (
     <div>
-      <Listbox
-        disabled={disabled}
-        {...rest}
-        onChange={(e) => {
-          onChange(e), setSelectValue(e);
-        }}
-        multiple={multiple}
-      >
-        {({ open, value }) => (
+      <Listbox multiple={multiple} value={selectedOption} onChange={handleOptionChange} {...rest}>
+        {({ open }) => (
           <>
             <Listbox.Label className="text-sm font-medium text-gray-900">{label}</Listbox.Label>
             <div className="relative">
@@ -144,12 +137,15 @@ function SelectBox({
                 <>
                   <span className="flex gap-2 truncate pl-3">
                     {LeftIcon && <LeftIcon className="h-6 w-6 text-gray-700" />}
-                    {!value && placeholder}
-                    {renderContent(value)}
+                    {multiple
+                      ? selectedOption.length === 0
+                        ? placeholder
+                        : findOption(options, selectedOption)
+                      : selectedOption === -1
+                      ? placeholder
+                      : options.find((option) => option.value === selectedOption)?.label}
                   </span>
-                  <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                    {renderChevron(open)}
-                  </span>
+                  {renderChevron(open)}
                 </>
               </Listbox.Button>
               <Transition
@@ -187,7 +183,6 @@ function SelectBox({
           </>
         )}
       </Listbox>
-
       {supportText && (
         <Text className={selectBoxSupportTextVariants({ error })} as="span">
           {supportText}
