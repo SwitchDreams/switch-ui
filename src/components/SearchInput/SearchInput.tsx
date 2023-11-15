@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { InputHTMLAttributes, useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-export type Options = {
+export type SearchInputOption = {
   label: string;
   value: any;
 };
@@ -23,11 +23,11 @@ const debounce = (fn: Function, delay: number) => {
 
 interface SearchInputType {
   label: string;
-  options?: Options[];
+  options?: SearchInputOption[];
   size?: "lg" | "md" | "sm";
   disabled?: boolean;
   selectedValue?: string;
-  fetchRemoteData?: (query: string) => Promise<Options[]>;
+  fetchRemoteData?: (query: string) => Promise<SearchInputOption[]>;
   remoteDataConfig?: SearchInputRemoteDataConfig;
   setSelectedValue: (value: any) => void;
 }
@@ -69,7 +69,7 @@ function SearchInput({
   ...rest
 }: SearchInputProps) {
   const [query, setQuery] = useState("");
-  const [apiOptions, setApiOptions] = useState<Options[]>([]);
+  const [apiOptions, setApiOptions] = useState<SearchInputOption[]>([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -95,7 +95,7 @@ function SearchInput({
     }
   }, [query, fetchRemoteData]);
 
-  let filteredOption: Options[] = [];
+  let filteredOption: SearchInputOption[] = [];
 
   // Handles filtering options
   if (fetchRemoteData) {

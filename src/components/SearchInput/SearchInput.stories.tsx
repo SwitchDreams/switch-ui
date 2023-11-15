@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { useState } from "react";
 
-import SearchInput, { Options, SearchInputProps } from "./SearchInput";
+import SearchInput, { SearchInputOption, SearchInputProps } from "./SearchInput";
 
 export default {
   title: "Forms/SearchInput",
@@ -37,7 +37,7 @@ Default.args = {
   size: "md",
 };
 
-const mockApiCall = async (query: string): Promise<Options[]> => {
+const mockApiCall = async (query: string): Promise<SearchInputOption[]> => {
   // Simulando uma chamada de API assíncrona
   return new Promise((resolve) => {
     setTimeout(() => {
