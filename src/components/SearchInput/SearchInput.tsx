@@ -116,7 +116,7 @@ function SearchInput({
         type="text"
         placeholder={label}
         disabled={disabled}
-        value={selectedValue}
+        value={selectedValue} // TODO: Shows label instead of value
         className={twMerge(SearchInputVariants({ size }), className)}
         {...rest}
         onChange={(e) => {

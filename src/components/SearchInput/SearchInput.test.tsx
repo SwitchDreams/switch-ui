@@ -4,13 +4,12 @@ import { expect } from "chai";
 import SearchInput from "./SearchInput";
 
 describe("SearchInput", () => {
+  const options = [
+    { label: "Opção 1", value: 1 },
+    { label: "Opção 2", value: 2 },
+    { label: "Opção 3", value: 3 },
+  ];
   it("deve exibir a lista de opções filtradas após a digitação", async () => {
-    const options = [
-      { label: "Option 1", value: 1 },
-      { label: "Option 2", value: 2 },
-      { label: "Option 3", value: 3 },
-    ];
-
     const setSelectedValue = () => {};
 
     const { getByPlaceholderText, queryByText } = render(
@@ -29,12 +28,6 @@ describe("SearchInput", () => {
   });
 
   it("deve selecionar uma opção ao clicar nela", async () => {
-    const options = [
-      { label: "Option 1", value: 1 },
-      { label: "Option 2", value: 2 },
-      { label: "Option 3", value: 3 },
-    ];
-
     let selectedValue = "";
 
     const setSelectedValue = (value: string) => {
@@ -52,17 +45,11 @@ describe("SearchInput", () => {
     await waitFor(() => {
       const optionElement = getByText("Opção 1");
       fireEvent.click(optionElement);
-      expect(selectedValue).to.equal("Opção 1");
+      expect(selectedValue).to.equal(1);
     });
   });
 
   it("deve limpar a seleção e a entrada ao clicar no ícone de limpar", async () => {
-    const options = [
-      { label: "Option 1", value: 1 },
-      { label: "Option 2", value: 2 },
-      { label: "Option 3", value: 3 },
-    ];
-
     let selectedValue = "Opção 1";
 
     const setSelectedValue = (value: string) => {
