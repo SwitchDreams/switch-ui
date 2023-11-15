@@ -5,7 +5,11 @@ import SearchInput from "./SearchInput";
 
 describe("SearchInput", () => {
   it("deve exibir a lista de opções filtradas após a digitação", async () => {
-    const options = [{ info: "Opção 1" }, { info: "Opção 2" }, { info: "Opção 3" }];
+    const options = [
+      { label: "Option 1", value: 1 },
+      { label: "Option 2", value: 2 },
+      { label: "Option 3", value: 3 },
+    ];
 
     const setSelectedValue = () => {};
 
@@ -25,7 +29,11 @@ describe("SearchInput", () => {
   });
 
   it("deve selecionar uma opção ao clicar nela", async () => {
-    const options = [{ info: "Opção 1" }, { info: "Opção 2" }, { info: "Opção 3" }];
+    const options = [
+      { label: "Option 1", value: 1 },
+      { label: "Option 2", value: 2 },
+      { label: "Option 3", value: 3 },
+    ];
 
     let selectedValue = "";
 
@@ -49,7 +57,11 @@ describe("SearchInput", () => {
   });
 
   it("deve limpar a seleção e a entrada ao clicar no ícone de limpar", async () => {
-    const options = [{ info: "Opção 1" }, { info: "Opção 2" }, { info: "Opção 3" }];
+    const options = [
+      { label: "Option 1", value: 1 },
+      { label: "Option 2", value: 2 },
+      { label: "Option 3", value: 3 },
+    ];
 
     let selectedValue = "Opção 1";
 
