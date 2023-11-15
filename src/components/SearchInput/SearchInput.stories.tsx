@@ -51,10 +51,24 @@ const mockApiCall = async (query: string): Promise<SearchInputOption[]> => {
   });
 };
 
-export const WithAPICall = Template.bind({});
-WithAPICall.args = {
+export const WithMockedAPICall = Template.bind({});
+WithMockedAPICall.args = {
   label: "Requisição para API",
   selectedValue: "",
   fetchRemoteData: mockApiCall,
+  size: "md",
+};
+
+const apiCall = async (query: string): Promise<SearchInputOption[]> => {
+  const response = await fetch(`https://api.github.com/search/repositories?q=${query}`);
+  const data = await response.json();
+  return data.items.map((item: any) => ({ label: item.full_name, value: item.id }));
+};
+
+export const WithAPICall = Template.bind({});
+WithAPICall.args = {
+  label: "Requisição de repositórios do GitHub",
+  selectedValue: "",
+  fetchRemoteData: apiCall,
   size: "md",
 };

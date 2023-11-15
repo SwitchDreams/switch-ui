@@ -81,8 +81,6 @@ function SearchInput({
         setLoading(true);
         const data = await fetchRemoteData(query);
         setApiOptions(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
       } finally {
         setLoading(false);
       }
@@ -90,9 +88,7 @@ function SearchInput({
 
     const debouncedFetchData = debounce(fetchData, remoteDataConfig.debounceTime);
 
-    if (query !== "") {
-      debouncedFetchData();
-    }
+    debouncedFetchData();
   }, [query, fetchRemoteData]);
 
   let filteredOption: SearchInputOption[] = [];
