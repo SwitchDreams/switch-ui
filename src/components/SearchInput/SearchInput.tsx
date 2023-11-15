@@ -53,6 +53,7 @@ function SearchInput({
 }: SearchInputProps) {
   const [query, setQuery] = useState("");
   const [apiOptions, setApiOptions] = useState<Options[]>([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!apiUrl || apiUrl === "") {
@@ -60,11 +61,14 @@ function SearchInput({
     }
     const fetchData = async () => {
       try {
+        setLoading(true);
         const response = await fetch(apiUrl + `?query=${query}`);
         const data = await response.json();
         setApiOptions(data);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -106,7 +110,13 @@ function SearchInput({
           handleOptionClick(e.target.value);
         }}
       />
-      {filteredOption.length !== 0 && (
+      {loading && (
+        <div className="absolute right-2 top-1/2 -translate-y-1/2">
+          {/* Aqui você pode usar um ícone de carregamento, por exemplo, um spinner */}
+          <div className="h-5 w-5 animate-spin rounded-full border-t-2 border-solid border-primary-500"></div>
+        </div>
+      )}
+      {filteredOption.length > 0 ? (
         <ul className="absolute inset-x-0 top-full mt-1 flex max-h-52 flex-col rounded-lg border border-gray-100 bg-white opacity-0 peer-focus:opacity-100">
           {filteredOption.map((option) => (
             <div
@@ -120,6 +130,12 @@ function SearchInput({
             </div>
           ))}
         </ul>
+      ) : (
+        <div className="absolute inset-x-0 top-full mt-1 flex max-h-52 flex-col rounded-lg border border-gray-100 bg-white opacity-0 peer-focus:opacity-100">
+          <div className="flex h-14 items-center px-4 text-md text-gray-900">
+            {!loading ? "Nenhum resultado encontrado" : "Carregando..."}
+          </div>
+        </div>
       )}
       {selectedValue !== "" && (
         <XMarkIcon
@@ -129,9 +145,9 @@ function SearchInput({
             setQuery("");
           }}
           data-testid="clear-icon"
-        ></XMarkIcon>
+        />
       )}
-      <MagnifyingGlassIcon className="absolute left-2 h-5 w-5 cursor-pointer text-gray-500 peer-focus:text-gray-700"></MagnifyingGlassIcon>
+      <MagnifyingGlassIcon className="absolute left-2 h-5 w-5 cursor-pointer text-gray-500 peer-focus:text-gray-700" />
     </div>
   );
 }
