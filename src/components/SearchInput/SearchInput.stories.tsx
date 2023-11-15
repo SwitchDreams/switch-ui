@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { useState } from "react";
 
-import SearchInput, { SearchInputProps } from "./SearchInput";
+import SearchInput, { Options, SearchInputProps } from "./SearchInput";
 
 export default {
   title: "Forms/SearchInput",
@@ -17,8 +17,8 @@ const Template: StoryFn<typeof SearchInput> = (args: SearchInputProps) => {
       label={args.label}
       options={args.options}
       size={args.size}
+      fetchRemoteData={args.fetchRemoteData}
       disabled={args.disabled}
-      apiUrl={args.apiUrl}
       selectedValue={selectedValueState}
       setSelectedValue={setSelectedValue}
     />
@@ -37,15 +37,24 @@ Default.args = {
   size: "md",
 };
 
+const mockApiCall = async (query: string): Promise<Options[]> => {
+  // Simulando uma chamada de API assíncrona
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const results = [
+        { label: "Result 1", value: "result1" },
+        { label: "Result 2", value: "result2" },
+        { label: "Result 3", value: "result3" },
+      ];
+      resolve(results.filter((result) => result.label.toLowerCase().includes(query.toLowerCase())));
+    }, 1000); // Simula um atraso de 1 segundo
+  });
+};
+
 export const WithAPICall = Template.bind({});
 WithAPICall.args = {
   label: "Requisição para API",
   selectedValue: "",
-  apiUrl: "https://jsonplaceholder.typicode.com/users",
-  options: [
-    { label: "Option 1", value: 1 },
-    { label: "Option 2", value: 2 },
-    { label: "Option 3", value: 3 },
-  ],
+  fetchRemoteData: mockApiCall,
   size: "md",
 };

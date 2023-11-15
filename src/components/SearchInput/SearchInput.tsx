@@ -3,9 +3,22 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { InputHTMLAttributes, useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-type Options = {
+export type Options = {
   label: string;
   value: any;
+};
+
+interface SearchInputRemoteDataConfig {
+  debounceTime: number;
+}
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+const debounce = (fn: Function, delay: number) => {
+  let timeoutId: ReturnType<typeof setTimeout>;
+  return function (...args: any[]) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn(...args), delay);
+  };
 };
 
 interface SearchInputType {
@@ -14,7 +27,8 @@ interface SearchInputType {
   size?: "lg" | "md" | "sm";
   disabled?: boolean;
   selectedValue?: string;
-  apiUrl?: string;
+  fetchRemoteData?: (query: string) => Promise<Options[]>;
+  remoteDataConfig?: SearchInputRemoteDataConfig;
   setSelectedValue: (value: any) => void;
 }
 
@@ -47,7 +61,10 @@ function SearchInput({
   disabled = false,
   className,
   selectedValue = "",
-  apiUrl,
+  fetchRemoteData,
+  remoteDataConfig = {
+    debounceTime: 300,
+  },
   setSelectedValue,
   ...rest
 }: SearchInputProps) {
@@ -56,14 +73,13 @@ function SearchInput({
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!apiUrl || apiUrl === "") {
+    if (!fetchRemoteData) {
       return;
     }
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch(apiUrl + `?query=${query}`);
-        const data = await response.json();
+        const data = await fetchRemoteData(query);
         setApiOptions(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -72,15 +88,17 @@ function SearchInput({
       }
     };
 
+    const debouncedFetchData = debounce(fetchData, remoteDataConfig.debounceTime);
+
     if (query !== "") {
-      fetchData();
+      debouncedFetchData();
     }
-  }, [query, apiUrl]);
+  }, [query, fetchRemoteData]);
 
   let filteredOption: Options[] = [];
 
   // Handles filtering options
-  if (apiUrl) {
+  if (fetchRemoteData) {
     filteredOption = apiOptions;
   } else {
     if (query === "") {
