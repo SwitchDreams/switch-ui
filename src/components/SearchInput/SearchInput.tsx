@@ -131,11 +131,11 @@ function SearchInput({
         </div>
       )}
       {filteredOption.length > 0 ? (
-        <ul className="absolute inset-x-0 top-full mt-1 flex max-h-52 flex-col rounded-lg border border-gray-100 bg-white opacity-0 peer-focus:opacity-100">
+        <div className="absolute inset-x-0 top-full mt-1 flex h-auto max-h-52 flex-col overflow-y-auto rounded-lg border border-gray-100 bg-white opacity-0 peer-focus:opacity-100">
           {filteredOption.map((option) => (
             <div
               key={option.value}
-              className="flex h-14 cursor-pointer items-center px-4 text-md text-gray-900 hover:bg-gray-50"
+              className="min-h-12 flex h-12 shrink-0 cursor-pointer items-center px-4 text-md text-gray-900 hover:bg-gray-50"
               onClick={() => {
                 handleOptionClick(option.value);
               }}
@@ -143,7 +143,7 @@ function SearchInput({
               {option.label}
             </div>
           ))}
-        </ul>
+        </div>
       ) : (
         <div className="absolute inset-x-0 top-full mt-1 flex max-h-52 flex-col rounded-lg border border-gray-100 bg-white opacity-0 peer-focus:opacity-100">
           <div className="flex h-14 items-center px-4 text-md text-gray-900">
