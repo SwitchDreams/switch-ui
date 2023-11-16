@@ -1,7 +1,7 @@
 import { Listbox, ListboxProps, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { cva, type VariantProps } from "class-variance-authority";
-import { ElementType, Fragment, ReactNode, useState } from "react";
+import { ElementType, Fragment, ReactNode, useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { Text } from "../Text";
@@ -26,13 +26,13 @@ interface SelectBoxType extends ListboxProps<any, any, any> {
 export type SelectBoxVariantProps = VariantProps<typeof selectBoxVariants>;
 
 export const selectBoxVariants = cva(
-  "rounded-plug-md relative m-1 cursor-default select-none pl-2 text-gray-100",
+  "rounded-plug-md relative m-1 flex cursor-default select-none items-center pl-2 text-gray-100",
   {
     variants: {
       size: {
         lg: "h-14 py-3 text-md",
         md: "h-11 py-2 text-md",
-        sm: "h-10 py-1 text-md",
+        sm: "h-10 py-1 text-sm",
       },
       active: {
         true: "bg-white hover:bg-gray-100",
@@ -52,8 +52,8 @@ export const selectBoxButtonVariants = cva(
       },
       size: {
         lg: "x-1 h-14 text-md",
-        md: "x-0.5 h-12 text-md",
-        sm: "x h-11 text-md",
+        md: "x-0.5 h-11 text-md",
+        sm: "x h-10 text-sm",
       },
       open: {
         true: "border-primary-100",
@@ -74,11 +74,25 @@ export const selectBoxSupportTextVariants = cva("mb-1 block pt-2 text-xs text-gr
   },
 });
 
+export const dropdownIconVariant = cva("text-gray-700", {
+  variants: {
+    size: {
+      lg: "h-6 w-6",
+      md: "h-6 w-6",
+      sm: "h-5 w-5",
+    },
+  },
+});
+
 export interface SelectBoxProps extends Omit<SelectBoxVariantProps, "size">, SelectBoxType {}
 
 // Helper function to render the chevron icon based on the open state
-const renderChevron = (open: boolean): ReactNode => {
-  const icon = open ? <ChevronDownIcon /> : <ChevronUpIcon />;
+const renderChevron = (open: boolean, size: any): ReactNode => {
+  const icon = open ? (
+    <ChevronDownIcon className={dropdownIconVariant({ size })} aria-hidden="true" />
+  ) : (
+    <ChevronUpIcon className={dropdownIconVariant({ size })} aria-hidden="true" />
+  );
   return (
     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
       {icon}
@@ -108,12 +122,17 @@ function SelectBox({
   multiple = false,
   onChange = () => {},
   defaultValue,
+  value,
   ...rest
 }: SelectBoxProps) {
   // Initialize selectedOption state based on multiple prop
   const [selectedOption, setSelectedOption] = useState(
     multiple ? defaultValue || [] : defaultValue || -1,
   );
+
+  useEffect(() => {
+    if (!multiple) setSelectedOption(value);
+  }, [value]);
 
   // Event handler for option selection change
   const handleOptionChange = (e: any) => {
@@ -135,7 +154,7 @@ function SelectBox({
                 )}
               >
                 <>
-                  <span className="flex gap-2 truncate pl-3">
+                  <span className="flex items-center gap-2 truncate pl-3">
                     {LeftIcon && <LeftIcon className="h-6 w-6 text-gray-700" />}
                     {multiple
                       ? selectedOption.length === 0
@@ -145,7 +164,7 @@ function SelectBox({
                       ? placeholder
                       : options.find((option) => option.value === selectedOption)?.label}
                   </span>
-                  {renderChevron(open)}
+                  {renderChevron(open, size)}
                 </>
               </Listbox.Button>
               <Transition
@@ -163,7 +182,7 @@ function SelectBox({
                     >
                       {({ selected }) => (
                         <span
-                          className={`block truncate ${
+                          className={`block items-center truncate ${
                             selected ? "flex justify-between text-md" : "text-gray-800"
                           }`}
                         >
