@@ -1,6 +1,5 @@
 import * as CheckBoxStories from "./CheckBox.stories";
-import {Meta, Controls, Story, Canvas, Description} from "@storybook/blocks";
-
+import { Meta, Controls, Canvas } from "@storybook/blocks";
 
 <Meta of={CheckBoxStories} />
 
@@ -14,15 +13,18 @@ import {Meta, Controls, Story, Canvas, Description} from "@storybook/blocks";
 
 <Canvas />
 
-<Controls/>
-
+<Controls />
 
 #### Configurado desta forma:
 
- ```javascript
- checkbox: {
-          border: colors.gray["200"],
-          checked: colors.gray["300"],
-        },
+```javascript
+//...
+checkbox: {
+ primary: {
+   border: colors.primary["300"],
+   checked: colors.primary["300"],
+   hover: colors.primary["300"],
+ },
+},
+//...
 ```
-

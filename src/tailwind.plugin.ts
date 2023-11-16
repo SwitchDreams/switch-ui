@@ -72,10 +72,13 @@ const switchUiPlugin = plugin(function ({ addComponents, theme }) {
         accentColor: theme("colors.slider.hover"),
       },
     },
-    ".checkbox": {
-      border: theme("colors.checkbox.border"),
+    ".checkbox-primary": {
+      "border-color": theme("colors.checkbox.primary.border", "colors.primary.300"),
       "&:checked": {
-        background: theme("colors.checkbox.bg"),
+        background: theme("colors.checkbox.primary.checked", "colors.primary.300"),
+      },
+      "&:hover": {
+        background: theme("colors.checkbox.primary.hover", "colors.primary.25"),
       },
     },
     ".input": {

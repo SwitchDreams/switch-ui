@@ -29,7 +29,7 @@ describe("CheckBox", () => {
     expect(classes).toContain("h-4");
     expect(classes).toContain("w-4");
     expect(classes).toContain("rounded-full");
-    expect(classes).toContain("border-primary-300");
+    expect(classes).toContain("checkbox-primary");
   });
 
   it("applies default Tailwind CSS classes when no variants are provided", () => {
@@ -39,6 +39,6 @@ describe("CheckBox", () => {
     expect(classes).toContain("h-5");
     expect(classes).toContain("w-5");
     expect(classes).toContain("rounded-sm");
-    expect(classes).toContain("border-primary-300");
+    expect(classes).toContain("checkbox-primary");
   });
 });
