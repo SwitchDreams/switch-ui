@@ -131,7 +131,7 @@ function SelectBox({
   );
 
   useEffect(() => {
-    if (!multiple) setSelectedOption(value);
+    if (!multiple && value) setSelectedOption(value);
   }, [value]);
 
   // Event handler for option selection change
