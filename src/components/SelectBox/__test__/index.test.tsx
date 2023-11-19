@@ -54,7 +54,7 @@ describe("SelectBox", () => {
 
   it("should render selected option when passed value prop", () => {
     const value = 2;
-    render(<SelectBox options={options} value={value} defaultValue={value} label="Teste" />);
+    render(<SelectBox options={options} defaultValue={value} label="Teste" />);
     const selectedOption = screen.getByText("Option 2");
     expect(selectedOption).toBeVisible();
   });

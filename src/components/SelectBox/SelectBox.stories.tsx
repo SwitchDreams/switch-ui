@@ -33,6 +33,7 @@ Variations.args = {
   supportText: "texto de suporte",
   leftIcon: EnvelopeIcon,
   error: false,
-  multiple: true,
+  multiple: false,
+  defaultValue: 2,
   placeholder: "teste",
 };
