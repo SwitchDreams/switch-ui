@@ -35,8 +35,12 @@ export const selectBoxVariants = cva(
         sm: "h-10 py-1 text-sm",
       },
       active: {
-        true: "bg-white hover:bg-gray-100",
+        true: "hover:bg-gray-50",
         false: "text-gray-950",
+      },
+      selected: {
+        true: "bg-gray-100",
+        false: "bg-white",
       },
     },
   },
@@ -89,9 +93,9 @@ export interface SelectBoxProps extends Omit<SelectBoxVariantProps, "size">, Sel
 // Helper function to render the chevron icon based on the open state
 const renderChevron = (open: boolean, size: any): ReactNode => {
   const icon = open ? (
-    <ChevronDownIcon className={dropdownIconVariant({ size })} aria-hidden="true" />
-  ) : (
     <ChevronUpIcon className={dropdownIconVariant({ size })} aria-hidden="true" />
+  ) : (
+    <ChevronDownIcon className={dropdownIconVariant({ size })} aria-hidden="true" />
   );
   return (
     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -178,20 +182,14 @@ function SelectBox({
                     <Listbox.Option
                       key={option.value}
                       value={option.value}
-                      className={({ active }) => selectBoxVariants({ size, active })}
+                      className={({ active, selected }) =>
+                        selectBoxVariants({ size, active, selected })
+                      }
                     >
                       {({ selected }) => (
-                        <span
-                          className={`block items-center truncate ${
-                            selected ? "flex justify-between text-md" : "text-gray-800"
-                          }`}
-                        >
-                          {selected ? (
-                            <div className="text-secondary-700">{option.label}</div>
-                          ) : (
-                            <div className="text-primary-700">{option.label}</div>
-                          )}
-                          {selected && <CheckIcon className="mr-3 h-5 w-5 text-secondary-700" />}
+                        <span className="flex w-full items-center justify-between truncate text-gray-800">
+                          {option.label}
+                          {selected && <CheckIcon className="mr-3 h-5 w-5 text-gray-800" />}
                         </span>
                       )}
                     </Listbox.Option>
