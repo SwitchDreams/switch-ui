@@ -1,19 +1,37 @@
 import * as SearchInputStories from "./SearchInput.stories";
-import {Meta, Controls, Story, Canvas, Description} from "@storybook/blocks";
+import { Meta, Controls, Canvas } from "@storybook/blocks";
 
 
 <Meta of={SearchInputStories} />
 
 ## SearchInput:
 
+O componente SearchInput é usado para criar um campo de entrada de pesquisa com opções filtráveis.
+
 <br />
 
-### Uso Básico:
+### Uso com dados estáticos:
 
-#### O componente SearchInput é usado para criar um campo de entrada de pesquisa com opções filtráveis.
+- O componente deve receber um array de objetos com as propriedades `label` e `value` como parâmetro.
+- A responsabilidade de filtrar os dados é do componente (É filtrada a propriedade `label`).
+
+### Uso com dados assíncronos:
+
+É possível passar de paramêtro `fetchRemoteData` para que o componente possa fazer a busca de forma assíncrona:
+- Essa função deve receber uma string como parâmetro e retornar uma `Promise` com um array de objetos com as propriedades `label` e `value`.
+- A responsabilidade de filtrar os dados é do usuário
+- Também é possível configurar algumas propriedades utilizando o `remoteDataConfig`
+```ts
+// Exemplo de busca de dados assíncrona
+const apiCall = async (query: string): Promise<SearchInputOption[]> => {
+  const response = await fetch(`https://api.github.com/search/repositories?q=${query}`);
+  const data = await response.json();
+  return data.items.map((item: any) => ({ label: item.full_name, value: item.id }));
+};
+```
 
 <Canvas />
 
-<Controls/>
+<Controls />
 
 
