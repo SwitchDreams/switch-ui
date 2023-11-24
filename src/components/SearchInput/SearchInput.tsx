@@ -110,33 +110,55 @@ function SearchInput({
     }
   }
 
-  const handleOptionClick = (label: string) => {
+  const handleOptionClick = (value: string) => {
     if (multiple) {
       const newSelectedValues = Array.isArray(selectedValue) ? [...selectedValue] : [];
-      const index = newSelectedValues.indexOf(label);
+      const index = newSelectedValues.indexOf(value);
       if (index === -1) {
-        newSelectedValues.push(label);
+        newSelectedValues.push(value);
       } else {
         newSelectedValues.splice(index, 1);
       }
       setSelectedValue(newSelectedValues);
     } else {
-      setSelectedValue(label);
+      setSelectedValue(value);
     }
   };
 
-  const checked = (value: string) => {
-    const index = selectedValue.indexOf(value);
+  const labelValue = () => {
+  const auxArray = [];
+   if(multiple && selectedValue.length > 1) {
+    for(let x in options) {
+      for (let y in (selectedValue as string[])) {
+        if(options[x].value == selectedValue[y]) {
+          auxArray.push(options[x].label)
+        }
+      }
+    }
+    return auxArray.join(', ')
+  } else {
+    for(let x in options) {
+      if(options[x].value == selectedValue) {
+        return (options[x].label)
+      }
+    }
+  }
+}
+
+  console.log(selectedValue)
+
+  const checked = (option: SearchInputOption) => {
+    const index = selectedValue.indexOf(option.value);
     if (index) {
       return (
         <Text size="md" className="text-gray-700">
-          {value}
+          {option.label}
         </Text>
       );
     } else {
       return (
         <Text size="md" className="text-primary-300">
-          {value}
+          {option.label}
         </Text>
       );
     }
@@ -148,11 +170,7 @@ function SearchInput({
         type="text"
         placeholder={label}
         disabled={disabled}
-        value={
-          multiple && selectedValue.length > 1
-            ? (selectedValue as string[]).join(", ")
-            : selectedValue
-        }
+        value={labelValue()}
         className={twMerge(SearchInputVariants({ size }), className)}
         {...rest}
         onChange={(e) => {
@@ -177,10 +195,10 @@ function SearchInput({
                   : ""
               }`}
               onClick={() => {
-                handleOptionClick(option.label);
+                handleOptionClick(option.value);
               }}
             >
-              {checked(option.label)}
+              {checked(option)}
             </div>
           ))}
         </div>
