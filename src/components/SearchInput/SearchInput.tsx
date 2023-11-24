@@ -3,6 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { InputHTMLAttributes, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
+import { Text } from "../Text";
 type Options = {
   info: any;
 };
@@ -12,8 +13,9 @@ interface SearchInputType {
   options?: Options[];
   size?: "lg" | "md" | "sm";
   disabled?: boolean;
-  selectedValue?: string;
+  selectedValue?: string | string[];
   setSelectedValue: (value: any) => void;
+  multiple?: boolean;
 }
 
 export type SearchInputVariantProps = VariantProps<typeof SearchInputVariants>;
@@ -46,6 +48,7 @@ function SearchInput({
   className,
   selectedValue = "",
   setSelectedValue,
+  multiple = false,
   ...rest
 }: SearchInputProps) {
   const [query, setQuery] = useState("");
@@ -58,7 +61,35 @@ function SearchInput({
         });
 
   const handleOptionClick = (value: string) => {
-    setSelectedValue(value);
+    if (multiple) {
+      const newSelectedValues = Array.isArray(selectedValue) ? [...selectedValue] : [];
+      const index = newSelectedValues.indexOf(value);
+      if (index === -1) {
+        newSelectedValues.push(value);
+      } else {
+        newSelectedValues.splice(index, 1);
+      }
+      setSelectedValue(newSelectedValues);
+    } else {
+      setSelectedValue(value);
+    }
+  };
+
+  const checked = (value: string) => {
+    const index = selectedValue.indexOf(value);
+    if (index) {
+      return (
+        <Text size="md" className="text-gray-700">
+          {value}
+        </Text>
+      );
+    } else {
+      return (
+        <Text size="md" className="text-primary-300">
+          {value}
+        </Text>
+      );
+    }
   };
 
   return (
@@ -67,7 +98,11 @@ function SearchInput({
         type="text"
         placeholder={label}
         disabled={disabled}
-        value={selectedValue}
+        value={
+          multiple && selectedValue.length > 1
+            ? (selectedValue as string[]).join(", ")
+            : selectedValue
+        }
         className={twMerge(SearchInputVariants({ size }), className)}
         {...rest}
         onChange={(e) => {
@@ -80,12 +115,16 @@ function SearchInput({
           {filteredOption.map((option) => (
             <div
               key={option.info}
-              className="flex h-14 cursor-pointer items-center px-4 text-md text-gray-900 hover:bg-gray-50"
+              className={`flex h-14 cursor-pointer items-center px-4 text-md text-gray-900 hover:bg-gray-50 ${
+                multiple && selectedValue.includes(option.info)
+                  ? "bg-gray-200" // Adicione um estilo diferente para opções selecionadas
+                  : ""
+              }`}
               onClick={() => {
                 handleOptionClick(option.info);
               }}
             >
-              {option.info}
+              {checked(option.info)}
             </div>
           ))}
         </ul>
@@ -94,8 +133,7 @@ function SearchInput({
         <XMarkIcon
           className="absolute right-2 h-5 w-5 cursor-pointer text-gray-500 peer-focus:text-gray-700"
           onClick={() => {
-            handleOptionClick("");
-            setQuery("");
+            setSelectedValue("");
           }}
           data-testid="clear-icon"
         ></XMarkIcon>
