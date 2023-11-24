@@ -126,26 +126,24 @@ function SearchInput({
   };
 
   const labelValue = () => {
-  const auxArray = [];
-   if(multiple && selectedValue.length > 1) {
-    for(let x in options) {
-      for (let y in (selectedValue as string[])) {
-        if(options[x].value == selectedValue[y]) {
-          auxArray.push(options[x].label)
+    const auxArray = [];
+    if (multiple && selectedValue.length > 1) {
+      for (const x in options) {
+        for (const y in selectedValue as string[]) {
+          if (options[x].value == selectedValue[y]) {
+            auxArray.push(options[x].label);
+          }
+        }
+      }
+      return auxArray.join(", ");
+    } else {
+      for (const x in options) {
+        if (options[x].value == selectedValue) {
+          return options[x].label;
         }
       }
     }
-    return auxArray.join(', ')
-  } else {
-    for(let x in options) {
-      if(options[x].value == selectedValue) {
-        return (options[x].label)
-      }
-    }
-  }
-}
-
-  console.log(selectedValue)
+  };
 
   const checked = (option: SearchInputOption) => {
     const index = selectedValue.indexOf(option.value);
