@@ -59,8 +59,11 @@ export default {
           hover: colors.primary["400"],
         },
         checkbox: {
-          border: colors.gray["200"],
-          checked: colors.gray["300"],
+          primary: {
+            border: colors.primary["300"],
+            checked: colors.primary["300"],
+            hover: colors.primary["300"],
+          },
         },
         input: {
           caret: colors.gray["200"],
