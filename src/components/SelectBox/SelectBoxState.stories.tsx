@@ -1,8 +1,8 @@
 import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { useState } from "react";
 
+import Tab from "../Tab/index";
 import SelectBox from "./index";
-
 const meta = {
   title: "Forms/SelectBox",
   component: SelectBox,
@@ -27,6 +27,17 @@ const options = [
   },
 ];
 
+const booleanOptions = [
+  {
+    label: "sim",
+    value: true,
+  },
+  {
+    label: "não",
+    value: false,
+  },
+];
+
 const Template: StoryFn<any> = () => {
   const [data, setData] = useState(1);
   return (
@@ -44,4 +55,30 @@ const Template: StoryFn<any> = () => {
   );
 };
 
+const TemplateTab: StoryFn<any> = () => {
+  const [data, setData] = useState(false);
+
+  return (
+    <Tab
+      tabs={[
+        {
+          info: (
+            <SelectBox
+              label="Ambientes"
+              size="lg"
+              placeholder="Escolha o(s) ambiente(s)"
+              options={booleanOptions}
+              value={data}
+              onChange={(e) => setData(e)}
+            />
+          ),
+          name: "tab 1",
+        },
+        { info: <p>oe</p>, name: "tab 2" },
+      ]}
+    />
+  );
+};
+
 export const WithState: Story = Template;
+export const WithTab: Story = TemplateTab;
