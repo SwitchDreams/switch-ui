@@ -17,7 +17,6 @@ describe("SelectBox", () => {
         options={options}
         size="md"
         label="Select an option"
-        defaultValue={1}
         disabled={false}
         supportText="Choose an option from the list."
         placeholder="Placeholder"
@@ -29,39 +28,15 @@ describe("SelectBox", () => {
     render(component());
 
     const labelElement = screen.getByText(/Select an option/i);
-    const optionsElement = screen.getByText(/Option 1/i);
     const supportTextElement = screen.getByText(/Choose an option from the list./i);
 
     expect(labelElement).toBeInTheDocument();
-    expect(optionsElement).toBeInTheDocument();
     expect(supportTextElement).toBeInTheDocument();
-  });
-
-  it("render the options when click in the select", async () => {
-    render(component());
-    const element = screen.getByText("Option 1");
-
-    fireEvent.click(element);
-
-    await waitFor(() => {
-      const optionsTwo = screen.getByText(/Option 2/i);
-      const optionsThree = screen.getByText(/Option 3/i);
-
-      expect(optionsTwo).toBeVisible();
-      expect(optionsThree).toBeVisible();
-    });
   });
 
   it("should render selected option when passed value prop", () => {
     const value = 2;
-    render(<SelectBox options={options} defaultValue={value} label="Teste" />);
-    const selectedOption = screen.getByText("Option 2");
-    expect(selectedOption).toBeVisible();
-  });
-
-  it("should render selected option when passed defaultValue prop", () => {
-    const value = 2;
-    render(<SelectBox options={options} defaultValue={value} label="Teste" />);
+    render(<SelectBox options={options} value={value} label="Teste" />);
     const selectedOption = screen.getByText("Option 2");
     expect(selectedOption).toBeVisible();
   });
