@@ -38,7 +38,7 @@ const Template: StoryFn<any> = () => {
         options={options}
         multiple={true}
         value={data}
-        defaultValue={[1, 2]}
+        // defaultValue={[1, 2]}
         onChange={(e) => setData(e)}
       />
     </div>

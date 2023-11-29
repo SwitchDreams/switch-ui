@@ -125,17 +125,17 @@ function SelectBox({
   placeholder,
   multiple = false,
   onChange = () => {},
-  defaultValue,
+  defaultValue, //deprecated
   value,
   ...rest
 }: SelectBoxProps) {
   // Initialize selectedOption state based on multiple prop
-  const [selectedOption, setSelectedOption] = useState(
-    multiple ? defaultValue || [] : defaultValue || -1,
+  const [selectedOption, setSelectedOption] = useState<any>(
+    multiple ? [] : -1,
   );
 
   useEffect(() => {
-    if (!multiple && value) setSelectedOption(value);
+    if (value) setSelectedOption(value);
   }, [value]);
 
   // Event handler for option selection change
