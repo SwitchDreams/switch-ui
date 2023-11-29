@@ -7,7 +7,7 @@ import { twMerge } from "tailwind-merge";
 import { Text } from "../Text";
 
 type Options = {
-  value: number;
+  value: any;
   label: string;
 };
 
@@ -26,7 +26,7 @@ interface SelectBoxType extends ListboxProps<any, any, any> {
 export type SelectBoxVariantProps = VariantProps<typeof selectBoxVariants>;
 
 export const selectBoxVariants = cva(
-  "rounded-plug-md relative m-1 flex cursor-default select-none items-center pl-2 text-gray-100",
+  "rounded-plug-md  relative m-1 flex cursor-default select-none items-center pl-2 text-gray-100",
   {
     variants: {
       size: {
@@ -35,12 +35,12 @@ export const selectBoxVariants = cva(
         sm: "h-10 py-1 text-sm",
       },
       active: {
-        true: "hover:bg-gray-50",
-        false: "text-gray-950",
+        true: "bg-gray-100",
+        false: "text-gray-950 ",
       },
       selected: {
         true: "bg-gray-100",
-        false: "bg-white",
+        false: "",
       },
     },
   },
@@ -135,7 +135,7 @@ function SelectBox({
   );
 
   useEffect(() => {
-    if (value) setSelectedOption(value);
+    if (value != undefined || value == "") setSelectedOption(value);
   }, [value]);
 
   // Event handler for option selection change
@@ -177,10 +177,10 @@ function SelectBox({
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Listbox.Options className="rounded-plug-md absolute z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 ring-1 ring-gray-100">
-                  {options.map((option) => (
+                <Listbox.Options className="rounded-plug-md appearence-none headlessui-listbox-option-:r1o:ring-primary-100 absolute z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 ring-1 ring-gray-100">
+                  {options.map((option, index) => (
                     <Listbox.Option
-                      key={option.value}
+                      key={index}
                       value={option.value}
                       className={({ active, selected }) =>
                         selectBoxVariants({ size, active, selected })

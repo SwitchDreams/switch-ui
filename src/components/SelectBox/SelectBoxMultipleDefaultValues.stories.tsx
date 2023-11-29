@@ -28,7 +28,7 @@ const options = [
 ];
 
 const Template: StoryFn<any> = () => {
-  const [data, setData] = useState([1, 2]);
+  const [data, setData] = useState([]);
   return (
     <div className="w-full">
       <SelectBox

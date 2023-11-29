@@ -27,6 +27,15 @@ const options = [
   },
 ];
 
+const booleanOptions = [  {
+  label: "sim",
+  value: true,
+},
+{
+  label: "não",
+  value: false,
+},]
+
 const Template: StoryFn<any> = () => {
   const [data, setData] = useState(1);
   return (
@@ -45,15 +54,15 @@ const Template: StoryFn<any> = () => {
 };
 
 const TemplateTab: StoryFn<any> = () => {
-  const [data, setData] = useState(2);
+  const [data, setData] = useState(false);
 
   return (
     <Tab tabs={[{info: 
-      (      <SelectBox
+      (<SelectBox
         label="Ambientes"
         size="lg"
         placeholder="Escolha o(s) ambiente(s)"
-        options={options}
+        options={booleanOptions}
         value={data}
         onChange={(e) => setData(e)}
       />)
