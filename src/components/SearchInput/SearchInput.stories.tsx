@@ -17,6 +17,7 @@ const Template: StoryFn<typeof SearchInput> = (args: SearchInputProps) => {
       label={args.label}
       options={args.options}
       size={args.size}
+      multiple={args.multiple}
       fetchRemoteData={args.fetchRemoteData}
       disabled={args.disabled}
       selectedValue={selectedValueState}
@@ -29,6 +30,7 @@ export const Default = Template.bind({});
 Default.args = {
   label: "Default",
   selectedValue: "",
+  multiple: true,
   options: [
     { label: "Option 1", value: 1 },
     { label: "Option 2", value: 2 },

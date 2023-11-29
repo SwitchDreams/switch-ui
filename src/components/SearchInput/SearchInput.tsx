@@ -3,6 +3,8 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { InputHTMLAttributes, useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
+import { Text } from "../Text";
+
 export type SearchInputOption = {
   label: string;
   value: any;
@@ -26,10 +28,11 @@ interface SearchInputType {
   options?: SearchInputOption[];
   size?: "lg" | "md" | "sm";
   disabled?: boolean;
-  selectedValue?: string;
+  selectedValue?: string | string[];
   fetchRemoteData?: (query: string) => Promise<SearchInputOption[]>;
   remoteDataConfig?: SearchInputRemoteDataConfig;
   setSelectedValue: (value: any) => void;
+  multiple?: boolean;
 }
 
 export type SearchInputVariantProps = VariantProps<typeof SearchInputVariants>;
@@ -66,16 +69,20 @@ function SearchInput({
     debounceTime: 300,
   },
   setSelectedValue,
+  multiple = false,
   ...rest
 }: SearchInputProps) {
   const [query, setQuery] = useState("");
   const [apiOptions, setApiOptions] = useState<SearchInputOption[]>([]);
   const [loading, setLoading] = useState(false);
 
+  const array = fetchRemoteData ? apiOptions : options;
+
   useEffect(() => {
     if (!fetchRemoteData) {
       return;
     }
+
     const fetchData = async () => {
       try {
         setLoading(true);
@@ -107,7 +114,51 @@ function SearchInput({
   }
 
   const handleOptionClick = (value: string) => {
-    setSelectedValue(value);
+    if (multiple) {
+      const newSelectedValues = Array.isArray(selectedValue) ? [...selectedValue] : [];
+      const index = newSelectedValues.indexOf(value);
+      if (index === -1) {
+        newSelectedValues.push(value);
+      } else {
+        newSelectedValues.splice(index, 1);
+      }
+      setSelectedValue(newSelectedValues);
+    } else {
+      setSelectedValue(value);
+    }
+  };
+
+  const labelValue = () => {
+    const auxArray = [];
+    if (multiple && selectedValue.length > 0) {
+      for (const x in array) {
+        for (const y in selectedValue as string[]) {
+          if (array[x].value == selectedValue[y]) {
+            auxArray.push(array[x].label);
+          }
+        }
+      }
+      return auxArray.join(", ");
+    } else {
+      return array.find((option) => option.value === selectedValue)?.label;
+    }
+  };
+
+  const checked = (option: SearchInputOption) => {
+    const selected = array.indexOf(option.value);
+    if (selected) {
+      return (
+        <Text size="md" className="text-gray-700">
+          {option.label}
+        </Text>
+      );
+    } else {
+      return (
+        <Text size="md" className="text-primary-300">
+          {option.label}
+        </Text>
+      );
+    }
   };
 
   return (
@@ -116,12 +167,12 @@ function SearchInput({
         type="text"
         placeholder={label}
         disabled={disabled}
-        value={selectedValue} // TODO: Shows label instead of value
+        value={labelValue()}
         className={twMerge(SearchInputVariants({ size }), className)}
         {...rest}
         onChange={(e) => {
           setQuery(e.target.value);
-          handleOptionClick(e.target.value);
+          // handleOptionClick(e.target.value);
         }}
       />
       {loading && (
@@ -135,12 +186,16 @@ function SearchInput({
           {filteredOption.map((option) => (
             <div
               key={option.value}
-              className="min-h-12 flex h-12 shrink-0 cursor-pointer items-center px-4 text-md text-gray-900 hover:bg-gray-50"
+              className={`flex h-14 cursor-pointer items-center px-4 text-md text-gray-900 hover:bg-gray-50 ${
+                multiple && selectedValue.includes(option.value)
+                  ? "bg-gray-200" // Adicione um estilo diferente para opções selecionadas
+                  : ""
+              }`}
               onClick={() => {
                 handleOptionClick(option.value);
               }}
             >
-              {option.label}
+              {checked(option)}
             </div>
           ))}
         </div>
@@ -155,8 +210,7 @@ function SearchInput({
         <XMarkIcon
           className="absolute right-2 h-5 w-5 cursor-pointer text-gray-500 peer-focus:text-gray-700"
           onClick={() => {
-            handleOptionClick("");
-            setQuery("");
+            setSelectedValue("");
           }}
           data-testid="clear-icon"
         />
