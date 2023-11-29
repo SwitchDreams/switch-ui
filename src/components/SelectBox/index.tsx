@@ -125,14 +125,13 @@ function SelectBox({
   placeholder,
   multiple = false,
   onChange = () => {},
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   defaultValue, //deprecated
   value,
   ...rest
 }: SelectBoxProps) {
   // Initialize selectedOption state based on multiple prop
-  const [selectedOption, setSelectedOption] = useState<any>(
-    multiple ? [] : -1,
-  );
+  const [selectedOption, setSelectedOption] = useState<any>(multiple ? [] : -1);
 
   useEffect(() => {
     if (value != undefined || value == "") setSelectedOption(value);
@@ -177,7 +176,7 @@ function SelectBox({
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Listbox.Options className="rounded-plug-md appearence-none headlessui-listbox-option-:r1o:ring-primary-100 absolute z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 ring-1 ring-gray-100">
+                <Listbox.Options className="appearence-none headlessui-listbox-option-:r1o:ring-primary-100 rounded-plug-md absolute z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 ring-1 ring-gray-100">
                   {options.map((option, index) => (
                     <Listbox.Option
                       key={index}
