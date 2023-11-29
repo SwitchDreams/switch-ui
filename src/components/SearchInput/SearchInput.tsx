@@ -76,10 +76,13 @@ function SearchInput({
   const [apiOptions, setApiOptions] = useState<SearchInputOption[]>([]);
   const [loading, setLoading] = useState(false);
 
+  const array = fetchRemoteData ? apiOptions : options;
+
   useEffect(() => {
     if (!fetchRemoteData) {
       return;
     }
+
     const fetchData = async () => {
       try {
         setLoading(true);
@@ -127,27 +130,23 @@ function SearchInput({
 
   const labelValue = () => {
     const auxArray = [];
-    if (multiple && selectedValue.length > 1) {
-      for (const x in options) {
+    if (multiple && selectedValue.length > 0) {
+      for (const x in array) {
         for (const y in selectedValue as string[]) {
-          if (options[x].value == selectedValue[y]) {
-            auxArray.push(options[x].label);
+          if (array[x].value == selectedValue[y]) {
+            auxArray.push(array[x].label);
           }
         }
       }
       return auxArray.join(", ");
     } else {
-      for (const x in options) {
-        if (options[x].value == selectedValue) {
-          return options[x].label;
-        }
-      }
+      return array.find((option) => option.value === selectedValue)?.label;
     }
   };
 
   const checked = (option: SearchInputOption) => {
-    const index = selectedValue.indexOf(option.value);
-    if (index) {
+    const selected = array.indexOf(option.value);
+    if (selected) {
       return (
         <Text size="md" className="text-gray-700">
           {option.label}
@@ -173,7 +172,7 @@ function SearchInput({
         {...rest}
         onChange={(e) => {
           setQuery(e.target.value);
-          handleOptionClick(e.target.value);
+          // handleOptionClick(e.target.value);
         }}
       />
       {loading && (
