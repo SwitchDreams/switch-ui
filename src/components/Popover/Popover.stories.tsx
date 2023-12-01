@@ -18,9 +18,11 @@ export const Default: Story = {
     children: (
       <div>
         <Text> Teste </Text>
+        <Text> Teste </Text>
+        <Text> Teste </Text>
+        <Text> Teste </Text>
       </div>
     ),
     button: "hello",
-    color: "primary",
   },
 };

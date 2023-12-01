@@ -18,6 +18,7 @@ import { Badge, BadgeProps } from "./Badge";
 import { Text, TextProps } from "./Text";
 import SearchInput, { SearchInputProps } from "./SearchInput/SearchInput";
 import Tooltip, { TooltipProps } from "./Tooltip";
+import Popover, { PopoverProps } from "./Popover";
 // Buttons
 import Button, { ButtonProps } from "./Button";
 import FloatingButton, { FloatingButtonProps } from "./FloatingButton";
@@ -47,6 +48,7 @@ export {
   Button,
   CheckBox,
   FloatingButton,
+  Popover,
   ProgressBar,
   RadioButton,
   SearchInput,
@@ -73,6 +75,7 @@ export type {
   CheckBoxProps,
   FloatingButtonProps,
   ItemProps,
+  PopoverProps,
   ProgressBarProps,
   RadioButtonProps,
   SearchInputProps,

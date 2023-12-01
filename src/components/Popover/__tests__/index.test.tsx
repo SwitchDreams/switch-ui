@@ -5,7 +5,7 @@ import Popover from "..";
 describe("Popover", () => {
   it("renders the default Popover with title", () => {
     render(
-      <Popover color="primary" button="botão">
+      <Popover button="botão">
         <div>teste</div>
       </Popover>,
     );

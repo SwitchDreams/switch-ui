@@ -7,17 +7,21 @@ export interface IPopover {
   button: ReactNode;
   children?: ReactNode;
   className?: string;
-  color: "primary" | "secondary" | "tertiary";
 }
 
 const PopoverVariants = cva(
-  "absolute z-10 mt-2 w-fit rounded p-2 text-xs text-white group-hover:flex group-hover:flex-wrap",
+  "absolute z-10 mt-2 w-fit rounded p-2 text-xs group-hover:flex group-hover:flex-wrap",
   {
     variants: {
-      color: {
-        primary: "bg-gray-950 text-white",
-        secondary: "bg-white text-gray-950",
-        tertiary: "bg-primary-300 text-gray-100",
+      position: {
+        top: "bottom-[calc(100%+5px)] left-1/2 translate-x-[-50%]",
+        bottom: "left-1/2 top-[calc(100%+5px)] translate-x-[-50%]",
+        right: "right-[calc(100%+5px)] top-1/2 translate-y-[-50%]",
+        left: "left-[calc(100%+5px)] top-1/2 translate-y-[-50%]",
+        topRight: "bottom-[calc(100%+5px)] left-1/2 translate-x-[5%]",
+        bottomRight: "left-1/2 top-[calc(100%+5px)]",
+        topLeft: "bottom-[calc(100%+5px)] right-1/2 translate-x-[5%]",
+        bottomLeft: "right-1/2 top-[calc(100%+5px)]",
       },
     },
   },
@@ -25,16 +29,20 @@ const PopoverVariants = cva(
 
 type PopoverVariantProps = VariantProps<typeof PopoverVariants>;
 
-export interface PopoverProps extends PopoverVariantProps, IPopover {
-  color: "primary" | "secondary" | "tertiary";
-}
+export interface PopoverProps extends PopoverVariantProps, IPopover {}
 
-const Popover = ({ button, children, className, color = "primary", ...rest }: PopoverProps) => {
+const Popover = ({
+  button,
+  children,
+  className,
+  position = "bottomLeft",
+  ...rest
+}: PopoverProps) => {
   return (
-    <PopoverHeadlessui className="relative">
+    <PopoverHeadlessui className="relative ml-20 mt-20 w-fit">
       <PopoverHeadlessui.Button>{button}</PopoverHeadlessui.Button>
       <PopoverHeadlessui.Panel
-        className={`${twMerge(PopoverVariants({ color }), className)}`}
+        className={`${twMerge(PopoverVariants({ position }), className)}`}
         {...rest}
       >
         {children}
