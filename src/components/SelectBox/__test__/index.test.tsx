@@ -42,6 +42,13 @@ describe("SelectBox", () => {
   });
 
   describe("multiple", () => {
+    it("should render the placeholder when no option is selected", () => {
+      render(
+        <SelectBox options={options} label="Teste" multiple={true} placeholder="Placeholder" />,
+      );
+      const placeholder = screen.getByText("Placeholder");
+      expect(placeholder).toBeVisible();
+    });
     it("should render multiple options when multiple is true", () => {
       const value = [1, 2];
       render(
