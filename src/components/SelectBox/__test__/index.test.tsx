@@ -87,5 +87,22 @@ describe("SelectBox", () => {
         expect(selectedOptionTwo).toBeVisible();
       });
     });
+
+    it("should render error message", () => {
+      const value = [1, 2];
+      render(
+        <SelectBox
+          multiple={true}
+          options={options}
+          value={value}
+          defaultValue={value}
+          label="Teste"
+          error={true}
+          errorMsg="Mensagem de erro"
+        />,
+      );
+
+      expect(screen.getByText("Mensagem de erro")).toBeInTheDocument();
+    });
   });
 });
