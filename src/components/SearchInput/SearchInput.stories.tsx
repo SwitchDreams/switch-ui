@@ -1,5 +1,6 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { useState } from "react";
+import { EnvelopeIcon } from "@heroicons/react/24/outline";
 
 import SearchInput, { SearchInputOption, SearchInputProps } from "./SearchInput";
 
@@ -22,6 +23,8 @@ const Template: StoryFn<typeof SearchInput> = (args: SearchInputProps) => {
       disabled={args.disabled}
       selectedValue={selectedValueState}
       setSelectedValue={setSelectedValue}
+      placeholder={args.placeholder}
+      leftIcon={args.leftIcon}
     />
   );
 };
@@ -30,13 +33,16 @@ export const Default = Template.bind({});
 Default.args = {
   label: "Default",
   selectedValue: "",
-  multiple: true,
   options: [
     { label: "Option 1", value: 1 },
     { label: "Option 2", value: 2 },
     { label: "Option 3", value: 3 },
   ],
   size: "md",
+  multiple: true,
+  placeholder: "hello",
+  leftIcon: EnvelopeIcon,
+
 };
 
 const mockApiCall = async (query: string): Promise<SearchInputOption[]> => {
