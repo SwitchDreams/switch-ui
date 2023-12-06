@@ -67,9 +67,8 @@ describe("Avatar", () => {
       const { getByTestId } = render(
         component("primary", "xl", false, "marty mcfly", "http://teste.com"),
       );
-      const divElement = getByTestId('img-div')
+      const divElement = getByTestId("img-div");
       expect(divElement).toHaveStyle(`background-image: url(http://teste.com)`);
-
     });
   });
 });
