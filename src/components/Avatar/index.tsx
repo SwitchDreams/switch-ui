@@ -81,6 +81,7 @@ const Avatar = ({
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
+            data-testid="img-div"
             className={avatarClass}
           />
         ) : (
