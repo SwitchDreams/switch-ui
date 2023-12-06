@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { InputHTMLAttributes, useEffect, useState, Fragment, ReactNode, ElementType } from "react";
 import { twMerge } from "tailwind-merge";
 import { Combobox, Transition } from '@headlessui/react'
-import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
+import { CheckIcon, XMarkIcon } from '@heroicons/react/20/solid'
 import { Text } from "../Text";
 
 export type SearchInputOption = {
@@ -265,9 +265,6 @@ export const dropdownIconVariant = cva("text-gray-700", {
       md: "h-6 w-6",
       sm: "h-5 w-5",
     },
-    open: {
-      true: "rotate-180"
-    }
   },
 });
 
@@ -292,11 +289,12 @@ function SearchInput({
   }: SearchInputProps) {
 
     const [selected, setSelected] = useState<any>(multiple ? [] : "");
-    const [query, setQuery] = useState('');
+    const [query, setQuery] = useState("");
     const [loading, setLoading] = useState(false);
     const [optionsInput, setOptionsInput] = useState(options)
-
+  
   useEffect(() => {
+
     if (!fetchRemoteData) {
       return;
     }
@@ -305,7 +303,6 @@ function SearchInput({
       try {
         setLoading(true);
         const data = await fetchRemoteData(query);
-        console.log(data)
         setOptionsInput(data);
       } finally {
         setLoading(false);
@@ -317,17 +314,6 @@ function SearchInput({
     debouncedFetchData();
   }, [query, fetchRemoteData]);
 
-  
-    const filteredOptions =
-      query === ''
-        ? optionsInput
-        : optionsInput.filter((option) =>
-            option.label
-              .toLowerCase()
-              .replace(/\s+/g, '')
-              .includes(query.toLowerCase().replace(/\s+/g, ''))
-          )
-
     const placeHolderMultiple = () => {
       const auxArray = [];
       for(let i in selected) {
@@ -336,10 +322,23 @@ function SearchInput({
       return auxArray.join(', ')
     }
 
+  let filteredOptions: SearchInputOption[] = [];
 
-    return (
+  if (fetchRemoteData) {
+    filteredOptions = optionsInput;
+  } else {
+    if (query === "") {
+      filteredOptions = optionsInput;
+    } else {
+      filteredOptions = optionsInput.filter((option) =>
+        option.label.toLowerCase().includes(query.toLowerCase()),
+      );
+    }
+  }
+
+  return (
     <div className="w-full">
-      <Combobox value={selected} onChange={setSelected} {...rest} multiple>
+      <Combobox value={selected} onChange={setSelected} {...rest} multiple={true}>
       {({ open }) => (
         <div>
           {label && <Combobox.Label className="text-sm font-medium text-gray-900">{label}</Combobox.Label>}
@@ -353,12 +352,12 @@ function SearchInput({
             {
             LeftIcon && 
             <div className="absolute inset-y-0 left-0 flex items-center pl-2">
-              <LeftIcon className={twMerge(dropdownIconVariant({ size, open }), "transform-none")} />
+              <LeftIcon className={twMerge(dropdownIconVariant({ size }))} />
             </div>
             }
-            <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
-              <ChevronUpIcon  aria-hidden="true" className={dropdownIconVariant({ size, open })} />
-            </Combobox.Button>
+            <div className="absolute inset-y-0 right-0 flex items-center pr-2">
+              {/* <XMarkIcon onClick={() => setSelected("")} className={twMerge(dropdownIconVariant({ size }), "cursor-pointer")} /> */}
+            </div>
           </div>
           <Transition
             as={Fragment}
@@ -373,7 +372,7 @@ function SearchInput({
                   Nothing found.
                 </div>
               ) : (
-                filteredOptions.map((option) => (
+                filteredOptions.map((option: SearchInputOption) => (
                   <Combobox.Option
                     key={option.value}
                     className={({ active, selected }) =>

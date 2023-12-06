@@ -39,7 +39,6 @@ Default.args = {
     { label: "Option 3", value: 3 },
   ],
   size: "md",
-  multiple: true,
   placeholder: "hello",
   leftIcon: EnvelopeIcon,
 
@@ -65,6 +64,9 @@ WithMockedAPICall.args = {
   selectedValue: "",
   fetchRemoteData: mockApiCall,
   size: "md",
+  placeholder: "hello",
+  leftIcon: EnvelopeIcon,
+  multiple:true
 };
 
 const apiCall = async (query: string): Promise<SearchInputOption[]> => {
@@ -79,4 +81,6 @@ WithAPICall.args = {
   selectedValue: "",
   fetchRemoteData: apiCall,
   size: "md",
+  placeholder: "hello",
+  leftIcon: EnvelopeIcon,
 };
