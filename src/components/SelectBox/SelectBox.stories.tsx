@@ -35,5 +35,6 @@ Variations.args = {
   error: false,
   multiple: false,
   defaultValue: 2,
-  // placeholder: "teste",
+  errorMsg: "texto de erro",
+  placeholder: "teste",
 };

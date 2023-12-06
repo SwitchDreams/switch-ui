@@ -4,8 +4,6 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { ElementType, Fragment, ReactNode, useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { Text } from "../Text";
-
 type Options = {
   value: any;
   label: string;
@@ -21,6 +19,7 @@ interface SelectBoxType extends ListboxProps<any, any, any> {
   error?: boolean;
   placeholder?: string;
   multiple?: boolean;
+  errorMsg?: string;
 }
 
 export type SelectBoxVariantProps = VariantProps<typeof selectBoxVariants>;
@@ -70,14 +69,6 @@ export const selectBoxButtonVariants = cva(
   },
 );
 
-export const selectBoxSupportTextVariants = cva("mb-1 block pt-2 text-xs text-gray-600", {
-  variants: {
-    error: {
-      true: "text-error-600",
-    },
-  },
-});
-
 export const dropdownIconVariant = cva("text-gray-700", {
   variants: {
     size: {
@@ -125,6 +116,7 @@ function SelectBox({
   placeholder,
   multiple = false,
   onChange = () => {},
+  errorMsg,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   defaultValue, //deprecated
   value,
@@ -145,7 +137,13 @@ function SelectBox({
 
   return (
     <div>
-      <Listbox multiple={multiple} value={selectedOption} onChange={handleOptionChange} {...rest}>
+      <Listbox
+        multiple={multiple}
+        value={selectedOption}
+        onChange={handleOptionChange}
+        {...rest}
+        disabled={disabled}
+      >
         {({ open }) => (
           <>
             <Listbox.Label className="text-sm font-medium text-gray-900">{label}</Listbox.Label>
@@ -199,10 +197,10 @@ function SelectBox({
           </>
         )}
       </Listbox>
-      {supportText && (
-        <Text className={selectBoxSupportTextVariants({ error })} as="span">
-          {supportText}
-        </Text>
+      {error ? (
+        <span className="text-sm text-error-500">{errorMsg}</span>
+      ) : (
+        <span className="text-sm text-gray-600">{supportText}</span>
       )}
     </div>
   );
