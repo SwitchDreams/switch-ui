@@ -292,7 +292,8 @@ function SearchInput({
     const [query, setQuery] = useState("");
     const [loading, setLoading] = useState(false);
     const [optionsInput, setOptionsInput] = useState(options)
-  
+    const [placeholderButton, setPlaceholderButton] = useState(placeholder);
+
   useEffect(() => {
 
     if (!fetchRemoteData) {
@@ -336,72 +337,162 @@ function SearchInput({
     }
   }
 
-  return (
-    <div className="w-full">
-      <Combobox value={selected} onChange={setSelected} {...rest} multiple={true}>
-      {({ open }) => (
-        <div>
-          {label && <Combobox.Label className="text-sm font-medium text-gray-900">{label}</Combobox.Label>}
-          <div className={`relative w-full`}>
-            <Combobox.Input
-              className={twMerge(SearchInputButtonVariants({size, disabled, error, open}), LeftIcon && "pl-10")}
-              displayValue={(option: SearchInputOption) => placeholder && (selected.length == 0 || selected == "") ? placeholder : multiple ? placeHolderMultiple() : option.label}
-              onChange={(event) => setQuery(event.target.value)}
-            />
+  if(multiple){
+    return (
+      <div className="w-full">
+        <Combobox value={selected} onChange={setSelected} {...rest} multiple>
+        {({ open }) => (
+          <div>
+            {label && <Combobox.Label className="text-sm font-medium text-gray-900">{label}</Combobox.Label>}
+            <div className="relative w-full">
+              <Combobox.Input
+                className={twMerge(SearchInputButtonVariants({size, disabled, error, open}), LeftIcon && "pl-10")}
+                displayValue={(option: SearchInputOption) => placeholderButton && (selected.length == 0 || selected == "") ? placeholderButton : multiple ? placeHolderMultiple() : option.label}
+                onChange={(event) => setQuery(event.target.value)}
+                onClick={() => setPlaceholderButton("")}
+              />
 
-            {
-            LeftIcon && 
-            <div className="absolute inset-y-0 left-0 flex items-center pl-2">
-              <LeftIcon className={twMerge(dropdownIconVariant({ size }))} />
-            </div>
-            }
-            <div className="absolute inset-y-0 right-0 flex items-center pr-2">
-              {/* <XMarkIcon onClick={() => setSelected("")} className={twMerge(dropdownIconVariant({ size }), "cursor-pointer")} /> */}
-            </div>
-          </div>
-          <Transition
-            as={Fragment}
-            leave="transition ease-in duration-100"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-            afterLeave={() => setQuery('')}
-          >
-            <Combobox.Options className="appearence-none headlessui-listbox-option-:r1o:ring-primary-100 rounded-plug-md z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 ring-1 ring-gray-100">
-              {filteredOptions.length === 0 && query !== '' ? (
-                <div className="relative cursor-default select-none px-3 py-2 text-gray-800">
-                  Nothing found.
+              {
+              LeftIcon && 
+              <div className="absolute inset-y-0 left-0 flex items-center pl-2">
+                <LeftIcon className={twMerge(dropdownIconVariant({ size }))} />
+              </div>
+              }
+              {
+                loading ?
+                  <div className="absolute right-2 top-1/2 -translate-y-1/2">
+                    {/* Aqui você pode usar um ícone de carregamento, por exemplo, um spinner */}
+                    <div className="h-5 w-5 animate-spin rounded-full border-t-2 border-solid border-primary-300"></div>
+                  </div>
+                :
+                <div className="absolute inset-y-0 right-0 flex items-center pr-2">
+                  <XMarkIcon onClick={() => setSelected(multiple ? [] : "")} className={twMerge(dropdownIconVariant({ size }), "cursor-pointer")} />
                 </div>
-              ) : (
-                filteredOptions.map((option: SearchInputOption) => (
-                  <Combobox.Option
-                    key={option.value}
-                    className={({ active, selected }) =>
-                    SearchInputOptionsVariants({size, active, selected})
-                    }
-                    value={option}
-                  >
-                    {({ selected }) => (
-                      <>
-                        <span
-                          className="flex w-full items-center justify-between truncate text-gray-800"
-                        >
-                          {option.label}
-                        </span>
-                        {selected && (
-                          <CheckIcon className="mr-3 h-5 w-5 text-gray-800" />
-                        )}
-                      </>
-                    )}
-                  </Combobox.Option>
-                ))
-              )}
-            </Combobox.Options>
-          </Transition>
-        </div>
-      )}
-      </Combobox>
-    </div>
-  )
+              }
+
+            </div>
+            <Transition
+              as={Fragment}
+              leave="transition ease-in duration-100"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+              afterLeave={() => setQuery('')}
+            >
+              <Combobox.Options className="appearence-none headlessui-listbox-option-:r1o:ring-primary-100 rounded-plug-md z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 ring-1 ring-gray-100">
+                {filteredOptions.length === 0 && query !== '' ? (
+                  <div className="relative cursor-default select-none px-3 py-2 text-gray-800">
+                    Nothing found.
+                  </div>
+                ) : (
+                  filteredOptions.map((option: SearchInputOption) => (
+                    <Combobox.Option
+                      key={option.value}
+                      className={({ active, selected }) =>
+                      SearchInputOptionsVariants({size, active, selected})
+                      }
+                      value={option}
+                    >
+                      {({ selected }) => (
+                        <>
+                          <span
+                            className="flex w-full items-center justify-between truncate text-gray-800"
+                          >
+                            {option.label}
+                          </span>
+                          {selected && (
+                            <CheckIcon className="mr-3 h-5 w-5 text-gray-800" />
+                          )}
+                        </>
+                      )}
+                    </Combobox.Option>
+                  ))
+                )}
+              </Combobox.Options>
+            </Transition>
+          </div>
+        )}
+        </Combobox>
+      </div>
+    )
+  } 
+  else {
+    return (
+      <div className="w-full">
+        <Combobox value={selected} onChange={setSelected} {...rest} >
+        {({ open }) => (
+          <div>
+            {label && <Combobox.Label className="text-sm font-medium text-gray-900">{label}</Combobox.Label>}
+            <div className="relative w-full">
+              <Combobox.Input
+                className={twMerge(SearchInputButtonVariants({size, disabled, error, open}), LeftIcon && "pl-10")}
+                displayValue={(option: SearchInputOption) => placeholderButton && (selected.length == 0 || selected == "") ? placeholderButton : multiple ? placeHolderMultiple() : option.label}
+                onChange={(event) => setQuery(event.target.value)}
+                onClick={() => setPlaceholderButton("")}
+              />
+
+              {
+              LeftIcon && 
+              <div className="absolute inset-y-0 left-0 flex items-center pl-2">
+                <LeftIcon className={twMerge(dropdownIconVariant({ size }))} />
+              </div>
+              }
+              {
+                loading ?
+                  <div className="absolute right-2 top-1/2 -translate-y-1/2">
+                    {/* Aqui você pode usar um ícone de carregamento, por exemplo, um spinner */}
+                    <div className="h-5 w-5 animate-spin rounded-full border-t-2 border-solid border-primary-300"></div>
+                  </div>
+                :
+                <div className="absolute inset-y-0 right-0 flex items-center pr-2">
+                  <XMarkIcon onClick={() => setSelected(multiple ? [] : "")} className={twMerge(dropdownIconVariant({ size }), "cursor-pointer")} />
+                </div>
+              }
+
+            </div>
+            <Transition
+              as={Fragment}
+              leave="transition ease-in duration-100"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+              afterLeave={() => setQuery('')}
+            >
+              <Combobox.Options className="appearence-none headlessui-listbox-option-:r1o:ring-primary-100 rounded-plug-md z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 ring-1 ring-gray-100">
+                {filteredOptions.length === 0 && query !== '' ? (
+                  <div className="relative cursor-default select-none px-3 py-2 text-gray-800">
+                    Nothing found.
+                  </div>
+                ) : (
+                  filteredOptions.map((option: SearchInputOption) => (
+                    <Combobox.Option
+                      key={option.value}
+                      className={({ active, selected }) =>
+                      SearchInputOptionsVariants({size, active, selected})
+                      }
+                      value={option}
+                    >
+                      {({ selected }) => (
+                        <>
+                          <span
+                            className="flex w-full items-center justify-between truncate text-gray-800"
+                          >
+                            {option.label}
+                          </span>
+                          {selected && (
+                            <CheckIcon className="mr-3 h-5 w-5 text-gray-800" />
+                          )}
+                        </>
+                      )}
+                    </Combobox.Option>
+                  ))
+                )}
+              </Combobox.Options>
+            </Transition>
+          </div>
+        )}
+        </Combobox>
+      </div>
+    )
+  }
   }
 
 export default SearchInput;

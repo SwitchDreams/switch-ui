@@ -41,7 +41,7 @@ Default.args = {
   size: "md",
   placeholder: "hello",
   leftIcon: EnvelopeIcon,
-
+  multiple: false
 };
 
 const mockApiCall = async (query: string): Promise<SearchInputOption[]> => {
@@ -66,7 +66,7 @@ WithMockedAPICall.args = {
   size: "md",
   placeholder: "hello",
   leftIcon: EnvelopeIcon,
-  multiple:true
+  multiple:false
 };
 
 const apiCall = async (query: string): Promise<SearchInputOption[]> => {
@@ -83,4 +83,6 @@ WithAPICall.args = {
   size: "md",
   placeholder: "hello",
   leftIcon: EnvelopeIcon,
+  multiple:true
+
 };
