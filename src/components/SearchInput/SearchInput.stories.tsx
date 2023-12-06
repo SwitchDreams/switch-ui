@@ -1,6 +1,6 @@
+import { EnvelopeIcon } from "@heroicons/react/24/outline";
 import { Meta, StoryFn } from "@storybook/react";
 import { useState } from "react";
-import { EnvelopeIcon } from "@heroicons/react/24/outline";
 
 import SearchInput, { SearchInputOption, SearchInputProps } from "./SearchInput";
 
@@ -31,7 +31,7 @@ const Template: StoryFn<typeof SearchInput> = (args: SearchInputProps) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  label: "Default",
+  label: "Buscar",
   selectedValue: "",
   options: [
     { label: "Option 1", value: 1 },
@@ -39,9 +39,9 @@ Default.args = {
     { label: "Option 3", value: 3 },
   ],
   size: "md",
-  placeholder: "hello",
+  placeholder: "Buscar",
   leftIcon: EnvelopeIcon,
-  multiple: false
+  multiple: false,
 };
 
 const mockApiCall = async (query: string): Promise<SearchInputOption[]> => {
@@ -66,7 +66,7 @@ WithMockedAPICall.args = {
   size: "md",
   placeholder: "hello",
   leftIcon: EnvelopeIcon,
-  multiple:false
+  multiple: false,
 };
 
 const apiCall = async (query: string): Promise<SearchInputOption[]> => {
@@ -83,6 +83,5 @@ WithAPICall.args = {
   size: "md",
   placeholder: "hello",
   leftIcon: EnvelopeIcon,
-  multiple:true
-
+  multiple: true,
 };
