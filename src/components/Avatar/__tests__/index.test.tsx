@@ -64,12 +64,11 @@ describe("Avatar", () => {
 
   describe("test the avatarUrl props", () => {
     it("test if the image is render", () => {
-      const { container } = render(
+      const { getByTestId } = render(
         component("primary", "xl", false, "marty mcfly", "http://teste.com"),
       );
-      const imgElement = container.querySelector("img");
-      expect(imgElement).toBeInTheDocument();
-      expect(imgElement).toHaveAttribute("src", "http://teste.com");
+      const divElement = getByTestId("img-div");
+      expect(divElement).toHaveStyle(`background-image: url(http://teste.com)`);
     });
   });
 });

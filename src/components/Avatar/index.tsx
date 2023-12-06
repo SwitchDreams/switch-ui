@@ -36,11 +36,11 @@ export const avatarOnlineVariants = cva(
   {
     variants: {
       size: {
-        xl: "bottom-10 left-20",
-        lg: "bottom-10 left-[4.5rem]",
-        md: "bottom-10 left-16 h-3 w-3",
-        sm: "bottom-9 left-14 h-3 w-3",
-        xs: "bottom-10 left-[3.3rem]  h-2 w-2",
+        xl: "bottom-12 left-20",
+        lg: "bottom-11 left-[4.5rem]",
+        md: "bottom-12 left-[4.2em] h-3 w-3",
+        sm: "bottom-11 left-14 h-3 w-3",
+        xs: "bottom-12 left-[3.5em]  h-2 w-2",
       },
     },
   },
@@ -73,9 +73,17 @@ const Avatar = ({
 
   return (
     <>
-      <div className={avatarUrl ? `bg-${avatarUrl} overflow-hidden ${avatarClass}` : avatarClass}>
+      <div className={avatarUrl ? `overflow-hidden ${avatarClass}` : avatarClass}>
         {avatarUrl ? (
-          <img src={avatarUrl} alt="foto do usuário" />
+          <div
+            style={{
+              backgroundImage: `url(${avatarUrl})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            data-testid="img-div"
+            className={avatarClass}
+          />
         ) : (
           <div className="text-center font-medium leading-[31.20px]">{getInitials(name)}</div>
         )}
