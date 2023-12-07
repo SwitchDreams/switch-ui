@@ -199,8 +199,8 @@ function SelectBox({
       </Listbox>
       {error && errorMsg ? (
         <span className="text-sm text-error-500">{errorMsg}</span>
-      ) : supportText && (
-        <span className="text-sm text-gray-600">{supportText}</span>
+      ) : (
+        supportText && <span className="text-sm text-gray-600">{supportText}</span>
       )}
     </div>
   );
