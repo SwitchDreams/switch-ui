@@ -51,30 +51,14 @@ describe("SelectBox", () => {
     });
     it("should render multiple options when multiple is true", () => {
       const value = [1, 2];
-      render(
-        <SelectBox
-          multiple={true}
-          options={options}
-          value={value}
-          defaultValue={value}
-          label="Teste"
-        />,
-      );
+      render(<SelectBox multiple={true} options={options} value={value} label="Teste" />);
       const selectedOption = screen.getByText("Option 1, Option 2");
       expect(selectedOption).toBeVisible();
     });
 
     it("should add a option in selected options when click in a option", async () => {
       const value = [1, 2];
-      render(
-        <SelectBox
-          multiple={true}
-          options={options}
-          value={value}
-          defaultValue={value}
-          label="Teste"
-        />,
-      );
+      render(<SelectBox multiple={true} options={options} value={value} label="Teste" />);
       const select = screen.getByRole("button");
 
       fireEvent.click(select);
@@ -95,7 +79,6 @@ describe("SelectBox", () => {
           multiple={true}
           options={options}
           value={value}
-          defaultValue={value}
           label="Teste"
           error={true}
           errorMsg="Mensagem de erro"

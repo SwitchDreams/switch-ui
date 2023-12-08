@@ -126,7 +126,7 @@ function SelectBox({
   const [selectedOption, setSelectedOption] = useState<any>(multiple ? [] : -1);
 
   useEffect(() => {
-    if (value != undefined || value != "") setSelectedOption(value);
+    if (value != undefined && value != "") setSelectedOption(value);
   }, [value]);
 
   // Event handler for option selection change
