@@ -10,7 +10,7 @@ export interface IPopover {
 }
 
 const PopoverVariants = cva(
-  "absolute z-10 mt-2 w-fit rounded p-2 text-xs group-hover:flex group-hover:flex-wrap",
+  "absolute z-10 mt-2 w-fit rounded p-28 text-xs group-hover:flex group-hover:flex-wrap",
   {
     variants: {
       position: {
@@ -39,7 +39,7 @@ const Popover = ({
   ...rest
 }: PopoverProps) => {
   return (
-    <PopoverHeadlessui className="relative ml-20 mt-20 w-fit">
+    <PopoverHeadlessui className="relative w-fit">
       <PopoverHeadlessui.Button>{button}</PopoverHeadlessui.Button>
       <PopoverHeadlessui.Panel
         className={`${twMerge(PopoverVariants({ position }), className)}`}
