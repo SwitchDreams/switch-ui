@@ -1,0 +1,49 @@
+import { Meta, Controls } from '@storybook/blocks';
+
+<Meta title="Copy and Paste/Currency Input" />
+
+## CurrencyInput
+
+Componente para input de valores monetários.
+O nosso componente de input-mask não funciona bem para valores com quantidades diferentes de casas decimais,
+então usamos o [react-number-format](
+
+
+É necessário instalar o [react-number-format](https://www.npmjs.com/package/react-number-format) para usar esse componente.
+
+
+## Usage
+
+Copie esse código para o seu projeto:
+
+```jsx
+import React from "react";
+import { CurrencyDollarIcon } from "@heroicons/react/24/outline";
+import { TextField } from "@switchdreams/ui";
+import { NumericFormat } from "react-number-format";
+
+const currencyStringToInteger = (currency) => {
+  return Number(currency.replace(/[^0-9-]+/g, ""));
+};
+
+const CurrencyInput = ({ value, setData, dataAttribute, ...props }) => {
+  return (
+    <NumericFormat
+      customInput={TextField}
+      decimalScale={2}
+      decimalSeparator=","
+      thousandSeparator="."
+      fixedDecimalScale
+      leftIcon={CurrencyDollarIcon}
+      placeholder="00,00"
+      value={value ? value / 100 : null}
+      onChange={(e) => {
+        setData(dataAttribute, currencyStringToInteger(e.target.value));
+      }}
+      {...props}
+    />
+  );
+};
+
+export default CurrencyInput;
+```
