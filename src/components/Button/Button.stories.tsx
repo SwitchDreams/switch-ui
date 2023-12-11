@@ -1,3 +1,4 @@
+import { StarIcon } from "@heroicons/react/20/solid";
 import { Meta, StoryFn } from "@storybook/react";
 
 import Button, { ButtonProps } from "./index";
@@ -28,4 +29,5 @@ Variations.args = {
   disabled: false,
   size: "md",
   onClick: undefined,
+  icon: StarIcon,
 };
