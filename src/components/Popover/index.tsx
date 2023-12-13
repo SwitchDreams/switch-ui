@@ -10,7 +10,7 @@ export interface IPopover {
 }
 
 const PopoverVariants = cva(
-  "absolute z-10 mt-2 w-fit rounded p-28 text-xs group-hover:flex group-hover:flex-wrap",
+  "absolute z-10 mt-2 w-fit rounded text-xs group-hover:flex group-hover:flex-wrap",
   {
     variants: {
       position: {

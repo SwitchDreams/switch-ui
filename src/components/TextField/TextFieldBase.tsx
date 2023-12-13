@@ -24,7 +24,7 @@ export interface ITextFieldBase
 }
 
 const TextFieldBaseVariants = cva(
-  "caretColor rounded-plug-md input relative my-2 w-full text-ellipsis border text-md hover:bg-gray-50 focus:outline-none ",
+  "caretColor rounded-plug-md input my-2 w-full text-ellipsis border text-md hover:bg-gray-50 focus:outline-none ",
   {
     variants: {
       size: {
@@ -50,7 +50,7 @@ const TextFieldBaseVariants = cva(
   },
 );
 
-const IconVariants = cva("text-field-icon absolute top-1/2 h-6 w-6 text-gray-500", {
+const IconVariants = cva("text-field-icon absolute top-1/3 h-6 w-6 text-gray-500", {
   variants: {
     error: {
       true: "text-error-500",
@@ -110,35 +110,36 @@ export const TextFieldBase = forwardRef(
             {label}
           </label>
         )}
-        <InputElement
-          ref={ref ? ref : undefined}
-          disabled={disabled}
-          id={name}
-          name={name}
-          placeholder={placeholder}
-          className={textfieldClasses}
-          // @ts-ignore
-          mask={inputElement === InputMask ? mask : undefined}
-          maskChar={inputElement === InputMask ? maskChar : undefined}
-          {...rest}
-        />
+        <div className="relative">
+          <InputElement
+            ref={ref ? ref : undefined}
+            disabled={disabled}
+            id={name}
+            name={name}
+            placeholder={placeholder}
+            className={textfieldClasses}
+            // @ts-ignore
+            mask={inputElement === InputMask ? mask : undefined}
+            maskChar={inputElement === InputMask ? maskChar : undefined}
+            {...rest}
+          />
+          {LeftIcon && (
+            <LeftIcon
+              onClick={() => onClickIcon()}
+              className={IconVariants({ error, position: "left", label: !!label })}
+            />
+          )}
+          {RightIcon && (
+            <RightIcon
+              onClick={() => onClickIcon()}
+              className={IconVariants({ error, position: "right", label: !!label })}
+            />
+          )}
+        </div>
         {error ? (
           <span className="text-sm text-error-500">{errorMsg}</span>
         ) : (
           <span className="text-sm text-gray-600">{supportText}</span>
-        )}
-
-        {LeftIcon && (
-          <LeftIcon
-            onClick={() => onClickIcon()}
-            className={IconVariants({ error, position: "left", label: !!label })}
-          />
-        )}
-        {RightIcon && (
-          <RightIcon
-            onClick={() => onClickIcon()}
-            className={IconVariants({ error, position: "right", label: !!label })}
-          />
         )}
       </div>
     );
