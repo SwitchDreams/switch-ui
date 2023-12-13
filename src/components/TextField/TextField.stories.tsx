@@ -41,5 +41,8 @@ export const WithTwoIcons: Story = {
     rightIcon: XMarkIcon,
     name: "name",
     disabled: false,
+    error: true,
+    errorMsg: "mensagem de erro",
+    className: "w-94",
   },
 };
