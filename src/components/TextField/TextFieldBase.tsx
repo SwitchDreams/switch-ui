@@ -110,7 +110,7 @@ export const TextFieldBase = forwardRef(
             {label}
           </label>
         )}
-        <div className="relative">
+        <div className="relative w-fit">
           <InputElement
             ref={ref ? ref : undefined}
             disabled={disabled}
