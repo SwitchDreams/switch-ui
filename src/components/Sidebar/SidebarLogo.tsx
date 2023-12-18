@@ -34,7 +34,6 @@ const SidebarLogo = ({ logo, href, children }: SidebarLogoProps) => {
         isOpen ? "justify-between" : "justify-center"
       } border-b-2 border-gray-200`}
     >
-      dale
       {isOpen && renderLogo()}
       {isOpen ? (
         <Bars3BottomRightIcon
