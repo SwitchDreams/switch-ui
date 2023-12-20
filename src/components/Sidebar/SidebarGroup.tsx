@@ -5,10 +5,7 @@ export interface SidebarItemGroupProps extends PropsWithChildren, ComponentProps
 
 const SidebarItemGroup = ({ children, className, ...rest }: SidebarItemGroupProps) => {
   return (
-    <div
-      className={twMerge("mx-5 mb-8 mt-8 flex h-[52%] flex-col overflow-hidden", className)}
-      {...rest}
-    >
+    <div className={twMerge("mx-5 mb-8 mt-8 flex h-fit flex-col", className)} {...rest}>
       {children}
     </div>
   );
