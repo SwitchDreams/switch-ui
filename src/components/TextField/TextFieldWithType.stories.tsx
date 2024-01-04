@@ -1,4 +1,5 @@
 import { Meta, StoryFn } from "@storybook/react";
+import React from "react";
 
 import TextField, { TextFieldProps } from "./index";
 
@@ -14,11 +15,21 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<TextFieldProps> = (args) => (
-  <div className="w-full">
-    <TextField {...args} type="date" />
-  </div>
-);
+const Template: StoryFn<TextFieldProps> = (args) => {
+  const ref = React.useRef<HTMLInputElement>(null);
+
+  React.useEffect(() => {
+    ref.current?.focus();
+    // eslint-disable-next-line no-console
+    console.log(ref.current?.value);
+  }, []);
+
+  return (
+    <div className="w-full">
+      <TextField {...args} ref={ref} type="date" />
+    </div>
+  );
+};
 
 export const WithType = Template.bind({});
 WithType.args = {
