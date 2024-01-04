@@ -26,22 +26,22 @@ describe("Toast Component", () => {
       const { container } = render(compontent("tonal", "primary"));
       const toastElement = container.querySelector(".toast-component");
       expect(toastElement).toHaveClass("bg-primary-300 text-white");
-    }),
-      it("test the primary color with filled variant", () => {
-        const { container } = render(compontent("filled", "primary"));
-        const toastElement = container.querySelector(".toast-component");
-        expect(toastElement).toHaveClass("bg-primary-25 border-primary-100 text-primary-400");
-      });
+    });
+    it("test the primary color with filled variant", () => {
+      const { container } = render(compontent("filled", "primary"));
+      const toastElement = container.querySelector(".toast-component");
+      expect(toastElement).toHaveClass("bg-primary-25 border-primary-100 text-primary-400");
+    });
     it("test the success color with tonal variant", () => {
       const { container } = render(compontent("tonal", "success"));
       const toastElement = container.querySelector(".toast-component");
-      expect(toastElement).toHaveClass("bg-success-500 text-gray-950");
-    }),
-      it("test the success color with filled variant", () => {
-        const { container } = render(compontent("filled", "success"));
-        const toastElement = container.querySelector(".toast-component");
-        expect(toastElement).toHaveClass("bg-success-50 border-success-200 text-success-700");
-      });
+      expect(toastElement).toHaveClass("bg-success-400 text-gray-950");
+    });
+    it("test the success color with filled variant", () => {
+      const { container } = render(compontent("filled", "success"));
+      const toastElement = container.querySelector(".toast-component");
+      expect(toastElement).toHaveClass("bg-success-50 border-success-200 text-success-700");
+    });
     it("test the warning color with tonal variant", () => {
       const { container } = render(compontent("tonal", "warning"));
       const toastElement = container.querySelector(".toast-component");
@@ -99,6 +99,7 @@ describe("Toast Component", () => {
         });
       }
 
+      expect(onClickMock).toHaveBeenCalled();
       expect(toastComponent).toHaveClass("hidden");
     });
   });
