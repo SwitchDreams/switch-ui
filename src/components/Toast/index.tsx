@@ -24,7 +24,7 @@ export const toastVariants = cva(
     variants: {
       color: {
         primary: "border-primary-100 bg-primary-25 text-primary-400",
-        success: "border-success-200 bg-success-50 text-success-700",
+        success: "border-success-200 bg-success-25 text-success-700",
         warning: "border-warning-200 bg-warning-50 text-warning-700",
         error: "border-error-200 bg-error-50 text-error-700",
       },
@@ -42,7 +42,7 @@ export const toastVariants = cva(
       {
         variant: "tonal",
         color: "success",
-        class: "bg-success-500 text-gray-950",
+        class: "bg-success-400 text-gray-950",
       },
       {
         variant: "tonal",
@@ -57,6 +57,7 @@ export const toastVariants = cva(
     ],
   },
 );
+
 export interface ToastProps extends Omit<ToastVariantProps, "color" | "variant">, ToastType {}
 
 const Toast = ({
@@ -66,6 +67,7 @@ const Toast = ({
   message,
   onClose,
   className,
+  ...rest
 }: ToastProps) => {
   const [isClose, setIsClose] = useState(false);
   const toastClass = twMerge(toastVariants({ color, variant }), className);
@@ -88,7 +90,7 @@ const Toast = ({
   };
 
   return (
-    <div className={isClose ? "toast-component hidden" : toastClass}>
+    <div className={isClose ? "toast-component hidden" : toastClass} {...rest}>
       {defineIcon(color)}
       <div className="w-11/12">
         <h1 className="font-semibold">{title}</h1>
