@@ -55,6 +55,7 @@ const Avatar = ({
   avatarUrl,
   size = "md",
   className,
+  ...rest
 }: AvatarProps) => {
   const avatarClass = twMerge(avatarVariants({ color, size }), className);
   const avatarOnlineClass = twMerge(avatarOnlineVariants({ size }), className);
@@ -73,7 +74,7 @@ const Avatar = ({
 
   return (
     <>
-      <div className={avatarUrl ? `overflow-hidden ${avatarClass}` : avatarClass}>
+      <div className={avatarUrl ? `overflow-hidden ${avatarClass}` : avatarClass} {...rest}>
         {avatarUrl ? (
           <div
             style={{

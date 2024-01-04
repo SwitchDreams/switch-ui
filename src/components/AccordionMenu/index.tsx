@@ -39,10 +39,16 @@ export interface AccordionMenuProps
   extends Omit<AccordionMenuVariantProps, "size">,
     AccordionMenuType {}
 
-const AccordionMenu = ({ title, size = "md", children, className }: AccordionMenuProps) => {
+const AccordionMenu = ({
+  title,
+  size = "md",
+  children,
+  className,
+  ...rest
+}: AccordionMenuProps) => {
   const accordionMenuClasses = twMerge(accordionMenuVariants({ size }), className);
   return (
-    <Disclosure as="div" className="border border-x-0 border-t-0 border-gray-100">
+    <Disclosure as="div" className="border border-x-0 border-t-0 border-gray-100" {...rest}>
       {({ open }) => (
         <>
           <Disclosure.Button

@@ -90,6 +90,7 @@ export const ToggleSwitch = ({
   disabled = false,
   withIcon = true,
   size = "md",
+  ...rest
 }: ToggleSwitchProps) => {
   return (
     <Switch
@@ -97,6 +98,7 @@ export const ToggleSwitch = ({
       onChange={onChange}
       as={Fragment}
       defaultChecked={externalChecked}
+      {...rest}
     >
       {({ checked }) => (
         <button
