@@ -8,6 +8,8 @@ import { cva, type VariantProps } from "class-variance-authority";
 import React, { HTMLAttributes, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
+import { Text } from "../Text";
+
 interface ToastType extends HTMLAttributes<any> {
   variant?: "tonal" | "filled";
   title: string;
@@ -24,7 +26,7 @@ export const toastVariants = cva(
     variants: {
       color: {
         primary: "border-primary-100 bg-primary-25 text-primary-400",
-        success: "border-success-200 bg-success-25 text-success-700",
+        success: "border-success-200 bg-success-50 text-success-700",
         warning: "border-warning-200 bg-warning-50 text-warning-700",
         error: "border-error-200 bg-error-50 text-error-700",
       },
@@ -72,9 +74,9 @@ const Toast = ({
   const [isClose, setIsClose] = useState(false);
   const toastClass = twMerge(toastVariants({ color, variant }), className);
 
-  const closeToast = () => {
+  const closeToast = (e: any) => {
     setIsClose(true);
-    if (onClose) onClose;
+    if (onClose) onClose(e);
   };
 
   const defineIcon = (color: string) => {
@@ -93,17 +95,14 @@ const Toast = ({
     <div className={isClose ? "toast-component hidden" : toastClass} {...rest}>
       {defineIcon(color)}
       <div className="w-11/12">
-        <h1 className="font-semibold">{title}</h1>
-        <p>{message}</p>
+        <Text as="h6" className="font-semibold">
+          {title}
+        </Text>
+        <Text size="sm">{message}</Text>
       </div>
-      <div
-        onClick={() => {
-          closeToast();
-        }}
-        className="close-toast h-5 cursor-pointer"
-      >
+      <button onClick={closeToast} className="close-toast h-5 cursor-pointer">
         <XMarkIcon className="h-5 w-5" />
-      </div>
+      </button>
     </div>
   );
 };
