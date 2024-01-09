@@ -1,3 +1,4 @@
+import { StarIcon } from "@heroicons/react/20/solid";
 import { render, screen } from "@testing-library/react";
 
 import { Badge } from "..";
@@ -11,7 +12,7 @@ describe("Show Badge", () => {
 });
 describe("Badge With icon", () => {
   it("renders the Badge with XMarkIcon on right", () => {
-    render(<Badge label="Hello world" icon iconSide="right" />);
+    render(<Badge label="Hello world" leftIcon={StarIcon} />);
     const badgeComponent = screen.getByText(/Hello world/i);
     const iconElement = badgeComponent.querySelector("svg");
 
@@ -19,7 +20,7 @@ describe("Badge With icon", () => {
     expect(iconElement).toBeInTheDocument();
   });
   it("renders the Badge with XMarkIcon on left", () => {
-    render(<Badge label="Hello world" icon iconSide="left" />);
+    render(<Badge label="Hello world" rightIcon={StarIcon} />);
     const badgeComponent = screen.getByText(/Hello world/i);
     const iconElement = badgeComponent.querySelector("svg");
 

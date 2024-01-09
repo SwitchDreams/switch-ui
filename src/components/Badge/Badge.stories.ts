@@ -1,3 +1,4 @@
+import { StarIcon } from "@heroicons/react/20/solid";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Badge } from ".";
@@ -16,5 +17,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     label: "Hello World",
+    leftIcon: StarIcon,
   },
 };

@@ -1,12 +1,11 @@
-import { XMarkIcon } from "@heroicons/react/24/solid";
 import { cva, VariantProps } from "class-variance-authority";
-import React from "react";
+import React, { ElementType } from "react";
 import { twMerge } from "tailwind-merge";
 
 export interface IBadgeProps {
   label: string;
-  icon?: boolean;
-  iconSide?: "right" | "left";
+  rightIcon?: ElementType;
+  leftIcon?: ElementType;
   outline?: boolean;
   opacity?: boolean;
   full?: boolean;
@@ -112,8 +111,8 @@ export interface BadgeProps
 
 export const Badge = ({
   label,
-  icon = false,
-  iconSide = "right",
+  leftIcon: LeftIcon,
+  rightIcon: RightIcon,
   color,
   outline = false,
   opacity = false,
@@ -125,9 +124,9 @@ export const Badge = ({
 
   return (
     <div className={badgeClasses} {...rest}>
-      {iconSide === "left" && icon && <XMarkIcon className="h-4 w-4 font-bold" />}
+      {LeftIcon && <LeftIcon className="h-4 w-4" />}
       {label}
-      {iconSide === "right" && icon && <XMarkIcon className="h-4 w-4 font-bold" />}
+      {RightIcon && <RightIcon className="h-4 w-4" />}
     </div>
   );
 };
