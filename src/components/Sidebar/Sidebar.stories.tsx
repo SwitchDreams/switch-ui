@@ -23,7 +23,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const Template: StoryFn<any> = () => (
-  <div className="flex overflow-y-hidden">
+  <div className="flex">
     <Sidebar absolute={false}>
       <Sidebar.Logo logo="https://switchdreams.com.br/og_image.png"></Sidebar.Logo>
       <Sidebar.Group>
@@ -52,6 +52,8 @@ const Template: StoryFn<any> = () => (
         <Sidebar.Item label="Users" href="" icon={UsersIcon}></Sidebar.Item>
       </Sidebar.Group>
       <Sidebar.Footer>
+        <Sidebar.Item label="Support" href="" icon={ExclamationCircleIcon}></Sidebar.Item>
+        <Sidebar.Item label="Settings" href="" icon={Cog6ToothIcon}></Sidebar.Item>
         <hr className="mb-10 mt-8 h-px w-full" />
         <Sidebar.User title="Switch Dreams" subTitle="@switchDreams">
           <Avatar name="F" avatarUrl="" size="sm"></Avatar>

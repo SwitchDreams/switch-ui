@@ -42,7 +42,7 @@ const SidebarMain = ({
         className={twMerge(
           style,
           `${
-            absolute ? "absolute" : "relative max-md:absolute"
+            absolute ? "absolute" : "max-md:absolute"
           } top-0 z-10 h-screen scroll-smooth border-r border-gray-100 max-md:overflow-scroll ${sideBarColor} transition-all duration-500 ease-in-out ${textColor}`,
           className,
         )}
