@@ -28,7 +28,7 @@ export function SidebarProvider({
   children: React.ReactNode;
   hoverColor?: string;
 }) {
-  const [isOpen, setIsOpen] = useState<boolean>(defaultContextValue.isOpen);
+  const [isOpen, setIsOpen] = useState<boolean>(checkIsDesktop());
   const [isDesktop, setIsDesktop] = useState<boolean>(checkIsDesktop());
 
   useEffect(() => {
