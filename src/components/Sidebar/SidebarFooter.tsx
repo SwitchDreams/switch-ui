@@ -7,9 +7,7 @@ export interface SidebarFooterProps extends PropsWithChildren, ComponentProps<"d
 
 const SidebarFooter = ({ children, className, ...rest }: SidebarFooterProps) => {
   const { isOpen } = useContext(SidebarContext);
-  const style = isOpen
-    ? "mx-5 absolute h-36 bottom-0 w-[85%] mb-10"
-    : "mx-5 absolute h-36 bottom-0 w-[50%] mb-10 max-md:hidden";
+  const style = isOpen ? "mx-5 flex h-56 flex-col" : "mx-5 flex h-56 flex-col max-md:hidden";
   return (
     <div className={twMerge(style, className)} {...rest}>
       {children}
