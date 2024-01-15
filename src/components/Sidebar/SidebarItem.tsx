@@ -18,7 +18,7 @@ export const SidebarIconVariants = cva(
 );
 
 export const SidebarItemVariants = cva(
-  "flex h-12 w-full items-center gap-2 rounded-md px-2 text-md font-semibold",
+  "flex h-12 w-full items-center gap-2 whitespace-nowrap rounded-md px-2 text-md font-semibold",
 );
 
 export interface ItemProps extends IItemProps, Omit<ComponentProps<"a">, "href"> {}
@@ -36,7 +36,7 @@ const SidebarItem = ({ label, as = "a", icon: Icon, href, active }: ItemProps) =
       {!isOpen && Icon && (
         <Element
           href={href}
-          className="h-12"
+          className="flex h-12 w-fit items-center justify-center"
           onClick={() => {
             OnClick();
           }}
@@ -55,6 +55,7 @@ const SidebarItem = ({ label, as = "a", icon: Icon, href, active }: ItemProps) =
           onClick={() => {
             OnClick();
           }}
+          className="flex h-12 w-fit justify-center"
         >
           <div
             className={twMerge(

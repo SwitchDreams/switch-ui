@@ -24,7 +24,7 @@ const SidebarMain = ({
 }: SidebarVariant) => {
   const { isOpen, setIsOpen } = useContext(SidebarContext);
 
-  const style = isOpen ? "w-72" : "w-20 max-md:w-0 max-md:absolute z-10";
+  const style = isOpen ? "w-72" : "w-24 max-md:w-0 max-md:absolute z-10";
   return (
     <div>
       <div

@@ -50,6 +50,12 @@ const Template: StoryFn<any> = () => (
         <Sidebar.Item label="Tasks" href="" icon={DocumentCheckIcon}></Sidebar.Item>
         <Sidebar.Item label="Reporting" href="" icon={NewspaperIcon}></Sidebar.Item>
         <Sidebar.Item label="Users" href="" icon={UsersIcon}></Sidebar.Item>
+        <Sidebar.Item label="Users" href="" icon={UsersIcon}></Sidebar.Item>
+        <Sidebar.Item label="Users" href="" icon={UsersIcon}></Sidebar.Item>
+        <Sidebar.Item label="Users" href="" icon={UsersIcon}></Sidebar.Item>
+        <Sidebar.Item label="Users" href="" icon={UsersIcon}></Sidebar.Item>
+        <Sidebar.Item label="Users" href="" icon={UsersIcon}></Sidebar.Item>
+        <Sidebar.Item label="Users" href="" icon={UsersIcon}></Sidebar.Item>
       </Sidebar.Group>
       <Sidebar.Footer>
         <Sidebar.Item label="Support" href="" icon={ExclamationCircleIcon}></Sidebar.Item>
