@@ -13,7 +13,6 @@ Copie esse código para o seu projeto:
 
 ```jsx
 import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Text } from "@switchdreams/ui";
 import { cva } from "class-variance-authority";
 import React, { useEffect, useState } from "react";
 import Select, { components } from "react-select";
@@ -103,6 +102,7 @@ const debounce = (fn, delay) => {
 const selectAllOption = { value: "selectAll", label: "Selecionar Todos" };
 
 const SearchInput = ({
+  name,
   size = "md",
   error = false,
   placeholder = "",
@@ -116,31 +116,26 @@ const SearchInput = ({
   className,
   disabled = false,
   label,
-  selectAll = true,
+  selectAll = false,
   onChange,
 }) => {
-  let aux = "";
-  if (value) {
-    for (let i in options) {
-      if (options[i].value == value) aux = options[i];
+  const defaultSelected = () => {
+    if (multiple && value) {
+      return options.filter((option) => value.includes(option.value));
+    } else {
+      return options.find((option) => option.value === value);
     }
-  }
+  };
 
-  const [selected, setSelected] = useState(value && aux);
+  const [selected, setSelected] = useState(defaultSelected());
   const [optionsInput, setOptionsInput] = useState(options);
   const [loading, setLoading] = useState(false);
 
-  const handleSelectChange = (selectedOption) => {
-    if (multiple) {
-      if (selectedOption.some((option) => option.value === "selectAll")) {
-        setSelected(optionsInput);
-      } else {
-        setSelected(selectedOption);
-      }
-    } else {
-      setSelected(selectedOption);
-    }
-  };
+  useEffect(() => {
+    setOptionsInput(options);
+
+    setSelected(defaultSelected());
+  }, [options]);
 
   useEffect(() => {
     if (!fetchRemoteData) {
@@ -161,6 +156,21 @@ const SearchInput = ({
 
     debouncedFetchData();
   }, [fetchRemoteData]);
+
+  const handleSelectChange = (selectedOption) => {
+    if (multiple) {
+      if (selectedOption.some((option) => option.value === "selectAll")) {
+        setSelected(optionsInput);
+        onChange(optionsInput.map((option) => option.value));
+      } else {
+        setSelected(selectedOption);
+        onChange(selectedOption.map((option) => option.value));
+      }
+    } else {
+      onChange(selectedOption.value);
+      setSelected(selectedOption);
+    }
+  };
 
   const ControlOption = ({ innerRef, innerProps, isDisabled, menuIsOpen, ...props }) => {
     return (
@@ -186,7 +196,7 @@ const SearchInput = ({
       }`}
     >
       {label}
-      {isSelected && <CheckIcon className=" h-5 w-5 text-gray-800" />}
+      {isSelected && <CheckIcon className="h-5 w-5 text-gray-800" />}
     </div>
   );
 
@@ -198,22 +208,29 @@ const SearchInput = ({
     );
   };
 
+  const optionsWithSelectAll = () => {
+    if (multiple && selectAll) {
+      return [selectAllOption, ...optionsInput];
+    } else {
+      return optionsInput;
+    }
+  };
+
   return (
     <div className={twMerge(`flex w-full flex-col justify-between`, className)}>
       {label && (
-        <Text size="sm" className="font-medium text-gray-900">
+        <label className="font-medium text-gray-900" htmlFor={name}>
           {label}
-        </Text>
+        </label>
       )}
       <Select
+        classNamePrefix="react-select"
+        inputId={name}
         isLoading={loading}
-        options={multiple ? selectAll && [selectAllOption, ...optionsInput] : optionsInput}
+        options={optionsWithSelectAll()}
         isMulti={multiple}
         value={selected}
-        onChange={(e) => {
-          handleSelectChange(e);
-          onChange(e.value);
-        }}
+        onChange={handleSelectChange}
         placeholder={placeholder}
         styles={customStyles}
         isDisabled={disabled}
@@ -226,6 +243,5 @@ const SearchInput = ({
     </div>
   );
 };
-
 export default SearchInput;
 ```
