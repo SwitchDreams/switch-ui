@@ -174,7 +174,7 @@ function SearchInput({
   if (multiple) {
     return (
       <div className="w-full">
-        <Combobox value={selected} onChange={setSelected} {...rest} multiple>
+        <Combobox disabled={disabled} value={selected} onChange={setSelected} {...rest} multiple>
           {({ open }) => (
             <div>
               {label && (
