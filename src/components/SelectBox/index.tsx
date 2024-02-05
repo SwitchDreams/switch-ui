@@ -60,7 +60,7 @@ export const selectBoxButtonVariants = cva(
       },
       open: {
         true: "border-primary-100",
-        false: "border-gray-100",
+        false: "border-gray-200",
       },
       error: {
         true: "border-error-600",
