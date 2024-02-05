@@ -61,7 +61,7 @@ export const SearchInputOptionsVariants = cva(
 );
 
 export const SearchInputButtonVariants = cva(
-  "rounded-plug-md relative my-2 w-full cursor-default border pl-3 pr-10 text-left text-gray-600 hover:bg-gray-100",
+  "rounded-plug-md relative my-2 w-full cursor-default border pl-3 pr-10 text-left text-gray-600 hover:bg-gray-100  focus:border-primary-100 focus:outline-none ",
   {
     variants: {
       disabled: {
