@@ -7,29 +7,32 @@ export interface ICheckBox {
   name: string;
 }
 
-const checkBoxVariants = cva("peer appearance-none border transition-all duration-200", {
-  variants: {
-    shape: {
-      circle: "rounded-full",
-      square: "rounded-sm",
+const checkBoxVariants = cva(
+  "peer appearance-none border border-primary-400 transition-all duration-200",
+  {
+    variants: {
+      shape: {
+        circle: "rounded-full",
+        square: "rounded-sm",
+      },
+      size: {
+        small: "h-4 w-4",
+        medium: "h-5 w-5",
+        large: "h-6 w-6",
+      },
+      color: {
+        primary: "checkbox-primary checked:hover:bg-primary-200 focus:ring-4 focus:ring-primary-25",
+        secondary:
+          "border-error-600 checked:bg-error-700 hover:bg-error-100 checked:hover:bg-error-600 focus:ring-4 focus:ring-error-100",
+      },
     },
-    size: {
-      small: "h-4 w-4",
-      medium: "h-5 w-5",
-      large: "h-6 w-6",
-    },
-    color: {
-      primary: "checkbox-primary checked:hover:bg-primary-200 focus:ring-4 focus:ring-primary-25",
-      secondary:
-        "border-error-600 checked:bg-error-700 hover:bg-error-100 checked:hover:bg-error-600 focus:ring-4 focus:ring-error-100",
+    defaultVariants: {
+      size: "medium",
+      shape: "square",
+      color: "primary",
     },
   },
-  defaultVariants: {
-    size: "medium",
-    shape: "square",
-    color: "primary",
-  },
-});
+);
 
 const iconVariants = cva(
   "pointer-events absolute z-[-1] font-bold text-white peer-checked:z-10 peer-checked:text-opacity-100",
@@ -83,7 +86,7 @@ export const CheckBox = ({
             disabled
               ? twMerge(
                   checkBoxVariants({ size, shape }),
-                  "border-gray-200 bg-gray-100 checked:border-gray-200 checked:after:bg-gray-500 hover:border-gray-200",
+                  "border-gray-400 bg-gray-200 opacity-100 checked:border-gray-200 checked:after:bg-gray-500 hover:border-gray-200 hover:bg-gray-200",
                 )
               : twMerge(checkBoxVariants({ size, shape, color }), className)
           }

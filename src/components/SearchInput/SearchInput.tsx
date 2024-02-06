@@ -61,7 +61,7 @@ export const SearchInputOptionsVariants = cva(
 );
 
 export const SearchInputButtonVariants = cva(
-  "rounded-plug-md relative my-2 w-full cursor-default border pl-3 pr-10 text-left text-gray-600 hover:bg-gray-100  focus:border-primary-100 focus:outline-none ",
+  "rounded-plug-md relative my-2 w-full cursor-default border-gray-400 pl-3 pr-10 text-left text-gray-500 hover:bg-gray-100 focus:border-primary-100 focus:outline-none ",
   {
     variants: {
       disabled: {
@@ -91,7 +91,7 @@ export interface SearchInputProps
     SearchInputType,
     Omit<SearchInputHTMLAttributes, "size" | "disabled" | "multiple"> {}
 
-export const dropdownIconVariant = cva("text-gray-700", {
+export const dropdownIconVariant = cva("text-gray-500", {
   variants: {
     size: {
       lg: "h-6 w-6",
@@ -227,7 +227,7 @@ function SearchInput({
                 leaveTo="opacity-0"
                 afterLeave={() => setQuery("")}
               >
-                <Combobox.Options className="appearence-none headlessui-listbox-option-:r1o:ring-primary-100 rounded-plug-md z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 ring-1 ring-gray-100">
+                <Combobox.Options className="appearence-none headlessui-listbox-option-:r1o:ring-primary-100 rounded-plug-md z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 shadow-md ring-1 ring-gray-100">
                   {filteredOptions.length === 0 && query !== "" ? (
                     <div className="relative cursor-default select-none px-3 py-2 text-gray-800">
                       Nothing found.

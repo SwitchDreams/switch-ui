@@ -24,11 +24,11 @@ export interface ITextFieldBase
 }
 
 const TextFieldBaseVariants = cva(
-  "caretColor rounded-plug-md input my-2 w-full text-ellipsis border text-md hover:bg-gray-50  focus:border-primary-100 focus:outline-none ",
+  "caretColor rounded-plug-md input my-2 w-full text-ellipsis border border-gray-400 text-md text-gray-500 hover:bg-gray-50 focus:border-primary-100 focus:outline-none ",
   {
     variants: {
       size: {
-        small: "h-10",
+        small: "h-10 text-sm",
         medium: "h-11",
         large: "h-14",
       },
@@ -62,6 +62,14 @@ const IconVariants = cva("text-field-icon absolute top-1/3 h-6 w-6 text-gray-500
     },
     label: {
       false: "top-1/3",
+    },
+    size: {
+      large: "h-6 w-6",
+      medium: "h-6 w-6",
+      small: "h-4 w-4",
+    },
+    defaultVariants: {
+      size: "large",
     },
   },
 });
@@ -101,6 +109,7 @@ export const TextFieldBase = forwardRef(
       TextFieldBaseVariants({ size, error, leftIconPresent, rightIconPresent }),
       className,
     );
+
     const opacityClass = disabled ? "opacity-50 relative" : "relative";
 
     return (
@@ -126,7 +135,12 @@ export const TextFieldBase = forwardRef(
           {LeftIcon && (
             <LeftIcon
               onClick={() => onClickIcon()}
-              className={IconVariants({ error, position: "left", label: !!label })}
+              className={IconVariants({
+                error,
+                position: "left",
+                label: !!label,
+                size: size,
+              })}
             />
           )}
           {RightIcon && (

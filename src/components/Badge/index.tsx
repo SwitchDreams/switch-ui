@@ -18,9 +18,9 @@ const badgeVariants = cva(
       color: {
         primary: "bg-primary-25 text-primary-300",
         secondary: "bg-secondary-25 text-secondary-800",
-        success: "bg-success-50 text-success-700",
-        warning: "bg-warning-50 text-warning-700",
-        danger: "bg-error-50 text-error-700",
+        success: "bg-success-100 text-success-700",
+        warning: "bg-warning-100 text-warning-700",
+        danger: "bg-error-100 text-error-700",
       },
       outline: {
         true: "border",

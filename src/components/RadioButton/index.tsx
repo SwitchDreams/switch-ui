@@ -7,7 +7,7 @@ export interface IRadioButton {
 }
 
 const radioButtonVariants = cva(
-  "relative appearance-none rounded-full border border-gray-200 checked:border-primary-300  checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:rounded-full checked:after:border-primary-300 checked:after:bg-primary-300 checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:border-primary-300 hover:bg-primary-25 focus:ring-4 focus:ring-primary-25",
+  "relative appearance-none rounded-full border border-gray-400 checked:border-primary-300  checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:rounded-full checked:after:border-primary-300 checked:after:bg-primary-300 checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:border-primary-300 hover:bg-primary-25 focus:ring-4 focus:ring-primary-25",
   {
     variants: {
       size: {
@@ -45,7 +45,7 @@ export const RadioButton = ({ size, disabled = false, className, ...rest }: Radi
           ? twMerge(
               radioButtonVariants({ size }),
               className,
-              "border-gray-200 bg-gray-100 checked:border-gray-200 checked:after:bg-gray-500 hover:border-gray-200 hover:bg-gray-100",
+              "border-gray-200 bg-gray-200 opacity-100 checked:border-gray-200 checked:after:bg-gray-500 hover:border-gray-200 hover:bg-gray-100",
             )
           : twMerge(radioButtonVariants({ size }), className)
       }

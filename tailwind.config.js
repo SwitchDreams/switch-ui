@@ -39,11 +39,11 @@ export default {
         },
         avatar: {
           primary: {
-            bg: colors.primary["25"],
-            text: colors.secondary["400"],
+            bg: colors.primary["50"],
+            text: colors.primary["400"],
           },
           gray: {
-            bg: colors.primary["100"],
+            bg: colors.gray["300"],
             text: colors.gray["600"],
           },
         },
