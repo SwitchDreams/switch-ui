@@ -46,7 +46,7 @@ export const selectBoxVariants = cva(
 );
 
 export const selectBoxButtonVariants = cva(
-  "rounded-plug-md relative my-2 w-full cursor-default border pr-10 text-left text-gray-600 hover:bg-gray-100",
+  "rounded-plug-md input relative my-2 w-full cursor-default border pr-10 text-left text-gray-600 hover:bg-gray-100",
   {
     variants: {
       disabled: {
@@ -60,7 +60,7 @@ export const selectBoxButtonVariants = cva(
       },
       open: {
         true: "border-primary-100",
-        false: "border-gray-100",
+        false: "border-gray-200",
       },
       error: {
         true: "border-error-600",

@@ -24,7 +24,7 @@ export interface ITextFieldBase
 }
 
 const TextFieldBaseVariants = cva(
-  "caretColor rounded-plug-md input my-2 w-full text-ellipsis border text-md hover:bg-gray-50  focus:border-primary-100 focus:outline-none ",
+  "caretColor rounded-plug-md input my-2 w-full text-ellipsis border text-md hover:bg-gray-50 focus:border-primary-100 focus:outline-none ",
   {
     variants: {
       size: {
