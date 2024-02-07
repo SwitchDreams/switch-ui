@@ -25,7 +25,7 @@ export const accordionMenuVariants = cva(
   },
 );
 
-export const accordionInfosVariants = cva("accordion-infos text-gray-700", {
+export const accordionInfosVariants = cva("accordion-infos text-gray-600", {
   variants: {
     size: {
       lg: "pb-6 text-md",

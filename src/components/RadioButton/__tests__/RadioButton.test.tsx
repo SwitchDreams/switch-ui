@@ -31,6 +31,6 @@ describe("RadioButton", () => {
     expect(radioButton).toBeInTheDocument();
     expect(radioButton).toBeDisabled();
     expect(radioButton).toHaveClass("border-gray-200");
-    expect(radioButton).toHaveClass("bg-gray-100");
+    expect(radioButton).toHaveClass("bg-gray-200");
   });
 });
