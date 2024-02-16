@@ -25,7 +25,7 @@ interface SelectBoxType extends ListboxProps<any, any, any> {
 export type SelectBoxVariantProps = VariantProps<typeof selectBoxVariants>;
 
 export const selectBoxVariants = cva(
-  "rounded-plug-md  relative m-1 flex cursor-default select-none items-center pl-2 text-gray-100",
+  "rounded-plug-md  relative m-1 flex cursor-default select-none items-center pl-2 text-gray-500",
   {
     variants: {
       size: {
@@ -46,7 +46,7 @@ export const selectBoxVariants = cva(
 );
 
 export const selectBoxButtonVariants = cva(
-  "rounded-plug-md relative my-2 w-full cursor-default border pr-10 text-left text-gray-600 hover:bg-gray-100",
+  "rounded-plug-md relative my-2 w-full cursor-default border pr-10 text-left text-gray-500 hover:bg-gray-100",
   {
     variants: {
       disabled: {
@@ -60,7 +60,7 @@ export const selectBoxButtonVariants = cva(
       },
       open: {
         true: "border-primary-100",
-        false: "border-gray-100",
+        false: "border-gray-200",
       },
       error: {
         true: "border-error-600",
@@ -69,7 +69,7 @@ export const selectBoxButtonVariants = cva(
   },
 );
 
-export const dropdownIconVariant = cva("text-gray-700", {
+export const dropdownIconVariant = cva("text-gray-500", {
   variants: {
     size: {
       lg: "h-6 w-6",
@@ -156,7 +156,7 @@ function SelectBox({
               >
                 <>
                   <span className="flex items-center gap-2 truncate pl-3">
-                    {LeftIcon && <LeftIcon className="h-6 w-6 text-gray-700" />}
+                    {LeftIcon && <LeftIcon className="h-6 w-6 text-gray-500" />}
                     {multiple
                       ? selectedOption.length === 0
                         ? placeholder
@@ -174,7 +174,7 @@ function SelectBox({
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Listbox.Options className="appearence-none headlessui-listbox-option-:r1o:ring-primary-100 rounded-plug-md absolute z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 ring-1 ring-gray-100">
+                <Listbox.Options className="appearence-none headlessui-listbox-option-:r1o:ring-primary-100 absolute z-30 mt-1 max-h-60 w-full overflow-auto rounded bg-white py-1 shadow-md ring-1 ring-gray-100">
                   {options.map((option, index) => (
                     <Listbox.Option
                       key={index}

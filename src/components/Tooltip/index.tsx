@@ -50,8 +50,8 @@ const ArrowVariants = cva("absolute hidden border-[6px] group-hover:inline-block
       none: "",
     },
     color: {
-      primary: "border-gray-950",
-      secondary: "border-white",
+      primary: "border-gray-950 text-gray-400",
+      secondary: "border-white text-gray-600",
       tertiary: "border-primary-300",
     },
   },
@@ -86,7 +86,11 @@ const Tooltip = ({
         ) : (
           <>
             <span className="pb-2 text-xs font-semibold">{title}</span>
-            <span className="pb-2 text-xs font-medium">{description}</span>
+            <span
+              className={twMerge(TooltipVariants({ color }), className, `pb-2 text-xs font-medium`)}
+            >
+              {description}
+            </span>
           </>
         )}
       </div>

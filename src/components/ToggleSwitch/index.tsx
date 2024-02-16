@@ -16,7 +16,7 @@ const switchVariants = cva("relative inline-flex items-center rounded-full", {
   variants: {
     checked: {
       true: "bg-primary-200 hover:bg-primary-300",
-      false: "bg-gray-100 hover:bg-gray-200",
+      false: "bg-gray-300 hover:bg-gray-400",
     },
     disabled: {
       true: "cursor-not-allowed opacity-50",
@@ -67,7 +67,7 @@ const dotVariants = cva(
 const iconVariants = cva("items-center", {
   variants: {
     checked: {
-      true: "text-purple-200",
+      true: "text-primary-300",
       false: "text-gray-400",
     },
     size: {

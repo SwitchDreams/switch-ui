@@ -25,7 +25,7 @@ export const accordionMenuVariants = cva(
   },
 );
 
-export const accordionInfosVariants = cva("accordion-infos text-gray-700", {
+export const accordionInfosVariants = cva("accordion-infos text-gray-600", {
   variants: {
     size: {
       lg: "pb-6 text-md",
@@ -60,9 +60,9 @@ const AccordionMenu = ({
           >
             {title}
             {open ? (
-              <ChevronDownIcon stroke-width="3" className="align-center flex h-4 w-4" />
+              <ChevronDownIcon strokeWidth="3" className="align-center flex h-4 w-4" />
             ) : (
-              <ChevronUpIcon stroke-width="3" className="align-center flex h-4 w-4" />
+              <ChevronUpIcon strokeWidth="3" className="align-center flex h-4 w-4" />
             )}
           </Disclosure.Button>
           <Disclosure.Panel className={accordionInfosVariants({ size })}>

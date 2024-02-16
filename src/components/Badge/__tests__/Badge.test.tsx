@@ -76,20 +76,20 @@ describe("Color styles", () => {
     const badgeComponent = screen.getByText(/Hello world/i);
 
     expect(badgeComponent).toBeInTheDocument();
-    expect(badgeComponent.classList.contains("bg-success-50")).toBe(true);
+    expect(badgeComponent.classList.contains("bg-success-100")).toBe(true);
   });
   it("renders the Badge warning", () => {
     render(<Badge label="Hello world" color="warning" />);
     const badgeComponent = screen.getByText(/Hello world/i);
 
     expect(badgeComponent).toBeInTheDocument();
-    expect(badgeComponent.classList.contains("bg-warning-50")).toBe(true);
+    expect(badgeComponent.classList.contains("bg-warning-100")).toBe(true);
   });
   it("renders the Badge danger", () => {
     render(<Badge label="Hello world" color="danger" />);
     const badgeComponent = screen.getByText(/Hello world/i);
 
     expect(badgeComponent).toBeInTheDocument();
-    expect(badgeComponent.classList.contains("bg-error-50")).toBe(true);
+    expect(badgeComponent.classList.contains("bg-error-100")).toBe(true);
   });
 });
