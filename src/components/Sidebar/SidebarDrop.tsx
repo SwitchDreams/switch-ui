@@ -30,7 +30,7 @@ const SidebarDrop = ({ label, icon: Icon, as = "a", options = [] }: DropProps) =
   return (
     <>
       {!isOpen && Icon && (
-        <div className="h-12">
+        <div className="jutify-center flex h-12 w-fit items-center">
           <Icon
             className={`hover:${hoverColor} mx-2 flex h-7 w-7 items-center rounded-md text-md font-semibold max-md:hidden`}
           ></Icon>
@@ -46,7 +46,7 @@ const SidebarDrop = ({ label, icon: Icon, as = "a", options = [] }: DropProps) =
               isDropdownOpen ? "peer-focus:visible" : ""
             }`}
           >
-            <div className="flex items-center">
+            <div className="flex h-12 items-center whitespace-nowrap">
               <Icon className="mr-2 h-7 w-7"></Icon>
               <Text>{label}</Text>
             </div>
