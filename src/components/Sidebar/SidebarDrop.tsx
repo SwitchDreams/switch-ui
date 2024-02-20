@@ -30,7 +30,7 @@ const SidebarDrop = ({ label, icon: Icon, as = "a", options = [] }: DropProps) =
   return (
     <>
       {!isOpen && Icon && (
-        <div className="jutify-center flex h-12 w-fit items-center">
+        <div className="flex h-12 w-auto items-center justify-center">
           <Icon
             className={`hover:${hoverColor} mx-2 flex h-7 w-7 items-center rounded-md text-md font-semibold max-md:hidden`}
           ></Icon>

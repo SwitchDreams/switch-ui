@@ -25,7 +25,7 @@ interface SelectBoxType extends ListboxProps<any, any, any> {
 export type SelectBoxVariantProps = VariantProps<typeof selectBoxVariants>;
 
 export const selectBoxVariants = cva(
-  "rounded-plug-md  relative m-1 flex cursor-default select-none items-center pl-2 text-gray-500",
+  "rounded-plug-md relative m-1 flex cursor-default select-none items-center pl-2 text-coolGray-900",
   {
     variants: {
       size: {
@@ -34,11 +34,11 @@ export const selectBoxVariants = cva(
         sm: "h-10 py-1 text-sm",
       },
       active: {
-        true: "bg-gray-100",
-        false: "text-gray-950 ",
+        true: "bg-coolGray-50",
+        false: "",
       },
       selected: {
-        true: "bg-gray-100",
+        true: "bg-coolGray-50",
         false: "",
       },
     },
@@ -46,9 +46,13 @@ export const selectBoxVariants = cva(
 );
 
 export const selectBoxButtonVariants = cva(
-  "rounded-plug-md relative my-2 w-full cursor-default border pr-10 text-left text-gray-500 hover:bg-gray-100",
+  "rounded-plug-md relative my-2 w-full cursor-default border pr-10 text-left text-coolGray-900 hover:bg-coolGray-50",
   {
     variants: {
+      showPlaceholder: {
+        true: "text-coolGray-500",
+        false: "text-coolGray-900",
+      },
       disabled: {
         true: "opacity-40",
         false: "opacity-100",
@@ -69,12 +73,12 @@ export const selectBoxButtonVariants = cva(
   },
 );
 
-export const dropdownIconVariant = cva("text-gray-500", {
+export const iconVariant = cva("text-coolGray-500", {
   variants: {
     size: {
-      lg: "h-6 w-6",
-      md: "h-6 w-6",
-      sm: "h-5 w-5",
+      lg: "h-5 w-5",
+      md: "h-5 w-5",
+      sm: "h-4 w-4",
     },
   },
 });
@@ -84,9 +88,9 @@ export interface SelectBoxProps extends Omit<SelectBoxVariantProps, "size">, Sel
 // Helper function to render the chevron icon based on the open state
 const renderChevron = (open: boolean, size: any): ReactNode => {
   const icon = open ? (
-    <ChevronUpIcon className={dropdownIconVariant({ size })} aria-hidden="true" />
+    <ChevronUpIcon className={iconVariant({ size })} aria-hidden="true" />
   ) : (
-    <ChevronDownIcon className={dropdownIconVariant({ size })} aria-hidden="true" />
+    <ChevronDownIcon className={iconVariant({ size })} aria-hidden="true" />
   );
   return (
     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -125,6 +129,8 @@ function SelectBox({
   // Initialize selectedOption state based on multiple prop
   const [selectedOption, setSelectedOption] = useState<any>(multiple ? [] : -1);
 
+  const showPlaceholder = multiple ? selectedOption.length === 0 : selectedOption === -1;
+
   useEffect(() => {
     if (value != undefined && value != "") setSelectedOption(value);
   }, [value]);
@@ -146,17 +152,23 @@ function SelectBox({
       >
         {({ open }) => (
           <>
-            <Listbox.Label className="text-sm font-medium text-gray-900">{label}</Listbox.Label>
+            <Listbox.Label className="text-sm font-medium text-coolGray-900">{label}</Listbox.Label>
             <div className="relative">
               <Listbox.Button
                 className={twMerge(
-                  selectBoxButtonVariants({ disabled, size, error, open }),
+                  selectBoxButtonVariants({
+                    disabled,
+                    size,
+                    error,
+                    open,
+                    showPlaceholder: showPlaceholder,
+                  }),
                   className,
                 )}
               >
                 <>
                   <span className="flex items-center gap-2 truncate pl-3">
-                    {LeftIcon && <LeftIcon className="h-6 w-6 text-gray-500" />}
+                    {LeftIcon && <LeftIcon className={iconVariant({ size })} />}
                     {multiple
                       ? selectedOption.length === 0
                         ? placeholder
@@ -174,19 +186,23 @@ function SelectBox({
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Listbox.Options className="appearence-none headlessui-listbox-option-:r1o:ring-primary-100 absolute z-30 mt-1 max-h-60 w-full overflow-auto rounded bg-white py-1 shadow-md ring-1 ring-gray-100">
+                <Listbox.Options className="appearence-none absolute z-30 mt-1 max-h-60 w-full overflow-auto rounded border-primary-25 bg-white py-1 shadow shadow-primary-25 ring-2 ring-primary-25">
                   {options.map((option, index) => (
                     <Listbox.Option
                       key={index}
                       value={option.value}
                       className={({ active, selected }) =>
-                        selectBoxVariants({ size, active, selected })
+                        selectBoxVariants({
+                          size,
+                          active,
+                          selected,
+                        })
                       }
                     >
                       {({ selected }) => (
-                        <span className="flex w-full items-center justify-between truncate text-gray-800">
+                        <span className="flex w-full items-center justify-between truncate text-coolGray-800">
                           {option.label}
-                          {selected && <CheckIcon className="mr-3 h-5 w-5 text-gray-800" />}
+                          {selected && <CheckIcon className="mr-3 h-5 w-5 text-coolGray-800" />}
                         </span>
                       )}
                     </Listbox.Option>
@@ -200,7 +216,7 @@ function SelectBox({
       {error && errorMsg ? (
         <span className="text-sm text-error-500">{errorMsg}</span>
       ) : (
-        supportText && <span className="text-sm text-gray-600">{supportText}</span>
+        supportText && <span className="text-sm text-coolGray-600">{supportText}</span>
       )}
     </div>
   );

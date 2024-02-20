@@ -36,7 +36,7 @@ const SidebarItem = ({ label, as = "a", icon: Icon, href, active }: ItemProps) =
       {!isOpen && Icon && (
         <Element
           href={href}
-          className="flex h-12 w-fit items-center justify-center"
+          className="flex h-12 w-auto items-center justify-center"
           onClick={() => {
             OnClick();
           }}
@@ -55,7 +55,7 @@ const SidebarItem = ({ label, as = "a", icon: Icon, href, active }: ItemProps) =
           onClick={() => {
             OnClick();
           }}
-          className="flex h-12 w-fit justify-center"
+          className="flex h-12 w-auto justify-center"
         >
           <div
             className={twMerge(

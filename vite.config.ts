@@ -21,16 +21,16 @@ export default defineConfig(() => ({
       ],
     }),
     dts({
-      include: ["src/components/"],
+      include: ["src/components/", "src/index.ts"],
       exclude: ["**/*.test.tsx", "**/*.stories.tsx"],
     }),
   ],
   build: {
     lib: {
-      entry: resolve("src", "components/index.ts"),
+      entry: resolve("src", "index.ts"),
       name: "SwitchUI",
       formats: ["es", "umd"],
-      fileName: (format) => `@switchdreams/ui.${format}.js`,
+      fileName: (format) => `ui.${format}.js`,
     },
     rollupOptions: {
       external: [...Object.keys(packageJson.peerDependencies)],
