@@ -155,7 +155,7 @@ describe("Test the icon padding", () => {
 
     const inputElement = screen.getByPlaceholderText("Enter your username");
 
-    expect(inputElement).not.toHaveClass("pr-10");
+    expect(inputElement).not.toHaveClass("pr-9");
   });
   it("should have padding right", () => {
     render(
@@ -171,6 +171,6 @@ describe("Test the icon padding", () => {
 
     const inputElement = screen.getByPlaceholderText("Enter your username");
 
-    expect(inputElement).toHaveClass("pr-10");
+    expect(inputElement).toHaveClass("pr-9");
   });
 });
