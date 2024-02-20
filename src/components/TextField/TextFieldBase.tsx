@@ -24,7 +24,7 @@ export interface ITextFieldBase
 }
 
 const TextFieldBaseVariants = cva(
-  "caretColor rounded-plug-md input my-2 w-full text-ellipsis border border-gray-400 text-md text-gray-500 hover:bg-gray-50 focus:border-primary-100 focus:outline-none ",
+  "text-cool-500 rounded-plug-md input my-2 w-full text-ellipsis border border-gray-400 text-md hover:bg-coolGray-50 focus:outline-none",
   {
     variants: {
       size: {
@@ -34,14 +34,14 @@ const TextFieldBaseVariants = cva(
       },
       error: {
         true: "border-error-500 caret-error-500",
-        false: "caretColor",
+        false: "",
       },
       leftIconPresent: {
         true: "pl-9",
         false: "pl-3",
       },
       rightIconPresent: {
-        true: "pr-10",
+        true: "pr-9",
       },
     },
     defaultVariants: {
@@ -50,29 +50,32 @@ const TextFieldBaseVariants = cva(
   },
 );
 
-const IconVariants = cva("text-field-icon absolute top-1/3 h-6 w-6 text-gray-500", {
-  variants: {
-    error: {
-      true: "text-error-500",
-      false: "text-gray-500",
-    },
-    position: {
-      left: "left-2",
-      right: "right-2",
-    },
-    label: {
-      false: "top-1/3",
-    },
-    size: {
-      large: "h-6 w-6",
-      medium: "h-6 w-6",
-      small: "h-4 w-4",
+const IconVariants = cva(
+  "text-field-icon absolute top-1/3 text-coolGray-500 focus:text-coolGray-700",
+  {
+    variants: {
+      error: {
+        true: "text-error-500",
+        false: "text-coolGray-500",
+      },
+      position: {
+        left: "left-2",
+        right: "right-2",
+      },
+      label: {
+        false: "top-1/3",
+      },
+      size: {
+        large: "h-5 w-5",
+        medium: "h-5 w-5",
+        small: "h-4 w-4",
+      },
     },
     defaultVariants: {
-      size: "large",
+      size: "medium",
     },
   },
-});
+);
 
 type TextfieldVariantProps = VariantProps<typeof TextFieldBaseVariants>;
 
@@ -87,7 +90,7 @@ export const TextFieldBase = forwardRef(
       rightIcon: RightIcon,
       inputElement = "input",
       placeholder,
-      size,
+      size = "medium",
       label,
       className,
       supportText,
@@ -115,7 +118,7 @@ export const TextFieldBase = forwardRef(
     return (
       <div className={opacityClass}>
         {label && (
-          <label htmlFor={name} className="text-sm font-medium text-gray-900">
+          <label htmlFor={name} className="text-sm font-medium text-coolGray-900">
             {label}
           </label>
         )}
@@ -146,14 +149,14 @@ export const TextFieldBase = forwardRef(
           {RightIcon && (
             <RightIcon
               onClick={() => onClickIcon()}
-              className={IconVariants({ error, position: "right", label: !!label })}
+              className={IconVariants({ error, position: "right", label: !!label, size: size })}
             />
           )}
         </div>
         {error ? (
           <span className="text-sm text-error-500">{errorMsg}</span>
         ) : (
-          <span className="text-sm text-gray-600">{supportText}</span>
+          <span className="text-sm text-coolGray-600">{supportText}</span>
         )}
       </div>
     );
