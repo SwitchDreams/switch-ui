@@ -1,7 +1,7 @@
 {
   "name": "@switchdreams/ui",
   "private": false,
-  "version": "0.3.10",
+  "version": "0.4.0",
   "type": "module",
   "description": "Biblioteca de Componentes da SwitchDreams",
   "repository": {
@@ -13,14 +13,14 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/@switchdreams/ui.es.js",
-      "require": "./dist/@switchdreams/ui.umd.js"
+      "import": "./dist/ui.es.js",
+      "require": "./dist/ui.umd.js"
     },
     "./dist/style.css": "./dist/style.css",
     "./dist/tailwind.plugin.ts": "./dist/tailwind.plugin.ts"
   },
-  "main": "./dist/@switchdreams/ui.umd.js",
-  "module": "./dist/@switchdreams/ui.es.js",
+  "main": "./dist/ui.umd.js",
+  "module": "./dist/ui.es.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite",
