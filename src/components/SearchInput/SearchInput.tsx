@@ -40,7 +40,7 @@ interface SearchInputType {
 export type SearchInputVariantProps = VariantProps<typeof SearchInputButtonVariants>;
 
 export const SearchInputOptionsVariants = cva(
-  "rounded-plug-md m-1 flex cursor-pointer select-none items-center justify-between pl-2 text-gray-800",
+  "rounded-plug-md m-1 flex cursor-pointer select-none items-center justify-between pl-2 text-coolGray-900",
   {
     variants: {
       size: {
@@ -49,11 +49,11 @@ export const SearchInputOptionsVariants = cva(
         sm: "h-10 py-1 text-sm",
       },
       active: {
-        true: "bg-gray-100",
-        false: "text-gray-950 ",
+        true: "bg-coolGray-50",
+        false: "",
       },
       selected: {
-        true: "bg-gray-100",
+        true: "bg-coolGray-50",
         false: "",
       },
     },
@@ -61,7 +61,7 @@ export const SearchInputOptionsVariants = cva(
 );
 
 export const SearchInputButtonVariants = cva(
-  "rounded-plug-md relative my-2 w-full cursor-default border-gray-400 pl-3 pr-10 text-left text-gray-500 hover:bg-gray-100 focus:border-primary-100 focus:outline-none ",
+  "rounded-plug-md input relative my-2 w-full cursor-default border border-coolGray-400 pl-3 pr-10 text-left text-coolGray-500 hover:bg-coolGray-50 focus:outline-none",
   {
     variants: {
       disabled: {
@@ -84,22 +84,22 @@ export const SearchInputButtonVariants = cva(
   },
 );
 
+export const iconVariant = cva("text-coolGray-500", {
+  variants: {
+    size: {
+      lg: "h-5 w-5",
+      md: "h-5 w-5",
+      sm: "h-4 w-4",
+    },
+  },
+});
+
 interface SearchInputHTMLAttributes extends InputHTMLAttributes<HTMLInputElement> {}
 
 export interface SearchInputProps
   extends Omit<SearchInputVariantProps, "size" | "disabled" | "error">,
     SearchInputType,
     Omit<SearchInputHTMLAttributes, "size" | "disabled" | "multiple"> {}
-
-export const dropdownIconVariant = cva("text-gray-500", {
-  variants: {
-    size: {
-      lg: "h-6 w-6",
-      md: "h-6 w-6",
-      sm: "h-5 w-5",
-    },
-  },
-});
 
 function SearchInput({
   options = [],
@@ -178,7 +178,7 @@ function SearchInput({
           {({ open }) => (
             <div>
               {label && (
-                <Combobox.Label className="text-sm font-medium text-gray-900">
+                <Combobox.Label className="text-sm font-medium text-coolGray-900">
                   {label}
                 </Combobox.Label>
               )}
@@ -200,7 +200,7 @@ function SearchInput({
 
                 {LeftIcon && (
                   <div className="absolute inset-y-0 left-0 flex items-center pl-2">
-                    <LeftIcon className={twMerge(dropdownIconVariant({ size }))} />
+                    <LeftIcon className={twMerge(iconVariant({ size }))} />
                   </div>
                 )}
                 {loading ? (
@@ -214,7 +214,7 @@ function SearchInput({
                       <XMarkIcon
                         data-testid="clear-icon"
                         onClick={() => setSelected([])}
-                        className={twMerge(dropdownIconVariant({ size }), "cursor-pointer")}
+                        className={twMerge(iconVariant({ size }), "cursor-pointer")}
                       />
                     </div>
                   )
@@ -266,7 +266,7 @@ function SearchInput({
           {({ open }) => (
             <div>
               {label && (
-                <Combobox.Label className="text-sm font-medium text-gray-900">
+                <Combobox.Label className="text-sm font-medium text-coolGray-900">
                   {label}
                 </Combobox.Label>
               )}
@@ -287,7 +287,7 @@ function SearchInput({
 
                 {LeftIcon && (
                   <div className="absolute inset-y-0 left-0 flex items-center pl-2">
-                    <LeftIcon className={twMerge(dropdownIconVariant({ size }))} />
+                    <LeftIcon className={twMerge(iconVariant({ size }))} />
                   </div>
                 )}
                 {loading ? (
@@ -301,7 +301,7 @@ function SearchInput({
                       <XMarkIcon
                         data-testid="clear-icon"
                         onClick={() => setSelected("")}
-                        className={twMerge(dropdownIconVariant({ size }), "cursor-pointer")}
+                        className={twMerge(iconVariant({ size }), "cursor-pointer")}
                       />
                     </div>
                   )
@@ -316,7 +316,7 @@ function SearchInput({
               >
                 <Combobox.Options className="appearence-none headlessui-listbox-option-:r1o:ring-primary-100 rounded-plug-md z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 ring-1 ring-gray-100">
                   {filteredOptions.length === 0 && query !== "" ? (
-                    <div className="relative cursor-default select-none px-3 py-2 text-gray-800">
+                    <div className="relative cursor-default select-none px-3 py-2 text-coolGray-800">
                       Nothing found.
                     </div>
                   ) : (
@@ -330,7 +330,7 @@ function SearchInput({
                       >
                         {({ selected }) => (
                           <>
-                            <span className="flex w-full items-center justify-between truncate text-gray-800">
+                            <span className="flex w-full items-center justify-between truncate text-coolGray-800">
                               {option.label}
                             </span>
                             {selected && <CheckIcon className="mr-3 h-5 w-5 text-gray-800" />}

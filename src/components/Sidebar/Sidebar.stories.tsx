@@ -47,7 +47,7 @@ const Template: StoryFn<any> = () => (
             { label: "Project 3", href: "" },
           ]}
         ></Sidebar.Dropdown>
-        <Sidebar.Item label="Tasks" href="" icon={DocumentCheckIcon}></Sidebar.Item>
+        <Sidebar.Item label="Tasks" href="" icon={DocumentCheckIcon} active={true}></Sidebar.Item>
         <Sidebar.Item label="Reporting" href="" icon={NewspaperIcon}></Sidebar.Item>
         <Sidebar.Item label="Users" href="" icon={UsersIcon}></Sidebar.Item>
       </Sidebar.Group>
@@ -102,7 +102,7 @@ export const Default: Story = {
               { label: "Project 3", href: "" },
             ]}
           ></Sidebar.Dropdown>
-          <Sidebar.Item label="Tasks" href="" icon={DocumentCheckIcon}></Sidebar.Item>
+          <Sidebar.Item label="Tasks" href="" icon={DocumentCheckIcon} active={true}></Sidebar.Item>
           <Sidebar.Item label="Reporting" href="" icon={NewspaperIcon}></Sidebar.Item>
           <Sidebar.Item label="Users" href="" icon={UsersIcon} active={true}></Sidebar.Item>
         </Sidebar.Group>
