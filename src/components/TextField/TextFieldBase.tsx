@@ -24,7 +24,7 @@ export interface ITextFieldBase
 }
 
 const TextFieldBaseVariants = cva(
-  "text-cool-500 rounded-plug-md input my-2 w-full text-ellipsis border border-gray-400 text-md hover:bg-coolGray-50 focus:outline-none",
+  "rounded-plug-md input my-2 w-full text-ellipsis border border-coolGray-400 text-md text-coolGray-900 hover:bg-coolGray-50 focus:outline-none",
   {
     variants: {
       size: {
@@ -51,7 +51,7 @@ const TextFieldBaseVariants = cva(
 );
 
 const IconVariants = cva(
-  "text-field-icon absolute top-1/3 text-coolGray-500 focus:text-coolGray-700",
+  "text-field-icon absolute top-1/2 -translate-y-1/2 text-coolGray-500 focus:text-coolGray-700",
   {
     variants: {
       error: {
@@ -61,9 +61,6 @@ const IconVariants = cva(
       position: {
         left: "left-2",
         right: "right-2",
-      },
-      label: {
-        false: "top-1/3",
       },
       size: {
         large: "h-5 w-5",
@@ -141,7 +138,6 @@ export const TextFieldBase = forwardRef(
               className={IconVariants({
                 error,
                 position: "left",
-                label: !!label,
                 size: size,
               })}
             />
@@ -149,7 +145,7 @@ export const TextFieldBase = forwardRef(
           {RightIcon && (
             <RightIcon
               onClick={() => onClickIcon()}
-              className={IconVariants({ error, position: "right", label: !!label, size: size })}
+              className={IconVariants({ error, position: "right", size: size })}
             />
           )}
         </div>
