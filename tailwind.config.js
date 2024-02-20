@@ -66,8 +66,8 @@ export default {
           },
         },
         input: {
-          caret: colors.gray["200"],
-          focus: colors.gray["300"],
+          caret: colors.primary["100"],
+          focus: colors.primary["100"],
         },
       },
     },
