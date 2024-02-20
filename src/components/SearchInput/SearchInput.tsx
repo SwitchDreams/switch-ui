@@ -227,7 +227,7 @@ function SearchInput({
                 leaveTo="opacity-0"
                 afterLeave={() => setQuery("")}
               >
-                <Combobox.Options className="appearence-none headlessui-listbox-option-:r1o:ring-primary-100 rounded-plug-md z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 shadow-md ring-1 ring-gray-100">
+                <Combobox.Options className="appearence-none rounded-plug-md z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 shadow-md shadow-primary-25 ring-2 ring-primary-25">
                   {filteredOptions.length === 0 && query !== "" ? (
                     <div className="relative cursor-default select-none px-3 py-2 text-gray-800">
                       Nothing found.
@@ -314,7 +314,7 @@ function SearchInput({
                 leaveTo="opacity-0"
                 afterLeave={() => setQuery("")}
               >
-                <Combobox.Options className="appearence-none headlessui-listbox-option-:r1o:ring-primary-100 rounded-plug-md z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 ring-1 ring-gray-100">
+                <Combobox.Options className="appearence-none rounded-plug-md z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 shadow shadow-primary-25 ring-1 ring-primary-25">
                   {filteredOptions.length === 0 && query !== "" ? (
                     <div className="relative cursor-default select-none px-3 py-2 text-coolGray-800">
                       Nothing found.
