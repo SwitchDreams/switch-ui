@@ -29,7 +29,7 @@ npm login --registry=https://npm.pkg.github.com --scope=@switchdreams
 
 ```js
 import { colors } from '@switchdreams/ui'
-import switchUiPlugin from '@switchdreams/ui/dist/tailwind.config'
+import switchUiPlugin from '@switchdreams/ui/dist/tailwind.plugin'
 
 module.exports = {
   content: [
@@ -49,7 +49,7 @@ module.exports = {
     },
   },
   plugins: [
-    switchUiPlugin(),
+    switchUiPlugin,
   ],
 
 }
