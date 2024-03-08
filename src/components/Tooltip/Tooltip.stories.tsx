@@ -21,8 +21,8 @@ export const Default: Story = {
         <Button className="whitespace-nowrap" label="teste 1"></Button>
       </div>
     ),
-    content: <p>Hello!</p>,
-    title: "isso serve",
+    content: <p>Hello</p>,
+    title: "hello",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.",
     position: "bottomRight",
