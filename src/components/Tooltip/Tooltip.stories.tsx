@@ -18,11 +18,11 @@ export const Default: Story = {
   args: {
     children: (
       <div>
-        <Button label="teste 1"></Button>
+        <Button className="whitespace-nowrap" label="teste 1"></Button>
       </div>
     ),
-    content: <p>Hello</p>,
-    title: "hello",
+    content: <p>Hello!</p>,
+    title: "isso serve",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.",
     position: "bottomRight",

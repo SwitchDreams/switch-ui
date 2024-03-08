@@ -1,7 +1,7 @@
 {
   "name": "@switchdreams/ui",
   "private": false,
-  "version": "0.4.1",
+  "version": "0.4.4",
   "type": "module",
   "description": "Biblioteca de Componentes da SwitchDreams",
   "repository": {

@@ -24,14 +24,14 @@ const SidebarMain = ({
 }: SidebarVariant) => {
   const { isOpen, setIsOpen } = useContext(SidebarContext);
 
-  const style = isOpen ? "w-72" : "w-24 max-md:w-0 max-md:absolute z-10";
+  const style = isOpen ? "w-72" : "w-24 max-md:w-0 max-md:absolute z-50";
   return (
     <div>
       <div
-        className={`${sideBarMobileColor} ${textColor} absolute top-0 z-10 flex w-full items-center justify-between border-b-2 border-gray-100 py-10 max-md:h-[70px] md:hidden`}
+        className={`${sideBarMobileColor} ${textColor} absolute top-0 z-50 flex w-full items-center justify-between border-b-2 border-gray-100 py-10 max-md:h-[70px] md:hidden`}
       >
         <Bars3Icon
-          className="z-10 ml-4 h-7 w-7"
+          className="z-50 ml-4 h-7 w-7"
           onClick={() => {
             setIsOpen(!isOpen);
           }}
@@ -43,7 +43,7 @@ const SidebarMain = ({
           style,
           `${
             absolute ? "absolute" : "max-md:absolute"
-          } top-0 z-10 h-screen scroll-smooth border-r border-gray-100 max-md:overflow-scroll ${sideBarColor} transition-all duration-500 ease-in-out ${textColor}`,
+          } top-0 z-50 h-screen scroll-smooth border-r border-gray-100 max-md:overflow-scroll ${sideBarColor} transition-all duration-500 ease-in-out ${textColor}`,
           className,
         )}
         {...rest}
