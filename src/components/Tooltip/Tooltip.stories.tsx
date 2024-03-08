@@ -18,7 +18,7 @@ export const Default: Story = {
   args: {
     children: (
       <div>
-        <Button label="teste 1"></Button>
+        <Button className="whitespace-nowrap" label="teste 1"></Button>
       </div>
     ),
     content: <p>Hello</p>,
