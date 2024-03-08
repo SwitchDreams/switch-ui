@@ -10,7 +10,7 @@ export interface ITooltip {
 }
 
 const TooltipVariants = cva(
-  "absolute hidden w-fit z-30 rounded p-2 text-xs text-white group-hover:flex group-hover:flex-wrap",
+  "absolute z-30 hidden w-fit rounded p-2 text-xs text-white group-hover:flex group-hover:flex-wrap",
   {
     variants: {
       position: {
@@ -78,9 +78,9 @@ const Tooltip = ({
   ...rest
 }: TooltipProps) => (
   <div className="group relative  h-fit w-fit cursor-pointer">
-    <div className="mx-1 z-20">{content}</div>
+    <div className="z-20 mx-1">{content}</div>
     <span className={twMerge(TooltipVariants({ position, color }), className)} {...rest}>
-      <div className="flex flex-col z-30">
+      <div className="z-30 flex flex-col">
         {children ? (
           <>{children}</>
         ) : (
