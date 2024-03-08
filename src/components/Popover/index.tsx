@@ -39,7 +39,7 @@ const Popover = ({
   ...rest
 }: PopoverProps) => {
   return (
-    <PopoverHeadlessui className="relative w-fit">
+    <PopoverHeadlessui className="relative flex w-fit items-center">
       <PopoverHeadlessui.Button>{button}</PopoverHeadlessui.Button>
       <PopoverHeadlessui.Panel
         className={`${twMerge(PopoverVariants({ position }), className)}`}

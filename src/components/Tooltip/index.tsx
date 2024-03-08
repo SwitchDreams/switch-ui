@@ -77,7 +77,7 @@ const Tooltip = ({
   description,
   ...rest
 }: TooltipProps) => (
-  <div className="group relative z-50 h-fit w-fit cursor-pointer">
+  <div className="group relative z-20 h-fit w-fit cursor-pointer">
     <div className="mx-1">{content}</div>
     <span className={twMerge(TooltipVariants({ position, color }), className, `z-50`)} {...rest}>
       <div className="flex flex-col">

@@ -63,4 +63,5 @@ Variations.args = {
   size: "md",
   tabs: tabsArray,
   padding: false,
+  currentIndex: 1,
 };
