@@ -83,7 +83,7 @@ export const iconVariant = cva("text-coolGray-500", {
   },
 });
 
-export interface SelectBoxProps extends Omit<SelectBoxVariantProps, "size">, SelectBoxType { }
+export interface SelectBoxProps extends Omit<SelectBoxVariantProps, "size">, SelectBoxType {}
 
 // Helper function to render the chevron icon based on the open state
 const renderChevron = (open: boolean, size: any): ReactNode => {
@@ -119,7 +119,7 @@ function SelectBox({
   error = false,
   placeholder,
   multiple = false,
-  onChange = () => { },
+  onChange = () => {},
   errorMsg,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   defaultValue, //deprecated
@@ -142,8 +142,7 @@ function SelectBox({
   };
 
   return (
-    <div className={`${disabled === true && "opacity-40"}`}
-    >
+    <div className={`${disabled === true && "opacity-40"}`}>
       <Listbox
         multiple={multiple}
         value={selectedOption}
@@ -174,8 +173,8 @@ function SelectBox({
                         ? placeholder
                         : findOption(options, selectedOption)
                       : selectedOption === -1
-                        ? placeholder
-                        : options.find((option) => option.value === selectedOption)?.label}
+                      ? placeholder
+                      : options.find((option) => option.value === selectedOption)?.label}
                   </span>
                   {renderChevron(open, size)}
                 </>
@@ -213,14 +212,12 @@ function SelectBox({
           </>
         )}
       </Listbox>
-      {
-        error && errorMsg ? (
-          <span className="text-sm text-error-500">{errorMsg}</span>
-        ) : (
-          supportText && <span className="text-sm text-coolGray-600">{supportText}</span>
-        )
-      }
-    </div >
+      {error && errorMsg ? (
+        <span className="text-sm text-error-500">{errorMsg}</span>
+      ) : (
+        supportText && <span className="text-sm text-coolGray-600">{supportText}</span>
+      )}
+    </div>
   );
 }
 
