@@ -148,6 +148,7 @@ function SelectBox({
         multiple={multiple}
         value={selectedOption}
         onChange={handleOptionChange}
+        disabled={disabled}
         {...rest}
       >
         {({ open }) => (
