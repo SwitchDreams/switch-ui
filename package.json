@@ -41,12 +41,14 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@storybook/addon-designs": "^8.0.0",
     "@storybook/addon-essentials": "^8.0.1",
     "@storybook/addon-interactions": "^8.0.1",
     "@storybook/addon-links": "^8.0.1",
     "@storybook/blocks": "^8.0.1",
     "@storybook/react": "^8.0.1",
     "@storybook/react-vite": "^8.0.1",
+    "@storybook/test": "^8.0.1",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
     "@types/react": "^18.2.67",
@@ -87,7 +89,6 @@
     "@headlessui/react": "^1.7.18",
     "@headlessui/tailwindcss": "^0.2.0",
     "@heroicons/react": "^2.1.1",
-    "@storybook/test": "^8.0.1",
     "class-variance-authority": "^0.7.0",
     "react-input-mask": "^2.0.4",
     "tailwind-merge": "^2.2.2"
