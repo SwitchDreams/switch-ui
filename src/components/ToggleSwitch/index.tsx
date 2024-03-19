@@ -36,7 +36,7 @@ const switchVariants = cva("relative inline-flex items-center rounded-full", {
 });
 
 const dotVariants = cva(
-  "inline-flex h-4 w-4 items-center justify-center rounded-full bg-white transition",
+  "inline-flex size-4 items-center justify-center rounded-full bg-white transition",
   {
     variants: {
       checked: {
@@ -44,9 +44,9 @@ const dotVariants = cva(
         false: "translate-x-1",
       },
       size: {
-        sm: "h-3 w-3",
-        md: "h-4 w-4",
-        lg: "h-5 w-5",
+        sm: "size-3",
+        md: "size-4",
+        lg: "size-5",
       },
     },
     compoundVariants: [
@@ -71,9 +71,9 @@ const iconVariants = cva("items-center", {
       false: "text-gray-400",
     },
     size: {
-      sm: "h-2 w-2",
-      md: "h-3 w-3",
-      lg: "h-4 w-4",
+      sm: "size-2",
+      md: "size-3",
+      lg: "size-4",
     },
   },
 });

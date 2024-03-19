@@ -44,7 +44,7 @@ const FloatingButton = ({
   const buttonClasses = twMerge(buttonVariants({ variant, size }), className);
   return (
     <button className={buttonClasses} onClick={onClick} {...rest}>
-      {<Icon className="h-4 w-4 stroke-2" />}
+      {<Icon className="size-4 stroke-2" />}
       {label && label}
     </button>
   );

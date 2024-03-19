@@ -14,7 +14,7 @@ export interface IItemProps {
 }
 
 export const SidebarIconVariants = cva(
-  "mx-2 flex h-7 w-7 items-center rounded-md text-md font-semibold max-md:hidden",
+  "mx-2 flex size-7 items-center rounded-md text-md font-semibold max-md:hidden",
 );
 
 export const SidebarItemVariants = cva(
@@ -63,7 +63,7 @@ const SidebarItem = ({ label, as = "a", icon: Icon, href, active }: ItemProps) =
               !active ? `hover:${hoverColor} ` : `${hoverColor}`,
             )}
           >
-            <Icon className="h-7 w-7"></Icon>
+            <Icon className="size-7"></Icon>
             <Text>{label}</Text>
           </div>
         </Element>

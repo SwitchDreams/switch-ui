@@ -7,11 +7,11 @@ const spinnerVariants = cva(
   {
     variants: {
       size: {
-        small: "h-5 w-5 border-2",
-        medium: "h-7 w-7 border-[3px]",
-        large: "h-9 w-9 border-[5px]",
-        xl: "h-11 w-11 border-[6px]",
-        "2xl": "h-14 w-14 border-[7px]",
+        small: "size-5 border-2",
+        medium: "size-7 border-[3px]",
+        large: "size-9 border-[5px]",
+        xl: "size-11 border-[6px]",
+        "2xl": "size-14 border-[7px]",
       },
     },
     defaultVariants: {

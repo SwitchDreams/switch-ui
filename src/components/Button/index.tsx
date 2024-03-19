@@ -50,11 +50,11 @@ const Button = ({
   return (
     <button className={buttonClasses} onClick={onClick} disabled={disabled}>
       {Icon && iconSide == "left" && label && (
-        <Icon className="h-4 w-4 translate-x-[-4px] stroke-2" />
+        <Icon className="size-4 translate-x-[-4px] stroke-2" />
       )}
       {label}
-      {Icon && iconSide == "right" && label && <Icon className="h-4 w-4 translate-x-1 stroke-2" />}
-      {Icon && !label && <Icon className="h-4 w-4 stroke-2" />}
+      {Icon && iconSide == "right" && label && <Icon className="size-4 translate-x-1 stroke-2" />}
+      {Icon && !label && <Icon className="size-4 stroke-2" />}
     </button>
   );
 };

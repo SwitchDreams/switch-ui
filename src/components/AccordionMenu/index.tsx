@@ -60,9 +60,9 @@ const AccordionMenu = ({
           >
             {title}
             {open ? (
-              <ChevronDownIcon strokeWidth="3" className="align-center flex h-4 w-4" />
+              <ChevronDownIcon strokeWidth="3" className="align-center flex size-4" />
             ) : (
-              <ChevronUpIcon strokeWidth="3" className="align-center flex h-4 w-4" />
+              <ChevronUpIcon strokeWidth="3" className="align-center flex size-4" />
             )}
           </Disclosure.Button>
           <Disclosure.Panel className={accordionInfosVariants({ size })}>

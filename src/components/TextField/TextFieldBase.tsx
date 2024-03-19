@@ -63,9 +63,9 @@ const IconVariants = cva(
         right: "right-2",
       },
       size: {
-        large: "h-5 w-5",
-        medium: "h-5 w-5",
-        small: "h-4 w-4",
+        large: "size-5",
+        medium: "size-5",
+        small: "size-4",
       },
     },
     defaultVariants: {

@@ -87,9 +87,9 @@ export const SearchInputButtonVariants = cva(
 export const iconVariant = cva("text-coolGray-500", {
   variants: {
     size: {
-      lg: "h-5 w-5",
-      md: "h-5 w-5",
-      sm: "h-4 w-4",
+      lg: "size-5",
+      md: "size-5",
+      sm: "size-4",
     },
   },
 });
@@ -206,7 +206,7 @@ function SearchInput({
                 {loading ? (
                   <div className="absolute right-2 top-1/2 -translate-y-1/2">
                     {/* Aqui você pode usar um ícone de carregamento, por exemplo, um spinner */}
-                    <div className="h-5 w-5 animate-spin rounded-full border-t-2 border-solid border-primary-300"></div>
+                    <div className="size-5 animate-spin rounded-full border-t-2 border-solid border-primary-300"></div>
                   </div>
                 ) : (
                   selected.length > 0 && (
@@ -246,7 +246,7 @@ function SearchInput({
                             <span className="flex w-full items-center justify-between truncate text-gray-800">
                               {option.label}
                             </span>
-                            {selected && <CheckIcon className="mr-3 h-5 w-5 text-gray-800" />}
+                            {selected && <CheckIcon className="mr-3 size-5 text-gray-800" />}
                           </>
                         )}
                       </Combobox.Option>
@@ -293,7 +293,7 @@ function SearchInput({
                 {loading ? (
                   <div className="absolute right-2 top-1/2 -translate-y-1/2">
                     {/* Aqui você pode usar um ícone de carregamento, por exemplo, um spinner */}
-                    <div className="h-5 w-5 animate-spin rounded-full border-t-2 border-solid border-primary-300"></div>
+                    <div className="size-5 animate-spin rounded-full border-t-2 border-solid border-primary-300"></div>
                   </div>
                 ) : (
                   selected != "" && (
@@ -333,7 +333,7 @@ function SearchInput({
                             <span className="flex w-full items-center justify-between truncate text-coolGray-800">
                               {option.label}
                             </span>
-                            {selected && <CheckIcon className="mr-3 h-5 w-5 text-gray-800" />}
+                            {selected && <CheckIcon className="mr-3 size-5 text-gray-800" />}
                           </>
                         )}
                       </Combobox.Option>

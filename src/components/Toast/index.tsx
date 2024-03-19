@@ -81,13 +81,13 @@ const Toast = ({
 
   const defineIcon = (color: string) => {
     if (color == "primary" || color == "error") {
-      return <ExclamationCircleIcon className="toast-icon exclamation-circle h-5 w-5" />;
+      return <ExclamationCircleIcon className="toast-icon exclamation-circle size-5" />;
     }
     if (color == "success") {
-      return <CheckCircleIcon className="toast-icon check-circle h-5 w-5" />;
+      return <CheckCircleIcon className="toast-icon check-circle size-5" />;
     }
     if (color == "warning") {
-      return <ExclamationTriangleIcon className="toast-icon exclamation-triangle h-5 w-5" />;
+      return <ExclamationTriangleIcon className="toast-icon exclamation-triangle size-5" />;
     }
   };
 
@@ -101,7 +101,7 @@ const Toast = ({
         <Text size="sm">{message}</Text>
       </div>
       <button onClick={closeToast} className="close-toast h-5 cursor-pointer">
-        <XMarkIcon className="h-5 w-5" />
+        <XMarkIcon className="size-5" />
       </button>
     </div>
   );

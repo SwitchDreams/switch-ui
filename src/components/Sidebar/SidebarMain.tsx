@@ -31,7 +31,7 @@ const SidebarMain = ({
         className={`${sideBarMobileColor} ${textColor} absolute top-0 z-50 flex w-full items-center justify-between border-b-2 border-gray-100 py-10 max-md:h-[70px] md:hidden`}
       >
         <Bars3Icon
-          className="z-50 ml-4 h-7 w-7"
+          className="z-50 ml-4 size-7"
           onClick={() => {
             setIsOpen(!isOpen);
           }}

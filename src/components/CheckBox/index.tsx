@@ -16,9 +16,9 @@ const checkBoxVariants = cva(
         square: "rounded-sm",
       },
       size: {
-        small: "h-4 w-4",
-        medium: "h-5 w-5",
-        large: "h-6 w-6",
+        small: "size-4",
+        medium: "size-5",
+        large: "size-6",
       },
       color: {
         primary: "checkbox-primary checked:hover:bg-primary-200 focus:ring-4 focus:ring-primary-25",
@@ -39,9 +39,9 @@ const iconVariants = cva(
   {
     variants: {
       size: {
-        small: "left-[0.2rem] top-1 h-[10px] w-[10px]",
-        medium: "left-1 top-1 h-3 w-3",
-        large: "left-1 top-1 h-4 w-4",
+        small: "left-[0.2rem] top-1 size-[10px]",
+        medium: "left-1 top-1 size-3",
+        large: "left-1 top-1 size-4",
       },
     },
     defaultVariants: {
@@ -53,9 +53,9 @@ const iconVariants = cva(
 const backgroundVariant = cva("relative", {
   variants: {
     size: {
-      small: "h-4 w-4",
-      medium: "h-5 w-5",
-      large: "h-6 w-6",
+      small: "size-4",
+      medium: "size-5",
+      large: "size-6",
     },
   },
 });
