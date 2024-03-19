@@ -37,14 +37,14 @@ const SidebarLogo = ({ logo, href, children }: SidebarLogoProps) => {
       {isOpen && renderLogo()}
       {isOpen ? (
         <Bars3BottomRightIcon
-          className="mx-5 size-7"
+          className="mx-5 h-7 w-7"
           onClick={() => {
             setIsOpen(!isOpen);
           }}
         />
       ) : (
         <Bars3Icon
-          className="size-7"
+          className="h-7 w-7"
           onClick={() => {
             setIsOpen(!isOpen);
           }}

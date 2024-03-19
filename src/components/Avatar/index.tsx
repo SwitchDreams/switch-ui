@@ -21,26 +21,26 @@ export const avatarVariants = cva(
         gray: "avatar-gray",
       },
       size: {
-        xl: "size-16 text-2xl",
-        lg: "size-14 text-xl",
-        md: "size-12  text-lg",
-        sm: "size-10 text-md",
-        xs: "size-8 text-sm",
+        xl: "h-16 w-16 text-2xl",
+        lg: "h-14 w-14 text-xl",
+        md: "h-12  w-12 text-lg",
+        sm: "h-10 w-10 text-md",
+        xs: "h-8 w-8 text-sm",
       },
     },
   },
 );
 
 export const avatarOnlineVariants = cva(
-  "online-circle absolute size-4 rounded-[20px] border border-white bg-green-600",
+  "online-circle absolute h-4 w-4 rounded-[20px] border border-white bg-green-600",
   {
     variants: {
       size: {
         xl: "bottom-12 left-20",
         lg: "bottom-11 left-[4.5rem]",
-        md: "bottom-12 left-[4.2em] size-3",
-        sm: "bottom-11 left-14 size-3",
-        xs: "bottom-12 left-[3.5em]  size-2",
+        md: "bottom-12 left-[4.2em] h-3 w-3",
+        sm: "bottom-11 left-14 h-3 w-3",
+        xs: "bottom-12 left-[3.5em]  h-2 w-2",
       },
     },
   },

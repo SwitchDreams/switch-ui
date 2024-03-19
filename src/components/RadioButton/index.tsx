@@ -11,9 +11,9 @@ const radioButtonVariants = cva(
   {
     variants: {
       size: {
-        small: "size-4 checked:after:size-[0.4rem]",
-        medium: "size-5 checked:after:size-[0.54rem]",
-        large: "size-6 checked:after:size-[0.6rem]",
+        small: "h-4 w-4 checked:after:h-[0.4rem] checked:after:w-[0.4rem]",
+        medium: "h-5 w-5 checked:after:h-[0.54rem] checked:after:w-[0.54rem]",
+        large: "h-6 w-6 checked:after:h-[0.6rem] checked:after:w-[0.6rem]",
       },
     },
     defaultVariants: {

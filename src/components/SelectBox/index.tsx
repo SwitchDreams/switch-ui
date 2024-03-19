@@ -76,9 +76,9 @@ export const selectBoxButtonVariants = cva(
 export const iconVariant = cva("text-coolGray-500", {
   variants: {
     size: {
-      lg: "size-5",
-      md: "size-5",
-      sm: "size-4",
+      lg: "h-5 w-5",
+      md: "h-5 w-5",
+      sm: "h-4 w-4",
     },
   },
 });
@@ -201,7 +201,7 @@ function SelectBox({
                       {({ selected }) => (
                         <span className="flex w-full items-center justify-between truncate text-coolGray-800">
                           {option.label}
-                          {selected && <CheckIcon className="mr-3 size-5 text-coolGray-800" />}
+                          {selected && <CheckIcon className="mr-3 h-5 w-5 text-coolGray-800" />}
                         </span>
                       )}
                     </Listbox.Option>

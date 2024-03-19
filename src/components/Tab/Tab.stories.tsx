@@ -19,7 +19,7 @@ const tabsArray = [
   {
     name: "Teste 1",
     info: (
-      <div className="size-full rounded bg-primary-100">
+      <div className="h-full w-full rounded bg-primary-100">
         Teste 1 Vorem ipsum dolor sit amet, consectetur Vorem ipsum dolor{" "}
       </div>
     ),
@@ -27,7 +27,7 @@ const tabsArray = [
   {
     name: "Teste 2",
     info: (
-      <div className="size-full rounded bg-primary-100">
+      <div className="h-full w-full rounded bg-primary-100">
         Teste 2 Vorem ipsum dolor sit amet, consectetur Vorem ipsum dolor{" "}
       </div>
     ),
@@ -35,7 +35,7 @@ const tabsArray = [
   {
     name: "Teste 3",
     info: (
-      <div className="size-full rounded bg-primary-100">
+      <div className="h-full w-full rounded bg-primary-100">
         Teste 3 Vorem ipsum dolor sit amet, consectetur Vorem ipsum dolor{" "}
       </div>
     ),
@@ -43,7 +43,7 @@ const tabsArray = [
   {
     name: "Teste 4",
     info: (
-      <div className="size-full rounded bg-primary-100">
+      <div className="h-full w-full rounded bg-primary-100">
         Teste 4 Vorem ipsum dolor sit amet, consectetur Vorem ipsum dolor{" "}
       </div>
     ),
@@ -51,7 +51,7 @@ const tabsArray = [
   {
     name: "Teste 5",
     info: (
-      <div className="size-full rounded bg-primary-100">
+      <div className="h-full w-full rounded bg-primary-100">
         Teste 5 Vorem ipsum dolor sit amet, consectetur Vorem ipsum dolor{" "}
       </div>
     ),

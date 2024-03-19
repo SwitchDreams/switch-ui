@@ -124,9 +124,9 @@ export const Badge = ({
 
   return (
     <div className={badgeClasses} {...rest}>
-      {LeftIcon && <LeftIcon className="size-4" />}
+      {LeftIcon && <LeftIcon className="h-4 w-4" />}
       {label}
-      {RightIcon && <RightIcon className="size-4" />}
+      {RightIcon && <RightIcon className="h-4 w-4" />}
     </div>
   );
 };

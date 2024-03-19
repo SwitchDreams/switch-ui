@@ -32,7 +32,7 @@ const SidebarDrop = ({ label, icon: Icon, as = "a", options = [] }: DropProps) =
       {!isOpen && Icon && (
         <div className="flex h-12 w-auto items-center justify-center">
           <Icon
-            className={`hover:${hoverColor} mx-2 flex size-7 items-center rounded-md text-md font-semibold max-md:hidden`}
+            className={`hover:${hoverColor} mx-2 flex h-7 w-7 items-center rounded-md text-md font-semibold max-md:hidden`}
           ></Icon>
         </div>
       )}
@@ -47,10 +47,10 @@ const SidebarDrop = ({ label, icon: Icon, as = "a", options = [] }: DropProps) =
             }`}
           >
             <div className="flex h-12 items-center whitespace-nowrap">
-              <Icon className="mr-2 size-7"></Icon>
+              <Icon className="mr-2 h-7 w-7"></Icon>
               <Text>{label}</Text>
             </div>
-            <ChevronDownIcon className="size-4" data-testid="chevron-icon"></ChevronDownIcon>
+            <ChevronDownIcon className="h-4 w-4" data-testid="chevron-icon"></ChevronDownIcon>
           </div>
           <div
             className={`w-full transition-all duration-300 ease-in-out ${
@@ -91,7 +91,7 @@ const SidebarDrop = ({ label, icon: Icon, as = "a", options = [] }: DropProps) =
             <div className="flex items-center">
               <Text>{label}</Text>
             </div>
-            <ChevronDownIcon className="size-4" data-testid="chevron-icon"></ChevronDownIcon>
+            <ChevronDownIcon className="h-4 w-4" data-testid="chevron-icon"></ChevronDownIcon>
           </div>
           <div
             className={`w-full transition-all duration-300 ease-in-out ${
@@ -123,7 +123,7 @@ const SidebarDrop = ({ label, icon: Icon, as = "a", options = [] }: DropProps) =
         <div
           className={`hover:${hoverColor} flex h-10 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700  max-md:hidden`}
         >
-          <div className="size-7 text-center text-lg font-semibold">{label[0].toUpperCase()}</div>
+          <div className="h-7 w-7 text-center text-lg font-semibold">{label[0].toUpperCase()}</div>
         </div>
       )}
     </>
