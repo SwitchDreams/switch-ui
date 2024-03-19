@@ -142,13 +142,13 @@ function SelectBox({
   };
 
   return (
-    <div>
+    <div className={`${disabled === true && "opacity-40"}`}>
       <Listbox
         multiple={multiple}
         value={selectedOption}
         onChange={handleOptionChange}
-        {...rest}
         disabled={disabled}
+        {...rest}
       >
         {({ open }) => (
           <>
@@ -157,7 +157,6 @@ function SelectBox({
               <Listbox.Button
                 className={twMerge(
                   selectBoxButtonVariants({
-                    disabled,
                     size,
                     error,
                     open,
