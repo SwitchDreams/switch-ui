@@ -11,7 +11,7 @@ import TextField from "../components/TextField";
 export const All = () => (
   <div>
     <Text className="pb-6">Todos os componentes de formulário</Text>
-    <TextField label="Teste" name="Teste" />
+    <TextField label="Teste" name="Teste" supportText="Help" />
     <CheckBox name="Teste" />
     <RadioButton />
     <SelectBox label="Teste" options={options} />
