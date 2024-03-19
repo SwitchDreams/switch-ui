@@ -80,5 +80,5 @@ const TemplateTab: StoryFn<any> = () => {
   );
 };
 
-export const WithState: Story = Template;
-export const WithTab: Story = TemplateTab;
+export const WithState = Template;
+export const WithTab = TemplateTab;

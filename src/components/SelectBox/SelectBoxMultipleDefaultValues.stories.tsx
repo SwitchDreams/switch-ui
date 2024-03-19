@@ -45,4 +45,4 @@ const Template: StoryFn<any> = () => {
   );
 };
 
-export const MultipleDefaultValues: Story = Template;
+export const MultipleDefaultValues = Template;
