@@ -229,7 +229,7 @@ function SearchInput({
               >
                 <Combobox.Options className="appearence-none rounded-plug-md z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 shadow-md shadow-primary-25 ring-2 ring-primary-25">
                   {filteredOptions.length === 0 && query !== "" ? (
-                    <div className="relative cursor-default select-none px-3 py-2 text-gray-800">
+                    <div className="relative cursor-default select-none px-3 py-2 text-coolGray-800">
                       Nothing found.
                     </div>
                   ) : (
@@ -243,10 +243,10 @@ function SearchInput({
                       >
                         {({ selected }) => (
                           <>
-                            <span className="flex w-full items-center justify-between truncate text-gray-800">
+                            <span className="flex w-full items-center justify-between truncate text-coolGray-800">
                               {option.label}
                             </span>
-                            {selected && <CheckIcon className="mr-3 h-5 w-5 text-gray-800" />}
+                            {selected && <CheckIcon className="mr-3 h-5 w-5 text-coolGray-800" />}
                           </>
                         )}
                       </Combobox.Option>
@@ -333,7 +333,7 @@ function SearchInput({
                             <span className="flex w-full items-center justify-between truncate text-coolGray-800">
                               {option.label}
                             </span>
-                            {selected && <CheckIcon className="mr-3 h-5 w-5 text-gray-800" />}
+                            {selected && <CheckIcon className="mr-3 h-5 w-5 text-coolGray-800" />}
                           </>
                         )}
                       </Combobox.Option>
