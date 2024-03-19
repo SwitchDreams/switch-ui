@@ -75,7 +75,7 @@ export const SearchInputButtonVariants = cva(
       },
       open: {
         true: "border-primary-100",
-        false: "border-gray-200",
+        false: "border-coolGray-400",
       },
       error: {
         true: "border-error-600",

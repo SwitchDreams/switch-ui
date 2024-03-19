@@ -5,18 +5,20 @@ import SelectBox from "../components/SelectBox";
 import { Text } from "../components/Text";
 import TextArea from "../components/TextArea";
 import TextField from "../components/TextField";
-
-// import { CheckBox, RadioButton, SearchInput, SelectBox, TextArea, TextField } from "../index";
+import ToggleSwitch from "../components/ToggleSwitch";
 
 export const All = () => (
   <div>
     <Text className="pb-6">Todos os componentes de formulário</Text>
-    <TextField label="Teste" name="Teste" supportText="Help" />
+    <TextField label="Teste" name="Teste" supportText="Help" placeholder="Hello World" />
+    <SelectBox label="Teste" options={options} placeholder="Hello World" />
+    <SearchInput label="Teste" name="Teste" setSelectedValue={() => {}} placeholder="Hello World" />
+    <TextArea label="Teste" name="Teste" placeholder="Hello World" />
     <CheckBox name="Teste" />
     <RadioButton />
-    <SelectBox label="Teste" options={options} />
-    <SearchInput label="Teste" name="Teste" setSelectedValue={() => {}} />
-    <TextArea label="Teste" name="Teste" />
+    <div>
+      <ToggleSwitch />
+    </div>
   </div>
 );
 All.storyName = "Todos os Componentes";
