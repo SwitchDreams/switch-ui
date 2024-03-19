@@ -1,4 +1,4 @@
-import type { Meta, StoryFn, StoryObj } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 import { useState } from "react";
 
 import Tab from "../Tab/index";
@@ -10,7 +10,6 @@ const meta = {
 } satisfies Meta<typeof SelectBox>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 const options = [
   {
@@ -80,5 +79,5 @@ const TemplateTab: StoryFn<any> = () => {
   );
 };
 
-export const WithState: Story = Template;
-export const WithTab: Story = TemplateTab;
+export const WithState = Template;
+export const WithTab = TemplateTab;
