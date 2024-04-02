@@ -4,6 +4,11 @@ import { twMerge } from "tailwind-merge";
 
 export interface IRadioButton {
   disabled?: boolean;
+  label?: string;
+  name?: string;
+  error?: boolean;
+  errorMsg?: string;
+  supportText?: string;
 }
 
 const radioButtonVariants = cva(
@@ -27,7 +32,17 @@ export interface RadioButtonProps
     IRadioButton,
     VariantProps<typeof radioButtonVariants> {}
 
-export const RadioButton = ({ size, disabled = false, className, ...rest }: RadioButtonProps) => {
+export const RadioButton = ({
+  size,
+  disabled = false,
+  className,
+  label,
+  name,
+  error,
+  errorMsg,
+  supportText,
+  ...rest
+}: RadioButtonProps) => {
   const [checked, setChecked] = useState(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -35,21 +50,36 @@ export const RadioButton = ({ size, disabled = false, className, ...rest }: Radi
   };
 
   return (
-    <input
-      type="radio"
-      disabled={disabled}
-      checked={checked}
-      onChange={handleChange}
-      className={
-        disabled
-          ? twMerge(
-              radioButtonVariants({ size }),
-              className,
-              "border-gray-200 bg-gray-200 opacity-100 checked:border-gray-200 checked:after:bg-gray-500 hover:border-gray-200 hover:bg-gray-100",
-            )
-          : twMerge(radioButtonVariants({ size }), className)
-      }
-      {...rest}
-    ></input>
+    <>
+      <div className="flex gap-3">
+        <input
+          type="radio"
+          disabled={disabled}
+          checked={checked}
+          name={name}
+          onChange={handleChange}
+          className={
+            disabled
+              ? twMerge(
+                  radioButtonVariants({ size }),
+                  className,
+                  "border-gray-200 bg-gray-200 opacity-100 checked:border-gray-200 checked:after:bg-gray-500 hover:border-gray-200 hover:bg-gray-100",
+                )
+              : twMerge(radioButtonVariants({ size }), className)
+          }
+          {...rest}
+        ></input>
+        {label && (
+          <label htmlFor={name} className="text-sm font-medium text-coolGray-900">
+            {label}
+          </label>
+        )}
+      </div>
+      {error ? (
+        <span className="text-sm text-error-500">{errorMsg}</span>
+      ) : (
+        <span className="text-sm text-coolGray-600">{supportText}</span>
+      )}
+    </>
   );
 };
