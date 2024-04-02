@@ -1,5 +1,3 @@
-import "@testing-library/jest-dom/extend-expect"; // Importante para estender as asserções do Jest-Dom
-
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 
 import SelectBox from "../index";

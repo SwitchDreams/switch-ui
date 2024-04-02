@@ -14,10 +14,10 @@ const TooltipVariants = cva(
   {
     variants: {
       position: {
-        top: "bottom-[calc(100%+5px)] left-1/2 translate-x-[-50%]",
-        bottom: "left-1/2 top-[calc(100%+5px)] translate-x-[-50%]",
-        right: "right-[calc(100%+5px)] top-1/2 translate-y-[-50%]",
-        left: "left-[calc(100%+5px)] top-1/2 translate-y-[-50%]",
+        top: "bottom-[calc(100%+5px)] left-1/2 -translate-x-1/2",
+        bottom: "left-1/2 top-[calc(100%+5px)] -translate-x-1/2",
+        right: "right-[calc(100%+5px)] top-1/2 -translate-y-1/2",
+        left: "left-[calc(100%+5px)] top-1/2 -translate-y-1/2",
         topRight: "bottom-[calc(100%+5px)] left-1/2 translate-x-[5%]",
         bottomRight: "left-1/2 top-[calc(100%+5px)]",
         topLeft: "bottom-[calc(100%+5px)] right-1/2 translate-x-[5%]",
@@ -78,7 +78,7 @@ const Tooltip = ({
   ...rest
 }: TooltipProps) => (
   <div className="group relative  h-fit w-fit cursor-pointer">
-    <div className="z-20 mx-1">{content}</div>
+    <div className="z-10 mx-1">{content}</div>
     <span className={twMerge(TooltipVariants({ position, color }), className)} {...rest}>
       <div className="z-30 flex flex-col">
         {children ? (

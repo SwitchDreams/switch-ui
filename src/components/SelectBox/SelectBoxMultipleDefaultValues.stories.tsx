@@ -1,4 +1,4 @@
-import type { Meta, StoryFn, StoryObj } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 import { useState } from "react";
 
 import SelectBox from "./index";
@@ -10,7 +10,6 @@ const meta = {
 } satisfies Meta<typeof SelectBox>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 const options = [
   {
@@ -45,4 +44,4 @@ const Template: StoryFn<any> = () => {
   );
 };
 
-export const MultipleDefaultValues: Story = Template;
+export const MultipleDefaultValues = Template;
