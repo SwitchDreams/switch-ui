@@ -23,7 +23,7 @@ export interface SliderProps
 }
 
 export const Slider = React.forwardRef<HTMLInputElement, SliderProps>(
-  ({ size, min, max, value, step, className, ...rest }) => {
+  ({ size, min, max, value, step, className, ...rest }, ref: React.Ref<any>) => {
     const box = useRef<any>();
 
     const onInput = (element: any) => {
