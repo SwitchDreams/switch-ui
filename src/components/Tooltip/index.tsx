@@ -1,5 +1,5 @@
 import { cva, VariantProps } from "class-variance-authority";
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 export interface ITooltip {
@@ -76,27 +76,67 @@ const Tooltip = ({
   content,
   description,
   ...rest
-}: TooltipProps) => (
-  <div className="group relative  h-fit w-fit cursor-pointer">
-    <div className="z-20 mx-1">{content}</div>
-    <span className={twMerge(TooltipVariants({ position, color }), className)} {...rest}>
-      <div className="z-30 flex flex-col">
-        {children ? (
-          <>{children}</>
-        ) : (
-          <>
-            <span className="pb-2 text-xs font-semibold">{title}</span>
-            <span
-              className={twMerge(TooltipVariants({ color }), className, `pb-2 text-xs font-medium`)}
-            >
-              {description}
-            </span>
-          </>
-        )}
-      </div>
-    </span>
-    <span className={twMerge(ArrowVariants({ position, color }))} {...rest}></span>
-  </div>
-);
+}: TooltipProps) => {
+  const [tooltipPosition, setTooltipPosition] = useState(position);
+  const tooltipRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const updateTooltipPosition = () => {
+      if (tooltipRef.current) {
+        const { top, bottom, left, right } = tooltipRef.current.getBoundingClientRect();
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+
+        if (top < 0) {
+          setTooltipPosition("bottom");
+        } else if (bottom > windowHeight) {
+          setTooltipPosition("top");
+        } else if (left < 0) {
+          setTooltipPosition("right");
+        } else if (right > windowWidth) {
+          setTooltipPosition("left");
+        }
+      }
+    };
+
+    window.addEventListener("resize", updateTooltipPosition);
+    updateTooltipPosition();
+
+    return () => window.removeEventListener("resize", updateTooltipPosition);
+  }, []);
+
+  return (
+    <div className="group relative h-fit w-fit cursor-pointer">
+      <div className="z-20 mx-1">{content}</div>
+      <span
+        className={twMerge(TooltipVariants({ position: tooltipPosition, color }), className)}
+        {...rest}
+      >
+        <div className="z-30 flex flex-col" ref={tooltipRef}>
+          {children ? (
+            <>{children}</>
+          ) : (
+            <>
+              <span className="pb-2 text-xs font-semibold">{title}</span>
+              <span
+                className={twMerge(
+                  TooltipVariants({ color }),
+                  className,
+                  `pb-2 text-xs font-medium`,
+                )}
+              >
+                {description}
+              </span>
+            </>
+          )}
+        </div>
+      </span>
+      <span
+        className={twMerge(ArrowVariants({ position: tooltipPosition, color }))}
+        {...rest}
+      ></span>
+    </div>
+  );
+};
 
 export default Tooltip;

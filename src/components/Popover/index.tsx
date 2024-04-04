@@ -1,6 +1,6 @@
 import { Popover as PopoverHeadlessui } from "@headlessui/react";
 import { cva, VariantProps } from "class-variance-authority";
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 export interface IPopover {
@@ -15,13 +15,8 @@ const PopoverVariants = cva(
     variants: {
       position: {
         top: "bottom-[calc(100%+5px)] left-1/2 translate-x-[-50%]",
-        bottom: "left-1/2 top-[calc(100%+5px)] translate-x-[-50%]",
-        right: "right-[calc(100%+5px)] top-1/2 translate-y-[-50%]",
-        left: "left-[calc(100%+5px)] top-1/2 translate-y-[-50%]",
-        topRight: "bottom-[calc(100%+5px)] left-1/2 translate-x-[5%]",
-        bottomRight: "left-1/2 top-[calc(100%+5px)]",
-        topLeft: "bottom-[calc(100%+5px)] right-1/2 translate-x-[5%]",
-        bottomLeft: "right-1/2 top-[calc(100%+5px)]",
+        right: "right-[calc(100%+5px)] top-[calc(50%+5px)] translate-y-[-50%]",
+        left: "left-[calc(100%+5px)] top-[calc(50%+5px)] translate-y-[-50%]",
       },
     },
   },
@@ -31,18 +26,37 @@ type PopoverVariantProps = VariantProps<typeof PopoverVariants>;
 
 export interface PopoverProps extends PopoverVariantProps, IPopover {}
 
-const Popover = ({
-  button,
-  children,
-  className,
-  position = "bottomLeft",
-  ...rest
-}: PopoverProps) => {
+const Popover = ({ button, children, className, position = "top", ...rest }: PopoverProps) => {
+  const [popoverPosition, setPopoverPosition] = useState(position);
+  const popoverRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const updatePopoverPosition = () => {
+      if (popoverRef.current) {
+        const { top, left, right } = popoverRef.current.getBoundingClientRect();
+        const windowWidth = window.innerWidth;
+
+        if (top < 0) {
+          setPopoverPosition("top");
+        } else if (right > windowWidth) {
+          setPopoverPosition("left");
+        } else if (left < 0) {
+          setPopoverPosition("right");
+        }
+      }
+    };
+
+    window.addEventListener("resize", updatePopoverPosition);
+    updatePopoverPosition();
+
+    return () => window.removeEventListener("resize", updatePopoverPosition);
+  }, []);
+
   return (
-    <PopoverHeadlessui className="relative w-fit">
+    <PopoverHeadlessui className="relative w-fit" ref={popoverRef}>
       <PopoverHeadlessui.Button>{button}</PopoverHeadlessui.Button>
       <PopoverHeadlessui.Panel
-        className={`${twMerge(PopoverVariants({ position }), className)}`}
+        className={`${twMerge(PopoverVariants({ position: popoverPosition }), className)}`}
         {...rest}
       >
         {children}
