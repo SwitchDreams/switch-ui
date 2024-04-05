@@ -1,8 +1,8 @@
 import { Tab } from "@headlessui/react";
+import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 import { cva, type VariantProps } from "class-variance-authority";
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
-
 type Tabs = {
   name: string;
   info: JSX.Element;
@@ -62,7 +62,7 @@ const TabComponent = ({
         {tabs.map((tab: Tabs) => {
           return (
             <Tab
-              key={tab.name}
+              key={ChevronLeftIcon}
               data-testid={tab.name}
               className={tabClass}
               style={{ width: `calc(100% / ${tabs.length})` }}
