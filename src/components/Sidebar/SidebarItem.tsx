@@ -55,7 +55,8 @@ const SidebarItem = ({ label, as = "a", icon: Icon, href, active }: ItemProps) =
           onClick={() => {
             OnClick();
           }}
-          className="flex h-12 w-auto justify-center"
+          style={{ minWidth: "20px" }}
+          className="flex h-12 justify-center"
         >
           <div
             className={twMerge(
@@ -63,7 +64,7 @@ const SidebarItem = ({ label, as = "a", icon: Icon, href, active }: ItemProps) =
               !active ? `hover:${hoverColor} ` : `${hoverColor}`,
             )}
           >
-            <Icon className="h-7 w-7"></Icon>
+            <Icon className="h-7" style={{ minWidth: "28px" }}></Icon>
             <Text>{label}</Text>
           </div>
         </Element>
