@@ -1,4 +1,4 @@
-import { Listbox, ListboxProps, Transition } from "@headlessui/react"; 
+import { Listbox, ListboxProps, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { cva, type VariantProps } from "class-variance-authority";
 import { ElementType, Fragment, ReactNode, useEffect, useState } from "react";
@@ -20,7 +20,7 @@ interface SelectBoxType extends ListboxProps<any, any, any> {
   placeholder?: string;
   multiple?: boolean;
   errorMsg?: string;
-} 
+}
 
 export type SelectBoxVariantProps = VariantProps<typeof selectBoxVariants>;
 
