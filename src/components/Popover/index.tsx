@@ -14,9 +14,14 @@ const PopoverVariants = cva(
   {
     variants: {
       position: {
-        top: "bottom-[calc(100%+5px)] left-1/2 translate-x-[-50%]",
-        right: "right-[calc(100%+5px)] top-[calc(50%+5px)] translate-y-[-50%]",
-        left: "left-[calc(100%+5px)] top-[calc(50%+5px)] translate-y-[-50%]",
+        top: "bottom-[calc(100%+5px)] left-1/2 -translate-x-1/2",
+        bottom: "left-1/2 top-[calc(100%+5px)] -translate-x-1/2",
+        right: "right-[calc(100%+5px)] top-1/2 -translate-y-1/2",
+        left: "left-[calc(100%+5px)] top-1/2 -translate-y-1/2",
+        topRight: "bottom-[calc(100%+5px)] left-1/2 translate-x-[5%]",
+        bottomRight: "left-1/2 top-[calc(100%+5px)]",
+        topLeft: "bottom-[calc(100%+5px)] right-1/2 translate-x-[5%]",
+        bottomLeft: "right-1/2 top-[calc(100%+5px)]",
       },
     },
   },
@@ -33,29 +38,65 @@ const Popover = ({ button, children, className, position = "top", ...rest }: Pop
   useEffect(() => {
     const updatePopoverPosition = () => {
       if (popoverRef.current) {
-        const { top, left, right } = popoverRef.current.getBoundingClientRect();
+        const { top, left, right, bottom } = popoverRef.current.getBoundingClientRect();
         const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        const fitsHorizontally = left >= 0 && right <= windowWidth;
+        const fitsVertically = top >= 0 && bottom <= windowHeight;
 
-        if (top < 0) {
-          setPopoverPosition("top");
-        } else if (right > windowWidth) {
-          setPopoverPosition("left");
-        } else if (left < 0) {
-          setPopoverPosition("right");
+        if (!fitsHorizontally) {
+          if (position === "right") {
+            setPopoverPosition("left");
+          }
+          if (position === "left") {
+            setPopoverPosition("right");
+          }
+          if (position === "bottomRight") {
+            setPopoverPosition("bottomLeft");
+          }
+          if (position === "bottomLeft") {
+            setPopoverPosition("bottomRight");
+          }
+          if (position === "topLeft") {
+            setPopoverPosition("topRight");
+          }
+          if (position === "topRight") {
+            setPopoverPosition("topLeft");
+          }
+        } else if (!fitsVertically) {
+          if (position === "top") {
+            setPopoverPosition("bottom");
+          }
+          if (position === "bottom") {
+            setPopoverPosition("top");
+          }
+          if (position === "bottomRight") {
+            setPopoverPosition("topRight");
+          }
+          if (position === "bottomLeft") {
+            setPopoverPosition("topLeft");
+          }
+          if (position === "topLeft") {
+            setPopoverPosition("bottomRight");
+          }
+          if (position === "topRight") {
+            setPopoverPosition("bottomRight");
+          }
+        } else {
+          setPopoverPosition(position);
         }
       }
+      window.addEventListener("resize", updatePopoverPosition);
+      return () => window.removeEventListener("resize", updatePopoverPosition);
     };
-
-    window.addEventListener("resize", updatePopoverPosition);
     updatePopoverPosition();
-
-    return () => window.removeEventListener("resize", updatePopoverPosition);
-  }, []);
+  }, [position]);
 
   return (
-    <PopoverHeadlessui className="relative w-fit" ref={popoverRef}>
+    <PopoverHeadlessui className="relative w-fit">
       <PopoverHeadlessui.Button>{button}</PopoverHeadlessui.Button>
       <PopoverHeadlessui.Panel
+        ref={popoverRef}
         className={`${twMerge(PopoverVariants({ position: popoverPosition }), className)}`}
         {...rest}
       >
