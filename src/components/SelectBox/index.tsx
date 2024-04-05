@@ -20,7 +20,7 @@ interface SelectBoxType extends ListboxProps<any, any, any> {
   placeholder?: string;
   multiple?: boolean;
   errorMsg?: string;
-}
+};
 
 export type SelectBoxVariantProps = VariantProps<typeof selectBoxVariants>;
 
