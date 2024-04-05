@@ -46,7 +46,7 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderProps>(
     };
 
     return (
-      <div className="relative mt-10">
+      <div className="relative mt-10" ref={ref}>
         <input
           type="range"
           min={min}
