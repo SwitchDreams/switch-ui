@@ -10,7 +10,7 @@ export interface SidebarVariant extends PropsWithChildren, ComponentProps<"div">
   sideBarColor?: string;
   sideBarMobileColor?: string;
   textColor?: string;
-  hover: boolean
+  hover: boolean;
 }
 
 const SidebarMain = ({
@@ -36,21 +36,20 @@ const SidebarMain = ({
     };
 
     if (hover) {
-      const sidebar = document.getElementById('sidebar');
+      const sidebar = document.getElementById("sidebar");
       if (sidebar) {
-        sidebar.addEventListener('mouseenter', onMouseEnter);
-        sidebar.addEventListener('mouseleave', onMouseLeave);
+        sidebar.addEventListener("mouseenter", onMouseEnter);
+        sidebar.addEventListener("mouseleave", onMouseLeave);
       }
 
       return () => {
         if (sidebar) {
-          sidebar.removeEventListener('mouseenter', onMouseEnter);
-          sidebar.removeEventListener('mouseleave', onMouseLeave);
+          sidebar.removeEventListener("mouseenter", onMouseEnter);
+          sidebar.removeEventListener("mouseleave", onMouseLeave);
         }
       };
     }
   }, [hover, setIsOpen]);
-
 
   const style = isOpen ? "w-72" : "w-24 max-md:w-0 max-md:absolute z-50";
   return (
