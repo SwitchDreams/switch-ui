@@ -78,6 +78,7 @@ export const Default: Story = {
   args: {
     logo: "https://switchdreams.com.br/og_image.png",
     hoverColor: "bg-primary-300",
+    hover: true,
     children: (
       <>
         <Sidebar.Logo logo="https://switchdreams.com.br/og_image.png"></Sidebar.Logo>
