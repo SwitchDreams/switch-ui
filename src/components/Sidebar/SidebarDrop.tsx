@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import React, { ComponentProps, ElementType, useState } from "react";
+import React, { ComponentProps, ElementType, useEffect, useState } from "react";
 
 import { Text } from "../Text";
 import { useSidebarContext } from "./SidebarContext";
@@ -27,12 +27,19 @@ const SidebarDrop = ({ label, icon: Icon, as = "a", options = [] }: DropProps) =
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  useEffect(() => {
+    if (!isOpen) setIsDropdownOpen(false);
+  }, [isOpen]);
+
   return (
     <>
       {!isOpen && Icon && (
         <div className="flex h-12 w-auto items-center justify-center">
           <Icon
-            onClick={() => setIsOpen(true)}
+            onClick={() => {
+              setIsOpen(true);
+              setIsDropdownOpen(true);
+            }}
             className={`hover:${hoverColor} mx-2 flex h-7 w-7 cursor-pointer items-center rounded-md text-md font-semibold max-md:hidden`}
           ></Icon>
         </div>
@@ -68,7 +75,7 @@ const SidebarDrop = ({ label, icon: Icon, as = "a", options = [] }: DropProps) =
                 <div
                   onClick={() => setIsOpen(false)}
                   key={index}
-                  className={`hover:${hoverColor} flex h-12 w-full items-center gap-2 rounded-md px-11 text-md font-semibold last:mb-4 `}
+                  className={`hover:${hoverColor} flex h-12 w-full items-center gap-2 whitespace-nowrap rounded-md px-11 text-md font-semibold last:mb-4 `}
                 >
                   <Element href={option.href}>
                     <Text>{option.label}</Text>
