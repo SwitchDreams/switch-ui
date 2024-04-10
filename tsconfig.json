@@ -23,11 +23,8 @@
     "paths": {
       "@switchdreams/ui": [ "src/component/index.ts" ]
     },
-    "typeRoots": [
-      "node_modules/@types",
-      "src/component/index.d.ts"
-    ]
+    "types": ["vitest/globals"]
   },
-  "include": ["src"],
+  "include": ["src", "./src/test/setup.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

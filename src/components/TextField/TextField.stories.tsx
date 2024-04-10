@@ -21,6 +21,12 @@ export const Default: Story = {
     name: "name",
     disabled: false,
   },
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/tygmPPx4ux69Uu3MzLKvtb/Switch-UI?type=design&node-id=98-5780&mode=design&t=gZZUlZlP5z4zMgQD-4",
+    },
+  },
 };
 
 export const WithIconLeft: Story = {

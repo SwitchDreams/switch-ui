@@ -1,3 +1,6 @@
+/// <reference types="vitest" />
+/// <reference types="vite/client" />
+
 import { resolve } from "node:path";
 
 import react from "@vitejs/plugin-react";
@@ -39,7 +42,7 @@ export default defineConfig(() => ({
   },
   test: {
     environment: "jsdom",
-    setupFiles: ["./tests/setup.ts"],
+    setupFiles: ["./src/tests/setup.ts"],
     testMatch: ["./tests/**/*.test.tsx"],
     globals: true,
   },
