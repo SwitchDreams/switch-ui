@@ -1,5 +1,5 @@
 import { cva, VariantProps } from "class-variance-authority";
-import React, { ReactNode, useEffect, useRef, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 export interface ITooltip {
@@ -14,10 +14,10 @@ const TooltipVariants = cva(
   {
     variants: {
       position: {
-        top: "bottom-[calc(100%+5px)] left-1/2 translate-x-[-50%]",
-        bottom: "left-1/2 top-[calc(100%+5px)] translate-x-[-50%]",
-        right: "right-[calc(100%+5px)] top-1/2 translate-y-[-50%]",
-        left: "left-[calc(100%+5px)] top-1/2 translate-y-[-50%]",
+        top: "bottom-[calc(100%+5px)] left-1/2 -translate-x-1/2",
+        bottom: "left-1/2 top-[calc(100%+5px)] -translate-x-1/2",
+        right: "right-[calc(100%+5px)] top-1/2 -translate-y-1/2",
+        left: "left-[calc(100%+5px)] top-1/2 -translate-y-1/2",
         topRight: "bottom-[calc(100%+5px)] left-1/2 translate-x-[5%]",
         bottomRight: "left-1/2 top-[calc(100%+5px)]",
         topLeft: "bottom-[calc(100%+5px)] right-1/2 translate-x-[5%]",
@@ -65,6 +65,52 @@ type TooltipVariantProps = VariantProps<typeof TooltipVariants>;
 
 export interface TooltipProps extends TooltipVariantProps, ITooltip {
   content: ReactNode;
+  positionsBreakPoint?: {
+    sm?:
+      | "top"
+      | "bottom"
+      | "right"
+      | "left"
+      | "topRight"
+      | "bottomRight"
+      | "topLeft"
+      | "bottomLeft"
+      | null
+      | undefined;
+    md?:
+      | "top"
+      | "bottom"
+      | "right"
+      | "left"
+      | "topRight"
+      | "bottomRight"
+      | "topLeft"
+      | "bottomLeft"
+      | null
+      | undefined;
+    lg?:
+      | "top"
+      | "bottom"
+      | "right"
+      | "left"
+      | "topRight"
+      | "bottomRight"
+      | "topLeft"
+      | "bottomLeft"
+      | null
+      | undefined;
+    xl?:
+      | "top"
+      | "bottom"
+      | "right"
+      | "left"
+      | "topRight"
+      | "bottomRight"
+      | "topLeft"
+      | "bottomLeft"
+      | null
+      | undefined;
+  };
 }
 
 const Tooltip = ({
@@ -75,44 +121,51 @@ const Tooltip = ({
   className,
   content,
   description,
+  positionsBreakPoint = {},
   ...rest
 }: TooltipProps) => {
-  const [tooltipPosition, setTooltipPosition] = useState(position);
-  const tooltipRef = useRef<HTMLDivElement>(null);
+  const [windowSize, setWindowSize] = useState<{ width: number; height: number }>({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
 
   useEffect(() => {
-    const updateTooltipPosition = () => {
-      if (tooltipRef.current) {
-        const { top, bottom, left, right } = tooltipRef.current.getBoundingClientRect();
-        const windowWidth = window.innerWidth;
-        const windowHeight = window.innerHeight;
-
-        if (top < 0) {
-          setTooltipPosition("bottom");
-        } else if (bottom > windowHeight) {
-          setTooltipPosition("top");
-        } else if (left < 0) {
-          setTooltipPosition("right");
-        } else if (right > windowWidth) {
-          setTooltipPosition("left");
-        }
-      }
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
     };
 
-    window.addEventListener("resize", updateTooltipPosition);
-    updateTooltipPosition();
+    window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener("resize", updateTooltipPosition);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
+  const getPosition = () => {
+    const width = windowSize.width;
+    if (width >= 1280 && positionsBreakPoint?.xl) {
+      return positionsBreakPoint.xl;
+    } else if (width >= 1024 && positionsBreakPoint?.lg) {
+      return positionsBreakPoint.lg;
+    } else if (width >= 768 && positionsBreakPoint?.md) {
+      return positionsBreakPoint.md;
+    } else if (positionsBreakPoint?.sm) {
+      return positionsBreakPoint.sm;
+    }
+    return position || "bottomLeft";
+  };
+
   return (
-    <div className="group relative h-fit w-fit cursor-pointer">
-      <div className="z-20 mx-1">{content}</div>
+    <div className="group relative  h-fit w-fit cursor-pointer">
+      <div className="z-10 mx-1">{content}</div>
       <span
-        className={twMerge(TooltipVariants({ position: tooltipPosition, color }), className)}
+        className={twMerge(TooltipVariants({ position: getPosition(), color }), className)}
         {...rest}
       >
-        <div className="z-30 flex flex-col" ref={tooltipRef}>
+        <div className="z-30 flex flex-col">
           {children ? (
             <>{children}</>
           ) : (
@@ -131,10 +184,7 @@ const Tooltip = ({
           )}
         </div>
       </span>
-      <span
-        className={twMerge(ArrowVariants({ position: tooltipPosition, color }))}
-        {...rest}
-      ></span>
+      <span className={twMerge(ArrowVariants({ position: getPosition(), color }))} {...rest}></span>
     </div>
   );
 };
