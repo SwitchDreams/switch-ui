@@ -1,4 +1,4 @@
-import type { Meta, Story } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 
 import Pagination from ".";
 
@@ -16,7 +16,7 @@ export default meta;
 type PaginationProps = React.ComponentProps<typeof Pagination>;
 
 // Mais sobre a escrita de histórias com args: https://storybook.js.org/docs/react/writing-stories/args
-const Template: Story<PaginationProps> = (args) => <Pagination {...args} />;
+const Template: StoryFn<PaginationProps> = (args) => <Pagination {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
