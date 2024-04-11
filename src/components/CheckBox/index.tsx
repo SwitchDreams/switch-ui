@@ -86,7 +86,7 @@ export const CheckBox = ({
             disabled
               ? twMerge(
                   checkBoxVariants({ size, shape }),
-                  "border-gray-400 bg-gray-200 opacity-100 checked:border-gray-200 checked:after:bg-gray-500 hover:border-gray-200 hover:bg-gray-200",
+                  "border-coolGray-400 bg-coolGray-200 opacity-100 checked:border-coolGray-200 checked:after:bg-coolGray-500 hover:border-coolGray-200 hover:bg-coolGray-200",
                 )
               : twMerge(checkBoxVariants({ size, shape, color }), className)
           }
@@ -103,7 +103,7 @@ export const CheckBox = ({
               ? twMerge(
                   iconVariants({ size }),
                   className,
-                  "border-gray-200 bg-gray-100 checked:border-gray-200 checked:after:bg-gray-500 hover:border-gray-200 hover:bg-gray-100",
+                  "border-coolGray-200 bg-coolGray-100 checked:border-coolGray-200 checked:after:bg-coolGray-500 hover:border-coolGray-200 hover:bg-coolGray-100",
                 )
               : twMerge(iconVariants({ size }), className)
           }

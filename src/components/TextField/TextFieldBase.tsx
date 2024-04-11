@@ -102,7 +102,7 @@ export const TextFieldBase = forwardRef(
     }: TextFieldBaseProps,
     ref: React.Ref<HTMLTextAreaElement>,
   ) => {
-    const InputElement = inputElement;
+    const InputElement = inputElement as any;
     const leftIconPresent = !!LeftIcon;
     const rightIconPresent = !!RightIcon;
     const textfieldClasses = twMerge(

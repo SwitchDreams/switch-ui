@@ -103,7 +103,7 @@ const SidebarDrop = ({ label, icon: Icon, as = "a", options = [] }: DropProps) =
                 isDropdownOpen ? "mb-2 opacity-100" : "h-0 opacity-0"
               } relative flex-col gap-5 overflow-hidden`}
             >
-              <div className="absolute left-5 top-[15%] h-[75%] w-[2px] bg-gray-100"></div>
+              <div className="absolute left-5 top-[15%] h-3/4 w-[2px] bg-gray-100"></div>
               {options.map((option, index) => (
                 <div
                   onClick={() => setIsOpen(false)}
