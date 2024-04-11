@@ -91,6 +91,7 @@
     "@heroicons/react": "^2.0.18",
     "class-variance-authority": "^0.7.0",
     "react-input-mask": "^2.0.4",
+    "react-spring-bottom-sheet": "^3.4.1",
     "tailwind-merge": "^1.14.0"
   }
 }
