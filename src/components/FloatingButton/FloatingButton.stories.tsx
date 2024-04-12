@@ -28,8 +28,8 @@ export default {
         TrashcanIcon: TrashIcon,
         StarIcon: StarIcon,
       },
-      controle: { type: "select" }
-    }
+      controle: { type: "select" },
+    },
   },
 } as Meta;
 

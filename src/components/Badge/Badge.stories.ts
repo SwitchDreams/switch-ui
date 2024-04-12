@@ -9,7 +9,7 @@ const meta = {
   component: Badge,
   tags: [],
   argTypes: {
-    leftIcon:{
+    leftIcon: {
       options: {
         StarIcon: StarIcon,
         PencilIcon: PencilIcon,
@@ -21,7 +21,7 @@ const meta = {
         type: "select",
       },
     },
-    rightIcon:{
+    rightIcon: {
       options: {
         StarIcon: StarIcon,
         PencilIcon: PencilIcon,
@@ -32,8 +32,8 @@ const meta = {
       control: {
         type: "select",
       },
-    }
-  }
+    },
+  },
 } satisfies Meta<typeof Badge>;
 
 export default meta;
