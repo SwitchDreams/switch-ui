@@ -64,7 +64,7 @@ export const selectBoxButtonVariants = cva(
       },
       open: {
         true: "border-primary-100",
-        false: "border-gray-200",
+        false: "border-coolGray-400",
       },
       error: {
         true: "border-error-600",
@@ -142,13 +142,13 @@ function SelectBox({
   };
 
   return (
-    <div>
+    <div className={`${disabled === true && "opacity-40"}`}>
       <Listbox
         multiple={multiple}
         value={selectedOption}
         onChange={handleOptionChange}
-        {...rest}
         disabled={disabled}
+        {...rest}
       >
         {({ open }) => (
           <>
@@ -157,7 +157,6 @@ function SelectBox({
               <Listbox.Button
                 className={twMerge(
                   selectBoxButtonVariants({
-                    disabled,
                     size,
                     error,
                     open,
@@ -174,8 +173,8 @@ function SelectBox({
                         ? placeholder
                         : findOption(options, selectedOption)
                       : selectedOption === -1
-                      ? placeholder
-                      : options.find((option) => option.value === selectedOption)?.label}
+                        ? placeholder
+                        : options.find((option) => option.value === selectedOption)?.label}
                   </span>
                   {renderChevron(open, size)}
                 </>

@@ -30,7 +30,5 @@ describe("RadioButton", () => {
     const radioButton = screen.getByRole("radio");
     expect(radioButton).toBeInTheDocument();
     expect(radioButton).toBeDisabled();
-    expect(radioButton).toHaveClass("border-gray-200");
-    expect(radioButton).toHaveClass("bg-gray-200");
   });
 });

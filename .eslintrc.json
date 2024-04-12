@@ -36,7 +36,8 @@
     "@typescript-eslint/no-empty-function":"off",
     "react/no-unknown-property":"off",
     "react/no-unescaped-entities ":"off",
-    "tailwindcss/no-custom-classname": ["off"]
+    "tailwindcss/no-custom-classname": ["off"],
+    "tailwindcss/enforces-shorthand": "off"
   },
   "settings": {
     "import/resolver": {
