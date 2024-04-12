@@ -7,6 +7,20 @@ const meta = {
   title: "Forms/CheckBox",
   component: CheckBox,
   tags: [],
+  argTypes: {
+    size: {
+      options: ["small", "medium", "large", null, undefined],
+      control: { type: "select" },
+    },
+    shape: {
+      options: ["circle", "square", null, undefined],
+      control: { type: "select" },
+    },
+    color: {
+      options: ["primary", "secondary", null, undefined],
+      control: { type: "select" },
+    },
+  },
 } satisfies Meta<typeof CheckBox>;
 
 export default meta;
@@ -15,7 +29,10 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: Story = {
   args: {
-    name: "teste",
+    size: "medium",
+    shape: "circle",
     disabled: false,
+    color: "primary",
+    name: "teste",
   },
 };
