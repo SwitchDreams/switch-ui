@@ -13,12 +13,13 @@ export interface IPagination {
   className?: string;
   handlePreviousPage?: () => void;
   handleNextPage?: () => void;
+  handleDoubleNextPage?: () => void;
   handlePage?: (pageNumber: number) => void;
   visiblePagesRange?: number;
 }
 
 const PaginationVariants = cva(
-  "hover:bg-coolGray-150 flex h-10 w-10 cursor-pointer items-center justify-center text-coolGray-600 hover:text-coolGray-900",
+  "flex h-10 w-10 cursor-pointer items-center justify-center text-coolGray-600 hover:bg-coolGray-200 hover:text-coolGray-900",
   {
     variants: {
       shape: {
@@ -47,6 +48,7 @@ const Pagination: React.FC<PaginationProps> = ({
   className,
   handlePreviousPage,
   handleNextPage,
+  handleDoubleNextPage,
   handlePage,
   visiblePagesRange = 5,
   shape = "square",
@@ -67,29 +69,34 @@ const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <div className="flex w-full justify-between gap-5">
-      <div onClick={handlePreviousPage} className={PaginationClasses}>
-        <ChevronLeftIcon className="h-4 w-4 " />
-      </div>
+      <button onClick={handlePreviousPage} className={PaginationClasses} data-testid="left-arrow">
+        <ChevronLeftIcon className="h-4 w-4" />
+      </button>
       <div className="flex gap-1">
         {pagesArray.map((pageNumber) => (
-          <div
+          <button
             key={pageNumber}
             onClick={() => handlePage && handlePage(pageNumber)}
             className={`${PaginationClasses} ${
-              currentPage === pageNumber ? "bg-coolGray-850 text-white" : ""
+              currentPage === pageNumber ? "bg-coolGray-900 text-white" : ""
             }`}
+            data-testid={`page-${pageNumber}`}
           >
             <span>{pageNumber}</span>
-          </div>
+          </button>
         ))}
       </div>
       <div className="flex gap-1">
-        <div onClick={handleNextPage} className={PaginationClasses}>
-          <ChevronRightIcon className="h-4 w-4 " />
-        </div>
-        <div onClick={handleNextPage} className={PaginationClasses}>
+        <button onClick={handleNextPage} className={PaginationClasses} data-testid="right-arrow">
+          <ChevronRightIcon className="h-4 w-4" />
+        </button>
+        <button
+          onClick={handleDoubleNextPage}
+          className={PaginationClasses}
+          data-testid="double-right-arrow"
+        >
           <ChevronDoubleRightIcon className="h-4 w-4" />
-        </div>
+        </button>
       </div>
     </div>
   );
