@@ -1,5 +1,5 @@
 import { Bars3Icon } from "@heroicons/react/24/outline";
-import { ComponentProps, PropsWithChildren, useContext, useEffect } from "react";
+import { ComponentProps, PropsWithChildren, useContext } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { SidebarContext } from "./SidebarContext";
@@ -21,39 +21,18 @@ const SidebarMain = ({
   sideBarMobileColor = "bg-white",
   textColor = "text-gray-100",
   className,
-  hover,
+  hover = false,
   ...rest
 }: SidebarVariant) => {
   const { isOpen, setIsOpen } = useContext(SidebarContext);
 
-  useEffect(() => {
-    const onMouseEnter = () => {
-      setIsOpen(true);
-    };
-
-    const onMouseLeave = () => {
-      setIsOpen(false);
-    };
-
-    if (hover) {
-      const sidebar = document.getElementById("sidebar");
-      if (sidebar) {
-        sidebar.addEventListener("mouseenter", onMouseEnter);
-        sidebar.addEventListener("mouseleave", onMouseLeave);
-      }
-
-      return () => {
-        if (sidebar) {
-          sidebar.removeEventListener("mouseenter", onMouseEnter);
-          sidebar.removeEventListener("mouseleave", onMouseLeave);
-        }
-      };
-    }
-  }, [hover, setIsOpen]);
+  const onMouseEnter = hover ? () => setIsOpen(true) : undefined;
+  const onMouseLeave = hover ? () => setIsOpen(false) : undefined;
 
   const style = isOpen ? "w-72" : "w-24 max-md:w-0 max-md:absolute z-50";
+
   return (
-    <div id="sidebar">
+    <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <div
         className={`${sideBarMobileColor} ${textColor} absolute top-0 z-50 flex w-full items-center justify-between border-b-2 border-gray-100 py-10 max-md:h-[70px] md:hidden`}
       >
