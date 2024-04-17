@@ -10,6 +10,7 @@ export interface SidebarVariant extends PropsWithChildren, ComponentProps<"div">
   sideBarColor?: string;
   sideBarMobileColor?: string;
   textColor?: string;
+  hover: boolean;
 }
 
 const SidebarMain = ({
@@ -20,13 +21,18 @@ const SidebarMain = ({
   sideBarMobileColor = "bg-white",
   textColor = "text-gray-100",
   className,
+  hover = false,
   ...rest
 }: SidebarVariant) => {
   const { isOpen, setIsOpen } = useContext(SidebarContext);
 
+  const onMouseEnter = hover ? () => setIsOpen(true) : undefined;
+  const onMouseLeave = hover ? () => setIsOpen(false) : undefined;
+
   const style = isOpen ? "w-72" : "w-24 max-md:w-0 max-md:absolute z-50";
+
   return (
-    <div>
+    <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <div
         className={`${sideBarMobileColor} ${textColor} absolute top-0 z-50 flex w-full items-center justify-between border-b-2 border-gray-100 py-10 max-md:h-[70px] md:hidden`}
       >

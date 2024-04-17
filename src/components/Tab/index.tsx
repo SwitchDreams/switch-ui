@@ -2,7 +2,6 @@ import { Tab } from "@headlessui/react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
-
 type Tabs = {
   name: string;
   info: JSX.Element;
@@ -59,10 +58,10 @@ const TabComponent = ({
       className="w-full"
     >
       <Tab.List as="div" className="flex pb-8">
-        {tabs.map((tab: Tabs) => {
+        {tabs.map((tab: Tabs, index) => {
           return (
             <Tab
-              key={tab.name}
+              key={index}
               data-testid={tab.name}
               className={tabClass}
               style={{ width: `calc(100% / ${tabs.length})` }}
