@@ -1,10 +1,15 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { HTMLProps } from "react";
+import { ErrorMsg } from "src/utils";
 import { twMerge } from "tailwind-merge";
 
 export interface ICheckBox {
   disabled?: boolean;
   name: string;
+  label?: string;
+  error?: boolean;
+  errorMsg?: string;
+  supportText?: string;
 }
 
 const checkBoxVariants = cva(
@@ -72,45 +77,57 @@ export const CheckBox = ({
   color,
   className,
   name,
+  label,
+  error = false,
+  errorMsg,
+  supportText,
   ...rest
 }: CheckBoxProps) => {
   return (
-    <div className={backgroundVariant({ size })}>
-      <label>
-        <input
-          name={name}
-          aria-label={name}
-          type="checkbox"
-          disabled={disabled}
-          className={
-            disabled
-              ? twMerge(
-                  checkBoxVariants({ size, shape }),
-                  "border-coolGray-400 bg-coolGray-200 opacity-100 checked:border-coolGray-200 checked:after:bg-coolGray-500 hover:border-coolGray-200 hover:bg-coolGray-200",
-                )
-              : twMerge(checkBoxVariants({ size, shape, color }), className)
-          }
-          {...rest}
-        />
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="3.5"
-          stroke="currentColor"
-          className={
-            disabled
-              ? twMerge(
-                  iconVariants({ size }),
-                  className,
-                  "border-coolGray-200 bg-coolGray-100 checked:border-coolGray-200 checked:after:bg-coolGray-500 hover:border-coolGray-200 hover:bg-coolGray-100",
-                )
-              : twMerge(iconVariants({ size }), className)
-          }
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-        </svg>
-      </label>
-    </div>
+    <>
+      {label && (
+        <label htmlFor={name} className="text-sm font-medium text-coolGray-900">
+          {label}
+        </label>
+      )}
+      <div className={backgroundVariant({ size })}>
+        <label>
+          <input
+            name={name}
+            aria-label={name}
+            type="checkbox"
+            disabled={disabled}
+            className={
+              disabled
+                ? twMerge(
+                    checkBoxVariants({ size, shape }),
+                    "border-gray-400 bg-gray-200 opacity-100 checked:border-gray-200 checked:after:bg-gray-500 hover:border-gray-200 hover:bg-gray-200",
+                  )
+                : twMerge(checkBoxVariants({ size, shape, color }), className)
+            }
+            {...rest}
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="3.5"
+            stroke="currentColor"
+            className={
+              disabled
+                ? twMerge(
+                    iconVariants({ size }),
+                    className,
+                    "border-gray-200 bg-gray-100 checked:border-gray-200 checked:after:bg-gray-500 hover:border-gray-200 hover:bg-gray-100",
+                  )
+                : twMerge(iconVariants({ size }), className)
+            }
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+          </svg>
+        </label>
+      </div>
+      <ErrorMsg error={error} errorMsg={errorMsg} supportText={supportText} />
+    </>
   );
 };
