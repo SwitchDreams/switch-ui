@@ -174,8 +174,8 @@ function SelectBox({
                         ? placeholder
                         : findOption(options, selectedOption)
                       : selectedOption === -1
-                      ? placeholder
-                      : options.find((option) => option.value === selectedOption)?.label}
+                        ? placeholder
+                        : options.find((option) => option.value === selectedOption)?.label}
                   </span>
                   {renderChevron(open, size)}
                 </>
