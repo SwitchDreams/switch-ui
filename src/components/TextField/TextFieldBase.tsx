@@ -129,7 +129,7 @@ export const TextFieldBase = forwardRef(
             className={textfieldClasses}
             // @ts-ignore
             mask={inputElement === InputMask ? mask : undefined}
-            maskchar={inputElement === InputMask ? maskchar : undefined}
+            {...(mask ? { maskChar: maskchar } : {})}
             {...rest}
           />
           {LeftIcon && (
