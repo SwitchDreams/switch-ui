@@ -37,6 +37,5 @@ export const Default: Story = {
     error: false,
     loading: false,
     buttons: true,
-    onClose: () => {},
   },
 };

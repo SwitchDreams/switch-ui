@@ -114,11 +114,15 @@ const Modal = ({
               <Button
                 label={cancelLabel}
                 onClick={onClickCancel}
-                className={`${twMerge(CancelButtonVariants({ error, cancelOutline }))} ${!cancelLabel && "hidden"}`}
+                className={`${twMerge(CancelButtonVariants({ error, cancelOutline }))} ${
+                  !cancelLabel && "hidden"
+                }`}
               />
               <Button
                 label={confirmLabel}
-                className={`${twMerge(ConfirmButtonVariants({ error, confirmOutline }))} ${!confirmLabel && "hidden"}`}
+                className={`${twMerge(ConfirmButtonVariants({ error, confirmOutline }))} ${
+                  !confirmLabel && "hidden"
+                }`}
                 onClick={onClickConfirm}
                 iconSide="left"
                 disabled={loading}
