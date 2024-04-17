@@ -1,6 +1,7 @@
 import { cva, VariantProps } from "class-variance-authority";
 import React, { ElementType, forwardRef } from "react";
 import InputMask from "react-input-mask";
+import { ErrorMsg, LabelText } from "src/utils";
 import { twMerge } from "tailwind-merge";
 
 type InputElement = typeof InputMask | "textarea" | "input";
@@ -114,11 +115,7 @@ export const TextFieldBase = forwardRef(
 
     return (
       <div className={opacityClass}>
-        {label && (
-          <label htmlFor={name} className="text-sm font-medium text-coolGray-900">
-            {label}
-          </label>
-        )}
+        <LabelText label={label} name={name} />
         <div className="relative">
           <InputElement
             ref={ref ? ref : undefined}
@@ -149,11 +146,7 @@ export const TextFieldBase = forwardRef(
             />
           )}
         </div>
-        {error ? (
-          <span className="text-sm text-error-500">{errorMsg}</span>
-        ) : (
-          <span className="text-sm text-coolGray-600">{supportText}</span>
-        )}
+        <ErrorMsg error={error} errorMsg={errorMsg} supportText={supportText} />
       </div>
     );
   },

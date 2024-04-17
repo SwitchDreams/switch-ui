@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { HTMLProps } from "react";
+import { ErrorMsg } from "src/utils";
 import { twMerge } from "tailwind-merge";
 
 export interface ICheckBox {
@@ -77,13 +78,13 @@ export const CheckBox = ({
   className,
   name,
   label,
-  error,
+  error = false,
   errorMsg,
   supportText,
   ...rest
 }: CheckBoxProps) => {
   return (
-    <div>
+    <>
       {label && (
         <label htmlFor={name} className="text-sm font-medium text-coolGray-900">
           {label}
@@ -126,11 +127,7 @@ export const CheckBox = ({
           </svg>
         </label>
       </div>
-      {error ? (
-        <span className="text-sm text-error-500">{errorMsg}</span>
-      ) : (
-        <span className="text-sm text-coolGray-600">{supportText}</span>
-      )}
-    </div>
+      <ErrorMsg error={error} errorMsg={errorMsg} supportText={supportText} />
+    </>
   );
 };

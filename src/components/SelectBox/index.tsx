@@ -2,6 +2,7 @@ import { Listbox, ListboxProps, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { cva, type VariantProps } from "class-variance-authority";
 import { ElementType, Fragment, ReactNode, useEffect, useState } from "react";
+import { ErrorMsg } from "src/utils";
 import { twMerge } from "tailwind-merge";
 
 type Options = {
@@ -173,8 +174,8 @@ function SelectBox({
                         ? placeholder
                         : findOption(options, selectedOption)
                       : selectedOption === -1
-                        ? placeholder
-                        : options.find((option) => option.value === selectedOption)?.label}
+                      ? placeholder
+                      : options.find((option) => option.value === selectedOption)?.label}
                   </span>
                   {renderChevron(open, size)}
                 </>
@@ -212,11 +213,7 @@ function SelectBox({
           </>
         )}
       </Listbox>
-      {error && errorMsg ? (
-        <span className="text-sm text-error-500">{errorMsg}</span>
-      ) : (
-        supportText && <span className="text-sm text-coolGray-600">{supportText}</span>
-      )}
+      <ErrorMsg error={error} errorMsg={errorMsg} supportText={supportText} />
     </div>
   );
 }

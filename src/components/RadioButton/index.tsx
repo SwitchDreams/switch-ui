@@ -1,11 +1,12 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { ChangeEvent, HTMLProps, useState } from "react";
+import { ErrorMsg, LabelText } from "src/utils";
 import { twMerge } from "tailwind-merge";
 
 export interface IRadioButton {
   disabled?: boolean;
   label?: string;
-  name?: string;
+  name: string;
   error?: boolean;
   errorMsg?: string;
   supportText?: string;
@@ -28,7 +29,7 @@ const radioButtonVariants = cva(
 );
 
 export interface RadioButtonProps
-  extends Omit<HTMLProps<HTMLInputElement>, "size" | "disabled">,
+  extends Omit<HTMLProps<HTMLInputElement>, "size" | "disabled" | "name">,
     IRadioButton,
     VariantProps<typeof radioButtonVariants> {}
 
@@ -38,7 +39,7 @@ export const RadioButton = ({
   className,
   label,
   name,
-  error,
+  error = false,
   errorMsg,
   supportText,
   ...rest
@@ -69,17 +70,9 @@ export const RadioButton = ({
           }
           {...rest}
         ></input>
-        {label && (
-          <label htmlFor={name} className="text-sm font-medium text-coolGray-900">
-            {label}
-          </label>
-        )}
+        <LabelText label={label} name={name} />
       </div>
-      {error ? (
-        <span className="text-sm text-error-500">{errorMsg}</span>
-      ) : (
-        <span className="text-sm text-coolGray-600">{supportText}</span>
-      )}
+      <ErrorMsg error={error} errorMsg={errorMsg} supportText={supportText} />
     </>
   );
 };
