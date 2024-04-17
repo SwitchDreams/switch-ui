@@ -5,7 +5,7 @@ import { RadioButton } from "..";
 
 describe("RadioButton", () => {
   it("renders unchecked RadioButton with default size", () => {
-    render(<RadioButton />);
+    render(<RadioButton name="teste1" />);
 
     const radioButton = screen.getByRole("radio");
     expect(radioButton).toBeInTheDocument();
@@ -15,7 +15,7 @@ describe("RadioButton", () => {
   });
 
   it("renders checked RadioButton with specified size", () => {
-    render(<RadioButton size="large" checked />);
+    render(<RadioButton size="large" checked name="teste1" />);
 
     const radioButton = screen.getByRole("radio");
     expect(radioButton).toBeInTheDocument();
@@ -25,7 +25,7 @@ describe("RadioButton", () => {
   });
 
   it("renders disabled RadioButton", () => {
-    render(<RadioButton disabled />);
+    render(<RadioButton disabled name="teste1" />);
 
     const radioButton = screen.getByRole("radio");
     expect(radioButton).toBeInTheDocument();

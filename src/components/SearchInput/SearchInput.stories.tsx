@@ -15,6 +15,7 @@ const Template: StoryFn<typeof SearchInput> = (args: SearchInputProps) => {
 
   return (
     <SearchInput
+      name={args.name}
       label={args.label}
       options={args.options}
       size={args.size}
@@ -31,6 +32,7 @@ const Template: StoryFn<typeof SearchInput> = (args: SearchInputProps) => {
 
 export const Default = Template.bind({});
 Default.args = {
+  name: "default",
   label: "Buscar",
   selectedValue: "",
   options: [

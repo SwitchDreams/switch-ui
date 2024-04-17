@@ -10,6 +10,7 @@ interface ToggleSwitchCustomProps {
   disabled?: boolean;
   withIcon?: boolean;
   onChange?: (checked: boolean) => void;
+  className?: string;
 }
 
 const switchVariants = cva("relative inline-flex items-center rounded-full", {
@@ -90,6 +91,7 @@ export const ToggleSwitch = ({
   disabled = false,
   withIcon = true,
   size = "md",
+  className,
   ...rest
 }: ToggleSwitchProps) => {
   return (
@@ -103,7 +105,7 @@ export const ToggleSwitch = ({
       {({ checked }) => (
         <button
           disabled={disabled}
-          className={twMerge(switchVariants({ checked, disabled, size }))}
+          className={twMerge(switchVariants({ checked, disabled, size }), className)}
         >
           <span className={twMerge(dotVariants({ checked, size }))}>
             {withIcon &&
