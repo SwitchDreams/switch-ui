@@ -24,7 +24,7 @@ const debounce = (fn: Function, delay: number) => {
 
 interface SearchInputType {
   label?: string;
-  name?: string;
+  name: string;
   options?: SearchInputOption[];
   size?: "lg" | "md" | "sm";
   disabled?: boolean;
@@ -100,7 +100,7 @@ interface SearchInputHTMLAttributes extends InputHTMLAttributes<HTMLInputElement
 export interface SearchInputProps
   extends Omit<SearchInputVariantProps, "size" | "disabled" | "error">,
     SearchInputType,
-    Omit<SearchInputHTMLAttributes, "size" | "disabled" | "multiple"> {}
+    Omit<SearchInputHTMLAttributes, "size" | "disabled" | "multiple" | "name"> {}
 
 function SearchInput({
   options = [],
