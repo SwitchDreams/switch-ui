@@ -17,7 +17,7 @@ const SidebarComponent = ({
   sideBarMobileColor = "bg-white",
   textColor = "text-gray-600",
   hoverColor = "bg-gray-50",
-  hover = false,
+  openOnHover = false,
 }: PropsWithChildren & any) => {
   return (
     <SidebarProvider hoverColor={hoverColor}>
@@ -27,7 +27,7 @@ const SidebarComponent = ({
         sideBarColor={sideBarColor}
         textColor={textColor}
         sideBarMobileColor={sideBarMobileColor}
-        hover={hover}
+        openOnHover={openOnHover}
       >
         {children}
       </SidebarMain>
