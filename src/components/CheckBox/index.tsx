@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { HTMLProps } from "react";
-import { ErrorMsg } from "src/utils";
+import ErrorMessage from "src/internal/ErrorMessage";
 import { twMerge } from "tailwind-merge";
 
 export interface ICheckBox {
@@ -127,7 +127,7 @@ export const CheckBox = ({
           </svg>
         </label>
       </div>
-      <ErrorMsg error={error} errorMsg={errorMsg} supportText={supportText} />
+      <ErrorMessage error={error} errorMsg={errorMsg} supportText={supportText} />
     </>
   );
 };

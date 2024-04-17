@@ -1,6 +1,8 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { ChangeEvent, HTMLProps, useState } from "react";
-import { ErrorMsg, LabelText } from "src/utils";
+import ErrorMessage from "src/internal/ErrorMessage";
+import FormLabel from "src/internal/FormLabel";
+
 import { twMerge } from "tailwind-merge";
 
 export interface IRadioButton {
@@ -70,9 +72,9 @@ export const RadioButton = ({
           }
           {...rest}
         ></input>
-        <LabelText label={label} name={name} />
+        <FormLabel label={label} name={name} />
       </div>
-      <ErrorMsg error={error} errorMsg={errorMsg} supportText={supportText} />
+      <ErrorMessage error={error} errorMsg={errorMsg} supportText={supportText} />
     </>
   );
 };
