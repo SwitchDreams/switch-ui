@@ -31,8 +31,9 @@ export const Default: Story = {
   args: {
     size: "medium",
     shape: "circle",
+    name: "teste",
+    label: "",
     disabled: false,
     color: "primary",
-    name: "teste",
   },
 };

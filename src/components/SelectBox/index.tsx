@@ -2,6 +2,7 @@ import { Listbox, ListboxProps, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { cva, type VariantProps } from "class-variance-authority";
 import { ElementType, Fragment, ReactNode, useEffect, useState } from "react";
+import ErrorMessage from "src/internal/ErrorMessage";
 import { twMerge } from "tailwind-merge";
 
 type Options = {
@@ -212,11 +213,7 @@ function SelectBox({
           </>
         )}
       </Listbox>
-      {error && errorMsg ? (
-        <span className="text-sm text-error-500">{errorMsg}</span>
-      ) : (
-        supportText && <span className="text-sm text-coolGray-600">{supportText}</span>
-      )}
+      <ErrorMessage error={error} errorMsg={errorMsg} supportText={supportText} />
     </div>
   );
 }
