@@ -1,7 +1,8 @@
-import { Tab } from "@headlessui/react";
+import { Tab as TabSection } from "@headlessui/react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { HTMLAttributes } from "react";
+import React, { HTMLAttributes, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
+
 type Tabs = {
   name: string;
   info: JSX.Element;
@@ -10,7 +11,8 @@ type Tabs = {
 export interface TabType extends HTMLAttributes<any> {
   size?: "lg" | "md" | "sm";
   padding?: boolean;
-  tabs: Tabs[];
+  /** @deprecated Use children instead (will be removed in next major version) **/
+  tabs?: Tabs[];
   onTabChange?: (index: number) => void;
   currentIndex?: number;
 }
@@ -34,20 +36,29 @@ export const TabVariants = cva(
   },
 );
 
-export interface TabProps extends Omit<TabVariantProps, "size" | "padding">, TabType {}
+export interface TabProps extends Omit<TabVariantProps, "size" | "padding">, TabType {
+  children?: ReactNode;
+}
 
 const TabComponent = ({
   size = "md",
   padding = false,
-  tabs,
+  tabs = [],
   onTabChange = () => {},
   currentIndex,
   className,
+  children,
 }: TabProps) => {
   const tabClass = twMerge(TabVariants({ size, padding }), className);
 
+  const tabsArray = children
+    ? React.Children.toArray(children).filter(
+        (child) => React.isValidElement(child) && child.type === Tab.Panel,
+      )
+    : tabs;
+
   return (
-    <Tab.Group
+    <TabSection.Group
       selectedIndex={currentIndex}
       onChange={(index) => {
         if (onTabChange) {
@@ -57,27 +68,33 @@ const TabComponent = ({
       as="div"
       className="w-full"
     >
-      <Tab.List as="div" className="flex pb-8">
-        {tabs.map((tab: Tabs, index) => {
+      <TabSection.List as="div" className="flex pb-8">
+        {tabsArray.map((tab: any) => {
           return (
-            <Tab
-              key={index}
-              data-testid={tab.name}
+            <TabSection
+              key={children ? tab.props.title : tab.name}
+              data-testid={children ? tab.props.title : tab.name}
               className={tabClass}
-              style={{ width: `calc(100% / ${tabs.length})` }}
+              style={{ width: `calc(100% / ${tabsArray.length})` }}
             >
-              <div style={{ width: padding ? "80%" : "100%" }}>{tab.name}</div>
-            </Tab>
+              <div style={{ width: padding ? "80%" : "100%" }}>
+                {children ? tab.props.title : tab.name}
+              </div>
+            </TabSection>
           );
         })}
-      </Tab.List>
-      <Tab.Panels>
-        {tabs.map((tab: Tabs) => {
-          return <Tab.Panel key={tab.name}>{tab.info}</Tab.Panel>;
-        })}
-      </Tab.Panels>
-    </Tab.Group>
+      </TabSection.List>
+      <TabSection.Panels>
+        {children
+          ? children
+          : tabs.map((tab: Tabs) => {
+              return <TabSection.Panel key={tab.name}>{tab.info}</TabSection.Panel>;
+            })}
+      </TabSection.Panels>
+    </TabSection.Group>
   );
 };
 
-export default TabComponent;
+export const Tab = Object.assign(TabComponent, {
+  Panel: TabSection.Panel,
+});
