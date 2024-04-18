@@ -11,6 +11,7 @@ type Tabs = {
 export interface TabType extends HTMLAttributes<any> {
   size?: "lg" | "md" | "sm";
   padding?: boolean;
+  /** @deprecated Use children instead (will be removed in next major version) **/
   tabs?: Tabs[];
   onTabChange?: (index: number) => void;
   currentIndex?: number;

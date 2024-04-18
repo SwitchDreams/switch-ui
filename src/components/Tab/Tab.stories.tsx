@@ -59,6 +59,7 @@ const tabsArray = [
   },
 ];
 
+// TODO: Removes with next major version
 const Template: StoryFn<any> = () => <Tab size="md" tabs={tabsArray} padding={false} />;
 
 const Template2: StoryFn<any> = (args) => (
