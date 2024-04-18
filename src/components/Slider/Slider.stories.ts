@@ -25,5 +25,7 @@ export const Default: Story = {
     max: 400,
     size: "medium",
     step: 1,
+    value: 300,
+    className: "",
   },
 };

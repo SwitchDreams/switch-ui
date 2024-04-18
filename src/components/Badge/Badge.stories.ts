@@ -44,5 +44,7 @@ export const Default: Story = {
   args: {
     label: "Hello World",
     leftIcon: StarIcon,
+    color: "primary",
+    className: "",
   },
 };

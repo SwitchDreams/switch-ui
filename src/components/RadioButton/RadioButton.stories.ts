@@ -24,5 +24,6 @@ export const Default: Story = {
     name: "teste",
     label: "",
     disabled: false,
+    className: "",
   },
 };

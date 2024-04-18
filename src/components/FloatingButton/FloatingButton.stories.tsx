@@ -43,4 +43,5 @@ Variations.args = {
   size: "md",
   icon: ArrowDownLeftIcon,
   onClick: undefined,
+  className: "",
 };
