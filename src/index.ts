@@ -6,7 +6,7 @@ import "./fonts.css";
 // Import Types
 import { SidebarFooterProps } from "./components/Sidebar/SidebarFooter";
 import { SidebarItemGroupProps } from "./components/Sidebar/SidebarGroup";
-import { ItemProps } from "./components/Sidebar/SidebarItem";
+import { ItemProps } from "./components/Sidebar/SidebarItem"; // TODO: Improves this name
 import { SidebarLogoProps } from "./components/Sidebar/SidebarLogo";
 import { SidebarUserProps } from "./components/Sidebar/SidebarUser";
 
@@ -42,27 +42,27 @@ import Toast, { ToastProps } from "./components/Toast";
 
 // Export componentes
 export {
-  AccordionMenu,
+  AccordionMenu, // TODO: NOT tree-shakable
   Avatar,
   Badge,
   Button,
   CheckBox,
   FloatingButton,
-  Popover,
+  Popover, // TODO: NOT tree-shakable
   ProgressBar,
   RadioButton,
-  SearchInput,
-  SelectBox,
-  Sidebar,
-  Slider,
+  SearchInput, // TODO: NOT tree-shakable
+  SelectBox, // TODO: NOT tree-shakable
+  Sidebar, // TODO: NOT tree-shakable
+  Slider, // TODO: NOT tree-shakable
   Spinner,
-  Tab,
+  Tab, // TODO: NOT tree-shakable
   Text,
-  TextArea,
-  TextField,
-  TextFieldMask,
-  Toast,
-  ToggleSwitch,
+  TextArea, // TODO: NOT tree-shakable
+  TextField, // TODO: NOT tree-shakable
+  TextFieldMask, // TODO: NOT tree-shakable
+  Toast, // TODO: NOT tree-shakable
+  ToggleSwitch, // TODO: NOT tree-shakable
   Tooltip,
 };
 
