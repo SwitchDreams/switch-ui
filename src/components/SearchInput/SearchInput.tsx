@@ -24,6 +24,7 @@ const debounce = (fn: Function, delay: number) => {
 
 interface SearchInputType {
   label?: string;
+  name: string;
   options?: SearchInputOption[];
   size?: "lg" | "md" | "sm";
   disabled?: boolean;
@@ -98,12 +99,13 @@ interface SearchInputHTMLAttributes extends InputHTMLAttributes<HTMLInputElement
 export interface SearchInputProps
   extends Omit<SearchInputVariantProps, "size" | "disabled" | "error">,
     SearchInputType,
-    Omit<SearchInputHTMLAttributes, "size" | "disabled" | "multiple"> {}
+    Omit<SearchInputHTMLAttributes, "size" | "disabled" | "multiple" | "name"> {}
 
 function SearchInput({
   options = [],
   size = "md",
   label,
+  name,
   disabled = false,
   className,
   fetchRemoteData,
@@ -114,7 +116,7 @@ function SearchInput({
   placeholder,
   setSelectedValue,
   multiple = false,
-  error = false,
+  error,
   ...rest
 }: SearchInputProps) {
   const [selected, setSelected] = useState<any>(multiple ? [] : "");
@@ -182,6 +184,7 @@ function SearchInput({
               )}
               <div className="relative w-full">
                 <Combobox.Input
+                  name={name}
                   className={twMerge(
                     SearchInputButtonVariants({ size, disabled, error, open }),
                     className,
@@ -270,6 +273,7 @@ function SearchInput({
               )}
               <div className="relative w-full">
                 <Combobox.Input
+                  name={name}
                   className={twMerge(
                     SearchInputButtonVariants({ size, disabled, error, open }),
                     LeftIcon && "pl-10",
