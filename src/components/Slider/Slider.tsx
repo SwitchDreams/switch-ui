@@ -59,7 +59,7 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderProps>(
           {...rest}
         />
         <div
-          data-testId="value-box"
+          data-testid="value-box"
           className="absolute bottom-full mt-2 hidden h-8 w-10 flex-none -translate-x-1/2 items-center justify-center rounded-sm bg-primary-300 py-1 text-center text-gray-white"
           ref={box}
         >
