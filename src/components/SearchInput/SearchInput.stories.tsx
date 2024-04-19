@@ -11,7 +11,8 @@ export default {
 } as Meta<typeof SearchInput>;
 
 const Template: StoryFn<typeof SearchInput> = (args: SearchInputProps) => {
-  const [selectedValueState, setSelectedValue] = useState(args.selectedValue);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [selectedValue, setSelectedValue] = useState(args.selectedValue);
 
   return (
     <SearchInput
@@ -22,7 +23,6 @@ const Template: StoryFn<typeof SearchInput> = (args: SearchInputProps) => {
       multiple={args.multiple}
       fetchRemoteData={args.fetchRemoteData}
       disabled={args.disabled}
-      selectedValue={selectedValueState}
       setSelectedValue={setSelectedValue}
       placeholder={args.placeholder}
       leftIcon={args.leftIcon}

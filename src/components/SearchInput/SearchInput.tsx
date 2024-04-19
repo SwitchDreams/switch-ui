@@ -30,6 +30,7 @@ interface SearchInputType {
   disabled?: boolean;
   fetchRemoteData?: (query: string) => Promise<SearchInputOption[]>;
   remoteDataConfig?: SearchInputRemoteDataConfig;
+  selectedValue?: string;
   setSelectedValue: (value: any) => void;
   multiple?: boolean;
   placeholder?: string;
