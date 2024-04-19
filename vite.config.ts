@@ -32,7 +32,7 @@ export default defineConfig(() => ({
     lib: {
       entry: resolve("src", "index.ts"),
       name: "SwitchUI",
-      formats: ["es", "umd"],
+      formats: ["es"],
       fileName: (format) => `ui.${format}.js`,
     },
     rollupOptions: {

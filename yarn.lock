@@ -4902,6 +4902,11 @@ eslint-plugin-tailwindcss@^3.15.1:
     fast-glob "^3.2.5"
     postcss "^8.4.4"
 
+eslint-plugin-tree-shaking@^1.12.1:
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-tree-shaking/-/eslint-plugin-tree-shaking-1.12.1.tgz#ba0f4290cd1f3a99084a393b8caadba6116dc06d"
+  integrity sha512-nq2wZd2APlS+Fsk/1/iYVwpByMH2+x69+dB5wMrZuvu9PqKI1lyfu/gk2xvzihmDUeF23aeZZ0/WyqJSp4EG3A==
+
 eslint-scope@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-5.1.1.tgz#e786e59a66cb92b3f6c1fb0d508aab174848f48c"
