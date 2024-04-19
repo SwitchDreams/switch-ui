@@ -36,7 +36,7 @@ export default defineConfig(() => ({
       fileName: (format) => `ui.${format}.js`,
     },
     rollupOptions: {
-      external: [...Object.keys(packageJson.peerDependencies)],
+      external: [...Object.keys(packageJson.peerDependencies), "react/jsx-runtime"],
     },
     sourcemap: true,
   },
