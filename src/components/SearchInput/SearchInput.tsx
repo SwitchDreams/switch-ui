@@ -27,7 +27,6 @@ interface SearchInputType {
   options?: SearchInputOption[];
   size?: "lg" | "md" | "sm";
   disabled?: boolean;
-  selectedValue?: string | string[];
   fetchRemoteData?: (query: string) => Promise<SearchInputOption[]>;
   remoteDataConfig?: SearchInputRemoteDataConfig;
   setSelectedValue: (value: any) => void;
@@ -107,7 +106,6 @@ function SearchInput({
   label,
   disabled = false,
   className,
-  // selectedValue = "",
   fetchRemoteData,
   remoteDataConfig = {
     debounceTime: 300,
