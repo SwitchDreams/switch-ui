@@ -24,11 +24,5 @@ export const Default: Story = {
       </div>
     ),
     button: "hello",
-    positionsBreakPoint: {
-      sm: "topRight",
-      md: "bottomLeft",
-      lg: "right",
-      xl: "bottomRight",
-    },
   },
 };

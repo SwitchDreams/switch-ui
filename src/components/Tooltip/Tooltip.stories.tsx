@@ -25,12 +25,5 @@ export const Default: Story = {
     title: "hello",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.",
-    position: "bottomRight",
-    positionsBreakPoint: {
-      sm: "topRight",
-      md: "bottomLeft",
-      lg: "right",
-      xl: "bottomRight",
-    },
   },
 };
