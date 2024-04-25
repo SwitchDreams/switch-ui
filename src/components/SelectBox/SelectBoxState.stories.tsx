@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from "@storybook/react";
 import { useState } from "react";
 
-import Tab from "../Tab/index";
+import { Tab } from "../Tab/index";
 import SelectBox from "./index";
 const meta = {
   title: "Forms/SelectBox",

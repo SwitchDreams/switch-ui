@@ -8,6 +8,12 @@ const meta = {
   title: "Overlay/Tooltip",
   component: Tooltip,
   tags: [],
+  argTypes: {
+    color: {
+      options: ["primary", "secondary", "tertiary", null, undefined],
+      control: { type: "select" },
+    },
+  },
 } satisfies Meta<typeof Tooltip>;
 
 export default meta;
@@ -26,5 +32,6 @@ export const Default: Story = {
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.",
     position: "bottomRight",
+    color: "primary",
   },
 };

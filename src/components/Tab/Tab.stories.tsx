@@ -1,19 +1,15 @@
-import { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 
-import TabComponent, { TabProps } from ".";
-export default {
-  title: "Navigation/TabComponent",
-  component: TabComponent,
+import { Tab } from "./index";
+
+const meta = {
+  title: "Navigation/Tab",
+  component: Tab,
   tags: [],
-  argTypes: {
-    size: {
-      options: ["lg", "md", "sm"],
-      control: { type: "select" },
-    },
-  },
-} as Meta<typeof TabComponent>;
+} satisfies Meta<typeof Tab>;
 
-const Template: StoryFn<typeof TabComponent> = (args: TabProps) => <TabComponent {...args} />;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const tabsArray = [
   {
@@ -58,9 +54,38 @@ const tabsArray = [
   },
 ];
 
-export const Variations = Template.bind({});
-Variations.args = {
-  size: "md",
-  tabs: tabsArray,
-  padding: false,
-};
+// TODO: Removes with next major version
+const Template: StoryFn<any> = () => <Tab size="md" tabs={tabsArray} padding={false} />;
+
+const Template2: StoryFn<any> = (args) => (
+  <Tab {...args}>
+    <Tab.Panel title="Teste 1">
+      <div className="h-full w-full rounded bg-primary-100">
+        Teste 1 Vorem ipsum dolor sit amet, consectetur Vorem ipsum dolor{" "}
+      </div>
+    </Tab.Panel>
+    <Tab.Panel title="Teste 2">
+      <div className="h-full w-full rounded bg-primary-100">
+        Teste 2 Vorem ipsum dolor sit amet, consectetur Vorem ipsum dolor{" "}
+      </div>
+    </Tab.Panel>
+    <Tab.Panel title="Teste 3">
+      <div className="h-full w-full rounded bg-primary-100">
+        Teste 3 Vorem ipsum dolor sit amet, consectetur Vorem ipsum dolor{" "}
+      </div>
+    </Tab.Panel>
+    <Tab.Panel title="Teste 4">
+      <div className="h-full w-full rounded bg-primary-100">
+        Teste 4 Vorem ipsum dolor sit amet, consectetur Vorem ipsum dolor{" "}
+      </div>
+    </Tab.Panel>
+    <Tab.Panel title="Teste 5">
+      <div className="h-full w-full rounded bg-primary-100">
+        Teste 5 Vorem ipsum dolor sit amet, consectetur Vorem ipsum dolor{" "}
+      </div>
+    </Tab.Panel>
+  </Tab>
+);
+
+export const TabComponentProps = Template.bind({});
+export const TabComponentChildren: Story = Template2;

@@ -24,4 +24,5 @@ Variations.args = {
   message:
     "Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class",
   title: "teste",
+  className: "",
 };

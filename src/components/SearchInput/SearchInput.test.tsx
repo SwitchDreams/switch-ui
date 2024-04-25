@@ -14,6 +14,7 @@ describe("SearchInput", () => {
 
     const { queryByText, getByLabelText } = render(
       <SearchInput
+        name="teste1"
         options={options}
         label="Teste"
         placeholder="Buscar"
@@ -39,6 +40,7 @@ describe("SearchInput", () => {
 
     const { getByText, getByLabelText } = render(
       <SearchInput
+        name="teste1"
         options={options}
         label="Teste"
         placeholder="Buscar"
@@ -64,6 +66,7 @@ describe("SearchInput", () => {
 
     const { getByTestId, queryByText, getByLabelText, getByText } = render(
       <SearchInput
+        name="teste1"
         options={options}
         label="Teste"
         selectedValue={selectedValue}
