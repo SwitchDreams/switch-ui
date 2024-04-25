@@ -26,6 +26,7 @@ const Template: StoryFn<typeof SearchInput> = (args: SearchInputProps) => {
       setSelectedValue={setSelectedValue}
       placeholder={args.placeholder}
       leftIcon={args.leftIcon}
+      className=""
     />
   );
 };

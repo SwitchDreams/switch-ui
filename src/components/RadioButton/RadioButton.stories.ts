@@ -7,6 +7,12 @@ const meta = {
   title: "Forms/RadioButton",
   component: RadioButton,
   tags: [],
+  argTypes: {
+    size: {
+      options: ["small", "medium", "large", null, undefined],
+      control: { type: "select" },
+    },
+  },
 } satisfies Meta<typeof RadioButton>;
 
 export default meta;
@@ -18,5 +24,6 @@ export const Default: Story = {
     name: "teste",
     label: "",
     disabled: false,
+    className: "",
   },
 };

@@ -7,6 +7,12 @@ const meta = {
   title: "Forms/Slider",
   component: Slider,
   tags: [],
+  argTypes: {
+    size: {
+      options: ["small", "medium", "large", null, undefined],
+      control: { type: "select" },
+    },
+  },
 } satisfies Meta<typeof Slider>;
 
 export default meta;
@@ -17,5 +23,9 @@ export const Default: Story = {
   args: {
     min: 200,
     max: 400,
+    size: "medium",
+    step: 1,
+    value: 300,
+    className: "",
   },
 };

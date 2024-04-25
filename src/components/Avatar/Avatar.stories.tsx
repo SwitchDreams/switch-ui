@@ -17,4 +17,5 @@ Variations.args = {
   isOn: true,
   name: "Nome Teste",
   avatarUrl: "https://www.petz.com.br/blog/wp-content/uploads/2020/04/meu-primeiro-gato.jpg",
+  className: "",
 };
