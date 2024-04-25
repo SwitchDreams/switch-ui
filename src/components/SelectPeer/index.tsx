@@ -1,6 +1,11 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { cva } from "class-variance-authority";
 import clsx from "clsx";
+import { ElementType } from "react";
 import Select, { components, DropdownIndicatorProps } from "react-select";
+import ErrorMessage from "src/internal/ErrorMessage";
+import FormLabel from "src/internal/FormLabel";
+import { twMerge } from "tailwind-merge";
 
 interface Options {
   value: string;
@@ -12,9 +17,12 @@ export interface SelectType {
   size?: "lg" | "md" | "sm";
   label: string;
   disabled?: boolean;
+  leftIcon?: ElementType;
   supportText?: string;
+  className?: string;
   error?: boolean;
   placeholder?: string;
+  name: string;
   multiple?: boolean;
   errorMsg?: string;
 }
@@ -27,48 +35,87 @@ const DropdownIndicator = (props: DropdownIndicatorProps) => {
   );
 };
 
-const controlStyles = {
-  base: "border rounded-lg bg-white hover:cursor-pointer",
-  focus: "border-primary-100",
-  nonFocus: "border-coolGray-400 hover:border-primary-100",
-};
+export const selectBoxButtonVariants = cva(
+  "rounded-plug-md relative my-2 w-full cursor-default border text-left text-coolGray-900 hover:bg-coolGray-50",
+  {
+    variants: {
+      disabled: {
+        true: "opacity-40",
+        false: "opacity-100",
+      },
+      size: {
+        lg: "h-14 text-md",
+        md: "h-11 text-md",
+        sm: "h-10 text-sm",
+      },
+      error: {
+        true: "border-error-600",
+      },
+    },
+  },
+);
 
-const placeholderStyles = "text-coolGray-500 pl-3 py-2 text-md";
-const selectInputStyles = "pl-1 py-1.5 text-md";
-const valueContainerStyles = "p-1.5 gap-2";
-const singleValueStyles = "leading-7 ml-2";
-const multiValueStyles = "bg-gray-100 rounded items-center py-1.5 pl-3 pr-2 gap-2.5";
-const multiValueLabelStyles = "leading-6 py-1.5";
-const multiValueRemoveStyles =
-  "border border-gray-200 bg-white hover:bg-red-50 hover:text-red-800 text-gray-500 hover:border-red-300 rounded-md";
-const indicatorsContainerStyles = "p-1.5 gap-2";
-const clearIndicatorStyles = "text-gray-500 p-1.5 rounded-md hover:bg-red-50 hover:text-red-800";
-const indicatorSeparatorStyles = "bg-gray-300";
-const dropdownIndicatorStyles = "p-1.5 hover:bg-gray-100 text-gray-500 rounded-md hover:text-black";
-const menuStyles = "p-1.5 mt-2 border border-gray-200 bg-white rounded-lg";
-const groupHeadingStyles = "ml-3 mt-2 mb-1 text-gray-500 text-sm";
-const optionStyles = {
-  base: "hover:cursor-pointer px-3 py-2 rounded-plug-md",
-  focus: "bg-gray-100 active:bg-gray-200",
-  selected: "after:content-['✔'] after:ml-3 after:text-green-500 text-gray-500",
-};
-const noOptionsMessageStyles =
-  "text-gray-500 p-2 bg-gray-50 border border-dashed border-gray-200 rounded-sm";
+export const iconVariant = cva("text-coolGray-500", {
+  variants: {
+    size: {
+      lg: "h-5 w-5",
+      md: "h-5 w-5",
+      sm: "h-4 w-4",
+    },
+  },
+});
 
 const SelectInput = ({
   options,
+  name,
+  size = "md",
   label,
   disabled,
   supportText,
   placeholder,
   multiple,
   errorMsg,
+  className,
+  error = false,
+  ...rest
 }: SelectType) => {
+  const controlStyles = {
+    base: twMerge(
+      selectBoxButtonVariants({
+        size,
+        error,
+      }),
+      className,
+    ),
+    focus: "border-primary-100",
+    nonFocus: "border-coolGray-400 hover:border-primary-100",
+  };
+  const selectInputStyles = "pl-4 text-md";
+  const singleValueStyles = "leading-7 ml-5 text-red";
+  const multiValueStyles = "rounded items-center py-1.5 pl-3 pr-2 gap-2.5";
+  const multiValueLabelStyles = "leading-6";
+  const indicatorsContainerStyles = "p-1.5 gap-2";
+  const dropdownIndicatorStyles =
+    "p-1.5 hover:bg-gray-100 text-gray-500 rounded-md hover:text-black";
+  const menuStyles = "p-1.5 mt-2 border border-gray-200 bg-white rounded-lg";
+  const groupHeadingStyles = "ml-3 mt-2 mb-1 text-gray-500 text-sm";
+  const optionStyles = {
+    base: "hover:cursor-pointer px-3 py-2 rounded-plug-md",
+    focus: "bg-coolGray-50",
+    selected: "after:content-['✔'] after:ml-3 bg-coolGray-50 after:text-green-500 text-gray-500",
+  };
+  const noOptionsMessageStyles =
+    "text-gray-500 p-2 bg-gray-50 border border-dashed border-gray-200 rounded-sm";
+  const placeholderStyles = "text-coolGray-500 pl-5 text-md";
+
   return (
     <div>
-      <p>{label}</p>
+      <FormLabel name={name} label={label} />
       <Select
-        components={{ DropdownIndicator }}
+        {...rest}
+        components={{
+          DropdownIndicator,
+        }}
         isDisabled={disabled}
         isMulti={multiple}
         placeholder={placeholder}
@@ -97,16 +144,12 @@ const SelectInput = ({
         classNames={{
           control: ({ isFocused }) =>
             clsx(isFocused ? controlStyles.focus : controlStyles.nonFocus, controlStyles.base),
-          placeholder: () => placeholderStyles,
           input: () => selectInputStyles,
-          valueContainer: () => valueContainerStyles,
+          placeholder: () => placeholderStyles,
           singleValue: () => singleValueStyles,
           multiValue: () => multiValueStyles,
           multiValueLabel: () => multiValueLabelStyles,
-          multiValueRemove: () => multiValueRemoveStyles,
           indicatorsContainer: () => indicatorsContainerStyles,
-          clearIndicator: () => clearIndicatorStyles,
-          indicatorSeparator: () => indicatorSeparatorStyles,
           dropdownIndicator: () => dropdownIndicatorStyles,
           menu: () => menuStyles,
           groupHeading: () => groupHeadingStyles,
@@ -119,8 +162,7 @@ const SelectInput = ({
           noOptionsMessage: () => noOptionsMessageStyles,
         }}
       />
-      <p>{supportText}</p>
-      <p>{errorMsg}</p>
+      {<ErrorMessage error={error} supportText={supportText} errorMsg={errorMsg} />}
     </div>
   );
 };

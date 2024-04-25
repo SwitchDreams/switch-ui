@@ -1,3 +1,4 @@
+import { EnvelopeIcon } from "@heroicons/react/24/outline";
 import { Meta, StoryFn } from "@storybook/react";
 
 import SelectInput, { SelectType } from "./index";
@@ -5,17 +6,7 @@ import SelectInput, { SelectType } from "./index";
 export default {
   title: "Components/SelectInput",
   component: SelectInput,
-  argTypes: {
-    options: { control: "array" },
-    size: { control: { type: "select", options: ["lg", "md", "sm"] } },
-    label: { control: "text" },
-    disabled: { control: "boolean" },
-    supportText: { control: "text" },
-    error: { control: "boolean" },
-    placeholder: { control: "text" },
-    multiple: { control: "boolean" },
-    errorMsg: { control: "text" },
-  },
+  argTypes: {},
 } as Meta;
 
 const Template: StoryFn<SelectType> = (args) => <SelectInput {...args} />;
@@ -29,4 +20,5 @@ Default.args = {
   ],
   label: "Selecione uma opção",
   supportText: "Texto de suporte",
+  leftIcon: EnvelopeIcon,
 };
