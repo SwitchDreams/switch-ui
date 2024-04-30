@@ -1,6 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { HTMLProps } from "react";
 import ErrorMessage from "src/internal/ErrorMessage";
+import FormLabel from "src/internal/FormLabel";
 import { twMerge } from "tailwind-merge";
 
 export interface ICheckBox {
@@ -10,10 +11,11 @@ export interface ICheckBox {
   error?: boolean;
   errorMsg?: string;
   supportText?: string;
+  position?: "side" | "bottom";
 }
 
 const checkBoxVariants = cva(
-  "peer appearance-none border border-primary-400 transition-all duration-200",
+  "peer relative appearance-none border border-primary-400 transition-all duration-200",
   {
     variants: {
       shape: {
@@ -39,14 +41,26 @@ const checkBoxVariants = cva(
   },
 );
 
+const checkboxLabel = cva("flex items-center justify-center gap-2", {
+  variants: {
+    position: {
+      side: "flex-row-reverse",
+      bottom: "flex-col-reverse",
+    },
+  },
+  defaultVariants: {
+    position: "side",
+  },
+});
+
 const iconVariants = cva(
-  "pointer-events absolute z-[-1] font-bold text-white peer-checked:z-10 peer-checked:text-opacity-100",
+  "pointer-events absolute left-1/2 top-1/2 z-[-1] -translate-x-1/2 -translate-y-1/2 font-bold text-white peer-checked:z-10 peer-checked:text-opacity-100",
   {
     variants: {
       size: {
-        small: "left-[0.2rem] top-1 h-[10px] w-[10px]",
-        medium: "left-1 top-1 h-3 w-3",
-        large: "left-1 top-1 h-4 w-4",
+        small: "top-[0.55rem] h-[10px] w-[10px]",
+        medium: "h-3 w-3",
+        large: "h-4 w-4",
       },
     },
     defaultVariants: {
@@ -81,15 +95,12 @@ export const CheckBox = ({
   error = false,
   errorMsg,
   supportText,
+  position = "side",
   ...rest
 }: CheckBoxProps) => {
   return (
-    <>
-      {label && (
-        <label htmlFor={name} className="text-sm font-medium text-coolGray-900">
-          {label}
-        </label>
-      )}
+    <div className={checkboxLabel({ position })}>
+      <FormLabel label={label} name={name} />
       <div className={backgroundVariant({ size })}>
         <label>
           <input
@@ -128,6 +139,6 @@ export const CheckBox = ({
         </label>
       </div>
       <ErrorMessage error={error} errorMsg={errorMsg} supportText={supportText} />
-    </>
+    </div>
   );
 };
