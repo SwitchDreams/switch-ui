@@ -1,19 +1,8 @@
-import {
-  arrow,
-  autoPlacement,
-  autoUpdate,
-  FloatingArrow,
-  FloatingPortal,
-  useDismiss,
-  useFloating,
-  useFocus,
-  useHover,
-  useInteractions,
-  useRole,
-} from "@floating-ui/react";
 import { cva, VariantProps } from "class-variance-authority";
-import React, { ReactNode, useRef, useState } from "react";
+import React, { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
+
+import { Tooltip as ToolTipFloatingUi, TooltipContent, TooltipTrigger } from "./TooltipFloatingUI";
 
 export interface ITooltip {
   title: string;
@@ -44,52 +33,35 @@ export interface TooltipProps extends TooltipVariantProps, ITooltip {
 const Tooltip = ({
   title,
   color,
-  children,
   className,
+  children,
   content,
   description,
   ...rest
 }: TooltipProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const arrowRef = useRef(null);
-  const { refs, context } = useFloating({
-    whileElementsMounted: autoUpdate,
-    open: isOpen,
-    onOpenChange: setIsOpen,
-    placement: "right",
-    middleware: [
-      arrow({
-        element: arrowRef,
-      }),
-      autoPlacement({
-        alignment: "right-start",
-      }),
-    ],
-  });
-
-  const hover = useHover(context, { move: false });
-  const focus = useFocus(context);
-  const dismiss = useDismiss(context);
-  const role = useRole(context, { role: "tooltip" });
-
-  const { getReferenceProps, getFloatingProps } = useInteractions([hover, focus, dismiss, role]);
-
-  return (
-    <>
-      <div {...getReferenceProps()} ref={refs.setReference} className="h-fit w-fit">
-        {content}
-      </div>
-      {isOpen && (
-        <div
-          {...getFloatingProps()}
-          className={twMerge(TooltipVariants({ color }), className)}
-          {...rest}
-          ref={refs.setFloating}
-        >
-          {children}
+  const body = () => {
+    if (children) {
+      return children;
+    } else {
+      return (
+        <div className="z-30 flex flex-col">
+          <span className="pb-2 text-xs font-semibold">{title}</span>
+          <span
+            className={twMerge(TooltipVariants({ color }), className, "pb-2 text-xs font-medium")}
+          >
+            {description}
+          </span>
         </div>
-      )}
-    </>
+      );
+    }
+  };
+  return (
+    <ToolTipFloatingUi>
+      <TooltipTrigger>{content}</TooltipTrigger>
+      <TooltipContent className={twMerge(TooltipVariants({ color }), className)} {...rest}>
+        {body()}
+      </TooltipContent>
+    </ToolTipFloatingUi>
   );
 };
 

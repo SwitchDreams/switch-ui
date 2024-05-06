@@ -1,4 +1,3 @@
-import { autoPlacement, autoUpdate, useFloating } from "@floating-ui/react";
 import { Popover as PopoverHeadlessui } from "@headlessui/react";
 import { cva, VariantProps } from "class-variance-authority";
 import React, { ReactNode } from "react";
@@ -8,6 +7,7 @@ export interface IPopover {
   button: ReactNode;
   children?: ReactNode;
   className?: string;
+  position?: string;
 }
 
 const PopoverVariants = cva(
@@ -18,16 +18,18 @@ type PopoverVariantProps = VariantProps<typeof PopoverVariants>;
 
 export interface PopoverProps extends PopoverVariantProps, IPopover {}
 
-const Popover = ({ button, children, className, ...rest }: PopoverProps) => {
-  const { refs } = useFloating({
-    whileElementsMounted: autoUpdate,
-    middleware: [autoPlacement()],
-  });
+const Popover = ({
+  button,
+  children,
+  className,
+  position = "bottomLeft",
+  ...rest
+}: PopoverProps) => {
   return (
     <PopoverHeadlessui className="relative w-fit">
-      <PopoverHeadlessui.Button ref={refs.setReference}>{button}</PopoverHeadlessui.Button>
+      <PopoverHeadlessui.Button>{button}</PopoverHeadlessui.Button>
       <PopoverHeadlessui.Panel
-        ref={refs.setFloating}
+        anchor={position}
         className={`${twMerge(PopoverVariants(), className)}`}
         {...rest}
       >
