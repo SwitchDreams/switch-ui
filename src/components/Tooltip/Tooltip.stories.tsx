@@ -1,4 +1,4 @@
-import type { Meta, StoryFn, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import Button from "../Button";
 import Tooltip from ".";
@@ -28,16 +28,11 @@ export const Default: Story = {
   },
 };
 
-const Template: StoryFn<any> = () => (
-  <div className="">
-    <Tooltip
-      content="Hello"
-      description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard."
-      title="hello"
-    >
-      <p>Aloha</p>
-    </Tooltip>
-  </div>
-);
-
-export const WithPage: Story = Template;
+export const WithoutChildren: Story = {
+  args: {
+    content: <p>Hello</p>,
+    title: "hello",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.",
+  },
+};
