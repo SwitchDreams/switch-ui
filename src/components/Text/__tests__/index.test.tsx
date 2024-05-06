@@ -22,7 +22,7 @@ describe("Text", () => {
     );
     const TextElement = screen.getByText(/Texto teste/i);
 
-    expect(TextElement).toHaveClass("text-sm");
+    expect(TextElement).toHaveClass("md:text-sm");
   });
   it("renders with the class 'text-orange-100'", () => {
     render(

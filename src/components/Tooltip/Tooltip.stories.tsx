@@ -8,6 +8,12 @@ const meta = {
   title: "Overlay/Tooltip",
   component: Tooltip,
   tags: [],
+  argTypes: {
+    color: {
+      options: ["primary", "secondary", "tertiary", null, undefined],
+      control: { type: "select" },
+    },
+  },
 } satisfies Meta<typeof Tooltip>;
 
 export default meta;

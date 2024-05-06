@@ -13,7 +13,11 @@ import { Meta, Controls, Canvas } from "@storybook/blocks";
 #### O componente `TabComponent` é usado para criar um sistema de abas com conteúdo associado.
 
 
-<Canvas />
+<Canvas of={TabStories.TabComponentChildren} />
+
+
+
+<Canvas of={TabStories.TabComponentProps} />
 
 <Controls />
 
@@ -47,5 +51,4 @@ plugins: [switchUiPlugin, generated({ prefix: "ui" })],
   },
 }
 ```
-
 

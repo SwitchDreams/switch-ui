@@ -27,7 +27,7 @@ import { ProgressBar, ProgressBarProps } from "./components/ProgressBar/Progress
 import { Spinner, SpinnerProps } from "./components/Spinner";
 // Navigation
 import AccordionMenu, { AccordionMenuProps } from "./components/AccordionMenu";
-import Tab, { TabProps } from "./components/Tab";
+import { Tab, TabProps } from "./components/Tab";
 // Forms
 import { Slider, SliderProps } from "./components/Slider/Slider";
 import SelectBox, { SelectBoxProps } from "./components/SelectBox";

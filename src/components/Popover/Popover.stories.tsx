@@ -7,6 +7,23 @@ const meta = {
   title: "Overlay/Popover",
   component: Popover,
   tags: [],
+  argTypes: {
+    position: {
+      options: [
+        "top",
+        "bottom",
+        "right",
+        "left",
+        "topRight",
+        "bottomRight",
+        "topLeft",
+        "bottomLeft",
+        null,
+        undefined,
+      ],
+      control: { type: "select" },
+    },
+  },
 } satisfies Meta<typeof Popover>;
 
 export default meta;
@@ -25,5 +42,6 @@ export const Default: Story = {
       </div>
     ),
     button: "hello",
+    position: "bottomLeft",
   },
 };

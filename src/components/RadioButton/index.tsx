@@ -1,9 +1,16 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { ChangeEvent, HTMLProps, useState } from "react";
+import ErrorMessage from "src/internal/ErrorMessage";
+import FormLabel from "src/internal/FormLabel";
 import { twMerge } from "tailwind-merge";
 
 export interface IRadioButton {
   disabled?: boolean;
+  label?: string;
+  name: string;
+  error?: boolean;
+  errorMsg?: string;
+  supportText?: string;
 }
 
 const radioButtonVariants = cva(
@@ -23,11 +30,21 @@ const radioButtonVariants = cva(
 );
 
 export interface RadioButtonProps
-  extends Omit<HTMLProps<HTMLInputElement>, "size" | "disabled">,
+  extends Omit<HTMLProps<HTMLInputElement>, "size" | "disabled" | "name">,
     IRadioButton,
     VariantProps<typeof radioButtonVariants> {}
 
-export const RadioButton = ({ size, disabled = false, className, ...rest }: RadioButtonProps) => {
+export const RadioButton = ({
+  size,
+  disabled = false,
+  className,
+  label,
+  name,
+  error = false,
+  errorMsg,
+  supportText,
+  ...rest
+}: RadioButtonProps) => {
   const [checked, setChecked] = useState(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -35,21 +52,28 @@ export const RadioButton = ({ size, disabled = false, className, ...rest }: Radi
   };
 
   return (
-    <input
-      type="radio"
-      disabled={disabled}
-      checked={checked}
-      onChange={handleChange}
-      className={
-        disabled
-          ? twMerge(
-              radioButtonVariants({ size }),
-              className,
-              "border-coolGray-200 bg-coolGray-400 opacity-100 checked:border-coolGray-200 checked:after:bg-coolGray-500 hover:border-coolGray-200 hover:bg-coolGray-100",
-            )
-          : twMerge(radioButtonVariants({ size }), className)
-      }
-      {...rest}
-    ></input>
+    <>
+      <div className="flex gap-3">
+        <input
+          type="radio"
+          disabled={disabled}
+          checked={checked}
+          name={name}
+          onChange={handleChange}
+          className={
+            disabled
+              ? twMerge(
+                  radioButtonVariants({ size }),
+                  className,
+                  "border-gray-200 bg-gray-200 opacity-100 checked:border-gray-200 checked:after:bg-gray-500 hover:border-gray-200 hover:bg-gray-100",
+                )
+              : twMerge(radioButtonVariants({ size }), className)
+          }
+          {...rest}
+        ></input>
+        <FormLabel label={label} name={name} />
+      </div>
+      <ErrorMessage error={error} errorMsg={errorMsg} supportText={supportText} />
+    </>
   );
 };

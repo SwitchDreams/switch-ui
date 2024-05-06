@@ -15,7 +15,7 @@ export const All = () => (
     <SearchInput label="Teste" name="Teste" setSelectedValue={() => {}} placeholder="Hello World" />
     <TextArea label="Teste" name="Teste" placeholder="Hello World" />
     <CheckBox name="Teste" />
-    <RadioButton />
+    <RadioButton name="teste1" />
     <div>
       <ToggleSwitch />
     </div>
