@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 
 import Button from "../Button";
 import Tooltip from ".";
@@ -11,7 +11,7 @@ const meta = {
 } satisfies Meta<typeof Tooltip>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<any>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: Story = {
@@ -27,3 +27,17 @@ export const Default: Story = {
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.",
   },
 };
+
+const Template: StoryFn<any> = () => (
+  <div className="">
+    <Tooltip
+      content="Hello"
+      description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard."
+      title="hello"
+    >
+      <p>Aloha</p>
+    </Tooltip>
+  </div>
+);
+
+export const WithPage: Story = Template;
