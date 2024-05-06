@@ -1,9 +1,9 @@
-import type { Placement } from "@floating-ui/react";
-import  {
+import {
   autoUpdate,
   flip,
   FloatingPortal,
   offset,
+  type Placement,
   shift,
   useDismiss,
   useFloating,
@@ -24,7 +24,7 @@ interface TooltipOptions {
 
 export function useTooltip({
   initialOpen = false,
-  placement = "top",
+  placement = "bottom",
   open: controlledOpen,
   onOpenChange: setControlledOpen,
 }: TooltipOptions = {}) {

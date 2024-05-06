@@ -1,53 +1,51 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 
-import Tooltip from "..";
+import Tooltip from "../index";
 
 describe("Tooltip", () => {
-  it("renders the default tooltip with title", () => {
-    render(<Tooltip title="Default Tooltip" content={<div>Tooltip Content</div>} />);
-    const tooltipTitle = screen.getByText("Default Tooltip");
-    expect(tooltipTitle).toBeInTheDocument();
+  it("renders the tooltip with children", () => {
+    render(
+      <Tooltip content="Test1" title="test1">
+        <p>Aloha</p>
+      </Tooltip>,
+    );
+    expect(screen.getByText(/Test1/i)).toBeInTheDocument();
+    const tooltipTrigger = screen.getByText("Test1");
+    fireEvent.mouseEnter(tooltipTrigger);
+    expect(screen.getByText(/Aloha/i)).toBeInTheDocument();
   });
 
-  it("renders the tooltip with description", () => {
+  it("renders the tooltip without children", () => {
     render(
-      <Tooltip
-        title="Tooltip with Description"
-        description="This is a description"
-        content={<div>Tooltip Content</div>}
-      />,
+      <Tooltip content="Test2" title="test1" description="testando o componente sem o children" />,
     );
-    const tooltipTitle = screen.getByText("Tooltip with Description");
-    const tooltipDescription = screen.getByText("This is a description");
-    expect(tooltipTitle).toBeInTheDocument();
-    expect(tooltipDescription).toBeInTheDocument();
+    expect(screen.getByText(/Test2/i)).toBeInTheDocument();
+    const tooltipTrigger = screen.getByText("Test2");
+    fireEvent.mouseEnter(tooltipTrigger);
+    expect(screen.getByText(/testando o componente sem o children/i)).toBeInTheDocument();
   });
 
   it("renders the tooltip with primary color", () => {
-    render(
-      <Tooltip title="Tooltip (primary)" color="primary" content={<div>Tooltip Content</div>} />,
-    );
-    const tooltipTitle = screen.getByText("Tooltip (primary)");
-    expect(tooltipTitle).toBeInTheDocument();
+    render(<Tooltip content="Test3" title="test1" color="primary" />);
+    expect(screen.getByText(/Test3/i)).toBeInTheDocument();
+    const tooltipTrigger = screen.getByText("Test3");
+    fireEvent.mouseEnter(tooltipTrigger);
+    expect(screen.getByTestId("tooltip-content")).toHaveClass("bg-gray-950 text-white");
   });
 
   it("renders the tooltip with secondary color", () => {
-    render(
-      <Tooltip
-        title="Tooltip (secondary)"
-        color="secondary"
-        content={<div>Tooltip Content</div>}
-      />,
-    );
-    const tooltipTitle = screen.getByText("Tooltip (secondary)");
-    expect(tooltipTitle).toBeInTheDocument();
+    render(<Tooltip content="Test4" title="test1" color="secondary" />);
+    expect(screen.getByText(/Test4/i)).toBeInTheDocument();
+    const tooltipTrigger = screen.getByText("Test4");
+    fireEvent.mouseEnter(tooltipTrigger);
+    expect(screen.getByTestId("tooltip-content")).toHaveClass("bg-white text-gray-950");
   });
 
-  it("renders the tooltip with thirteary color", () => {
-    render(
-      <Tooltip title="Tooltip (tertiary)" color="tertiary" content={<div>Tooltip Content</div>} />,
-    );
-    const tooltipTitle = screen.getByText("Tooltip (tertiary)");
-    expect(tooltipTitle).toBeInTheDocument();
+  it("renders the tooltip with tertiary color", () => {
+    render(<Tooltip content="Test5" title="test1" color="tertiary" />);
+    expect(screen.getByText(/Test5/i)).toBeInTheDocument();
+    const tooltipTrigger = screen.getByText("Test5");
+    fireEvent.mouseEnter(tooltipTrigger);
+    expect(screen.getByTestId("tooltip-content")).toHaveClass("bg-primary-300 text-gray-100");
   });
 });

@@ -58,7 +58,11 @@ const Tooltip = ({
   return (
     <ToolTipFloatingUi>
       <TooltipTrigger>{content}</TooltipTrigger>
-      <TooltipContent className={twMerge(TooltipVariants({ color }), className)} {...rest}>
+      <TooltipContent
+        className={twMerge(TooltipVariants({ color }), className)}
+        {...rest}
+        data-testid="tooltip-content"
+      >
         {body()}
       </TooltipContent>
     </ToolTipFloatingUi>
