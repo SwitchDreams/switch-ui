@@ -30,4 +30,5 @@ Variations.args = {
   size: "md",
   onClick: undefined,
   icon: StarIcon,
+  className: "",
 };

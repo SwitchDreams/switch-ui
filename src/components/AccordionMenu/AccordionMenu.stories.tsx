@@ -19,6 +19,7 @@ Variations.args = {
   title: "This is a Accordion",
   children: "Vorem ipsum dolor sit amet, consectetur Vorem ipsum dolor sit  ",
   size: "md",
+  className: "",
 };
 
 const accordionData: AccordionMenuProps[] = [
@@ -26,16 +27,19 @@ const accordionData: AccordionMenuProps[] = [
     title: "Accordion 1",
     children: "Content for Accordion 1",
     size: "md",
+    className: "",
   },
   {
     title: "Accordion 2",
     children: "Content for Accordion 2",
     size: "md",
+    className: "",
   },
   {
     title: "Accordion 3",
     children: "Content for Accordion 3",
     size: "md",
+    className: "",
   },
 ];
 
