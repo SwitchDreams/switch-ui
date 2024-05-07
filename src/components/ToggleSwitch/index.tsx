@@ -100,6 +100,7 @@ export const ToggleSwitch = ({
       onChange={onChange}
       as={Fragment}
       defaultChecked={externalChecked}
+      disabled={disabled}
       {...rest}
     >
       {({ checked }) => (

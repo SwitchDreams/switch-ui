@@ -1,5 +1,6 @@
 import { act, fireEvent, render, waitFor } from "@testing-library/react";
 import { expect } from "chai";
+import { vi } from "vitest";
 
 import SearchInput from "./SearchInput";
 
@@ -10,7 +11,7 @@ describe("SearchInput", () => {
     { label: "Opção 3", value: 3 },
   ];
 
-  const mockFetchRemoteData = vi.fn().mockResolvedValue(options);
+  const mockFetchRemoteData = vi.fn();
 
   it("deve exibir a lista de opções filtradas após a digitação", async () => {
     const setSelectedValue = () => {};
