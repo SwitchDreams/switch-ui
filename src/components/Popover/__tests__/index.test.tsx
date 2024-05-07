@@ -18,4 +18,17 @@ describe("Popover", () => {
 
     expect(screen.getByText("teste")).toBeInTheDocument();
   });
+  it("applies custom class names to the Popover", () => {
+    render(
+      <Popover button="botão" className="custom-class">
+        <div>Custom Class Test</div>
+      </Popover>,
+    );
+
+    const PopoverButton = screen.getByText("botão");
+    fireEvent.click(PopoverButton);
+
+    const popoverPanel = screen.getByText("Custom Class Test").parentElement;
+    expect(popoverPanel).toHaveClass("custom-class");
+  });
 });
