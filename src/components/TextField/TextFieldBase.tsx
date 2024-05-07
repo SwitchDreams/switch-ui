@@ -22,7 +22,7 @@ export interface ITextFieldBase
   errorMsg?: string;
   onClickIcon?: () => void;
   mask?: string;
-  maskchar?: string;
+  maskChar?: string;
   ref?: any;
 }
 
@@ -99,7 +99,7 @@ export const TextFieldBase = forwardRef(
       name,
       errorMsg,
       mask = "",
-      maskchar = " ",
+      maskChar = " ",
       onClickIcon = () => {},
       ...rest
     }: TextFieldBaseProps,
@@ -128,7 +128,7 @@ export const TextFieldBase = forwardRef(
             className={textfieldClasses}
             // @ts-ignore
             mask={inputElement === InputMask ? mask : undefined}
-            {...(mask ? { maskChar: maskchar } : {})}
+            {...(mask ? { maskChar: maskChar } : {})}
             {...rest}
           />
           {LeftIcon && (

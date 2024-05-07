@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from "@testing-library/react";
+import { act, fireEvent, render, waitFor } from "@testing-library/react";
 import { expect } from "chai";
 
 import SearchInput from "./SearchInput";
@@ -9,6 +9,8 @@ describe("SearchInput", () => {
     { label: "Opção 2", value: 2 },
     { label: "Opção 3", value: 3 },
   ];
+
+  const mockFetchRemoteData = vi.fn().mockResolvedValue(options);
 
   it("deve exibir a lista de opções filtradas após a digitação", async () => {
     const setSelectedValue = () => {};
@@ -25,7 +27,9 @@ describe("SearchInput", () => {
 
     const inputElement = getByLabelText("Teste") as HTMLInputElement;
 
-    fireEvent.change(inputElement, { target: { value: "o" } });
+    act(() => {
+      fireEvent.change(inputElement, { target: { value: "o" } });
+    });
 
     await waitFor(() => {
       expect(queryByText("Opção 1")).to.exist;
@@ -48,15 +52,20 @@ describe("SearchInput", () => {
         label="Teste"
         placeholder="Buscar"
         setSelectedValue={setSelectedValue}
+        fetchRemoteData={mockFetchRemoteData}
       />,
     );
 
     const inputElement = getByLabelText("Teste") as HTMLInputElement;
 
-    fireEvent.change(inputElement, { target: { value: "o" } });
+    act(() => {
+      fireEvent.change(inputElement, { target: { value: "o" } });
+    });
 
     const optionElement = getByText("Opção 1");
-    fireEvent.click(optionElement);
+    act(() => {
+      fireEvent.click(optionElement);
+    });
 
     expect(selectedValue).to.equal(options[0]);
   });
@@ -79,13 +88,19 @@ describe("SearchInput", () => {
 
     const inputElement = getByLabelText("Teste") as HTMLInputElement;
 
-    fireEvent.change(inputElement, { target: { value: "o" } });
+    act(() => {
+      fireEvent.change(inputElement, { target: { value: "o" } });
+    });
 
     const optionElement = getByText("Opção 1");
-    fireEvent.click(optionElement);
+    act(() => {
+      fireEvent.click(optionElement);
+    });
 
     const clearIcon = getByTestId("clear-icon");
-    fireEvent.click(clearIcon);
+    act(() => {
+      fireEvent.click(clearIcon);
+    });
 
     await waitFor(() => {
       expect(queryByText("Opção 1")).not.to.exist;
