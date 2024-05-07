@@ -1,6 +1,5 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import clsx from "clsx";
 import { ElementType } from "react";
 import Select, { components, DropdownIndicatorProps } from "react-select";
 import ErrorMessage from "src/internal/ErrorMessage";
@@ -143,7 +142,7 @@ const SelectInput = ({
         }}
         classNames={{
           control: ({ isFocused }) =>
-            clsx(isFocused ? controlStyles.focus : controlStyles.nonFocus, controlStyles.base),
+            twMerge(isFocused ? controlStyles.focus : controlStyles.nonFocus, controlStyles.base),
           input: () => selectInputStyles,
           placeholder: () => placeholderStyles,
           singleValue: () => singleValueStyles,
@@ -154,7 +153,7 @@ const SelectInput = ({
           menu: () => menuStyles,
           groupHeading: () => groupHeadingStyles,
           option: ({ isFocused, isSelected }) =>
-            clsx(
+            twMerge(
               isFocused && optionStyles.focus,
               isSelected && optionStyles.selected,
               optionStyles.base,

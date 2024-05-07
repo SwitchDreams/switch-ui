@@ -90,7 +90,6 @@
     "@headlessui/tailwindcss": "^0.2.0",
     "@heroicons/react": "^2.1.1",
     "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.0",
     "react-input-mask": "^2.0.4",
     "react-select": "^5.8.0",
     "tailwind-merge": "^2.2.2"
