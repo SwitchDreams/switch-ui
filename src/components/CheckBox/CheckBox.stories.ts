@@ -27,12 +27,24 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Default: Story = {
+
+export const WithLabel: Story = {
   args: {
     size: "medium",
     shape: "circle",
     name: "teste",
-    label: "",
+    label: "Bom dia caro usuário",
+    disabled: false,
+    color: "primary",
+    className: "",
+  },
+};
+
+export const WithoutLabel: Story = {
+  args: {
+    size: "medium",
+    shape: "circle",
+    name: "teste",
     disabled: false,
     color: "primary",
     className: "",
