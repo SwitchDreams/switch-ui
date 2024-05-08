@@ -4,7 +4,7 @@ import SearchInput from "../components/SearchInput/SearchInput";
 import SelectBox from "../components/SelectBox";
 import { Text } from "../components/Text";
 import TextArea from "../components/TextArea";
-import TextField from "../components/TextField";
+import { TextField } from "../components/TextField";
 import ToggleSwitch from "../components/ToggleSwitch";
 
 export const All = () => (

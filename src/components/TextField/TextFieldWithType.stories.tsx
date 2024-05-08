@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from "@storybook/react";
 
-import TextField, { TextFieldProps } from "./index";
+import { TextField, TextFieldProps } from "./index";
 
 export default {
   title: "Forms/TextField",
