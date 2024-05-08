@@ -1,5 +1,5 @@
 import { ArrowDownLeftIcon, PencilIcon, StarIcon, TrashIcon } from "@heroicons/react/24/outline";
-import { Meta, StoryFn } from "@storybook/react";
+import { StoryFn } from "@storybook/react";
 
 import FloatingButton, { FloatingButtonProps } from "./index";
 
@@ -31,7 +31,7 @@ export default {
       controle: { type: "select" },
     },
   },
-} as Meta;
+};
 
 const Template: StoryFn<FloatingButtonProps> = (args) => <FloatingButton {...args} />;
 
