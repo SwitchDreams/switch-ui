@@ -84,7 +84,8 @@
     "vite-plugin-linter": "^2.1.1",
     "vite-plugin-static-copy": "^1.0.1",
     "vite-tsconfig-paths": "^4.3.2",
-    "vitest": "^1.4.0"
+    "vitest": "^1.4.0",
+    "agadoo": "https://github.com/KonnorRogers/agadoo.git#patch-1"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.12",
@@ -99,7 +100,7 @@
   },
   "sideEffets": [
     "**/*.css"
-  ]
+  ],
   "resolutions": {
     "strip-ansi": "6.0.1",
     "jackspeak": "2.1.1"
