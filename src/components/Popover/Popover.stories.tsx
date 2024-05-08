@@ -7,6 +7,7 @@ const meta = {
   title: "Overlay/Popover",
   component: Popover,
   tags: [],
+  argTypes: {},
 } satisfies Meta<typeof Popover>;
 
 export default meta;
@@ -15,6 +16,7 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: Story = {
   args: {
+    position: "right start",
     children: (
       <div>
         <Text> Teste </Text>

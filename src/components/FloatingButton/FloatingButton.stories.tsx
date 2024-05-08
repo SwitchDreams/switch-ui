@@ -1,5 +1,5 @@
-import { ArrowDownLeftIcon } from "@heroicons/react/24/outline";
-import { Meta, StoryFn } from "@storybook/react";
+import { ArrowDownLeftIcon, PencilIcon, StarIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { StoryFn } from "@storybook/react";
 
 import FloatingButton, { FloatingButtonProps } from "./index";
 
@@ -21,8 +21,17 @@ export default {
       options: ["lg", "md", "sm"],
       control: { type: "select" },
     },
+    icon: {
+      options: {
+        ArrowDownLeftIcon: ArrowDownLeftIcon,
+        PencilIcon: PencilIcon,
+        TrashcanIcon: TrashIcon,
+        StarIcon: StarIcon,
+      },
+      controle: { type: "select" },
+    },
   },
-} as Meta;
+};
 
 const Template: StoryFn<FloatingButtonProps> = (args) => <FloatingButton {...args} />;
 
@@ -34,4 +43,5 @@ Variations.args = {
   size: "md",
   icon: ArrowDownLeftIcon,
   onClick: undefined,
+  className: "",
 };

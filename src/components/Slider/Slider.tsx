@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 const sliderVariants = cva("slider relative w-full appearance-none rounded-lg border-0", {
   variants: {
     size: {
-      small: "h-1 ",
+      small: "h-1",
       medium: "h-2",
     },
   },
@@ -22,8 +22,8 @@ export interface SliderProps
   max: number;
 }
 
-export const Slider = forwardRef<HTMLInputElement, SliderProps>(
-  ({ size, min, max, value, step, className, ...rest }) => {
+export const Slider = React.forwardRef<HTMLInputElement, SliderProps>(
+  ({ size, min, max, value, step, className, ...rest }, ref: React.Ref<any>) => {
     const box = useRef<any>();
 
     const onInput = (element: any) => {
@@ -46,7 +46,7 @@ export const Slider = forwardRef<HTMLInputElement, SliderProps>(
     };
 
     return (
-      <div className="relative mt-10">
+      <div className="relative mt-10" ref={ref}>
         <input
           type="range"
           min={min}
@@ -59,7 +59,7 @@ export const Slider = forwardRef<HTMLInputElement, SliderProps>(
           {...rest}
         />
         <div
-          data-testId="value-box"
+          data-testid="value-box"
           className="absolute bottom-full mt-2 hidden h-8 w-10 flex-none -translate-x-1/2 items-center justify-center rounded-sm bg-primary-300 py-1 text-center text-gray-white"
           ref={box}
         >

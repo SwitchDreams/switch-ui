@@ -11,11 +11,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// eslint-disable-next-line no-alert
-alert(
-  "Atenção: A versão Tab Component props será depreciada em futuras atualizações. Por favor, migre para a nova versão do componente Tab.",
-);
-
 const tabsArray = [
   {
     name: "Teste 1",

@@ -87,14 +87,21 @@
     "vitest": "^1.4.0"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.18",
+    "@floating-ui/react": "^0.26.12",
+    "@floating-ui/react-dom": "^2.0.8",
+    "@headlessui/react": "^2.0.0",
     "@headlessui/tailwindcss": "^0.2.0",
     "@heroicons/react": "^2.1.1",
     "class-variance-authority": "^0.7.0",
     "react-input-mask": "^2.0.4",
+    "react-select": "^5.8.0",
     "tailwind-merge": "^2.2.2"
   },
   "sideEffets": [
     "**/*.css"
   ]
+  "resolutions": {
+    "strip-ansi": "6.0.1",
+    "jackspeak": "2.1.1"
+  }
 }

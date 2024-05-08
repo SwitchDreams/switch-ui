@@ -1,5 +1,11 @@
-import { EnvelopeIcon } from "@heroicons/react/24/outline";
-import { Meta, StoryFn } from "@storybook/react";
+import {
+  ArrowDownIcon,
+  EnvelopeIcon,
+  PencilIcon,
+  StarIcon,
+  TrashIcon,
+} from "@heroicons/react/24/outline";
+import { StoryFn } from "@storybook/react";
 
 import SelectBox, { SelectBoxProps } from "./index";
 
@@ -12,8 +18,21 @@ export default {
       options: ["lg", "md", "sm"],
       control: { type: "select" },
     },
+    leftIcon: {
+      options: {
+        EnvelopeIcon: EnvelopeIcon,
+        StarIcon: StarIcon,
+        PencilIcon: PencilIcon,
+        TrashcanIcon: TrashIcon,
+        ArrowDownIcon: ArrowDownIcon,
+        Null: null,
+      },
+      control: {
+        type: "select",
+      },
+    },
   },
-} as Meta<typeof SelectBox>;
+};
 
 const Template: StoryFn<typeof SelectBox> = (args: SelectBoxProps) => <SelectBox {...args} />;
 

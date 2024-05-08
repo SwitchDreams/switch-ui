@@ -8,10 +8,16 @@ const meta = {
   title: "Overlay/Tooltip",
   component: Tooltip,
   tags: [],
+  argTypes: {
+    color: {
+      options: ["primary", "secondary", "tertiary", null, undefined],
+      control: { type: "select" },
+    },
+  },
 } satisfies Meta<typeof Tooltip>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<any>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: Story = {
@@ -25,6 +31,14 @@ export const Default: Story = {
     title: "hello",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.",
-    position: "bottomRight",
+  },
+};
+
+export const WithoutChildren: Story = {
+  args: {
+    content: <p>Hello</p>,
+    title: "hello",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.",
   },
 };
