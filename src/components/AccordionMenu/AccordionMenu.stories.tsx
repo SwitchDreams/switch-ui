@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from "@storybook/react";
 import React from "react";
 
-import AccordionMenu, { AccordionMenuProps } from ".";
+import { AccordionMenu, AccordionMenuProps } from ".";
 
 export default {
   title: "Navigation/AccordionMenu",
