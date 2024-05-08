@@ -156,7 +156,6 @@ function SearchInput({
 
   useEffect(() => {
     setSelectedValue(selected);
-    console.log(selected);
   }, [selected]);
 
   const placeHolderMultiple = () => {
