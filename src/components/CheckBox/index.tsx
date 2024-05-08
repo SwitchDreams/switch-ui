@@ -15,7 +15,7 @@ export interface ICheckBox {
 }
 
 const checkBoxVariants = cva(
-  "peer relative appearance-none border border-primary-400 transition-all duration-200",
+  "peer relative appearance-none border border-coolGray-400 transition-all duration-200",
   {
     variants: {
       shape: {
