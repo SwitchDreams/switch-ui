@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import React, { HTMLProps, useRef, forwardRef } from "react";
+import React, { forwardRef, HTMLProps, useRef } from "react";
 import { twMerge } from "tailwind-merge";
 
 const sliderVariants = cva("slider relative w-full appearance-none rounded-lg border-0", {
@@ -22,7 +22,7 @@ export interface SliderProps
   max: number;
 }
 
-export const Slider = React.forwardRef<HTMLInputElement, SliderProps>(
+export const Slider = forwardRef<HTMLInputElement, SliderProps>(
   ({ size, min, max, value, step, className, ...rest }, ref: React.Ref<any>) => {
     const box = useRef<any>();
 
