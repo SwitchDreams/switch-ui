@@ -21,6 +21,7 @@ export const Default: Story = {
     name: "name",
     disabled: false,
     mask: "(99) 99999-9999",
+    maskChar: "$",
   },
 };
 
