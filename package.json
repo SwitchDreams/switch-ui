@@ -14,12 +14,11 @@
   "exports": {
     ".": {
       "import": "./dist/ui.es.js",
-      "require": "./dist/ui.umd.js"
+      "default": "./dist/ui.es.js"
     },
     "./dist/style.css": "./dist/style.css",
     "./dist/tailwind.plugin.ts": "./dist/tailwind.plugin.ts"
   },
-  "main": "./dist/ui.umd.js",
   "module": "./dist/ui.es.js",
   "types": "./dist/index.d.ts",
   "scripts": {

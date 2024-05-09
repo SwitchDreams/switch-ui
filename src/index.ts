@@ -26,7 +26,7 @@ import FloatingButton, { FloatingButtonProps } from "./components/FloatingButton
 import { ProgressBar, ProgressBarProps } from "./components/ProgressBar/ProgressBar";
 import { Spinner, SpinnerProps } from "./components/Spinner";
 // Navigation
-import AccordionMenu, { AccordionMenuProps } from "./components/AccordionMenu";
+import { AccordionMenu, AccordionMenuProps } from "./components/AccordionMenu";
 import { Tab, TabProps } from "./components/Tab";
 // Forms
 import { Slider, SliderProps } from "./components/Slider/Slider";
@@ -34,11 +34,11 @@ import SelectBox, { SelectBoxProps } from "./components/SelectBox";
 import { RadioButton, RadioButtonProps } from "./components/RadioButton";
 import { CheckBox, CheckBoxProps } from "./components/CheckBox";
 import TextArea, { TextAreaProps } from "./components/TextArea";
-import TextField, { TextFieldProps } from "./components/TextField";
+import { TextField, TextFieldProps } from "./components/TextField";
 import TextFieldMask from "./components/TextField/TextFieldMask";
 import ToggleSwitch, { ToggleSwitchProps } from "./components/ToggleSwitch";
 // Overlay
-import Toast, { ToastProps } from "./components/Toast";
+import { Toast, ToastProps } from "./components/Toast";
 
 // Export componentes
 export {
@@ -54,7 +54,7 @@ export {
   SearchInput, // TODO: NOT tree-shakable
   SelectBox, // TODO: NOT tree-shakable
   Sidebar, // TODO: NOT tree-shakable
-  Slider, // TODO: NOT tree-shakable
+  Slider,
   Spinner,
   Tab, // TODO: NOT tree-shakable
   Text,
@@ -63,7 +63,7 @@ export {
   TextFieldMask, // TODO: NOT tree-shakable
   Toast, // TODO: NOT tree-shakable
   ToggleSwitch, // TODO: NOT tree-shakable
-  Tooltip,
+  Tooltip, // TODO: NOT tree-shakable
 };
 
 // Export Types
