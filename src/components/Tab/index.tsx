@@ -1,4 +1,4 @@
-import { Tab as TabHeadlessui, TabGroup, TabList, TabPanels, TabPanel} from "@headlessui/react";
+import { Tab as TabHeadlessui, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { cva, type VariantProps } from "class-variance-authority";
 import React, { HTMLAttributes, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
