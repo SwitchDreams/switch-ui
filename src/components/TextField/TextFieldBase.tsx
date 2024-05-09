@@ -83,7 +83,7 @@ export interface TextFieldBaseProps
   extends Omit<TextfieldVariantProps, "error" | "leftIconPresent">,
     ITextFieldBase {}
 
-export const TextFieldBase = forwardRef(
+export const TextFieldBase = /* @__PURE__ */ forwardRef(
   (
     {
       leftIcon: LeftIcon,

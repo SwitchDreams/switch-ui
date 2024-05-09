@@ -2,7 +2,7 @@ import { XMarkIcon } from "@heroicons/react/24/solid";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { vitest } from "vitest";
 
-import TextField from "..";
+import { TextField } from "..";
 
 describe("Textfield render", () => {
   it("render textfield", () => {

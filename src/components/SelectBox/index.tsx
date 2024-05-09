@@ -1,4 +1,12 @@
-import { Listbox, ListboxProps, Transition } from "@headlessui/react";
+import {
+  Label,
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+  ListboxProps,
+  Transition,
+} from "@headlessui/react";
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { cva, type VariantProps } from "class-variance-authority";
 import { ElementType, Fragment, ReactNode, useEffect, useState } from "react";
@@ -153,9 +161,9 @@ function SelectBox({
       >
         {({ open }) => (
           <>
-            <Listbox.Label className="text-sm font-medium text-coolGray-900">{label}</Listbox.Label>
+            <Label className="text-sm font-medium text-coolGray-900">{label}</Label>
             <div className="relative">
-              <Listbox.Button
+              <ListboxButton
                 className={twMerge(
                   selectBoxButtonVariants({
                     size,
@@ -179,16 +187,16 @@ function SelectBox({
                   </span>
                   {renderChevron(open, size)}
                 </>
-              </Listbox.Button>
+              </ListboxButton>
               <Transition
                 as={Fragment}
                 leave="transition ease-in duration-100"
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Listbox.Options className="appearence-none absolute z-30 mt-1 max-h-60 w-full overflow-auto rounded border-primary-25 bg-white py-1 shadow shadow-primary-25 ring-2 ring-primary-25">
+                <ListboxOptions className="appearence-none absolute z-30 mt-1 max-h-60 w-full overflow-auto rounded border-primary-25 bg-white py-1 shadow shadow-primary-25 ring-2 ring-primary-25">
                   {options.map((option, index) => (
-                    <Listbox.Option
+                    <ListboxOption
                       key={index}
                       value={option.value}
                       className={({ active, selected }) =>
@@ -205,9 +213,9 @@ function SelectBox({
                           {selected && <CheckIcon className="mr-3 h-5 w-5 text-coolGray-800" />}
                         </span>
                       )}
-                    </Listbox.Option>
+                    </ListboxOption>
                   ))}
-                </Listbox.Options>
+                </ListboxOptions>
               </Transition>
             </div>
           </>
