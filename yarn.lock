@@ -3101,9 +3101,10 @@ address@^2.0.2:
   resolved "https://registry.yarnpkg.com/address/-/address-2.0.2.tgz#7c1063d26bfc647a695f3bd7bdb29d688b5fac73"
   integrity sha512-u6nFssvaX9RHQmjMSqgT7b7QJbf/5/U8+ntbTL8vgABfIiEmm02ZSM5MwljKjCrIrm7iIbgYEya2YW6AaRccVA==
 
-"agadoo@https://github.com/KonnorRogers/agadoo.git#patch-1":
+agadoo@^3.0.0:
   version "3.0.0"
-  resolved "https://github.com/KonnorRogers/agadoo.git#04cfd508c2c9d60462d624c20c9e34d143ee476d"
+  resolved "https://registry.yarnpkg.com/agadoo/-/agadoo-3.0.0.tgz#df4f1d2f17a81580ef7e9f3450807cd2fd3bede1"
+  integrity sha512-gq+fjT3Ilrhb88Jf+vYMjdO/+3znYfa7vJ4IMLPFsBPUxglnr40Ed3yCLrW6IABdJAedB94b2BkqR6I04lh3dg==
   dependencies:
     "@rollup/plugin-virtual" "^3.0.1"
     acorn "^8.8.1"
