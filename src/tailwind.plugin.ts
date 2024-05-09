@@ -1,3 +1,4 @@
+/* eslint-disable tree-shaking/no-side-effects-in-initialization */
 import plugin from "tailwindcss/plugin";
 
 const switchUiPlugin = plugin(function ({ addComponents, theme }) {

@@ -1,4 +1,4 @@
-import { Disclosure, DisclosurePanel, DisclosureButton } from "@headlessui/react";
+import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/react";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { cva, VariantProps } from "class-variance-authority";
 import { HTMLAttributes, ReactNode } from "react";
@@ -48,7 +48,11 @@ export const AccordionMenu = /* @__PURE__ */ ({
 }: AccordionMenuProps) => {
   const accordionMenuClasses = twMerge(accordionMenuVariants({ size }), className);
   return (
-    <Disclosure as="div" className="border border-x-0 border-t-0 border-gray-100" {...rest}>
+    /* @__PURE__ */ <Disclosure
+      as="div"
+      className="border border-x-0 border-t-0 border-gray-100"
+      {...rest}
+    >
       {({ open }) => (
         <>
           <DisclosureButton
@@ -65,9 +69,7 @@ export const AccordionMenu = /* @__PURE__ */ ({
               <ChevronUpIcon strokeWidth="3" className="align-center flex h-4 w-4" />
             )}
           </DisclosureButton>
-          <DisclosurePanel className={accordionInfosVariants({ size })}>
-            {children}
-          </DisclosurePanel>
+          <DisclosurePanel className={accordionInfosVariants({ size })}>{children}</DisclosurePanel>
         </>
       )}
     </Disclosure>
