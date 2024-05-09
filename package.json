@@ -36,10 +36,10 @@
     "registry": "https://npm.pkg.github.com"
   },
   "peerDependencies": {
+    "@headlessui/react": "^2.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-input-mask": "^2.0.4",
-    "@headlessui/react": "^2.0.3"
+    "react-input-mask": "^2.0.4"
   },
   "devDependencies": {
     "@storybook/addon-designs": "^8.0.0",
