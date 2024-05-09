@@ -42,28 +42,28 @@ import { Toast, ToastProps } from "./components/Toast";
 
 // Export componentes
 export {
-  AccordionMenu, // TODO: NOT tree-shakable
+  // AccordionMenu, // TODO: NOT tree-shakable
   Avatar,
   Badge,
   Button,
   CheckBox,
   FloatingButton,
-  Popover, // TODO: NOT tree-shakable
+  // Popover, // TODO: NOT tree-shakable
   ProgressBar,
   RadioButton,
-  SearchInput, // TODO: NOT tree-shakable
-  SelectBox, // TODO: NOT tree-shakable
-  Sidebar, // TODO: NOT tree-shakable
+  // SearchInput, // TODO: NOT tree-shakable
+  // SelectBox, // TODO: NOT tree-shakable
+  // Sidebar, // TODO: NOT tree-shakable
   Slider,
   Spinner,
-  Tab, // TODO: NOT tree-shakable
+  // Tab, // TODO: NOT tree-shakable
   Text,
-  TextArea, // TODO: NOT tree-shakable
-  TextField, // TODO: NOT tree-shakable
-  TextFieldMask, // TODO: NOT tree-shakable
-  Toast, // TODO: NOT tree-shakable
-  ToggleSwitch, // TODO: NOT tree-shakable
-  Tooltip, // TODO: NOT tree-shakable
+  // TextArea, // TODO: NOT tree-shakable
+  // TextField, // TODO: NOT tree-shakable
+  // TextFieldMask, // TODO: NOT tree-shakable
+  Toast,
+  // ToggleSwitch, // TODO: NOT tree-shakable
+  // Tooltip, // TODO: NOT tree-shakable
 };
 
 // Export Types

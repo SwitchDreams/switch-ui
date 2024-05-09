@@ -10,6 +10,7 @@ import { viteStaticCopy } from "vite-plugin-static-copy";
 import tsConfigPaths from "vite-tsconfig-paths";
 
 import * as packageJson from "./package.json";
+import { PluginPure } from "rollup-plugin-pure";
 // https://vitejs.dev/config/
 export default defineConfig(() => ({
   plugins: [
@@ -36,6 +37,13 @@ export default defineConfig(() => ({
       fileName: (format) => `ui.${format}.js`,
     },
     rollupOptions: {
+      plugins: [
+        PluginPure({
+          functions: ["React.forwardRef"],
+          // exclude: [],
+          // sourcemap: true,
+        }),
+      ],
       external: [...Object.keys(packageJson.peerDependencies), "react/jsx-runtime"],
     },
     sourcemap: true,
