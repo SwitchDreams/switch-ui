@@ -195,3 +195,7 @@ Como verificar se meu componente está Tree-Shakable?
 Problemas atuais
 
 - Atualmente os componentes que utilizam a headlessui ou então o react-mask-input não são tree-shakable
+
+Fontes:
+
+- https://github.com/vitejs/vite/issues/5174
