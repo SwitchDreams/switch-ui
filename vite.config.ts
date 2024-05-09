@@ -13,6 +13,9 @@ import * as packageJson from "./package.json";
 import { PluginPure } from "rollup-plugin-pure";
 // https://vitejs.dev/config/
 export default defineConfig(() => ({
+  define: {
+    'process.env.NODE_ENV': '"production"',
+  },
   plugins: [
     react(),
     tsConfigPaths(),
@@ -39,7 +42,9 @@ export default defineConfig(() => ({
     rollupOptions: {
       plugins: [
         PluginPure({
-          functions: ["React.forwardRef"],
+          functions: [
+            "React.forwardRef",  // Used for herocions
+          ],
           // exclude: [],
           // sourcemap: true,
         }),
