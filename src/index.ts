@@ -53,7 +53,7 @@ export {
   RadioButton,
   SearchInput,
   SelectBox,
-  // Sidebar, // TODO: NOT tree-shakable
+  Sidebar, // TODO: NOT tree-shakable
   Slider,
   Spinner,
   Tab,

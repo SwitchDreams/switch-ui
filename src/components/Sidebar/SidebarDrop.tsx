@@ -138,5 +138,4 @@ const SidebarDrop = ({ label, icon: Icon, as = "a", options = [] }: DropProps) =
   );
 };
 
-SidebarDrop.displayName = "Sidebar.Dropdown";
 export default SidebarDrop;

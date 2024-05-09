@@ -108,5 +108,4 @@ const SidebarItem = ({ label, as = "a", icon: Icon, href, active }: ItemProps) =
   );
 };
 
-SidebarItem.displayName = "Sidebar.Item";
 export default SidebarItem;

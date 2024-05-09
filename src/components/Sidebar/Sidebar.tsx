@@ -36,7 +36,7 @@ const SidebarComponent = ({
 };
 
 // eslint-disable-next-line tree-shaking/no-side-effects-in-initialization
-export const Sidebar = Object.assign(SidebarComponent, {
+export const Sidebar = /* @__PURE__ */ Object.assign(SidebarComponent, {
   Logo: SidebarLogo,
   Item: SidebarItem,
   Group: SidebarItemGroup,

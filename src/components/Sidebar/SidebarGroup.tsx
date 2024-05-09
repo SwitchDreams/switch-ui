@@ -16,5 +16,4 @@ const SidebarItemGroup = ({ children, className, ...rest }: SidebarItemGroupProp
   );
 };
 
-SidebarItemGroup.displayName = "Sidebar.Group";
 export default SidebarItemGroup;
