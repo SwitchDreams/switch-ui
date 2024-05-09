@@ -44,9 +44,9 @@ export default defineConfig(({ mode }) => ({
       plugins: [
         PluginPure({
           functions: [
-            "React.forwardRef",  // Used for herocions
+            "React.forwardRef", // Used for herocions
             "Object.assign",
-            "forwardRefWithAs"
+            "forwardRefWithAs",
           ],
           // exclude: [],
           // sourcemap: true,

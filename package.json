@@ -98,7 +98,7 @@
     "react-select": "^5.8.0",
     "tailwind-merge": "^2.2.2"
   },
-  "sideEffets": [
+  "sideEffects": [
     "**/*.css"
   ],
   "resolutions": {
