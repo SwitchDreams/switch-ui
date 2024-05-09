@@ -1,4 +1,4 @@
-import { Tab as TabSection } from "@headlessui/react";
+import { Tab as TabHeadlessui, TabGroup, TabList, TabPanels, TabPanel} from "@headlessui/react";
 import { cva, type VariantProps } from "class-variance-authority";
 import React, { HTMLAttributes, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
@@ -53,12 +53,12 @@ const TabComponent = ({
 
   const tabsArray = children
     ? React.Children.toArray(children).filter(
-        (child) => React.isValidElement(child) && child.type === Tab.Panel,
+        (child) => React.isValidElement(child) && child.type === TabPanel,
       )
     : tabs;
 
   return (
-    <TabSection.Group
+    <TabGroup
       selectedIndex={currentIndex}
       onChange={(index) => {
         if (onTabChange) {
@@ -68,10 +68,10 @@ const TabComponent = ({
       as="div"
       className="w-full"
     >
-      <TabSection.List as="div" className="flex pb-8">
+      <TabList as="div" className="flex pb-8">
         {tabsArray.map((tab: any) => {
           return (
-            <TabSection
+            <TabHeadlessui
               key={children ? tab.props.title : tab.name}
               data-testid={children ? tab.props.title : tab.name}
               className={tabClass}
@@ -80,22 +80,22 @@ const TabComponent = ({
               <div style={{ width: padding ? "80%" : "100%" }}>
                 {children ? tab.props.title : tab.name}
               </div>
-            </TabSection>
+            </TabHeadlessui>
           );
         })}
-      </TabSection.List>
-      <TabSection.Panels>
+      </TabList>
+      <TabPanels>
         {children
           ? children
           : tabs.map((tab: Tabs) => {
-              return <TabSection.Panel key={tab.name}>{tab.info}</TabSection.Panel>;
+              return <TabPanel key={tab.name}>{tab.info}</TabPanel>;
             })}
-      </TabSection.Panels>
-    </TabSection.Group>
+      </TabPanels>
+    </TabGroup>
   );
 };
 
 // eslint-disable-next-line tree-shaking/no-side-effects-in-initialization
 export const Tab = Object.assign(TabComponent, {
-  Panel: TabSection.Panel,
+  Panel: TabPanel,
 });
