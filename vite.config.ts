@@ -46,9 +46,9 @@ export default defineConfig(({ mode }) => ({
         PluginPure({
           functions: [
             "React.createElement",
-            "React.forwardRef", // Used for herocions
-            "Object.assign",
+            "React.forwardRef", // Used for heroicons
             "forwardRefWithAs",
+            "cva",
           ],
         }),
       ],

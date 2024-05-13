@@ -33,7 +33,13 @@ const TextVariants = cva("font-default", {
 
 export interface TextProps extends IText, VariantProps<typeof TextVariants> {}
 
-export const Text = ({ children, size = "md", as = "p", className, ...rest }: TextProps) => {
+export const Text = ({
+  children,
+  size = "md",
+  as = "p",
+  className,
+  ...rest
+}: TextProps) => {
   const TextComponent = as;
   const variantClassName = TextVariants({ size });
 
