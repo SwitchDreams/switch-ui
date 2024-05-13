@@ -1,7 +1,7 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
 import { ElementType } from "react";
-import Select, { components, DropdownIndicatorProps } from "react-select";
+import ReactSelect, { components, DropdownIndicatorProps } from "react-select";
 import ErrorMessage from "src/internal/ErrorMessage";
 import FormLabel from "src/internal/FormLabel";
 import { twMerge } from "tailwind-merge";
@@ -11,7 +11,7 @@ interface Options {
   label: string;
 }
 
-export interface SelectType {
+export interface SelectProps {
   options: Options[];
   size?: "lg" | "md" | "sm";
   label: string;
@@ -34,7 +34,7 @@ const DropdownIndicator = (props: DropdownIndicatorProps) => {
   );
 };
 
-export const selectBoxButtonVariants = cva(
+const selectBoxButtonVariants = cva(
   "rounded-plug-md relative my-2 w-full cursor-default border text-left text-coolGray-900 hover:bg-coolGray-50",
   {
     variants: {
@@ -54,17 +54,7 @@ export const selectBoxButtonVariants = cva(
   },
 );
 
-export const iconVariant = cva("text-coolGray-500", {
-  variants: {
-    size: {
-      lg: "h-5 w-5",
-      md: "h-5 w-5",
-      sm: "h-4 w-4",
-    },
-  },
-});
-
-const SelectInput = ({
+export const Select = ({
   options,
   name,
   size = "md",
@@ -77,7 +67,7 @@ const SelectInput = ({
   className,
   error = false,
   ...rest
-}: SelectType) => {
+}: SelectProps) => {
   const controlStyles = {
     base: twMerge(
       selectBoxButtonVariants({
@@ -110,7 +100,7 @@ const SelectInput = ({
   return (
     <div>
       <FormLabel name={name} label={label} />
-      <Select
+      <ReactSelect
         {...rest}
         components={{
           DropdownIndicator,
@@ -165,5 +155,3 @@ const SelectInput = ({
     </div>
   );
 };
-
-export default SelectInput;
