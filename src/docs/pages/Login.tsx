@@ -1,7 +1,9 @@
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
 
-import { Button, Text, TextField } from "../../index";
+import Button from "../../components/Button";
+import { Text } from "../../components/Text";
+import { TextField } from "../../components/TextField";
 
 // import { AlertContext } from "@/contexts/Alert";
 // import { Link, useForm } from "@inertiajs/react";
