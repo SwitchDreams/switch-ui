@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => ({
     "process.env.NODE_ENV": JSON.stringify(mode),
   },
   plugins: [
-    react({ jsxRuntime: "classic" }),
+    react(),
     tsConfigPaths(),
     viteStaticCopy({
       targets: [
@@ -55,6 +55,7 @@ export default defineConfig(({ mode }) => ({
       external: [
         ...Object.keys(packageJson.peerDependencies),
         ...Object.keys(packageJson.dependencies),
+        "react/jsx-runtime",
       ],
     },
     sourcemap: true,
