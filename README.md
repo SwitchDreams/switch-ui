@@ -163,6 +163,11 @@ Você pode ajustar as cores, fontes e espaçamento de acordo com suas necessidad
 
 ## Mudanças da V 0.4 para a V 1.0
 
+## Breaking Changes
+- Mudança de posicionamento do Tooltip e Popover: Atualmente o Tooltip não ocupa a melhor posição possível pelo fato de estarmos utilizando uma biblioteca nova, o popover
+também possui o uso da mesma biblioteca porém ainda é possível se passar o position para o popover.
+- O comportamento do componente Tab foi alterado onde agora para se utilizar o usuário deve passar as tabs como children e não mais utilizando o array de tabs.
+
 ### Correções
 - Correção do tamanho do item da Sidebar
 - correção na propriedade disabled do componente SelectBox

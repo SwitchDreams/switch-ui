@@ -10,6 +10,7 @@ interface ButtonType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   iconSide?: "left" | "right";
   icon?: ElementType;
   loading?: boolean;
+  spinnerColor?: string;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
@@ -47,6 +48,7 @@ const Button = ({
   iconSide,
   icon: Icon,
   className,
+  spinnerColor = "border-r-coolGray-400",
   loading = false,
   onClick,
 }: ButtonProps) => {
@@ -54,7 +56,7 @@ const Button = ({
   return (
     <button className={buttonClasses} onClick={onClick} disabled={loading ? true : disabled}>
       {loading ? (
-        <Spinner />
+        <Spinner className={`${spinnerColor}`}/>
       ) : (
         <>
           {Icon && iconSide === "left" && label && (
