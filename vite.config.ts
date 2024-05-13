@@ -5,6 +5,7 @@ import { resolve } from "node:path";
 
 import react from "@vitejs/plugin-react";
 import { PluginPure } from "rollup-plugin-pure";
+// eslint-disable-next-line tree-shaking/no-side-effects-in-initialization
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 import { viteStaticCopy } from "vite-plugin-static-copy";
@@ -44,15 +45,18 @@ export default defineConfig(({ mode }) => ({
       plugins: [
         PluginPure({
           functions: [
-            "React.forwardRef", // Used for herocions
-            "Object.assign",
+            "React.createElement",
+            "React.forwardRef", // Used for heroicons
             "forwardRefWithAs",
+            "cva",
           ],
-          // exclude: [],
-          // sourcemap: true,
         }),
       ],
-      external: [...Object.keys(packageJson.peerDependencies), "react/jsx-runtime"],
+      external: [
+        ...Object.keys(packageJson.peerDependencies),
+        ...Object.keys(packageJson.dependencies),
+        "react/jsx-runtime",
+      ],
     },
     sourcemap: true,
   },

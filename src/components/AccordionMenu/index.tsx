@@ -48,11 +48,7 @@ export const AccordionMenu = /* @__PURE__ */ ({
 }: AccordionMenuProps) => {
   const accordionMenuClasses = twMerge(accordionMenuVariants({ size }), className);
   return (
-    /* @__PURE__ */ <Disclosure
-      as="div"
-      className="border border-x-0 border-t-0 border-gray-100"
-      {...rest}
-    >
+    <Disclosure as="div" className="border border-x-0 border-t-0 border-gray-100" {...rest}>
       {({ open }) => (
         <>
           <DisclosureButton

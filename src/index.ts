@@ -1,8 +1,4 @@
 /* eslint-disable simple-import-sort/imports */
-// Export css
-import "./index.css";
-import "./fonts.css";
-
 // Import Types
 import { SidebarFooterProps } from "./components/Sidebar/SidebarFooter";
 import { SidebarItemGroupProps } from "./components/Sidebar/SidebarGroup";
@@ -53,7 +49,7 @@ export {
   RadioButton,
   SearchInput,
   SelectBox,
-  Sidebar, // TODO: NOT tree-shakable
+  Sidebar,
   Slider,
   Spinner,
   Tab,
@@ -95,5 +91,5 @@ export type {
   TooltipProps,
 };
 
-// Export default colors
+// Export colors
 export { colors };

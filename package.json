@@ -1,7 +1,7 @@
 {
   "name": "@switchdreams/ui",
   "private": false,
-  "version": "0.4.0",
+  "version": "0.5.4",
   "type": "module",
   "description": "Biblioteca de Componentes da SwitchDreams",
   "repository": {
@@ -36,10 +36,8 @@
     "registry": "https://npm.pkg.github.com"
   },
   "peerDependencies": {
-    "@headlessui/react": "^2.0.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-input-mask": "^2.0.4"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@storybook/addon-designs": "^8.0.0",
@@ -100,9 +98,7 @@
     "react-select": "^5.8.0",
     "tailwind-merge": "^2.2.2"
   },
-  "sideEffects": [
-    "**/*.css"
-  ],
+  "sideEffects": false,
   "resolutions": {
     "strip-ansi": "6.0.1",
     "jackspeak": "2.1.1"
