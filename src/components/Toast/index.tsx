@@ -18,9 +18,9 @@ interface ToastType extends HTMLAttributes<any> {
   onClose?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
-export type ToastVariantProps = VariantProps<typeof toastVariants>;
+type ToastVariantProps = VariantProps<typeof toastVariants>;
 
-export const toastVariants = cva(
+const toastVariants = cva(
   "toast-component rounded-plug-md flex h-auto w-[327px] justify-between gap-3 bg-primary-50 px-4 py-5 text-sm md:w-[541px]",
   {
     variants: {
@@ -62,7 +62,7 @@ export const toastVariants = cva(
 
 export interface ToastProps extends Omit<ToastVariantProps, "color" | "variant">, ToastType {}
 
-const Toast = ({
+export const Toast = /* @__PURE__ */ ({
   variant = "tonal",
   title,
   color = "primary",
@@ -106,5 +106,3 @@ const Toast = ({
     </div>
   );
 };
-
-export default Toast;

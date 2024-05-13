@@ -2,6 +2,8 @@ import { cva, VariantProps } from "class-variance-authority";
 import React, { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
+import { Tooltip as ToolTipFloatingUi, TooltipContent, TooltipTrigger } from "./TooltipFloatingUI";
+
 export interface ITooltip {
   title: string;
   description?: string;
@@ -9,54 +11,15 @@ export interface ITooltip {
   className?: string;
 }
 
-const TooltipVariants = cva(
-  "absolute z-30 hidden w-fit rounded p-2 text-xs text-white group-hover:flex group-hover:flex-wrap",
-  {
-    variants: {
-      position: {
-        top: "bottom-[calc(100%+5px)] left-1/2 -translate-x-1/2",
-        bottom: "left-1/2 top-[calc(100%+5px)] -translate-x-1/2",
-        right: "right-[calc(100%+5px)] top-1/2 -translate-y-1/2",
-        left: "left-[calc(100%+5px)] top-1/2 -translate-y-1/2",
-        topRight: "bottom-[calc(100%+5px)] left-1/2 translate-x-[5%]",
-        bottomRight: "left-1/2 top-[calc(100%+5px)]",
-        topLeft: "bottom-[calc(100%+5px)] right-1/2 translate-x-[5%]",
-        bottomLeft: "right-1/2 top-[calc(100%+5px)]",
-      },
-      color: {
-        primary: "bg-gray-950 text-white",
-        secondary: "bg-white text-gray-950",
-        tertiary: "bg-primary-300 text-gray-100",
-      },
-    },
-    defaultVariants: {
-      position: "top",
-      color: "tertiary",
-    },
-  },
-);
-
-const ArrowVariants = cva("absolute hidden border-[6px] group-hover:inline-block", {
+const TooltipVariants = cva("h-fit w-fit rounded p-2 text-xs text-white", {
   variants: {
-    position: {
-      top: "bottom-full left-1/2 -translate-x-1/2 border-b-0 border-x-transparent ",
-      bottom: "left-1/2 top-full -translate-x-1/2 border-t-0 border-x-transparent ",
-      right: "right-full top-1/2 -translate-y-1/2 border-r-0 border-y-transparent ",
-      left: "left-full top-1/2 -translate-y-1/2 border-l-0 border-y-transparent ",
-      topRight: "bottom-full left-[110%] -translate-x-1/2 border-b-0 border-x-transparent",
-      bottomRight: "left-[90%] top-full -translate-x-1/2 border-t-0 border-x-transparent",
-      topLeft: "bottom-full left-[15%] -translate-x-1/2 border-b-0 border-x-transparent",
-      bottomLeft: "left-[10%] top-full -translate-x-1/2 border-t-0 border-x-transparent",
-      none: "",
-    },
     color: {
-      primary: "border-gray-950 text-gray-400",
-      secondary: "border-white text-gray-600",
-      tertiary: "border-primary-300",
+      primary: "bg-gray-950 text-white",
+      secondary: "bg-white text-gray-950",
+      tertiary: "bg-primary-300 text-gray-100",
     },
   },
   defaultVariants: {
-    position: "none",
     color: "tertiary",
   },
 });
@@ -69,34 +32,41 @@ export interface TooltipProps extends TooltipVariantProps, ITooltip {
 
 const Tooltip = ({
   title,
-  position,
   color,
-  children,
   className,
+  children,
   content,
   description,
   ...rest
-}: TooltipProps) => (
-  <div className="group relative  h-fit w-fit cursor-pointer">
-    <div className="z-10 mx-1">{content}</div>
-    <span className={twMerge(TooltipVariants({ position, color }), className)} {...rest}>
-      <div className="z-30 flex flex-col">
-        {children ? (
-          <>{children}</>
-        ) : (
-          <>
-            <span className="pb-2 text-xs font-semibold">{title}</span>
-            <span
-              className={twMerge(TooltipVariants({ color }), className, `pb-2 text-xs font-medium`)}
-            >
-              {description}
-            </span>
-          </>
-        )}
-      </div>
-    </span>
-    <span className={twMerge(ArrowVariants({ position, color }))} {...rest}></span>
-  </div>
-);
+}: TooltipProps) => {
+  const body = () => {
+    if (children) {
+      return children;
+    } else {
+      return (
+        <div className="z-30 flex flex-col">
+          <span className="pb-2 text-xs font-semibold">{title}</span>
+          <span
+            className={twMerge(TooltipVariants({ color }), className, "pb-2 text-xs font-medium")}
+          >
+            {description}
+          </span>
+        </div>
+      );
+    }
+  };
+  return (
+    <ToolTipFloatingUi>
+      <TooltipTrigger>{content}</TooltipTrigger>
+      <TooltipContent
+        className={twMerge(TooltipVariants({ color }), className)}
+        {...rest}
+        data-testid="tooltip-content"
+      >
+        {body()}
+      </TooltipContent>
+    </ToolTipFloatingUi>
+  );
+};
 
 export default Tooltip;

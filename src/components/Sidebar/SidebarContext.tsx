@@ -15,7 +15,8 @@ const defaultContextValue: SidebarContextType = {
   setIsDesktop: () => {},
 };
 
-export const SidebarContext = createContext<SidebarContextType>(defaultContextValue);
+export const SidebarContext =
+  /* @__PURE__ */ createContext<SidebarContextType>(defaultContextValue);
 
 const checkIsDesktop = () => {
   return window.innerWidth >= 768;

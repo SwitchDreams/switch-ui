@@ -83,7 +83,7 @@ export interface TextFieldBaseProps
   extends Omit<TextfieldVariantProps, "error" | "leftIconPresent">,
     ITextFieldBase {}
 
-export const TextFieldBase = forwardRef(
+export const TextFieldBase = /* @__PURE__ */ forwardRef(
   (
     {
       leftIcon: LeftIcon,
@@ -128,7 +128,7 @@ export const TextFieldBase = forwardRef(
             className={textfieldClasses}
             // @ts-ignore
             mask={inputElement === InputMask ? mask : undefined}
-            maskChar={inputElement === InputMask ? maskChar : undefined}
+            {...(mask ? { maskChar: maskChar } : {})}
             {...rest}
           />
           {LeftIcon && (
