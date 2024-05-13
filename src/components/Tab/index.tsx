@@ -96,7 +96,6 @@ const TabComponent = ({
 };
 
 // eslint-disable-next-line tree-shaking/no-side-effects-in-initialization
-// TODO MAYBE HERE
-export const Tab = Object.assign(TabComponent, {
+export const Tab = /* __PURE__ */ Object.assign(TabComponent, {
   Panel: TabPanel,
 });

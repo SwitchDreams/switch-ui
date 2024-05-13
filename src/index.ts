@@ -91,5 +91,5 @@ export type {
   TooltipProps,
 };
 
-// Export default colors
+// Export colors
 export { colors };
