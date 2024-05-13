@@ -56,7 +56,7 @@ const Button = ({
   return (
     <button className={buttonClasses} onClick={onClick} disabled={loading ? true : disabled}>
       {loading ? (
-        <Spinner className={`${spinnerColor}`}/>
+        <Spinner className={`${spinnerColor}`} />
       ) : (
         <>
           {Icon && iconSide === "left" && label && (

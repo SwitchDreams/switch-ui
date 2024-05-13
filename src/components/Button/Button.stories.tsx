@@ -1,6 +1,6 @@
-import React from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { Meta, StoryFn } from "@storybook/react";
+import React from "react";
 
 import Button, { ButtonProps } from "./index";
 
