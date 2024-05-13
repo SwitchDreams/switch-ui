@@ -159,5 +159,35 @@ Isaac Newton - "Se eu vi mais longe que outros é porque estive aos ombros de gi
 #### Personalização
 Todos os componentes foram projetados para ser altamente personalizável usando classes CSS da biblioteca Tailwind CSS. Você pode ajustar as cores, fontes e espaçamento de acordo com suas necessidades.
 
+## Mudanças da V 0.4 para a V 1.0
+
+### Correções
+- Correção do tamanho do item da Sidebar
+- correção na propriedade disabled do componente SelectBox
+- Correção das cores de selecionado dos componentes do SelextBox
+- Correção das cores de cinza dos componentes de SelectBox, SearchInput e TextField
+- Correção do Z-index dos componentes tooltip e popover
+- Correção em todas as cores da biblioteca
+
+### Melhorias
+
+- Adição de sombra para o componente do SelectBox
+- Melhora da DX do vite com auto complete
+- Upgrade nas dependências da biblioteca
+- Melhora na responsividade do componente Text
+- Padronização das props para os componentes de Forms.
+- Melhora no comportamento do componente Sidebar, ao clicar no DropdownItem ela abre.
+- Melhorias nas documentações da biblioteca
+- Componentes Tooltip e Popover com um comportamento melhor, não necessário mais setar o position.
+- Remoção dos warnings da biblioteca.
+
+### Novas funcionalidades
+- Criação do componente de Paginação.
+- Criação do componente de Modal.
+- Criação do novo componente de Tabs.
+- Criação de um novo componente SelectBox
+- Adição do Tree Shaking para a biblioteca com o intúito de melhorar o bundle para o usuário.
+- Adição da props Loading para o botão.
+
 #### Conclusão
 Os componentes da SwitchUI oferecem uma maneira simples e eficaz de componentes interativos e responsivos em seus projetos. Eles combinam o poder do Tailwind CSS e dos códigos mais recentes para criar uma experiência de usuário agradável e elegante. Experimente e adapte-o para se adequar ao seu design e estilo específicos.
