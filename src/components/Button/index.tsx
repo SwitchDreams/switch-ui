@@ -2,11 +2,15 @@ import { cva, type VariantProps } from "class-variance-authority";
 import React, { ElementType } from "react";
 import { twMerge } from "tailwind-merge";
 
+import { Spinner } from "../Spinner";
+
 interface ButtonType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   label: string;
   iconSide?: "left" | "right";
   icon?: ElementType;
+  loading?: boolean;
+  spinnerColor?: string;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
@@ -44,17 +48,27 @@ const Button = ({
   iconSide,
   icon: Icon,
   className,
+  spinnerColor = "border-r-coolGray-400",
+  loading = false,
   onClick,
 }: ButtonProps) => {
   const buttonClasses = twMerge(buttonVariants({ variant, size, disabled }), className);
   return (
-    <button className={buttonClasses} onClick={onClick} disabled={disabled}>
-      {Icon && iconSide == "left" && label && (
-        <Icon className="h-4 w-4 translate-x-[-4px] stroke-2" />
+    <button className={buttonClasses} onClick={onClick} disabled={loading ? true : disabled}>
+      {loading ? (
+        <Spinner className={`${spinnerColor}`} />
+      ) : (
+        <>
+          {Icon && iconSide === "left" && label && (
+            <Icon className="h-4 w-4 translate-x-[-4px] stroke-2" />
+          )}
+          {label}
+          {Icon && iconSide === "right" && label && (
+            <Icon className="h-4 w-4 translate-x-1 stroke-2" />
+          )}
+          {Icon && !label && <Icon className="h-4 w-4 stroke-2" />}
+        </>
       )}
-      {label}
-      {Icon && iconSide == "right" && label && <Icon className="h-4 w-4 translate-x-1 stroke-2" />}
-      {Icon && !label && <Icon className="h-4 w-4 stroke-2" />}
     </button>
   );
 };
