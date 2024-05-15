@@ -4,7 +4,7 @@ import { useState } from "react";
 import SelectBox from "./index";
 
 const meta = {
-  title: "Forms/SelectBox",
+  title: "Forms/SelectBox - Depreciado",
   component: SelectBox,
   tags: [],
 } satisfies Meta<typeof SelectBox>;
