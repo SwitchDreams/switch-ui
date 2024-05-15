@@ -1,7 +1,7 @@
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
 import { Meta, StoryFn } from "@storybook/react";
 
-import { Select, SelectProps } from "./index";
+import { Select, SelectProps } from "./Select";
 
 export default {
   title: "Forms/Select",
@@ -39,7 +39,13 @@ Multiple.args = {
 
 export const Searchable = Template.bind({});
 Searchable.args = {
-  multiple: false,
   ...defaultArgs,
   isSearchable: true,
+};
+
+export const Error = Template.bind({});
+Error.args = {
+  error: true,
+  errorMsg: "A validação falhou",
+  ...defaultArgs,
 };

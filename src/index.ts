@@ -27,7 +27,7 @@ import { Tab, TabProps } from "./components/Tab";
 // Forms
 import { Slider, SliderProps } from "./components/Slider/Slider";
 import SelectBox, { SelectBoxProps } from "./components/SelectBox";
-import { Select, SelectProps } from "./components/Select";
+import { Select, SelectProps } from "./components/Select/Select";
 import { RadioButton, RadioButtonProps } from "./components/RadioButton";
 import { CheckBox, CheckBoxProps } from "./components/CheckBox";
 import TextArea, { TextAreaProps } from "./components/TextArea";
