@@ -36,6 +36,7 @@ export const Select = ({
   errorMsg,
   className,
   error = false,
+  noOptionsMessage = () => "Sem opções encontradas",
   closeMenuOnSelect = !multiple,
   hideSelectedOptions = false,
   ...rest
@@ -47,9 +48,10 @@ export const Select = ({
         components={{
           DropdownIndicator,
         }}
+        noOptionsMessage={noOptionsMessage}
         isDisabled={disabled}
         isMulti={multiple}
-        name={label}
+        name={name}
         options={options}
         closeMenuOnSelect={closeMenuOnSelect}
         hideSelectedOptions={hideSelectedOptions}

@@ -62,7 +62,7 @@ const controlStylesCalc = ({ size, error, className }: ControlStylesProps) => ({
 });
 
 const optionStyles = {
-  base: "hover:cursor-pointer px-3 py-2 rounded text-sm h-11",
+  base: "hover:cursor-pointer px-3 py-2 mt-1 rounded text-sm h-11",
   focus: "bg-coolGray-50",
   selected: "bg-primary-25 text-coolGray-900",
 };
@@ -76,10 +76,10 @@ export const selectClassName = ({ ...rest }: ControlStylesProps) => {
     placeholder: () => "text-coolGray-500 pl-3 text-sm",
     singleValue: () => "text-coolGray-900 pl-3 text-sm",
     multiValue: () =>
-      "rounded-3xl bg-primary-25 px-2.5 py-2 text-primary-500 text-xs items-center gap-2.5",
+      "ml-1 rounded-3xl bg-primary-25 px-2.5 py-2 text-primary-500 text-xs items-center gap-2.5",
     indicatorsContainer: () => "p-1.5 gap-2",
     dropdownIndicator: () => "p-1.5 hover:bg-gray-100 text-gray-500 rounded-md hover:text-black",
-    menu: () => "p-1.5 mt-2 border border-gray-200 bg-white rounded-lg",
+    menu: () => "p-1.5 mt-2 border border-primary-25 bg-white rounded-lg shadow-md",
     groupHeading: () => "ml-3 mt-2 mb-1 text-gray-500 text-sm",
     option: ({ isFocused, isSelected }: { isFocused: boolean; isSelected: boolean }) =>
       twMerge(

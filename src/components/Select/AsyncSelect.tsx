@@ -36,6 +36,8 @@ export const AsyncSelect = ({
   errorMsg,
   className,
   error = false,
+  loadingMessage = () => "Carregando...",
+  noOptionsMessage = () => "Sem opções encontradas",
   closeMenuOnSelect = !multiple,
   hideSelectedOptions = false,
   ...rest
@@ -47,9 +49,11 @@ export const AsyncSelect = ({
         components={{
           DropdownIndicator,
         }}
+        loadingMessage={loadingMessage}
+        noOptionsMessage={noOptionsMessage}
         isDisabled={disabled}
         isMulti={multiple}
-        name={label}
+        name={name}
         options={options}
         closeMenuOnSelect={closeMenuOnSelect}
         hideSelectedOptions={hideSelectedOptions}
