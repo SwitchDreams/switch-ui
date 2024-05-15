@@ -55,6 +55,7 @@ export default defineConfig(({ mode }) => ({
       external: [
         ...Object.keys(packageJson.peerDependencies),
         ...Object.keys(packageJson.dependencies),
+        "react-select/async",
         "react/jsx-runtime",
       ],
     },
