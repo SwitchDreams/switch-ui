@@ -27,7 +27,13 @@ import { Tab, TabProps } from "./components/Tab";
 // Forms
 import { Slider, SliderProps } from "./components/Slider/Slider";
 import SelectBox, { SelectBoxProps } from "./components/SelectBox";
-import { Select, SelectProps } from "./components/Select/Select";
+import {
+  Select,
+  AsyncSelect,
+  AsyncSelectProps,
+  SelectOptionProps,
+  SelectProps,
+} from "./components/Select";
 import { RadioButton, RadioButtonProps } from "./components/RadioButton";
 import { CheckBox, CheckBoxProps } from "./components/CheckBox";
 import TextArea, { TextAreaProps } from "./components/TextArea";
@@ -40,6 +46,7 @@ import { Toast, ToastProps } from "./components/Toast";
 // Export componentes
 export {
   AccordionMenu,
+  AsyncSelect,
   Avatar,
   Badge,
   Button,
@@ -67,6 +74,7 @@ export {
 // Export Types
 export type {
   AccordionMenuProps,
+  AsyncSelectProps,
   AvatarProps,
   BadgeProps,
   ButtonProps,
@@ -78,6 +86,7 @@ export type {
   RadioButtonProps,
   SearchInputProps,
   SelectBoxProps,
+  SelectOptionProps,
   SelectProps,
   SidebarFooterProps,
   SidebarItemGroupProps,

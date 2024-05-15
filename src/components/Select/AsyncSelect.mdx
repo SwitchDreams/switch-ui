@@ -1,0 +1,49 @@
+import * as AsyncSelectStories from "./AsyncSelect.stories";
+import {Meta, Controls, Story, Canvas, Description} from "@storybook/blocks";
+
+<Meta of={AsyncSelectStories} />
+
+## AsyncSelect:
+
+<br />
+
+Nosso componente de AsyncSelect também é feito com base na biblioteca [react-select](https://react-select.com/home).
+Para docs completa do [AsyncSelect](https://react-select.com/async#async).
+
+Ele é bem semelhante ao Select, porém com a possibilidade de carregar as opções de forma assíncrona.
+Para fazer esse carregamento basta passar a função `loadOptions` como propriedade, exemplo abaixo:
+
+```jsx
+import React from 'react';
+
+import AsyncSelect from 'react-select/async';
+const options = [
+  { value: "1", label: "Opção 1" },
+  { value: "2", label: "Opção 2" },
+  { value: "3", label: "Opção 3" },
+];
+
+// Geralmente essa função vai ser uma call para API
+const filterColors = (inputValue: string) => {
+  return colourOptions.filter((i) =>
+    i.label.toLowerCase().includes(inputValue.toLowerCase())
+  );
+};
+
+const loadOptions = (
+  inputValue: string,
+  callback: (options: ColourOption[]) => void
+) => {
+  setTimeout(() => {
+    callback(filterColors(inputValue));
+  }, 1000);
+};
+
+
+<AsyncSelect cacheOptions loadOptions={loadOptions} defaultOptions />
+```
+<Canvas />
+
+<Controls/>
+
+
