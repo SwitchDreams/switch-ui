@@ -352,4 +352,5 @@ function SearchInput({
   }
 }
 
+/** @deprecated use `<Select>` instead of `<SearchInput>` */
 export default SearchInput;
