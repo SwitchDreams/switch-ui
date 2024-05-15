@@ -92,5 +92,8 @@
     "class-variance-authority": "^0.7.0",
     "react-input-mask": "^2.0.4",
     "tailwind-merge": "^2.2.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
