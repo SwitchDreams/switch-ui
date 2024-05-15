@@ -81,17 +81,17 @@ export const Select = ({
   };
   const selectInputStyles = "pl-4 text-md";
   const singleValueStyles = "leading-7 ml-5 text-red";
-  const multiValueStyles = "rounded items-center py-1.5 pl-3 pr-2 gap-2.5";
-  const multiValueLabelStyles = "leading-6";
+  const multiValueStyles =
+    "rounded-3xl bg-primary-25 px-2.5 py-2 text-primary-500 text-xs items-center gap-2.5";
   const indicatorsContainerStyles = "p-1.5 gap-2";
   const dropdownIndicatorStyles =
     "p-1.5 hover:bg-gray-100 text-gray-500 rounded-md hover:text-black";
   const menuStyles = "p-1.5 mt-2 border border-gray-200 bg-white rounded-lg";
   const groupHeadingStyles = "ml-3 mt-2 mb-1 text-gray-500 text-sm";
   const optionStyles = {
-    base: "hover:cursor-pointer px-3 py-2 rounded-plug-md",
+    base: "hover:cursor-pointer px-3 py-2 rounded text-sm h-11",
     focus: "bg-coolGray-50",
-    selected: "after:content-['✔'] after:ml-3 bg-coolGray-50 after:text-green-500 text-gray-500",
+    selected: "bg-primary-25 text-coolGray-900",
   };
   const noOptionsMessageStyles =
     "text-gray-500 p-2 bg-gray-50 border border-dashed border-gray-200 rounded-sm";
@@ -137,7 +137,6 @@ export const Select = ({
           placeholder: () => placeholderStyles,
           singleValue: () => singleValueStyles,
           multiValue: () => multiValueStyles,
-          multiValueLabel: () => multiValueLabelStyles,
           indicatorsContainer: () => indicatorsContainerStyles,
           dropdownIndicator: () => dropdownIndicatorStyles,
           menu: () => menuStyles,

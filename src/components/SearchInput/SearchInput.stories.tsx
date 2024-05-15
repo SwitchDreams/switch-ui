@@ -5,7 +5,7 @@ import { useState } from "react";
 import SearchInput, { SearchInputOption, SearchInputProps } from "./SearchInput";
 
 export default {
-  title: "Forms/SearchInput",
+  title: "Forms/SearchInput - Depreciado",
   component: SearchInput,
   tags: [],
 } as Meta<typeof SearchInput>;

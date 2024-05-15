@@ -226,4 +226,5 @@ function SelectBox({
   );
 }
 
+/** @deprecated use `<Select>` instead of `<SelectBox>` */
 export default SelectBox;

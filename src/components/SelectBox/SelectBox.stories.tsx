@@ -10,7 +10,7 @@ import { StoryFn } from "@storybook/react";
 import SelectBox, { SelectBoxProps } from "./index";
 
 export default {
-  title: "Forms/SelectBox",
+  title: "Forms/SelectBox - Depreciado",
   component: SelectBox,
   tags: [],
   argTypes: {
