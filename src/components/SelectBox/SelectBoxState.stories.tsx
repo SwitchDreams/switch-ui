@@ -1,10 +1,11 @@
 import type { Meta, StoryFn } from "@storybook/react";
 import { useState } from "react";
 
-import { Tab } from "../Tab/index";
+import { Tab } from "../Tab";
 import SelectBox from "./index";
+
 const meta = {
-  title: "Forms/SelectBox",
+  title: "Forms/SelectBox - Depreciado",
   component: SelectBox,
   tags: [],
 } satisfies Meta<typeof SelectBox>;

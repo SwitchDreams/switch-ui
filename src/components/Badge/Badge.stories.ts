@@ -1,5 +1,5 @@
 import { ArrowDownIcon, PencilIcon, StarIcon, TrashIcon } from "@heroicons/react/24/outline";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { StoryObj } from "@storybook/react";
 
 import { Badge } from ".";
 
@@ -34,7 +34,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Badge>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;

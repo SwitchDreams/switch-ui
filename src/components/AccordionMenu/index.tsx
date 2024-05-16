@@ -1,4 +1,4 @@
-import { Disclosure } from "@headlessui/react";
+import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/react";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { cva, VariantProps } from "class-variance-authority";
 import { HTMLAttributes, ReactNode } from "react";
@@ -12,7 +12,7 @@ interface AccordionMenuType extends HTMLAttributes<any> {
 
 export type AccordionMenuVariantProps = VariantProps<typeof accordionMenuVariants>;
 
-export const accordionMenuVariants = cva(
+const accordionMenuVariants = cva(
   "accordion-button flex w-full cursor-pointer items-center justify-between py-4 text-left font-medium text-gray-900",
   {
     variants: {
@@ -25,7 +25,7 @@ export const accordionMenuVariants = cva(
   },
 );
 
-export const accordionInfosVariants = cva("accordion-infos text-gray-600", {
+const accordionInfosVariants = cva("accordion-infos text-gray-600", {
   variants: {
     size: {
       lg: "pb-6 text-md",
@@ -39,7 +39,7 @@ export interface AccordionMenuProps
   extends Omit<AccordionMenuVariantProps, "size">,
     AccordionMenuType {}
 
-const AccordionMenu = ({
+export const AccordionMenu = /* @__PURE__ */ ({
   title,
   size = "md",
   children,
@@ -51,7 +51,7 @@ const AccordionMenu = ({
     <Disclosure as="div" className="border border-x-0 border-t-0 border-gray-100" {...rest}>
       {({ open }) => (
         <>
-          <Disclosure.Button
+          <DisclosureButton
             className={
               open
                 ? `${accordionMenuClasses} accordion-button text-primary-300`
@@ -64,14 +64,10 @@ const AccordionMenu = ({
             ) : (
               <ChevronUpIcon strokeWidth="3" className="align-center flex h-4 w-4" />
             )}
-          </Disclosure.Button>
-          <Disclosure.Panel className={accordionInfosVariants({ size })}>
-            {children}
-          </Disclosure.Panel>
+          </DisclosureButton>
+          <DisclosurePanel className={accordionInfosVariants({ size })}>{children}</DisclosurePanel>
         </>
       )}
     </Disclosure>
   );
 };
-
-export default AccordionMenu;

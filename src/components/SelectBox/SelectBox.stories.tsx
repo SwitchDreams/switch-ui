@@ -5,12 +5,12 @@ import {
   StarIcon,
   TrashIcon,
 } from "@heroicons/react/24/outline";
-import { Meta, StoryFn } from "@storybook/react";
+import { StoryFn } from "@storybook/react";
 
 import SelectBox, { SelectBoxProps } from "./index";
 
 export default {
-  title: "Forms/SelectBox",
+  title: "Forms/SelectBox - Depreciado",
   component: SelectBox,
   tags: [],
   argTypes: {
@@ -32,7 +32,7 @@ export default {
       },
     },
   },
-} as Meta<typeof SelectBox>;
+};
 
 const Template: StoryFn<typeof SelectBox> = (args: SelectBoxProps) => <SelectBox {...args} />;
 

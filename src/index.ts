@@ -1,12 +1,8 @@
 /* eslint-disable simple-import-sort/imports */
-// Export css
-import "./index.css";
-import "./fonts.css";
-
 // Import Types
 import { SidebarFooterProps } from "./components/Sidebar/SidebarFooter";
 import { SidebarItemGroupProps } from "./components/Sidebar/SidebarGroup";
-import { ItemProps } from "./components/Sidebar/SidebarItem";
+import { ItemProps } from "./components/Sidebar/SidebarItem"; // TODO: Improves this name
 import { SidebarLogoProps } from "./components/Sidebar/SidebarLogo";
 import { SidebarUserProps } from "./components/Sidebar/SidebarUser";
 
@@ -26,23 +22,31 @@ import FloatingButton, { FloatingButtonProps } from "./components/FloatingButton
 import { ProgressBar, ProgressBarProps } from "./components/ProgressBar/ProgressBar";
 import { Spinner, SpinnerProps } from "./components/Spinner";
 // Navigation
-import AccordionMenu, { AccordionMenuProps } from "./components/AccordionMenu";
+import { AccordionMenu, AccordionMenuProps } from "./components/AccordionMenu";
 import { Tab, TabProps } from "./components/Tab";
 // Forms
 import { Slider, SliderProps } from "./components/Slider/Slider";
 import SelectBox, { SelectBoxProps } from "./components/SelectBox";
+import {
+  Select,
+  AsyncSelect,
+  AsyncSelectProps,
+  SelectOptionProps,
+  SelectProps,
+} from "./components/Select";
 import { RadioButton, RadioButtonProps } from "./components/RadioButton";
 import { CheckBox, CheckBoxProps } from "./components/CheckBox";
 import TextArea, { TextAreaProps } from "./components/TextArea";
-import TextField, { TextFieldProps } from "./components/TextField";
+import { TextField, TextFieldProps } from "./components/TextField";
 import TextFieldMask from "./components/TextField/TextFieldMask";
 import ToggleSwitch, { ToggleSwitchProps } from "./components/ToggleSwitch";
 // Overlay
-import Toast, { ToastProps } from "./components/Toast";
+import { Toast, ToastProps } from "./components/Toast";
 
 // Export componentes
 export {
   AccordionMenu,
+  AsyncSelect,
   Avatar,
   Badge,
   Button,
@@ -52,6 +56,7 @@ export {
   ProgressBar,
   RadioButton,
   SearchInput,
+  Select,
   SelectBox,
   Sidebar,
   Slider,
@@ -69,6 +74,7 @@ export {
 // Export Types
 export type {
   AccordionMenuProps,
+  AsyncSelectProps,
   AvatarProps,
   BadgeProps,
   ButtonProps,
@@ -80,6 +86,8 @@ export type {
   RadioButtonProps,
   SearchInputProps,
   SelectBoxProps,
+  SelectOptionProps,
+  SelectProps,
   SidebarFooterProps,
   SidebarItemGroupProps,
   SidebarLogoProps,
@@ -95,5 +103,5 @@ export type {
   TooltipProps,
 };
 
-// Export default colors
+// Export colors
 export { colors };

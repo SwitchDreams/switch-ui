@@ -54,5 +54,4 @@ const SidebarLogo = ({ logo, href, children }: SidebarLogoProps) => {
   );
 };
 
-SidebarLogo.displayName = "Sidebar.Logo";
 export default SidebarLogo;

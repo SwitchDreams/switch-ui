@@ -11,6 +11,7 @@ describe("Button", () => {
     variant: "primary" | "invisible" | "outline" | "danger",
     size: "xl" | "lg" | "md" | "sm" | "xs",
     disabled: boolean,
+    loading?: boolean,
   ) => {
     return (
       <Button
@@ -19,6 +20,7 @@ describe("Button", () => {
         disabled={disabled}
         label="botão"
         onClick={onClickMock}
+        loading={loading}
       />
     );
   };
@@ -160,6 +162,13 @@ describe("Button", () => {
 
       fireEvent.click(buttonElement);
       expect(onClickMock).toHaveBeenCalledTimes(1);
+    });
+  });
+  describe("test loading", () => {
+    it("test the loading props", () => {
+      render(component("primary", "xs", false, true));
+      const spinnerElement = screen.getByTestId("spinner");
+      expect(spinnerElement).toBeInTheDocument();
     });
   });
 });

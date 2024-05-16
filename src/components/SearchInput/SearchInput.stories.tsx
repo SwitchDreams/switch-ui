@@ -5,13 +5,14 @@ import { useState } from "react";
 import SearchInput, { SearchInputOption, SearchInputProps } from "./SearchInput";
 
 export default {
-  title: "Forms/SearchInput",
+  title: "Forms/SearchInput - Depreciado",
   component: SearchInput,
   tags: [],
 } as Meta<typeof SearchInput>;
 
 const Template: StoryFn<typeof SearchInput> = (args: SearchInputProps) => {
-  const [selectedValueState, setSelectedValue] = useState(args.selectedValue);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [selectedValue, setSelectedValue] = useState(args.selectedValue);
 
   return (
     <SearchInput
@@ -22,7 +23,6 @@ const Template: StoryFn<typeof SearchInput> = (args: SearchInputProps) => {
       multiple={args.multiple}
       fetchRemoteData={args.fetchRemoteData}
       disabled={args.disabled}
-      selectedValue={selectedValueState}
       setSelectedValue={setSelectedValue}
       placeholder={args.placeholder}
       leftIcon={args.leftIcon}

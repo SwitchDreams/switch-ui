@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 
-import AccordionMenu from "../index";
+import { AccordionMenu } from "../index";
 
 describe("AccordionMenu", () => {
   it("test the props", () => {

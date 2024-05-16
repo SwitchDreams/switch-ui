@@ -28,5 +28,4 @@ const SidebarUser = ({ title, subTitle, children, className, ...rest }: SidebarU
   );
 };
 
-SidebarUser.displayName = "Sidebar.User";
 export default SidebarUser;

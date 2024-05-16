@@ -1,7 +1,7 @@
 import { act, fireEvent, render } from "@testing-library/react";
 import { describe, it, vitest } from "vitest";
 
-import Toast from "../index";
+import { Toast } from "../index";
 
 const onClickMock = vitest.fn();
 

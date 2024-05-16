@@ -1,52 +1,53 @@
-import { Popover as PopoverHeadlessui } from "@headlessui/react";
-import { cva, VariantProps } from "class-variance-authority";
+import { Popover as PopoverHeadlessui, PopoverButton, PopoverPanel } from "@headlessui/react";
 import React, { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
-export interface IPopover {
+// This method is used to support the old API from the original Popover component
+const positionTranslate = (position: any) => {
+  switch (position) {
+    case "bottomRight":
+      return "bottom end";
+    case "bottomLeft":
+      return "bottom start";
+    case "topRight":
+      return "top end";
+    case "topLeft":
+      return "top start";
+    case "left":
+      return "start";
+    case "right":
+      return "end";
+    default:
+      return position;
+  }
+};
+
+export interface PopoverProps {
   button: ReactNode;
   children?: ReactNode;
   className?: string;
+  classNameContainer?: string;
+  position?: any;
 }
-
-const PopoverVariants = cva(
-  "absolute z-10 mt-2 w-fit rounded text-xs group-hover:flex group-hover:flex-wrap",
-  {
-    variants: {
-      position: {
-        top: "bottom-[calc(100%+5px)] left-1/2 -translate-x-1/2",
-        bottom: "left-1/2 top-[calc(100%+5px)] -translate-x-1/2",
-        right: "right-[calc(100%+5px)] top-1/2 -translate-y-1/2",
-        left: "left-[calc(100%+5px)] top-1/2 -translate-y-1/2",
-        topRight: "bottom-[calc(100%+5px)] left-1/2 translate-x-[5%]",
-        bottomRight: "left-1/2 top-[calc(100%+5px)]",
-        topLeft: "bottom-[calc(100%+5px)] right-1/2 translate-x-[5%]",
-        bottomLeft: "right-1/2 top-[calc(100%+5px)]",
-      },
-    },
-  },
-);
-
-type PopoverVariantProps = VariantProps<typeof PopoverVariants>;
-
-export interface PopoverProps extends PopoverVariantProps, IPopover {}
 
 const Popover = ({
   button,
   children,
   className,
-  position = "bottomLeft",
+  classNameContainer,
+  position = "start",
   ...rest
 }: PopoverProps) => {
   return (
-    <PopoverHeadlessui className="relative w-fit">
-      <PopoverHeadlessui.Button>{button}</PopoverHeadlessui.Button>
-      <PopoverHeadlessui.Panel
-        className={`${twMerge(PopoverVariants({ position }), className)}`}
+    <PopoverHeadlessui className={twMerge("relative w-fit", classNameContainer)}>
+      <PopoverButton>{button}</PopoverButton>
+      <PopoverPanel
+        anchor={positionTranslate(position)}
+        className={twMerge("fixed z-10 mt-2 w-fit rounded text-xs", className)}
         {...rest}
       >
         {children}
-      </PopoverHeadlessui.Panel>
+      </PopoverPanel>
     </PopoverHeadlessui>
   );
 };

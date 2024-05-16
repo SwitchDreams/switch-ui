@@ -157,7 +157,17 @@ Isaac Newton - "Se eu vi mais longe que outros é porque estive aos ombros de gi
 ## Observação:
 
 #### Personalização
-Todos os componentes foram projetados para ser altamente personalizável usando classes CSS da biblioteca Tailwind CSS. Você pode ajustar as cores, fontes e espaçamento de acordo com suas necessidades.
+
+Todos os componentes foram projetados para ser altamente personalizável usando classes CSS da biblioteca Tailwind CSS.
+Você pode ajustar as cores, fontes e espaçamento de acordo com suas necessidades.
 
 #### Conclusão
-Os componentes da SwitchUI oferecem uma maneira simples e eficaz de componentes interativos e responsivos em seus projetos. Eles combinam o poder do Tailwind CSS e dos códigos mais recentes para criar uma experiência de usuário agradável e elegante. Experimente e adapte-o para se adequar ao seu design e estilo específicos.
+
+Os componentes da SwitchUI oferecem uma maneira simples e eficaz de componentes interativos e responsivos em seus
+projetos. Eles combinam o poder do Tailwind CSS e dos códigos mais recentes para criar uma experiência de usuário
+agradável e elegante. Experimente e adapte-o para se adequar ao seu design e estilo específicos.
+
+#### Outras Documentação
+
+- Tree-shaking: docs/tree-shaking.md
+- Guia de upgrade da V0.4 para 1.0: docs/upgrade-guide.md
