@@ -1,9 +1,9 @@
 import { Popover as PopoverHeadlessui, PopoverButton, PopoverPanel } from "@headlessui/react";
-import { cva, VariantProps } from "class-variance-authority";
 import React, { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
-const PositionTranslation = (position: any) => {
+// This method is used to support the old API from the original Popover component
+const positionTranslate = (position: any) => {
   switch (position) {
     case "bottomRight":
       return "bottom end";
@@ -22,26 +22,28 @@ const PositionTranslation = (position: any) => {
   }
 };
 
-export interface IPopover {
+export interface PopoverProps {
   button: ReactNode;
   children?: ReactNode;
   className?: string;
+  classNameContainer?: string;
   position?: any;
 }
 
-const PopoverVariants = cva("fixed z-10 mt-2 w-fit rounded text-xs");
-
-type PopoverVariantProps = VariantProps<typeof PopoverVariants>;
-
-export interface PopoverProps extends PopoverVariantProps, IPopover {}
-
-const Popover = ({ button, children, className, position = "start", ...rest }: PopoverProps) => {
+const Popover = ({
+  button,
+  children,
+  className,
+  classNameContainer,
+  position = "start",
+  ...rest
+}: PopoverProps) => {
   return (
-    <PopoverHeadlessui className="relative w-fit">
+    <PopoverHeadlessui className={twMerge("relative w-fit", classNameContainer)}>
       <PopoverButton>{button}</PopoverButton>
       <PopoverPanel
-        anchor={PositionTranslation(position)}
-        className={`${twMerge(PopoverVariants(), className)}`}
+        anchor={positionTranslate(position)}
+        className={twMerge("fixed z-10 mt-2 w-fit rounded text-xs", className)}
         {...rest}
       >
         {children}
