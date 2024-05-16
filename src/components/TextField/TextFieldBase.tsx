@@ -10,9 +10,9 @@ type InputElement = typeof InputMask | "textarea" | "input";
 
 export interface ITextFieldBase
   extends Omit<React.InputHTMLAttributes<any>, "label" | "placeholder" | "size"> {
-  label: string;
   name: string;
   inputElement: InputElement;
+  label?: string;
   supportText?: string;
   placeholder?: string;
   leftIcon?: ElementType;

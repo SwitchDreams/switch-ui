@@ -13,7 +13,7 @@ export interface SelectOptionsProps {
 export interface AsyncSelectProps extends Omit<AsyncProps<any, any, any>, "size" | "options"> {
   options: SelectOptionsProps[];
   size?: "lg" | "md" | "sm";
-  label: string;
+  label?: string;
   disabled?: boolean;
   leftIcon?: ElementType;
   supportText?: string;

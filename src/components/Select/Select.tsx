@@ -13,7 +13,7 @@ export interface SelectOptionProps {
 export interface SelectProps extends Omit<Props, "size" | "options"> {
   options: SelectOptionProps[];
   size?: "lg" | "md" | "sm";
-  label: string;
+  label?: string;
   disabled?: boolean;
   leftIcon?: ElementType;
   supportText?: string;
