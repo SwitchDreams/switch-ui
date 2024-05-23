@@ -44,6 +44,7 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       plugins: [
         PluginPure({
+          sourcemap: true,
           functions: [
             "React.createElement",
             "React.forwardRef", // Used for heroicons
