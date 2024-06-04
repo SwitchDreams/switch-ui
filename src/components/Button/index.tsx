@@ -51,10 +51,16 @@ const Button = ({
   spinnerColor = "border-r-coolGray-400",
   loading = false,
   onClick,
+  ...rest
 }: ButtonProps) => {
   const buttonClasses = twMerge(buttonVariants({ variant, size, disabled }), className);
   return (
-    <button className={buttonClasses} onClick={onClick} disabled={loading ? true : disabled}>
+    <button
+      className={buttonClasses}
+      onClick={onClick}
+      disabled={loading ? true : disabled}
+      {...rest}
+    >
       {loading ? (
         <Spinner className={`${spinnerColor}`} />
       ) : (
