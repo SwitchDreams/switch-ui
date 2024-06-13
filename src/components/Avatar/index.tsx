@@ -31,7 +31,7 @@ export const avatarVariants = cva(
       border: {
         true: "border border-gray-300",
         false: "",
-      }
+      },
     },
   },
 );
@@ -51,7 +51,9 @@ export const avatarOnlineVariants = cva(
   },
 );
 
-export interface AvatarProps extends Omit<AvatarVariantProps, "color" | "size" | "border">, AvatarType {}
+export interface AvatarProps
+  extends Omit<AvatarVariantProps, "color" | "size" | "border">,
+    AvatarType {}
 
 const Avatar = ({
   color = "primary",
