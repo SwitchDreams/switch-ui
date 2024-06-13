@@ -7,6 +7,7 @@ export interface AvatarType extends HTMLAttributes<any> {
   isOn?: boolean;
   name: string;
   avatarUrl?: string;
+  border?: boolean;
   size?: "xl" | "lg" | "md" | "sm" | "xs";
 }
 
@@ -27,6 +28,10 @@ export const avatarVariants = cva(
         sm: "h-10 w-10 text-md",
         xs: "h-8 w-8 text-sm",
       },
+      border: {
+        true: "border border-gray-300",
+        false: "",
+      },
     },
   },
 );
@@ -46,7 +51,9 @@ export const avatarOnlineVariants = cva(
   },
 );
 
-export interface AvatarProps extends Omit<AvatarVariantProps, "color" | "size">, AvatarType {}
+export interface AvatarProps
+  extends Omit<AvatarVariantProps, "color" | "size" | "border">,
+    AvatarType {}
 
 const Avatar = ({
   color = "primary",
@@ -54,10 +61,11 @@ const Avatar = ({
   name,
   avatarUrl,
   size = "md",
+  border = false,
   className,
   ...rest
 }: AvatarProps) => {
-  const avatarClass = twMerge(avatarVariants({ color, size }), className);
+  const avatarClass = twMerge(avatarVariants({ color, size, border }), className);
   const avatarOnlineClass = twMerge(avatarOnlineVariants({ size }), className);
 
   const getInitials = (name: string) => {
