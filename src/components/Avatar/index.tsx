@@ -13,7 +13,7 @@ export interface AvatarType extends HTMLAttributes<any> {
 export type AvatarVariantProps = VariantProps<typeof avatarVariants>;
 
 export const avatarVariants = cva(
-  "relative inline-flex flex-none flex-col items-center justify-center gap-2 rounded-full hover:opacity-80",
+  "relative inline-flex flex-none flex-col items-center justify-center gap-2 rounded-full border border-gray-300 hover:opacity-80",
   {
     variants: {
       color: {

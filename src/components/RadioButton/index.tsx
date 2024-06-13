@@ -11,6 +11,7 @@ export interface IRadioButton {
   error?: boolean;
   errorMsg?: string;
   supportText?: string;
+  labelClassName?: string;
 }
 
 const radioButtonVariants = cva(
@@ -38,6 +39,7 @@ export const RadioButton = ({
   size,
   disabled = false,
   className,
+  labelClassName,
   label,
   name,
   error = false,
@@ -71,7 +73,7 @@ export const RadioButton = ({
           }
           {...rest}
         ></input>
-        <FormLabel label={label} name={name} />
+        <FormLabel label={label} name={name} className={labelClassName} />
       </div>
       <ErrorMessage error={error} errorMsg={errorMsg} supportText={supportText} />
     </>
