@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from "@storybook/react";
 
-import Pagination from ".";
+import { Pagination } from ".";
 
 // Mais sobre como configurar histórias em: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta = {

@@ -42,7 +42,7 @@ type PaginationVariantProps = VariantProps<typeof PaginationVariants>;
 
 export interface PaginationProps extends IPagination, PaginationVariantProps {}
 
-const Pagination: React.FC<PaginationProps> = ({
+export const Pagination: React.FC<PaginationProps> = ({
   pages,
   currentPage,
   className,
@@ -101,5 +101,3 @@ const Pagination: React.FC<PaginationProps> = ({
     </div>
   );
 };
-
-export default Pagination;

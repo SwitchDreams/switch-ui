@@ -42,6 +42,7 @@ import TextFieldMask from "./components/TextField/TextFieldMask";
 import ToggleSwitch, { ToggleSwitchProps } from "./components/ToggleSwitch";
 // Overlay
 import { Toast, ToastProps } from "./components/Toast";
+import { Pagination, PaginationProps } from "./components/Pagination";
 
 // Export componentes
 export {
@@ -52,6 +53,7 @@ export {
   Button,
   CheckBox,
   FloatingButton,
+  Pagination,
   Popover,
   ProgressBar,
   RadioButton,
@@ -81,6 +83,7 @@ export type {
   CheckBoxProps,
   FloatingButtonProps,
   ItemProps,
+  PaginationProps,
   PopoverProps,
   ProgressBarProps,
   RadioButtonProps,
