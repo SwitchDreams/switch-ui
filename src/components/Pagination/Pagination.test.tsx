@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import { vitest } from "vitest";
 
-import Pagination from "./index";
+import { Pagination } from "./index";
 
 const mockHandlePage = vitest.fn();
 const mockHandleNextPage = vitest.fn();
