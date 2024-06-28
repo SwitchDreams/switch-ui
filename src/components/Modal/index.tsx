@@ -95,12 +95,7 @@ const Modal = ({
   };
   return (
     <>
-      <div
-        className={` 
-          ${twMerge(BgVariants({ open }))}
-        `}
-        onClick={handleClose}
-      />
+      <div className={` ${twMerge(BgVariants({ open }))} `} onClick={handleClose} />
       <div className={`${twMerge(ModalVariants({ open }), className)}`}>
         <div className="relative z-50 h-full w-full gap-12 p-5">
           <XMarkIcon
