@@ -6,7 +6,7 @@ import { components, DropdownIndicatorProps } from "react-select";
 import { twMerge } from "tailwind-merge";
 
 const selectVariants = cva(
-  "rounded-plug-md relative my-2 w-full cursor-default border text-left text-coolGray-900 hover:bg-coolGray-50",
+  "sw-ui-rounded-curvature-md relative my-2 w-full cursor-default border text-left text-coolGray-900 hover:bg-coolGray-50",
   {
     variants: {
       disabled: {

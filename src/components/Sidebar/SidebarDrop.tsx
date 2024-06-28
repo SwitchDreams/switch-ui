@@ -75,7 +75,7 @@ const SidebarDrop = ({ label, icon: Icon, as = "a", options = [] }: DropProps) =
                 <div
                   onClick={() => setIsOpen(false)}
                   key={index}
-                  className={`hover:${hoverColor} flex h-12 w-full items-center gap-2 whitespace-nowrap rounded-md px-11 text-md font-semibold last:mb-4 `}
+                  className={`hover:${hoverColor} flex h-12 w-full items-center gap-2 whitespace-nowrap rounded-md px-11 text-md font-semibold last:mb-4`}
                 >
                   <Element href={option.href}>
                     <Text>{option.label}</Text>
@@ -92,7 +92,7 @@ const SidebarDrop = ({ label, icon: Icon, as = "a", options = [] }: DropProps) =
             onClick={() => {
               handleDropdownToggle();
             }}
-            className={`hover:${hoverColor} flex h-12 w-full cursor-pointer items-center justify-between gap-2 rounded-md px-2 text-md font-semibold text-gray-700  ${
+            className={`hover:${hoverColor} flex h-12 w-full cursor-pointer items-center justify-between gap-2 rounded-md px-2 text-md font-semibold text-gray-700 ${
               isDropdownOpen ? "peer-focus:visible" : ""
             }`}
           >
@@ -129,7 +129,7 @@ const SidebarDrop = ({ label, icon: Icon, as = "a", options = [] }: DropProps) =
       )}
       {!isOpen && !Icon && (
         <div
-          className={`hover:${hoverColor} flex h-10 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700  max-md:hidden`}
+          className={`hover:${hoverColor} flex h-10 w-full items-center gap-2 rounded-md px-2 text-md font-semibold text-gray-700 max-md:hidden`}
         >
           <div className="h-7 w-7 text-center text-lg font-semibold">{label[0].toUpperCase()}</div>
         </div>

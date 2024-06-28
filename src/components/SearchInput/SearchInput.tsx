@@ -49,7 +49,7 @@ interface SearchInputType {
 export type SearchInputVariantProps = VariantProps<typeof SearchInputButtonVariants>;
 
 export const SearchInputOptionsVariants = cva(
-  "rounded-plug-md m-1 flex cursor-pointer select-none items-center justify-between pl-2 text-coolGray-900",
+  "sw-ui-rounded-curvature-md m-1 flex cursor-pointer select-none items-center justify-between pl-2 text-coolGray-900",
   {
     variants: {
       size: {
@@ -70,7 +70,7 @@ export const SearchInputOptionsVariants = cva(
 );
 
 export const SearchInputButtonVariants = cva(
-  "rounded-plug-md input relative my-2 w-full cursor-default border border-coolGray-400 pl-3 pr-10 text-left text-coolGray-500 hover:bg-coolGray-50 focus:outline-none",
+  "sw-ui-rounded-curvature-md sw-ui-input relative my-2 w-full cursor-default border border-coolGray-400 pl-3 pr-10 text-left text-coolGray-500 hover:bg-coolGray-50 focus:outline-none",
   {
     variants: {
       disabled: {
@@ -233,7 +233,7 @@ function SearchInput({
                 leaveTo="opacity-0"
                 afterLeave={() => setQuery("")}
               >
-                <ComboboxOptions className="appearence-none rounded-plug-md z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 shadow-md shadow-primary-25 ring-2 ring-primary-25">
+                <ComboboxOptions className="appearence-none sw-ui-rounded-curvature-md z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 shadow-md shadow-primary-25 ring-2 ring-primary-25">
                   {filteredOptions.length === 0 && query !== "" ? (
                     <div className="relative cursor-default select-none px-3 py-2 text-coolGray-800">
                       Nothing found.
@@ -317,7 +317,7 @@ function SearchInput({
                 leaveTo="opacity-0"
                 afterLeave={() => setQuery("")}
               >
-                <ComboboxOptions className="appearence-none rounded-plug-md z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 shadow shadow-primary-25 ring-1 ring-primary-25">
+                <ComboboxOptions className="appearence-none sw-ui-rounded-curvature-md z-30 mt-1 max-h-60 w-full overflow-auto bg-white py-1 shadow shadow-primary-25 ring-1 ring-primary-25">
                   {filteredOptions.length === 0 && query !== "" ? (
                     <div className="relative cursor-default select-none px-3 py-2 text-coolGray-800">
                       Nothing found.

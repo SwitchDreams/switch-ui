@@ -18,8 +18,8 @@ export const avatarVariants = cva(
   {
     variants: {
       color: {
-        primary: "avatar-primary",
-        gray: "avatar-gray",
+        primary: "sw-ui-avatar-primary",
+        gray: "sw-ui-avatar-gray",
       },
       size: {
         xl: "h-16 w-16 text-2xl",

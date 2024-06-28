@@ -33,7 +33,7 @@ const Login = () => {
   return (
     <>
       <div className="flex h-screen w-screen justify-center">
-        <div className="relative flex h-full w-screen items-center justify-center md:w-1/2 ">
+        <div className="relative flex h-full w-screen items-center justify-center md:w-1/2">
           <div className="flex h-4/5 w-full flex-col justify-center px-6 md:w-auto md:p-0">
             <img className="h-[43px] w-[170px]" src="/vite.svg" alt="zenmobi_logo" />
             <Text size="sm" as="h2" className="m-0 pt-5 text-gray-600 md:pt-10">

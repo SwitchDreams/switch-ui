@@ -11,7 +11,7 @@ interface FloatingButtonType extends React.ButtonHTMLAttributes<HTMLButtonElemen
 export type FloatingButtonVariantProps = VariantProps<typeof buttonVariants>;
 
 export const buttonVariants = cva(
-  "rounded-plug-full flex items-center justify-center gap-2 drop-shadow-lg",
+  "sw-ui-rounded-curvature-full flex items-center justify-center gap-2 drop-shadow-lg",
   {
     variants: {
       variant: {

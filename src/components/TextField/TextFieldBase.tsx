@@ -27,7 +27,7 @@ export interface ITextFieldBase
 }
 
 const TextFieldBaseVariants = cva(
-  "rounded-plug-md input my-2 w-full text-ellipsis border border-coolGray-400 text-md text-coolGray-900 hover:bg-coolGray-50 focus:outline-none",
+  "sw-ui-rounded-curvature-md sw-ui-input my-2 w-full text-ellipsis border border-coolGray-400 text-md text-coolGray-900 hover:bg-coolGray-50 focus:outline-none",
   {
     variants: {
       size: {

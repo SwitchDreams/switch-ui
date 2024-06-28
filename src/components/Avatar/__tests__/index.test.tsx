@@ -23,12 +23,12 @@ describe("Avatar", () => {
   describe("test the color props", () => {
     it("test the primary color", () => {
       const { container } = render(<Avatar color="primary" size="xl" name="marty mcfly" />);
-      expect(container.querySelector(".avatar-primary")).toHaveClass("avatar-primary");
+      expect(container.querySelector(".sw-ui-avatar-primary")).toBeInTheDocument();
     });
 
     it("test the gray color", () => {
       const { container } = render(<Avatar color="gray" size="xl" name="marty mcfly" />);
-      expect(container.querySelector(".avatar-gray")).toHaveClass("avatar-gray");
+      expect(container.querySelector(".sw-ui-avatar-gray")).toBeInTheDocument();
     });
   });
 

@@ -2,7 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import React, { forwardRef, HTMLProps, useRef } from "react";
 import { twMerge } from "tailwind-merge";
 
-const sliderVariants = cva("slider relative w-full appearance-none rounded-lg border-0", {
+const sliderVariants = cva("sw-ui-slider relative w-full appearance-none rounded-lg border-0", {
   variants: {
     size: {
       small: "h-1",
