@@ -9,7 +9,7 @@ const switchUiPlugin = plugin(function ({ addComponents, theme }) {
     ".rounded-plug-full": {
       borderRadius: theme("curvature.full", "9999px"),
     },
-    ".btn-primary": {
+    ".sw-ui-btn-primary": {
       backgroundColor: theme("colors.btn.primary.bg", "colors.primary.300"),
       color: theme("colors.btn.primary.text", "colors.white"),
       "&:hover": {
@@ -22,7 +22,7 @@ const switchUiPlugin = plugin(function ({ addComponents, theme }) {
         backgroundColor: theme("colors.btn.primary.active", "colors.primary.500"),
       },
     },
-    ".btn-outline": {
+    ".sw-ui-btn-outline": {
       backgroundColor: theme("colors.btn.outline.bg", "transparent"),
       color: theme("colors.btn.outline.text", "colors.primary.300"),
       "&:hover": {
@@ -35,7 +35,7 @@ const switchUiPlugin = plugin(function ({ addComponents, theme }) {
         backgroundColor: theme("colors.btn.outline.active", "colors.primary.100"),
       },
     },
-    ".btn-invisible": {
+    ".sw-ui-btn-invisible": {
       backgroundColor: theme("colors.btn.invisible.bg", "transparent"),
       color: theme("colors.btn.invisible.text", "colors.gray.800"),
       "&:hover": {

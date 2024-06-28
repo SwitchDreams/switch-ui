@@ -41,19 +41,19 @@ describe("Button", () => {
     it("primary variant enable", () => {
       render(component("primary", "md", false));
       const buttonElement = screen.getByText("botão");
-      expect(buttonElement).toHaveClass("btn-primary");
+      expect(buttonElement).toHaveClass("sw-ui-btn-primary");
     });
 
     it("outline variant enable", () => {
       render(component("outline", "md", false));
       const buttonElement = screen.getByText("botão");
-      expect(buttonElement).toHaveClass("btn-outline");
+      expect(buttonElement).toHaveClass("sw-ui-btn-outline");
     });
 
     it("invisible variant enable", () => {
       render(component("invisible", "md", false));
       const buttonElement = screen.getByText("botão");
-      expect(buttonElement).toHaveClass("btn-invisible");
+      expect(buttonElement).toHaveClass("sw-ui-btn-invisible");
     });
 
     it("danger variant enable", () => {
@@ -70,21 +70,21 @@ describe("Button", () => {
     it("primary variant disabled", () => {
       render(component("primary", "md", true));
       const buttonElement = screen.getByText("botão");
-      expect(buttonElement).toHaveClass("btn-primary");
+      expect(buttonElement).toHaveClass("sw-ui-btn-primary");
       expect(buttonElement).toHaveClass("opacity-40");
     });
 
     it("outline variant disabled", () => {
       render(component("outline", "md", true));
       const buttonElement = screen.getByText("botão");
-      expect(buttonElement).toHaveClass("btn-outline");
+      expect(buttonElement).toHaveClass("sw-ui-btn-outline");
       expect(buttonElement).toHaveClass("opacity-40");
     });
 
     it("invisible variant disabled", () => {
       render(component("invisible", "md", true));
       const buttonElement = screen.getByText("botão");
-      expect(buttonElement).toHaveClass("btn-invisible");
+      expect(buttonElement).toHaveClass("sw-ui-btn-invisible");
       expect(buttonElement).toHaveClass("opacity-40");
     });
 

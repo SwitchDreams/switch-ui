@@ -19,9 +19,9 @@ export type ButtonVariantProps = VariantProps<typeof buttonVariants>;
 export const buttonVariants = cva("rounded-plug-md flex items-center justify-center gap-2", {
   variants: {
     variant: {
-      primary: "btn-primary",
-      outline: "btn-outline border border-solid border-primary-50",
-      invisible: "btn-invisible",
+      primary: "sw-ui-btn-primary",
+      outline: "sw-ui-btn-outline border border-solid border-primary-50",
+      invisible: "sw-ui-btn-invisible",
       danger: "bg-error-600 text-white hover:bg-error-700 focus:bg-error-600 active:bg-error-800",
     },
     size: {
