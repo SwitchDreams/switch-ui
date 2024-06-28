@@ -48,11 +48,11 @@ const switchUiPlugin = plugin(function ({ addComponents, theme }) {
         backgroundColor: theme("colors.btn.invisible.active", "colors.gray.100"),
       },
     },
-    ".avatar-primary": {
+    ".sw-ui-avatar-primary": {
       backgroundColor: theme("colors.avatar.primary.bg", "colors.primary.50"),
       color: theme("colors.avatar.primary.text", "colors.primary.400"),
     },
-    ".avatar-gray": {
+    ".sw-ui-avatar-gray": {
       backgroundColor: theme("colors.avatar.gray.bg", "colors.gray.300"),
       color: theme("colors.avatar.gray.text", "colors.gray.600"),
     },
