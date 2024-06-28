@@ -20,7 +20,7 @@ export interface TabType extends HTMLAttributes<any> {
 export type TabVariantProps = VariantProps<typeof TabVariants>;
 
 export const TabVariants = cva(
-  "item-center text-align:center tab flex appearance-none justify-center border-b focus:outline-none ui-selected:font-medium",
+  "item-center text-align:center sw-ui-tab flex appearance-none justify-center border-b focus:outline-none ui-selected:font-medium",
   {
     variants: {
       size: {

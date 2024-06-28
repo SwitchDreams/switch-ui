@@ -56,7 +56,7 @@ const switchUiPlugin = plugin(function ({ addComponents, theme }) {
       backgroundColor: theme("colors.avatar.gray.bg", "colors.gray.300"),
       color: theme("colors.avatar.gray.text", "colors.gray.600"),
     },
-    ".tab": {
+    ".sw-ui-tab": {
       borderBottomColor: theme("colors.tab.border", "colors.gray.500"),
       color: theme("colors.tab.text", "colors.gray.500"),
 
@@ -66,14 +66,14 @@ const switchUiPlugin = plugin(function ({ addComponents, theme }) {
         color: theme("colors.tab.selectedText", "colors.primary.300"),
       },
     },
-    ".slider": {
+    ".sw-ui-slider": {
       backgroundColor: theme("colors.slider.bg", "colors.primary.300"),
       accentColor: theme("colors.slider.accent", "colors.primary.300"),
       "&:hover": {
         accentColor: theme("colors.slider.hover", "colors.primary.400"),
       },
     },
-    ".checkbox-primary": {
+    ".sw-ui-checkbox-primary": {
       "border-color": theme("colors.checkbox.primary.border", "colors.primary.300"),
       "&:checked": {
         background: theme("colors.checkbox.primary.checked", "colors.primary.300"),
@@ -82,7 +82,7 @@ const switchUiPlugin = plugin(function ({ addComponents, theme }) {
         background: theme("colors.checkbox.primary.hover", "colors.primary.25"),
       },
     },
-    ".input": {
+    ".sw-ui-input": {
       caretColor: theme("colors.input.caret", "colors.primary.100"),
       "&:focus": {
         borderColor: theme("colors.input.focus", "colors.primary.100"),

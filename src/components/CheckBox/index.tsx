@@ -28,7 +28,8 @@ const checkBoxVariants = cva(
         large: "h-6 w-6",
       },
       color: {
-        primary: "checkbox-primary checked:hover:bg-primary-200 focus:ring-4 focus:ring-primary-25",
+        primary:
+          "sw-ui-checkbox-primary checked:hover:bg-primary-200 focus:ring-4 focus:ring-primary-25",
         secondary:
           "border-error-600 checked:bg-error-700 hover:bg-error-100 checked:hover:bg-error-600 focus:ring-4 focus:ring-error-100",
       },

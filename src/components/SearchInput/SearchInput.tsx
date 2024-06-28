@@ -70,7 +70,7 @@ export const SearchInputOptionsVariants = cva(
 );
 
 export const SearchInputButtonVariants = cva(
-  "rounded-plug-md input relative my-2 w-full cursor-default border border-coolGray-400 pl-3 pr-10 text-left text-coolGray-500 hover:bg-coolGray-50 focus:outline-none",
+  "sw-ui-input rounded-plug-md relative my-2 w-full cursor-default border border-coolGray-400 pl-3 pr-10 text-left text-coolGray-500 hover:bg-coolGray-50 focus:outline-none",
   {
     variants: {
       disabled: {
