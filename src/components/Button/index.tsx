@@ -16,27 +16,30 @@ interface ButtonType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 export type ButtonVariantProps = VariantProps<typeof buttonVariants>;
 
-export const buttonVariants = cva("rounded-plug-md flex items-center justify-center gap-2", {
-  variants: {
-    variant: {
-      primary: "sw-ui-btn-primary",
-      outline: "sw-ui-btn-outline border border-solid border-primary-50",
-      invisible: "sw-ui-btn-invisible",
-      danger: "bg-error-600 text-white hover:bg-error-700 focus:bg-error-600 active:bg-error-800",
-    },
-    size: {
-      xl: ["text-xl", "h-[56px] w-full"],
-      lg: ["text-sm", "h-[48px] w-full"],
-      md: ["text-sm", "h-[44px] w-full"],
-      sm: ["text-sm", "h-[40px] w-full"],
-      xs: ["text-xs", "h-[34px] w-full"],
-    },
-    disabled: {
-      true: ["opacity-40"],
-      false: ["opacity-100"],
+export const buttonVariants = cva(
+  "sw-ui-rounded-curvature-md flex items-center justify-center gap-2",
+  {
+    variants: {
+      variant: {
+        primary: "sw-ui-btn-primary",
+        outline: "sw-ui-btn-outline border border-solid border-primary-50",
+        invisible: "sw-ui-btn-invisible",
+        danger: "bg-error-600 text-white hover:bg-error-700 focus:bg-error-600 active:bg-error-800",
+      },
+      size: {
+        xl: ["text-xl", "h-[56px] w-full"],
+        lg: ["text-sm", "h-[48px] w-full"],
+        md: ["text-sm", "h-[44px] w-full"],
+        sm: ["text-sm", "h-[40px] w-full"],
+        xs: ["text-xs", "h-[34px] w-full"],
+      },
+      disabled: {
+        true: ["opacity-40"],
+        false: ["opacity-100"],
+      },
     },
   },
-});
+);
 
 export interface ButtonProps extends Omit<ButtonVariantProps, "disabled">, ButtonType {}
 

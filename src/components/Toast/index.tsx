@@ -21,7 +21,7 @@ interface ToastType extends HTMLAttributes<any> {
 type ToastVariantProps = VariantProps<typeof toastVariants>;
 
 const toastVariants = cva(
-  "toast-component rounded-plug-md flex h-auto w-[327px] justify-between gap-3 bg-primary-50 px-4 py-5 text-sm md:w-[541px]",
+  "toast-component sw-ui-rounded-curvature-md flex h-auto w-[327px] justify-between gap-3 bg-primary-50 px-4 py-5 text-sm md:w-[541px]",
   {
     variants: {
       color: {

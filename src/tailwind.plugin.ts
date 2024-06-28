@@ -3,10 +3,10 @@ import plugin from "tailwindcss/plugin";
 
 const switchUiPlugin = plugin(function ({ addComponents, theme }) {
   addComponents({
-    ".rounded-plug-md": {
+    ".sw-ui-rounded-curvature-md": {
       borderRadius: theme("curvature.md", "6px"),
     },
-    ".rounded-plug-full": {
+    ".sw-ui-rounded-curvature-full": {
       borderRadius: theme("curvature.full", "9999px"),
     },
     ".sw-ui-btn-primary": {
