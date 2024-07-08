@@ -32,7 +32,7 @@ export const avatarVariants = cva(
 );
 
 export const avatarOnlineVariants = cva(
-  "online-circle absolute h-4 w-4 rounded-[20px] border border-white bg-green-600",
+  "online-circle absolute h-4 w-4 rounded-full border border-white bg-green-600",
   {
     variants: {
       size: {
