@@ -2,7 +2,7 @@
 
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import { components, DropdownIndicatorProps } from "react-select";
+import { components, ControlProps, DropdownIndicatorProps } from "react-select";
 import { twMerge } from "tailwind-merge";
 
 const selectVariants = cva(
@@ -49,6 +49,18 @@ interface ControlStylesProps {
   className?: string;
 }
 
+export const Control = ({ children, ...props }: ControlProps) => {
+  // @ts-ignore
+  const LeftIcon = props.selectProps?.leftIcon;
+
+  return (
+    <components.Control {...props}>
+      {LeftIcon && <LeftIcon className="ml-2 h-5 w-5 text-coolGray-500" />}
+      {children}
+    </components.Control>
+  );
+};
+
 const controlStylesCalc = ({ size, error, className }: ControlStylesProps) => ({
   base: twMerge(
     selectVariants({
@@ -62,7 +74,7 @@ const controlStylesCalc = ({ size, error, className }: ControlStylesProps) => ({
 });
 
 const optionStyles = {
-  base: "hover:cursor-pointer px-3 py-2 mt-1 rounded text-sm h-11",
+  base: "hover:cursor-pointer px-3 py-2 mt-1 rounded text-md h-11",
   focus: "bg-coolGray-50",
   selected: "bg-primary-25 text-coolGray-900",
 };
@@ -72,15 +84,15 @@ export const selectClassName = ({ ...rest }: ControlStylesProps) => {
   return {
     control: ({ isFocused }: { isFocused: boolean }) =>
       twMerge(isFocused ? controlStyles.focus : controlStyles.nonFocus, controlStyles.base),
-    input: () => "text-coolGray-900 pl-3 text-sm",
-    placeholder: () => "text-coolGray-500 pl-3 text-sm",
-    singleValue: () => "text-coolGray-900 pl-3 text-sm",
+    input: () => "text-coolGray-900 pl-3 text-md",
+    placeholder: () => "text-coolGray-500 pl-3 text-md",
+    singleValue: () => "text-coolGray-900 pl-3 text-md",
     multiValue: () =>
       "ml-1 rounded-3xl bg-primary-25 px-2.5 py-2 text-primary-500 text-xs items-center gap-2.5",
     indicatorsContainer: () => "p-1.5 gap-2",
     dropdownIndicator: () => "p-1.5 hover:bg-gray-100 text-gray-500 rounded-md hover:text-black",
     menu: () => "p-1.5 mt-2 border border-primary-25 bg-white rounded-lg shadow-md",
-    groupHeading: () => "ml-3 mt-2 mb-1 text-gray-500 text-sm",
+    groupHeading: () => "ml-3 mt-2 mb-1 text-gray-500 text-md",
     option: ({ isFocused, isSelected }: { isFocused: boolean; isSelected: boolean }) =>
       twMerge(
         isFocused && optionStyles.focus,
