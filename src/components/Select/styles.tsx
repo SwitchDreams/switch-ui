@@ -2,7 +2,7 @@
 
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import { components, DropdownIndicatorProps } from "react-select";
+import { components, ControlProps, DropdownIndicatorProps } from "react-select";
 import { twMerge } from "tailwind-merge";
 
 const selectVariants = cva(
@@ -48,6 +48,18 @@ interface ControlStylesProps {
   error: boolean;
   className?: string;
 }
+
+export const Control = ({ children, ...props }: ControlProps) => {
+  // @ts-ignore
+  const LeftIcon = props.selectProps?.leftIcon;
+
+  return (
+    <components.Control {...props}>
+      {LeftIcon && <LeftIcon className="ml-2 h-5 w-5 text-coolGray-500" />}
+      {children}
+    </components.Control>
+  );
+};
 
 const controlStylesCalc = ({ size, error, className }: ControlStylesProps) => ({
   base: twMerge(

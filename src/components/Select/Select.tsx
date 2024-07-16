@@ -3,7 +3,7 @@ import ReactSelect, { Props } from "react-select";
 import ErrorMessage from "src/internal/ErrorMessage";
 import FormLabel from "src/internal/FormLabel";
 
-import { DropdownIndicator, selectClassName, selectStyles } from "./styles";
+import { Control, DropdownIndicator, selectClassName, selectStyles } from "./styles";
 
 export interface SelectOptionProps {
   value: string;
@@ -47,6 +47,7 @@ export const Select = ({
       <ReactSelect
         components={{
           DropdownIndicator,
+          Control,
         }}
         noOptionsMessage={noOptionsMessage}
         isDisabled={disabled}
