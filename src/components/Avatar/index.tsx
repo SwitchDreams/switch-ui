@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 export interface AvatarType extends HTMLAttributes<any> {
   color?: "primary" | "gray";
   isOn?: boolean;
-  name: string;
+  name: string | null;
   avatarUrl?: string;
   border?: boolean;
   size?: "xl" | "lg" | "md" | "sm" | "xs";
@@ -68,7 +68,10 @@ const Avatar = ({
   const avatarClass = twMerge(avatarVariants({ color, size, border }), className);
   const avatarOnlineClass = twMerge(avatarOnlineVariants({ size }), className);
 
-  const getInitials = (name: string) => {
+  const getInitials = (name: string | null) => {
+    if (!name) {
+      return "";
+    }
     const nameWords = name.trim().split(" ");
 
     if (nameWords.length === 1) {
