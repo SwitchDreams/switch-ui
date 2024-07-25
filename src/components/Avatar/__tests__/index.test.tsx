@@ -7,7 +7,7 @@ describe("Avatar", () => {
     color: "primary" | "gray",
     size: "xl" | "lg" | "md" | "sm" | "xs",
     isOn: boolean,
-    name: string,
+    name: string | null,
     avatarUrl?: string,
   ) => {
     return <Avatar color={color} isOn={isOn} name={name} avatarUrl={avatarUrl} size={size} />;
@@ -17,6 +17,14 @@ describe("Avatar", () => {
     it("test the initials", () => {
       const { getByText } = render(component("primary", "xl", false, "marty mcfly"));
       expect(getByText("MM")).toBeInTheDocument();
+    });
+  });
+
+  describe("when name is nil", () => {
+    it("renders", () => {
+      const { container } = render(component("primary", "xl", false, null));
+      // its render the component
+      expect(container).toBeTruthy();
     });
   });
 
