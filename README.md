@@ -8,21 +8,6 @@ A SwitchUI é a biblioteca de componentes em React para os produtos SwitchDreams
 
 ## Instalação
 
-A biblioteca é um pacote privado da Switch Dreams utilizando o Github Packages. Para maiores dúvidas leia a
-seguinte [docs](https://docs.github.com/en/github-ae@latest/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#installing-a-package)
-
-- Autenticar no Github Packages (No lugar do password use um TOKEN)
-
-```bash
-npm login --registry=https://npm.pkg.github.com --scope=@switchdreams
-```
-
-- Crie um arquivo `.npmrc` na raiz do projeto com o seguinte conteúdo:
-
-```bash
-@switchdreams:registry=https://npm.pkg.github.com
-```
-
 - Instale o pacote utilizando `yarn add @switchdreams/ui`
 
 - No seu arquivo tailwind.config.js adicione o seguinte código:
