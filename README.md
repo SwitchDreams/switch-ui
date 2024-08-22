@@ -8,7 +8,7 @@ A SwitchUI é a biblioteca de componentes em React para os produtos SwitchDreams
 
 ## Instalação
 
-> Antes da versão 1.3.0 utilizamos o github packages e é necessário [mais passos para insalação](https://github.com/SwitchDreams/switch-ui/blob/main/docs/old-install-with-github-package.md)
+> Antes da versão 1.3.0 era utilizado o github packages, portanto era necessário [mais passos para instalação](https://github.com/SwitchDreams/switch-ui/blob/main/docs/old-install-with-github-package.md)
 
 - Instale o pacote utilizando `yarn add @switchdreams/ui`
 
