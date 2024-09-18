@@ -18,6 +18,8 @@ import Popover, { PopoverProps } from "./components/Popover";
 // Buttons
 import Button, { ButtonProps } from "./components/Button";
 import FloatingButton, { FloatingButtonProps } from "./components/FloatingButton";
+// Modal
+import Modal, { ModalProps } from "./components/Modal";
 // Progress
 import { ProgressBar, ProgressBarProps } from "./components/ProgressBar/ProgressBar";
 import { Spinner, SpinnerProps } from "./components/Spinner";
@@ -53,6 +55,7 @@ export {
   Button,
   CheckBox,
   FloatingButton,
+  Modal,
   Pagination,
   Popover,
   ProgressBar,
@@ -82,6 +85,7 @@ export type {
   ButtonProps,
   CheckBoxProps,
   FloatingButtonProps,
+  ModalProps,
   ItemProps,
   PaginationProps,
   PopoverProps,
