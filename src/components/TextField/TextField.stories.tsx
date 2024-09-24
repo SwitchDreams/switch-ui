@@ -39,6 +39,18 @@ export const WithIconLeft: Story = {
   },
 };
 
+export const WithError: Story = {
+  args: {
+    label: "Label",
+    placeholder: "Hello World",
+    name: "name",
+    disabled: false,
+    error: true,
+    errorMsg: "Mensagem de error",
+    className: "w-94",
+  },
+};
+
 export const WithTwoIcons: Story = {
   args: {
     label: "Label",
