@@ -1,7 +1,7 @@
 import { ElementType } from "react";
 import ReactSelect, { Props } from "react-select";
-import ErrorMessage from "src/internal/ErrorMessage";
 import FormLabel from "src/internal/FormLabel";
+import SupportOrErrorMessage from "src/internal/SupportOrErrorMessage";
 
 import { Control, DropdownIndicator, selectClassName, selectStyles } from "./styles";
 
@@ -61,7 +61,7 @@ export const Select = ({
         classNames={selectClassName({ size, error, className })}
         {...rest}
       />
-      {<ErrorMessage error={error} supportText={supportText} errorMsg={errorMsg} />}
+      {<SupportOrErrorMessage error={error} supportText={supportText} errorMsg={errorMsg} />}
     </>
   );
 };
