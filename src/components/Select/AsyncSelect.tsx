@@ -1,7 +1,7 @@
 import { ElementType } from "react";
 import ReactAsyncSelect, { AsyncProps } from "react-select/async";
-import ErrorMessage from "src/internal/ErrorMessage";
 import FormLabel from "src/internal/FormLabel";
+import SupportOrErrorMessage from "src/internal/SupportOrErrorMessage";
 
 import { DropdownIndicator, selectClassName, selectStyles } from "./styles";
 
@@ -62,7 +62,7 @@ export const AsyncSelect = ({
         classNames={selectClassName({ size, error, className })}
         {...rest}
       />
-      {<ErrorMessage error={error} supportText={supportText} errorMsg={errorMsg} />}
+      {<SupportOrErrorMessage error={error} supportText={supportText} errorMsg={errorMsg} />}
     </>
   );
 };
