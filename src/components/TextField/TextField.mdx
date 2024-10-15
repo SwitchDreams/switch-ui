@@ -18,9 +18,42 @@ import {Meta, Controls, Story, Canvas, Description} from "@storybook/blocks";
 
 <Canvas />
 
+### Exemplo em JSX:
+
+Aqui está um exemplo de como você pode usar o componente TextField em JSX:
+
+```jsx
+import { XMarkIcon } from "@heroicons/react/24/solid";
+import { TextField } from "./TextField";
+
+const ExampleTextField = () => {
+  return (
+    <div>
+      <TextField
+        label="Nome"
+        placeholder="Digite seu nome"
+        name="name"
+        leftIcon={<XMarkIcon />}
+        rightIcon={<XMarkIcon />}
+        error={false}
+        errorMsg=""
+        className="w-full"
+      />
+    </div>
+  );
+}
+
+export default ExampleTextField;
+
+```
+
+### Props:
+
 <Controls/>
 
-#### Configurado desta forma:
+### Configurações adicionais para projetos:
+
+Caso queira configurar uma cor diferende para o padrão do projeto no arquivo do tailwind.config basta colocar a configuração.
 
  ```javascript
  input: {

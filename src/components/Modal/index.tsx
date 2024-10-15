@@ -8,7 +8,7 @@ import Button, { ButtonProps } from "../Button";
 export interface IModalProps {
   confirmLabel?: string;
   cancelLabel?: string;
-  children?: ReactNode;
+  children: ReactNode;
   onClickCancel?: () => void;
   onClickConfirm?: () => void;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
