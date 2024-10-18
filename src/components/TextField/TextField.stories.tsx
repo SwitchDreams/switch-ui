@@ -20,6 +20,8 @@ export const Default: Story = {
     placeholder: "Hello World",
     name: "name",
     disabled: false,
+    supportText: "Texto de suporte",
+    supportTextClassName: "",
   },
   parameters: {
     design: {
