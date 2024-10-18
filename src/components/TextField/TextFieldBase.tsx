@@ -14,6 +14,7 @@ export interface ITextFieldBase
   inputElement: InputElement;
   label?: string;
   supportText?: string;
+  supportTextClassName?: string;
   placeholder?: string;
   leftIcon?: ElementType;
   rightIcon?: ElementType;
@@ -94,6 +95,7 @@ export const TextFieldBase = /* @__PURE__ */ forwardRef(
       label,
       className,
       supportText,
+      supportTextClassName,
       disabled,
       error = false,
       name,
@@ -148,7 +150,12 @@ export const TextFieldBase = /* @__PURE__ */ forwardRef(
             />
           )}
         </div>
-        <SupportOrErrorMessage error={error} errorMsg={errorMsg} supportText={supportText} />
+        <SupportOrErrorMessage
+          error={error}
+          errorMsg={errorMsg}
+          supportText={supportText}
+          supportTextClassName={supportTextClassName}
+        />
       </div>
     );
   },
