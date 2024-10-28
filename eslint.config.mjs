@@ -34,7 +34,6 @@ export default [...compat.extends(
         "react-hooks": fixupPluginRules(reactHooks),
         prettier,
         "simple-import-sort": simpleImportSort,
-        "tree-shaking": treeShaking,
     },
 
     languageOptions: {
@@ -65,15 +64,6 @@ export default [...compat.extends(
     },
 
     rules: {
-        "tree-shaking/no-side-effects-in-initialization": [2, {
-            noSideEffectsWhenCalled: [{
-                module: "react",
-                functions: ["createContext", "createRef", "forwardRef"],
-            }, {
-                module: "class-variance-authority",
-                functions: ["cva"],
-            }],
-        }],
 
         camelcase: "error",
         "no-duplicate-imports": "error",
