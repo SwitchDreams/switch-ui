@@ -70,7 +70,6 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-storybook": "^0.10.1",
     "eslint-plugin-tailwindcss": "^3.17.5",
-    "eslint-plugin-tree-shaking": "^1.12.2",
     "globals": "^15.11.0",
     "jsdom": "^24.0.0",
     "postcss": "^8.4.47",
