@@ -11,6 +11,7 @@ export interface ICheckBox {
   error?: boolean;
   errorMsg?: string;
   supportText?: string;
+  labelClassName?: string;
   position?: "side" | "bottom";
 }
 
@@ -97,11 +98,12 @@ export const CheckBox = ({
   errorMsg,
   supportText,
   position = "side",
+  labelClassName,
   ...rest
 }: CheckBoxProps) => {
   return (
     <div className={checkboxLabel({ position })}>
-      <FormLabel label={label} name={name} />
+      <FormLabel label={label} name={name} className={`${labelClassName}`} />
       <div className={backgroundVariant({ size })}>
         <label>
           <input

@@ -24,6 +24,7 @@ export interface ITextFieldBase
   mask?: string;
   maskChar?: string;
   ref?: any;
+  labelClassName?: string;
 }
 
 const TextFieldBaseVariants = cva(
@@ -100,6 +101,7 @@ export const TextFieldBase = /* @__PURE__ */ forwardRef(
       errorMsg,
       mask = "",
       maskChar = " ",
+      labelClassName,
       onClickIcon = () => {},
       ...rest
     }: TextFieldBaseProps,
@@ -117,7 +119,7 @@ export const TextFieldBase = /* @__PURE__ */ forwardRef(
 
     return (
       <div className={opacityClass}>
-        <FormLabel label={label} name={name} />
+        <FormLabel label={label} name={name} className={`${labelClassName}`} />
         <div className="relative">
           <InputElement
             ref={ref ? ref : undefined}

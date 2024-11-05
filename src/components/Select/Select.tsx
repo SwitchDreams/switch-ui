@@ -23,6 +23,8 @@ export interface SelectProps extends Omit<Props, "size" | "options"> {
   name: string;
   multiple?: boolean;
   errorMsg?: string;
+  containerClassName?: string;
+  labelClassName?: string;
 }
 
 export const Select = ({
@@ -38,12 +40,14 @@ export const Select = ({
   error = false,
   noOptionsMessage = () => "Sem opções encontradas",
   closeMenuOnSelect = !multiple,
+  containerClassName = "size-fit",
   hideSelectedOptions = false,
+  labelClassName,
   ...rest
 }: SelectProps) => {
   return (
-    <>
-      <FormLabel name={name} label={label} />
+    <div className={`${containerClassName}`}>
+      <FormLabel name={name} label={label} className={`${labelClassName}`} />
       <ReactSelect
         components={{
           DropdownIndicator,
@@ -62,6 +66,6 @@ export const Select = ({
         {...rest}
       />
       {<ErrorMessage error={error} supportText={supportText} errorMsg={errorMsg} />}
-    </>
+    </div>
   );
 };
