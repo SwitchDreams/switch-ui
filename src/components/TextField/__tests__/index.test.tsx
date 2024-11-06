@@ -173,4 +173,22 @@ describe("Test the icon padding", () => {
 
     expect(inputElement).toHaveClass("pr-9");
   });
+  describe("Textfield renders with custom support text color", () => {
+    it("render textfield", () => {
+      render(
+        <TextField
+          label="Username"
+          placeholder="Enter your username"
+          leftIcon={XMarkIcon}
+          supportText="Enter your username."
+          supportTextClassName="text-yellow-200"
+          name="name"
+          className="text-orange-100"
+        />,
+      );
+      const supportTextElement = screen.getByText("Enter your username.");
+
+      expect(supportTextElement).toHaveClass("text-yellow-200");
+    });
+  });
 });

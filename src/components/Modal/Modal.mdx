@@ -1,0 +1,60 @@
+import * as ModalStories from "./Modal.stories";
+import {Meta, Controls, Story, Canvas, Description} from "@storybook/blocks";
+
+
+<Meta of={ModalStories} />
+
+## Modal:
+
+<br />
+
+### Uso Básico:
+
+#### O componente Modal é utilizado para abrir uma aba flutuante na tela do usuário permitindo que ele execute uma tarefa secundária sem sair da página atual.
+
+<Canvas />
+
+### Exemplo em JSX:
+
+Aqui está um exemplo de como você pode usar o componente Modal em JSX:
+
+```jsx
+import { useState } from "react";
+import Modal from "./Modal";
+import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
+
+const ExampleModal = () => {
+  const [open, setOpen] = useState(true);
+
+  return (
+    <Modal
+      open={open}
+      setOpen={setOpen}
+      confirmLabel="Confirmar"
+      cancelLabel="Cancelar"
+      onClickCancel={() => setOpen(false)}
+      onClickConfirm={() => console.log("Confirmado!")}
+      error={false}
+      loading={false}
+      buttons={true}
+    >
+      <div className="flex flex-col items-center justify-center gap-5">
+        <ExclamationCircleIcon className="h-40 w-40 text-primary-50" />
+        <p className="text-3xl font-medium">Título do modal</p>
+        <p className="font-regular text-center text-sm">
+          Vorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit
+          interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora{" "}
+        </p>
+      </div>
+    </Modal>
+  );
+};
+
+export default ExampleModal;
+```
+
+### Props:
+
+<Controls/>
+
+

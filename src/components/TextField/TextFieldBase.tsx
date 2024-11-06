@@ -1,7 +1,7 @@
 import { cva, VariantProps } from "class-variance-authority";
 import React, { ElementType, forwardRef } from "react";
 import InputMask from "react-input-mask";
-import ErrorMessage from "src/internal/ErrorMessage";
+import SupportOrErrorMessage from "src/internal/SupportOrErrorMessage";
 import { twMerge } from "tailwind-merge";
 
 import FormLabel from "../../internal/FormLabel";
@@ -14,6 +14,7 @@ export interface ITextFieldBase
   inputElement: InputElement;
   label?: string;
   supportText?: string;
+  supportTextClassName?: string;
   placeholder?: string;
   leftIcon?: ElementType;
   rightIcon?: ElementType;
@@ -95,6 +96,7 @@ export const TextFieldBase = /* @__PURE__ */ forwardRef(
       label,
       className,
       supportText,
+      supportTextClassName,
       disabled,
       error = false,
       name,
@@ -150,7 +152,12 @@ export const TextFieldBase = /* @__PURE__ */ forwardRef(
             />
           )}
         </div>
-        <ErrorMessage error={error} errorMsg={errorMsg} supportText={supportText} />
+        <SupportOrErrorMessage
+          error={error}
+          errorMsg={errorMsg}
+          supportText={supportText}
+          supportTextClassName={supportTextClassName}
+        />
       </div>
     );
   },

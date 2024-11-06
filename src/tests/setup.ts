@@ -1,4 +1,3 @@
-/* eslint-disable tree-shaking/no-side-effects-in-initialization */
 import "@testing-library/jest-dom/vitest";
 import "@testing-library/jest-dom";
 
