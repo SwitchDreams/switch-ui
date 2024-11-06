@@ -553,7 +553,7 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@eslint/js@9.14.0":
+"@eslint/js@9.14.0", "@eslint/js@^9.14.0":
   version "9.14.0"
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-9.14.0.tgz#2347a871042ebd11a00fd8c2d3d56a265ee6857e"
   integrity sha512-pFoEtFWCPyDOl+C6Ift+wC7Ro89otjigCf5vcuWqWgqNSQbRrpjSvdeE6ofLz4dHmyxD5f7gIdGT4+p36L6Twg==
@@ -1290,6 +1290,21 @@
   dependencies:
     tslib "^2.4.0"
 
+"@switchdreams/lint-config@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@switchdreams/lint-config/-/lint-config-0.0.2.tgz#d600870eb9fc539be3d0d1124b53741458a76a9c"
+  integrity sha512-uevWm61ZMmwOWyJLmU0jifvNs363XI6kV2M/f0Kez1Q1yxGznxwlJSl8uhuRONj9swT/7BVmex8pScJi/lGrBg==
+  dependencies:
+    eslint "^9.0.0"
+    eslint-config-prettier "^9.1.0"
+    eslint-plugin-prettier "^5.2.1"
+    eslint-plugin-react "^7.36.1"
+    eslint-plugin-react-hooks "^5.0.0"
+    eslint-plugin-simple-import-sort "^12.1.1"
+    eslint-plugin-tailwindcss "^3.17.4"
+    prettier "^3.3.3"
+    prettier-plugin-tailwindcss "^0.6.8"
+
 "@tanstack/react-virtual@^3.8.1":
   version "3.10.8"
   resolved "https://registry.yarnpkg.com/@tanstack/react-virtual/-/react-virtual-3.10.8.tgz#bf4b06f157ed298644a96ab7efc1a2b01ab36e3c"
@@ -1499,7 +1514,7 @@
   resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-9.0.8.tgz#7545ba4fc3c003d6c756f651f3bf163d8f0f29ba"
   integrity sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==
 
-"@typescript-eslint/eslint-plugin@^8.13.0":
+"@typescript-eslint/eslint-plugin@8.13.0", "@typescript-eslint/eslint-plugin@^8.13.0":
   version "8.13.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-8.13.0.tgz#650c50b8c795b5d092189f139f6d00535b5b0f3d"
   integrity sha512-nQtBLiZYMUPkclSeC3id+x4uVd1SGtHuElTxL++SfP47jR0zfkZBJHc+gL4qPsgTuypz0k8Y2GheaDYn6Gy3rg==
@@ -1514,7 +1529,7 @@
     natural-compare "^1.4.0"
     ts-api-utils "^1.3.0"
 
-"@typescript-eslint/parser@^8.13.0":
+"@typescript-eslint/parser@8.13.0", "@typescript-eslint/parser@^8.13.0":
   version "8.13.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-8.13.0.tgz#ef76203b7cac515aa3ccc4f7ce5320dd61c46b29"
   integrity sha512-w0xp+xGg8u/nONcGw1UXAr6cjCPU1w0XVyBs6Zqaj5eLmxkKQAByTdV/uGgNN5tVvN/kKpoQlP2cL7R+ajZZIQ==
@@ -2650,7 +2665,7 @@ eslint-plugin-react-refresh@^0.4.14:
   resolved "https://registry.yarnpkg.com/eslint-plugin-react-refresh/-/eslint-plugin-react-refresh-0.4.14.tgz#e3c611ead69bbf7436d01295c853d4abb8c59f68"
   integrity sha512-aXvzCTK7ZBv1e7fahFuR3Z/fyQQSIQ711yPgYRj+Oj64tyTgO4iQIDmYXDBqvSWQ/FA4OSCsXOStlF+noU0/NA==
 
-eslint-plugin-react@^7.37.2:
+eslint-plugin-react@^7.36.1, eslint-plugin-react@^7.37.2:
   version "7.37.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.37.2.tgz#cd0935987876ba2900df2f58339f6d92305acc7a"
   integrity sha512-EsTAnj9fLVr/GZleBLFbj/sSuXeWmp1eXIN60ceYnZveqEaUCyW4X+Vh4WTdUhCkW4xutXYqTXCUSyqD4rB75w==
@@ -2688,7 +2703,7 @@ eslint-plugin-storybook@^0.11.0:
     "@typescript-eslint/utils" "^8.8.1"
     ts-dedent "^2.2.0"
 
-eslint-plugin-tailwindcss@^3.17.5:
+eslint-plugin-tailwindcss@^3.17.4, eslint-plugin-tailwindcss@^3.17.5:
   version "3.17.5"
   resolved "https://registry.yarnpkg.com/eslint-plugin-tailwindcss/-/eslint-plugin-tailwindcss-3.17.5.tgz#6bf9403e77a5f3f930fb3444a3e22b29cd0fee07"
   integrity sha512-8Mi7p7dm+mO1dHgRHHFdPu4RDTBk69Cn4P0B40vRQR+MrguUpwmKwhZy1kqYe3Km8/4nb+cyrCF+5SodOEmaow==
@@ -2759,7 +2774,7 @@ eslint@9.7.0:
     strip-ansi "^6.0.1"
     text-table "^0.2.0"
 
-eslint@^9.14.0:
+eslint@^9.0.0, eslint@^9.14.0:
   version "9.14.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-9.14.0.tgz#534180a97c00af08bcf2b60b0ebf0c4d6c1b2c95"
   integrity sha512-c2FHsVBr87lnUtjP4Yhvk4yEhKrQavGafRA/Se1ouse8PfbfC/Qh9Mxa00yWsZRlqeUB9raXip0aiiUZkgnr9g==
@@ -5013,6 +5028,15 @@ typed-array-length@^1.0.6:
     has-proto "^1.0.3"
     is-typed-array "^1.1.13"
     possible-typed-array-names "^1.0.0"
+
+typescript-eslint@^8.13.0:
+  version "8.13.0"
+  resolved "https://registry.yarnpkg.com/typescript-eslint/-/typescript-eslint-8.13.0.tgz#c7d92cc06188176c7d0e3825e10305b9c22fb102"
+  integrity sha512-vIMpDRJrQd70au2G8w34mPps0ezFSPMEX4pXkTzUkrNbRX+36ais2ksGWN0esZL+ZMaFJEneOBHzCgSqle7DHw==
+  dependencies:
+    "@typescript-eslint/eslint-plugin" "8.13.0"
+    "@typescript-eslint/parser" "8.13.0"
+    "@typescript-eslint/utils" "8.13.0"
 
 typescript@5.4.2:
   version "5.4.2"
