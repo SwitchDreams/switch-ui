@@ -2,7 +2,6 @@ import React from "react";
 
 import { TextFieldBase, TextFieldBaseProps } from "../TextField/TextFieldBase";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface TextAreaProps
   extends Omit<TextFieldBaseProps, "leftIcon" | "rightIcon" | "inputElement"> {}
 

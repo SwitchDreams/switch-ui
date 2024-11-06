@@ -102,7 +102,6 @@ export const iconVariant = cva("text-coolGray-500", {
   },
 });
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface SearchInputHTMLAttributes extends InputHTMLAttributes<HTMLInputElement> {}
 
 export interface SearchInputProps

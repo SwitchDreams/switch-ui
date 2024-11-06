@@ -28,7 +28,6 @@ const SidebarItem = ({ label, as = "a", icon: Icon, href, active }: ItemProps) =
   const Element = as;
 
   const OnClick = () => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     !isDesktop && setIsOpen(false);
   };
 
