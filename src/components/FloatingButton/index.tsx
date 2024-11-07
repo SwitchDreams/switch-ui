@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 
 interface FloatingButtonType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
-  name: string;
+  name?: string;
   icon: ElementType;
   labelClassName?: string;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
