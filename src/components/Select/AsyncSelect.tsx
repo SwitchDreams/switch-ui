@@ -23,6 +23,8 @@ export interface AsyncSelectProps extends Omit<AsyncProps<any, any, any>, "size"
   name: string;
   multiple?: boolean;
   errorMsg?: string;
+  containerClassName?: string;
+  labelClassName?: string;
 }
 
 export const AsyncSelect = ({
@@ -35,16 +37,18 @@ export const AsyncSelect = ({
   multiple,
   errorMsg,
   className,
+  containerClassName = "size-fit",
   error = false,
   loadingMessage = () => "Carregando...",
   noOptionsMessage = () => "Sem opções encontradas",
   closeMenuOnSelect = !multiple,
   hideSelectedOptions = false,
+  labelClassName,
   ...rest
 }: AsyncSelectProps) => {
   return (
-    <>
-      <FormLabel name={name} label={label} />
+    <div className={containerClassName}>
+      <FormLabel name={name} label={label} className={labelClassName} />
       <ReactAsyncSelect
         components={{
           DropdownIndicator,
@@ -63,6 +67,6 @@ export const AsyncSelect = ({
         {...rest}
       />
       {<SupportOrErrorMessage error={error} supportText={supportText} errorMsg={errorMsg} />}
-    </>
+    </div>
   );
 };

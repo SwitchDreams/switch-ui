@@ -1,10 +1,13 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import React, { ElementType } from "react";
+import FormLabel from "src/internal/FormLabel";
 import { twMerge } from "tailwind-merge";
 
 interface FloatingButtonType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
+  name?: string;
   icon: ElementType;
+  labelClassName?: string;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
@@ -34,8 +37,10 @@ export interface FloatingButtonProps
 
 const FloatingButton = ({
   variant = "primary",
+  name,
   size = "md",
   label,
+  labelClassName,
   icon: Icon,
   className,
   onClick,
@@ -45,7 +50,7 @@ const FloatingButton = ({
   return (
     <button className={buttonClasses} onClick={onClick} {...rest}>
       {<Icon className="h-4 w-4 stroke-2" />}
-      {label && label}
+      {label && <FormLabel label={label} name={name} className={labelClassName} />}
     </button>
   );
 };

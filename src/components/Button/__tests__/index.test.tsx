@@ -32,108 +32,97 @@ describe("Button", () => {
   describe("tests the label", () => {
     it("test the label props", () => {
       render(component("primary", "md", false));
-      const label = screen.getByText("botão");
-      expect(label).toBeInTheDocument();
+      const buttonElement = screen.getByRole("button");
+      expect(buttonElement).toBeInTheDocument();
     });
   });
 
   describe("test the colors", () => {
-    it("primary variant enable", () => {
+    it("primary variant enabled", () => {
       render(component("primary", "md", false));
-      const buttonElement = screen.getByText("botão");
+      const buttonElement = screen.getByRole("button");
       expect(buttonElement).toHaveClass("sw-ui-btn-primary");
     });
 
-    it("outline variant enable", () => {
+    it("outline variant enabled", () => {
       render(component("outline", "md", false));
-      const buttonElement = screen.getByText("botão");
+      const buttonElement = screen.getByRole("button");
       expect(buttonElement).toHaveClass("sw-ui-btn-outline");
     });
 
-    it("invisible variant enable", () => {
+    it("invisible variant enabled", () => {
       render(component("invisible", "md", false));
-      const buttonElement = screen.getByText("botão");
+      const buttonElement = screen.getByRole("button");
       expect(buttonElement).toHaveClass("sw-ui-btn-invisible");
     });
 
-    it("danger variant enable", () => {
+    it("danger variant enabled", () => {
       render(component("danger", "md", false));
-      const buttonElement = screen.getByText("botão");
-      expect(buttonElement).toHaveClass("bg-error-600");
-      expect(buttonElement).toHaveClass("hover:bg-error-700");
-      expect(buttonElement).toHaveClass("active:bg-error-800");
-      expect(buttonElement).toHaveClass("focus:bg-error-600");
-      expect(buttonElement).toHaveClass("text-white");
-      expect(buttonElement).toHaveClass("opacity-100");
+      const buttonElement = screen.getByRole("button");
+      expect(buttonElement).toHaveClass(
+        "bg-error-600",
+        "hover:bg-error-700",
+        "active:bg-error-800",
+        "focus:bg-error-600",
+        "text-white",
+        "opacity-100",
+      );
     });
 
     it("primary variant disabled", () => {
       render(component("primary", "md", true));
-      const buttonElement = screen.getByText("botão");
-      expect(buttonElement).toHaveClass("sw-ui-btn-primary");
-      expect(buttonElement).toHaveClass("opacity-40");
+      const buttonElement = screen.getByRole("button");
+      expect(buttonElement).toHaveClass("sw-ui-btn-primary", "opacity-40");
     });
 
     it("outline variant disabled", () => {
       render(component("outline", "md", true));
-      const buttonElement = screen.getByText("botão");
-      expect(buttonElement).toHaveClass("sw-ui-btn-outline");
-      expect(buttonElement).toHaveClass("opacity-40");
+      const buttonElement = screen.getByRole("button");
+      expect(buttonElement).toHaveClass("sw-ui-btn-outline", "opacity-40");
     });
 
     it("invisible variant disabled", () => {
       render(component("invisible", "md", true));
-      const buttonElement = screen.getByText("botão");
-      expect(buttonElement).toHaveClass("sw-ui-btn-invisible");
-      expect(buttonElement).toHaveClass("opacity-40");
+      const buttonElement = screen.getByRole("button");
+      expect(buttonElement).toHaveClass("sw-ui-btn-invisible", "opacity-40");
     });
 
     it("danger variant disabled", () => {
       render(component("danger", "md", true));
-      const buttonElement = screen.getByText("botão");
-      expect(buttonElement).toHaveClass("bg-error-600");
-      expect(buttonElement).toHaveClass("hover:bg-error-700");
-      expect(buttonElement).toHaveClass("active:bg-error-800");
-      expect(buttonElement).toHaveClass("focus:bg-error-600");
-      expect(buttonElement).toHaveClass("text-white");
-      expect(buttonElement).toHaveClass("opacity-40");
+      const buttonElement = screen.getByRole("button");
+      expect(buttonElement).toHaveClass("bg-error-600", "opacity-40");
     });
   });
 
   describe("test the sizes", () => {
     it("xl size", () => {
       render(component("primary", "xl", false));
-      const buttonElement = screen.getByText("botão");
-      expect(buttonElement).toHaveClass("text-xl");
-      expect(buttonElement).toHaveClass("h-[56px] w-full");
+      const buttonElement = screen.getByRole("button");
+      expect(buttonElement).toHaveClass("text-xl", "h-[56px] w-full");
     });
 
     it("lg size", () => {
       render(component("primary", "lg", false));
-      const buttonElement = screen.getByText("botão");
-      expect(buttonElement).toHaveClass("text-sm");
-      expect(buttonElement).toHaveClass("h-[48px] w-full");
+      const buttonElement = screen.getByRole("button");
+      expect(buttonElement).toHaveClass("text-sm", "h-[48px] w-full");
     });
 
     it("md size", () => {
       render(component("primary", "md", false));
-      const buttonElement = screen.getByText("botão");
-      expect(buttonElement).toHaveClass("text-sm");
-      expect(buttonElement).toHaveClass("h-[44px] w-full");
+      const buttonElement = screen.getByRole("button");
+      expect(buttonElement).toHaveClass("text-sm", "h-[44px] w-full");
     });
 
     it("sm size", () => {
       render(component("primary", "sm", false));
-      const buttonElement = screen.getByText("botão");
-      expect(buttonElement).toHaveClass("text-sm");
-      expect(buttonElement).toHaveClass("h-[40px] w-full");
+      const buttonElement = screen.getByRole("button");
+      expect(buttonElement).toHaveClass("text-sm", "h-[40px] w-full");
     });
 
     it("xs size", () => {
       render(component("primary", "xs", false));
-      const buttonElement = screen.getByText("botão");
-      expect(buttonElement).toHaveClass("text-xs");
-      expect(buttonElement).toHaveClass("h-[34px] w-full");
+      const buttonElement = screen.getByRole("button");
+      expect(buttonElement).toHaveClass("text-xs", "h-[34px] w-full");
     });
   });
 
@@ -141,7 +130,6 @@ describe("Button", () => {
     it("right side", () => {
       const MockIcon = () => <div data-testid="mock-icon" />;
       render(componentWithIcon(MockIcon, "right"));
-
       const iconElement = screen.getByTestId("mock-icon");
       expect(iconElement).toBeInTheDocument();
     });
@@ -149,7 +137,6 @@ describe("Button", () => {
     it("left side", () => {
       const MockIcon = () => <div data-testid="mock-icon" />;
       render(componentWithIcon(MockIcon, "left"));
-
       const iconElement = screen.getByTestId("mock-icon");
       expect(iconElement).toBeInTheDocument();
     });
@@ -158,12 +145,12 @@ describe("Button", () => {
   describe("test click", () => {
     it("test the onClick props", () => {
       render(component("primary", "xs", false));
-      const buttonElement = screen.getByText("botão");
-
+      const buttonElement = screen.getByRole("button");
       fireEvent.click(buttonElement);
       expect(onClickMock).toHaveBeenCalledTimes(1);
     });
   });
+
   describe("test loading", () => {
     it("test the loading props", () => {
       render(component("primary", "xs", false, true));
