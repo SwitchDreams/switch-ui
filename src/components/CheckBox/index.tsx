@@ -103,7 +103,7 @@ export const CheckBox = ({
 }: CheckBoxProps) => {
   return (
     <div className={checkboxLabel({ position })}>
-      <FormLabel label={label} name={name} className={`${labelClassName}`} />
+      <FormLabel label={label} name={name} className={labelClassName} />
       <div className={backgroundVariant({ size })}>
         <label>
           <input

@@ -68,13 +68,13 @@ const Button = ({
       {...rest}
     >
       {loading ? (
-        <Spinner className={`${spinnerColor}`} />
+        <Spinner className={spinnerColor} />
       ) : (
         <>
           {Icon && iconSide === "left" && label && (
             <Icon className="h-4 w-4 translate-x-[-4px] stroke-2" />
           )}
-          <FormLabel className={`${labelClassName}`} label={label} />
+          <FormLabel className={labelClassName} label={label} />
           {Icon && iconSide === "right" && label && (
             <Icon className="h-4 w-4 translate-x-1 stroke-2" />
           )}

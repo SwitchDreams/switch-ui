@@ -47,8 +47,8 @@ export const AsyncSelect = ({
   ...rest
 }: AsyncSelectProps) => {
   return (
-    <div className={`${containerClassName}`}>
-      <FormLabel name={name} label={label} className={`${labelClassName}`} />
+    <div className={containerClassName}>
+      <FormLabel name={name} label={label} className={labelClassName} />
       <ReactAsyncSelect
         components={{
           DropdownIndicator,

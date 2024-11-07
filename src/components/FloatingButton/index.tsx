@@ -50,7 +50,7 @@ const FloatingButton = ({
   return (
     <button className={buttonClasses} onClick={onClick} {...rest}>
       {<Icon className="h-4 w-4 stroke-2" />}
-      {label && <FormLabel label={label} name={name} className={`${labelClassName}`} />}
+      {label && <FormLabel label={label} name={name} className={labelClassName} />}
     </button>
   );
 };

@@ -121,7 +121,7 @@ export const TextFieldBase = /* @__PURE__ */ forwardRef(
 
     return (
       <div className={opacityClass}>
-        <FormLabel label={label} name={name} className={`${labelClassName}`} />
+        <FormLabel label={label} name={name} className={labelClassName} />
         <div className="relative">
           <InputElement
             ref={ref ? ref : undefined}
