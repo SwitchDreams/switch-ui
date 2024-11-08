@@ -1,0 +1,212 @@
+import { Meta, Controls } from '@storybook/blocks';
+
+<Meta title="Copy and Paste/Input file" />
+
+## InputFile
+
+Componente para input de arquivos e imagens.
+
+
+É necessário instalar o [react-dropzone](https://www.npmjs.com/package/react-dropzone) para usar esse componente.
+
+
+## Usage
+
+Copie esse código para o seu projeto:
+
+```jsx
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import { Text } from "@switchdreams/ui";
+import React, { useCallback, useEffect, useState } from "react";
+import { useDropzone } from "react-dropzone";
+
+import { imagePath } from "@/utils";
+
+const DefaultMessage = ({ isDragActive, type }) => {
+  const textClassName = (isDragActive) => {
+    if (isDragActive) return "text-secondary-400 font-semibold";
+  };
+
+  return (
+    <>
+      {type != "img" ? (
+        <img
+          src={isDragActive ? imagePath("pdf_icon_blue.svg") : imagePath("pdf_icon.svg")}
+          alt="pdf_icon"
+          className="pb-4"
+        />
+      ) : (
+        <img
+          src={isDragActive ? imagePath("img_icon_blue.svg") : imagePath("img_icon.svg")}
+          alt="img_icon"
+          className="pb-4"
+        />
+      )}
+      <Text size="md" className={`text-primary-700 ${textClassName(isDragActive)}`}>
+        Adicione um arquivo
+      </Text>
+      <Text
+        size="sm"
+        className={`text-primary-500 ${textClassName(isDragActive)} text-center font-normal`}
+      >
+        Selecione o arquivo ou arraste e solte aqui
+      </Text>
+    </>
+  );
+};
+
+const DeleteFile = ({ setSelectedFile }) => {
+  const handleRemoveFile = (event) => {
+    event.preventDefault();
+    setSelectedFile(null);
+  };
+
+  return (
+    <>
+      <div className="absolute right-3 top-3">
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            handleRemoveFile(e);
+          }}
+          className="size-5 border-none bg-transparent p-0 text-primary-800"
+        >
+          <XMarkIcon className="size-5 text-primary-800" />
+        </button>
+      </div>
+    </>
+  );
+};
+
+const FileInfos = ({ type, selectedFile, multiple }) => {
+  if (!!selectedFile && !Array.isArray(selectedFile)) selectedFile = [selectedFile];
+
+  return (
+    <>
+      {/*TODO: display selected images if input is multiple*/}
+      {type != "img" ? (
+        <>
+          <img src={imagePath("pdf_icon.svg")} alt="pdf_icon" className="pb-4" />
+          {selectedFile.map((file, index) => {
+            return (
+              <Text
+                size="md"
+                key={index}
+                className="max-w-full truncate pt-px text-center text-primary-700"
+              >
+                {file.path}
+              </Text>
+            );
+          })}
+        </>
+      ) : (
+        <div className="flex min-h-56 w-2/6 items-center justify-center">
+          {multiple ? (
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              {selectedFile.map((file, index) => (
+                <img
+                  key={index}
+                  src={URL.createObjectURL(file)}
+                  alt="Imagem Selecionada"
+                  className="h-56 w-auto"
+                />
+              ))}
+            </div>
+          ) : (
+            <img
+              src={URL.createObjectURL(selectedFile[0])}
+              alt="Imagem Selecionada"
+              className="h-56 w-auto"
+            />
+          )}
+        </div>
+      )}
+    </>
+  );
+};
+
+const FileSize = ({ type, selectedFile }) => {
+  if (!!selectedFile && !Array.isArray(selectedFile)) selectedFile = [selectedFile];
+
+  const bytesToMegabytes = (bytes) => {
+    return (bytes / (1024 * 1024)).toFixed(2);
+  };
+
+  return (
+    <>
+      {selectedFile && type !== "img" && (
+        <Text size="xs" className="text-semibold absolute bottom-3 right-4 text-primary-600">
+          {bytesToMegabytes(selectedFile[0].size) + "MB"}
+        </Text>
+      )}
+    </>
+  );
+};
+
+const InputFile = ({
+  type = "doc",
+  initialValue = null,
+  dataAttribute,
+  setData,
+  multiple = false,
+  inputRef,
+  ...rest
+}) => {
+  const [selectedFile, setSelectedFile] = useState(initialValue);
+
+  useEffect(() => {
+    if (setData) setData(dataAttribute, selectedFile);
+  }, [selectedFile]);
+
+  useEffect(() => {
+    if (selectedFile !== initialValue) setSelectedFile([]);
+  }, [initialValue]);
+
+  const onDrop = useCallback((acceptedFiles) => {
+    setSelectedFile(multiple ? acceptedFiles : acceptedFiles[0]);
+  }, []);
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+
+  const componentPaddingClassName = () => {
+    if (selectedFile && type != "img") return "px-3 py-16";
+    if (selectedFile == null || selectedFile.length == 0) return "px-3 py-16";
+  };
+
+  const componentBackgroundClassName = () => {
+    if (isDragActive) return "border-secondary-400 bg-secondary-50";
+    else return "border-primary-100 hover:bg-primary-50";
+  };
+
+  const input_params = () => {
+    if (type == "img") {
+      return { accept: "image/*" };
+    } else {
+      return {};
+    }
+  };
+
+  return (
+    <div
+      className={`relative flex w-full cursor-pointer flex-col items-center justify-between overflow-hidden rounded border-2 border-dashed ${componentPaddingClassName()} ${componentBackgroundClassName()}`}
+      {...getRootProps()}
+      ref={inputRef}
+    >
+      <input {...getInputProps(input_params())} multiple={"multiple"} {...rest} />
+
+      {selectedFile == null || selectedFile.length == 0 ? (
+        <DefaultMessage isDragActive={isDragActive} type={type} />
+      ) : (
+        <>
+          <FileInfos type={type} selectedFile={selectedFile} multiple={multiple} />
+          <DeleteFile setSelectedFile={setSelectedFile} />
+          <FileSize type={type} selectedFile={selectedFile} />
+        </>
+      )}
+    </div>
+  );
+};
+
+export default InputFile;
+
+```
