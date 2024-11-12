@@ -102,7 +102,7 @@ const Modal = ({
           />
           <div className="h-fit">{children}</div>
           {buttons && (
-            <div className="mt-8 flex gap-4 max-md:flex-col">
+            <div className="mt-8 flex flex-col gap-4 md:flex-row">
               <Button
                 label={cancelLabel}
                 onClick={onClickCancel}
