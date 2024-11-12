@@ -23,7 +23,7 @@ export interface IModalProps {
 }
 
 const ModalVariants = cva(
-  "fixed left-1/2 top-1/2 z-[100] h-auto min-w-[40rem] max-w-[52rem] -translate-x-1/2 -translate-y-1/2 rounded-lg bg-white max-md:hidden",
+  "fixed z-[100] h-auto w-full rounded-lg bg-white max-md:bottom-0 md:left-1/2 md:top-1/2 md:min-w-[40rem] md:max-w-[52rem] md:-translate-x-1/2 md:-translate-y-1/2",
   {
     variants: {
       open: {
@@ -34,17 +34,14 @@ const ModalVariants = cva(
   },
 );
 
-const BgVariants = cva(
-  "fixed right-0 top-0 z-50 h-full w-screen bg-gray-500 opacity-40 max-md:hidden",
-  {
-    variants: {
-      open: {
-        true: "",
-        false: "hidden",
-      },
+const BgVariants = cva("fixed right-0 top-0 z-50 h-full w-screen bg-gray-500 opacity-40", {
+  variants: {
+    open: {
+      true: "",
+      false: "hidden",
     },
   },
-);
+});
 
 const CancelButtonVariants = cva("w-full rounded-md border py-3", {
   variants: {
@@ -105,7 +102,7 @@ const Modal = ({
           />
           <div className="h-fit">{children}</div>
           {buttons && (
-            <div className="mt-8 flex gap-4">
+            <div className="mt-8 flex gap-4 max-md:flex-col">
               <Button
                 label={cancelLabel}
                 onClick={onClickCancel}
