@@ -14,9 +14,9 @@ const selectVariants = cva(
         false: "opacity-100",
       },
       size: {
-        lg: "h-14 text-md",
-        md: "h-11 text-md",
-        sm: "h-10 text-sm",
+        lg: "min-h-14 text-md",
+        md: "min-h-11 text-md",
+        sm: "min-h-10 text-sm",
       },
       error: {
         true: "border-error-600",
@@ -88,7 +88,7 @@ export const selectClassName = ({ ...rest }: ControlStylesProps) => {
     placeholder: () => "text-coolGray-500 pl-3 text-md",
     singleValue: () => "text-coolGray-900 pl-3 text-md",
     multiValue: () =>
-      "ml-1 rounded-3xl bg-primary-25 px-2.5 py-2 text-primary-500 text-xs items-center gap-2.5",
+      "ml-1 my-1 rounded-3xl bg-primary-25 px-2.5 py-2 text-primary-500 text-xs items-center gap-2.5",
     indicatorsContainer: () => "p-1.5 gap-2",
     dropdownIndicator: () => "p-1.5 hover:bg-gray-100 text-gray-500 rounded-md hover:text-black",
     menu: () => "p-1.5 mt-2 border border-primary-25 bg-white rounded-lg shadow-md",

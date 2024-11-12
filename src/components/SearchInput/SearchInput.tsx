@@ -21,7 +21,6 @@ interface SearchInputRemoteDataConfig {
   debounceTime: number;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 const debounce = (fn: Function, delay: number) => {
   let timeoutId: ReturnType<typeof setTimeout>;
   return function (...args: any[]) {
@@ -103,7 +102,6 @@ export const iconVariant = cva("text-coolGray-500", {
   },
 });
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface SearchInputHTMLAttributes extends InputHTMLAttributes<HTMLInputElement> {}
 
 export interface SearchInputProps

@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import React, { ElementType } from "react";
+import FormLabel from "src/internal/FormLabel";
 import { twMerge } from "tailwind-merge";
 
 import { Spinner } from "../Spinner";
@@ -11,6 +12,7 @@ interface ButtonType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: ElementType;
   loading?: boolean;
   spinnerColor?: string;
+  labelClassName?: string;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
@@ -51,6 +53,7 @@ const Button = ({
   iconSide,
   icon: Icon,
   className,
+  labelClassName,
   spinnerColor = "border-r-coolGray-400",
   loading = false,
   onClick,
@@ -65,13 +68,13 @@ const Button = ({
       {...rest}
     >
       {loading ? (
-        <Spinner className={`${spinnerColor}`} />
+        <Spinner className={spinnerColor} />
       ) : (
         <>
           {Icon && iconSide === "left" && label && (
             <Icon className="h-4 w-4 translate-x-[-4px] stroke-2" />
           )}
-          {label}
+          <FormLabel className={labelClassName} label={label} />
           {Icon && iconSide === "right" && label && (
             <Icon className="h-4 w-4 translate-x-1 stroke-2" />
           )}
