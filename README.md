@@ -15,12 +15,13 @@ A SwitchUI é a biblioteca de componentes em React para os produtos SwitchDreams
 - No seu arquivo tailwind.config.js adicione o seguinte código:
 
 ```js
-import { colors } from '@switchdreams/ui'
-import switchUiPlugin from '@switchdreams/ui/dist/tailwind.plugin'
+import { colors } from "@switchdreams/ui"
+import switchUiPlugin from "@switchdreams/ui/dist/tailwind.plugin"
+import generated from "@headlessui/tailwindcss";
 
 module.exports = {
   content: [
-    './node_modules/@switchdreams/ui/dist/**/*.js',
+    "./node_modules/@switchdreams/ui/dist/**/*.js",
     //...
   ],
   theme: {
@@ -37,6 +38,7 @@ module.exports = {
   },
   plugins: [
     switchUiPlugin,
+    generated({ prefix: "ui" })
   ],
 
 }
