@@ -10,7 +10,7 @@ A SwitchUI é a biblioteca de componentes em React para os produtos SwitchDreams
 
 > Antes da versão 1.3.0 era utilizado o github packages, portanto era necessário [mais passos para instalação](https://github.com/SwitchDreams/switch-ui/blob/main/docs/old-install-with-github-package.md)
 
-- Instale o pacote utilizando `yarn add @switchdreams/ui`
+- Instale o pacote utilizando `yarn add @switchdreams/ui @headlessui/tailwindcss`
 
 - No seu arquivo tailwind.config.js adicione o seguinte código:
 
