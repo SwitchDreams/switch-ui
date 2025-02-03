@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 
 type Tabs = {
   name: string;
-  info: JSX.Element;
+  info: React.ReactElement;
 };
 
 export interface TabType extends HTMLAttributes<any> {
