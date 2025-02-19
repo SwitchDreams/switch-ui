@@ -1,9 +1,9 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import React, { ElementType } from "react";
-import FormLabel from "src/internal/FormLabel";
 import { twMerge } from "tailwind-merge";
 
 import { Spinner } from "../Spinner";
+import { Text } from "../Text";
 
 interface ButtonType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
@@ -74,7 +74,9 @@ const Button = ({
           {Icon && iconSide === "left" && label && (
             <Icon className="h-4 w-4 translate-x-[-4px] stroke-2" />
           )}
-          <FormLabel className={labelClassName} label={label} />
+          <Text size="sm" className={labelClassName}>
+            {label}
+          </Text>
           {Icon && iconSide === "right" && label && (
             <Icon className="h-4 w-4 translate-x-1 stroke-2" />
           )}
