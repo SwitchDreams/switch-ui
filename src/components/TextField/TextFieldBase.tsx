@@ -1,6 +1,6 @@
+import InputMask from "@mona-health/react-input-mask";
 import { cva, VariantProps } from "class-variance-authority";
 import React, { ElementType, forwardRef } from "react";
-import InputMask from "react-input-mask";
 import SupportOrErrorMessage from "src/internal/SupportOrErrorMessage";
 import { twMerge } from "tailwind-merge";
 
