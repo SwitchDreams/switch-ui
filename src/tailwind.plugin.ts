@@ -98,7 +98,7 @@ const switchUiPlugin = plugin(function ({ addComponents, theme }) {
       "&[data-opacity=true]": {
         backgroundColor: theme("colors.badge.primary.bgOpacity", "colors.primary.300"),
         opacity: "0.1",
-      }
+      },
     },
     ".sw-ui-badge-secondary": {
       backgroundColor: theme("colors.badge.secondary.bg", "colors.secondary.25"),
@@ -111,7 +111,7 @@ const switchUiPlugin = plugin(function ({ addComponents, theme }) {
       "&[data-opacity=true]": {
         backgroundColor: theme("colors.badge.secondary.bgOpacity", "colors.secondary.300"),
         opacity: "0.1",
-      }
+      },
     },
     ".sw-ui-badge-success": {
       backgroundColor: theme("colors.success.100", "colors.success.100"),
@@ -124,7 +124,7 @@ const switchUiPlugin = plugin(function ({ addComponents, theme }) {
       "&[data-opacity=true]": {
         backgroundColor: theme("colors.success.300", "colors.success.300"),
         opacity: "0.1",
-      }
+      },
     },
     ".sw-ui-badge-warning": {
       backgroundColor: theme("colors.warning.100", "colors.warning.100"),
@@ -137,7 +137,7 @@ const switchUiPlugin = plugin(function ({ addComponents, theme }) {
       "&[data-opacity=true]": {
         backgroundColor: theme("colors.warning.300", "colors.warning.300"),
         opacity: "0.1",
-      }
+      },
     },
     ".sw-ui-badge-danger": {
       backgroundColor: theme("colors.error.100", "colors.error.100"),
@@ -150,7 +150,7 @@ const switchUiPlugin = plugin(function ({ addComponents, theme }) {
       "&[data-opacity=true]": {
         backgroundColor: theme("colors.error.300", "colors.error.300"),
         opacity: "0.1",
-      }
+      },
     },
   });
 });

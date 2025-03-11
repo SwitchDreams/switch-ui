@@ -51,7 +51,7 @@ Default.args = {
 };
 
 export const AllColors: StoryFn<typeof Badge> = () => (
-  <div className="flex gap-2 flex-wrap">
+  <div className="flex flex-wrap gap-2">
     <Badge label="Primary" color="primary" />
     <Badge label="Secondary" color="secondary" />
     <Badge label="Success" color="success" />
