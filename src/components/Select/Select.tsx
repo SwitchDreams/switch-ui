@@ -40,7 +40,7 @@ export const Select = ({
   error = false,
   noOptionsMessage = () => "Sem opções encontradas",
   closeMenuOnSelect = !multiple,
-  containerClassName = "size-fit",
+  containerClassName = "w-full",
   hideSelectedOptions = false,
   labelClassName,
   ...rest
