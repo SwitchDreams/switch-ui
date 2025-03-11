@@ -67,19 +67,19 @@ export default {
             bgOpacity: colors.secondary["300"]
           },
           success: {
-            bg: colors.success["50"],
+            bg: colors.success["100"],
             text: colors.success["900"],
             border: colors.success["300"],
             bgOpacity: colors.success["300"]
           },
           warning: {
-            bg: colors.warning["50"],
+            bg: colors.warning["100"],
             text: colors.warning["900"],
             border: colors.warning["300"],
             bgOpacity: colors.warning["300"]
           },
           danger: {
-            bg: colors.error["50"],
+            bg: colors.error["100"],
             text: colors.error["900"],
             border: colors.error["300"],
             bgOpacity: colors.error["300"]
