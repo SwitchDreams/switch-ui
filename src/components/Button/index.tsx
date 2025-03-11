@@ -60,6 +60,7 @@ const Button = ({
   ...rest
 }: ButtonProps) => {
   const buttonClasses = twMerge(buttonVariants({ variant, size, disabled }), className);
+  const labelClasses = twMerge("cursor-pointer", labelClassName);
   return (
     <button
       className={buttonClasses}
@@ -74,7 +75,7 @@ const Button = ({
           {Icon && iconSide === "left" && label && (
             <Icon className="h-4 w-4 translate-x-[-4px] stroke-2" />
           )}
-          <FormLabel className={labelClassName} label={label} />
+          <FormLabel className={labelClasses} label={label} />
           {Icon && iconSide === "right" && label && (
             <Icon className="h-4 w-4 translate-x-1 stroke-2" />
           )}

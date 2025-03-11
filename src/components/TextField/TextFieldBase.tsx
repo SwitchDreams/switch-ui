@@ -120,7 +120,7 @@ export const TextFieldBase = /* @__PURE__ */ forwardRef(
     const opacityClass = disabled ? "opacity-50 relative" : "relative";
 
     return (
-      <div className={`w-fullflex flex-col gap-2 ${opacityClass}`}>
+      <div className={`flex w-full flex-col gap-2 ${opacityClass}`}>
         <FormLabel label={label} name={name} className={labelClassName} />
         <div className="relative">
           <InputElement
