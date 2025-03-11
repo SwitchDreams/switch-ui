@@ -53,6 +53,38 @@ export default {
           selectedBorder: colors.primary["300"],
           selectedText: colors.primary["300"],
         },
+        badge: {
+          primary: {
+            bg: colors.primary["25"],
+            text: colors.primary["700"],
+            border: colors.primary["300"],
+            bgOpacity: colors.primary["300"]
+          },
+          secondary: {
+            bg: colors.secondary["25"],
+            text: colors.secondary["700"],
+            border: colors.secondary["300"],
+            bgOpacity: colors.secondary["300"]
+          },
+          success: {
+            bg: colors.success["50"],
+            text: colors.success["900"],
+            border: colors.success["300"],
+            bgOpacity: colors.success["300"]
+          },
+          warning: {
+            bg: colors.warning["50"],
+            text: colors.warning["900"],
+            border: colors.warning["300"],
+            bgOpacity: colors.warning["300"]
+          },
+          danger: {
+            bg: colors.error["50"],
+            text: colors.error["900"],
+            border: colors.error["300"],
+            bgOpacity: colors.error["300"]
+          }
+        },
         slider: {
           bg: colors.primary["300"],
           accent: colors.primary["300"],

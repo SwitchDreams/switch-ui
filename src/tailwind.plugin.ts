@@ -87,6 +87,71 @@ const switchUiPlugin = plugin(function ({ addComponents, theme }) {
         borderColor: theme("colors.input.focus", "colors.primary.100"),
       },
     },
+    ".sw-ui-badge-primary": {
+      backgroundColor: theme("colors.badge.primary.bg", "colors.primary.25"),
+      color: theme("colors.badge.primary.text", "colors.primary.700"),
+      "&[data-outline=true]": {
+        backgroundColor: "transparent",
+        border: "1px solid",
+        borderColor: theme("colors.badge.primary.border", "colors.primary.300"),
+      },
+      "&[data-opacity=true]": {
+        backgroundColor: theme("colors.badge.primary.bgOpacity", "colors.primary.300"),
+        opacity: "0.1",
+      }
+    },
+    ".sw-ui-badge-secondary": {
+      backgroundColor: theme("colors.badge.secondary.bg", "colors.secondary.25"),
+      color: theme("colors.badge.secondary.text", "colors.secondary.700"),
+      "&[data-outline=true]": {
+        backgroundColor: "transparent",
+        border: "1px solid",
+        borderColor: theme("colors.badge.secondary.border", "colors.secondary.300"),
+      },
+      "&[data-opacity=true]": {
+        backgroundColor: theme("colors.badge.secondary.bgOpacity", "colors.secondary.300"),
+        opacity: "0.1",
+      }
+    },
+    ".sw-ui-badge-success": {
+      backgroundColor: theme("colors.success.100", "colors.success.100"),
+      color: theme("colors.success.700", "colors.success.700"),
+      "&[data-outline=true]": {
+        backgroundColor: "transparent",
+        border: "1px solid",
+        borderColor: theme("colors.success.300", "colors.success.300"),
+      },
+      "&[data-opacity=true]": {
+        backgroundColor: theme("colors.success.300", "colors.success.300"),
+        opacity: "0.1",
+      }
+    },
+    ".sw-ui-badge-warning": {
+      backgroundColor: theme("colors.warning.100", "colors.warning.100"),
+      color: theme("colors.warning.700", "colors.warning.700"),
+      "&[data-outline=true]": {
+        backgroundColor: "transparent",
+        border: "1px solid",
+        borderColor: theme("colors.warning.300", "colors.warning.300"),
+      },
+      "&[data-opacity=true]": {
+        backgroundColor: theme("colors.warning.300", "colors.warning.300"),
+        opacity: "0.1",
+      }
+    },
+    ".sw-ui-badge-danger": {
+      backgroundColor: theme("colors.error.100", "colors.error.100"),
+      color: theme("colors.error.700", "colors.error.700"),
+      "&[data-outline=true]": {
+        backgroundColor: "transparent",
+        border: "1px solid",
+        borderColor: theme("colors.error.300", "colors.error.300"),
+      },
+      "&[data-opacity=true]": {
+        backgroundColor: theme("colors.error.300", "colors.error.300"),
+        opacity: "0.1",
+      }
+    },
   });
 });
 export default switchUiPlugin;
