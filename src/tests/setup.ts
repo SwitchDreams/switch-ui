@@ -3,6 +3,7 @@ import "@testing-library/jest-dom";
 
 import { vi } from "vitest";
 
+// @ts-ignore
 global.ResizeObserver = vi.fn().mockImplementation(() => ({
   observe: vi.fn(),
   unobserve: vi.fn(),

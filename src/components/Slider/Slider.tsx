@@ -24,7 +24,7 @@ export interface SliderProps
 
 export const Slider = /* @__PURE__ */ forwardRef<HTMLInputElement, SliderProps>(
   ({ size, min, max, value, step, className, ...rest }, ref: React.Ref<any>) => {
-    const box = useRef<any>();
+    const box = useRef<any>(null);
 
     const onInput = (element: any) => {
       const newValue = element.target.value;
