@@ -23,12 +23,12 @@ importers:
       '@heroicons/react':
         specifier: ^2.1.5
         version: 2.2.0(react@19.0.0)
+      '@mona-health/react-input-mask':
+        specifier: ^3.0.3
+        version: 3.0.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.1
-      react-input-mask:
-        specifier: ^2.0.4
-        version: 2.0.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-select:
         specifier: ^5.8.2
         version: 5.10.1(@types/react@19.0.12)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -810,6 +810,12 @@ packages:
 
   '@microsoft/tsdoc@0.15.1':
     resolution: {integrity: sha512-4aErSrCR/On/e5G2hDP0wjooqDdauzEbIq8hIkIe5pXV0rtWJZvdCEKL0ykZxex+IxIwBp0eGeV48hQN07dXtw==}
+
+  '@mona-health/react-input-mask@3.0.3':
+    resolution: {integrity: sha512-E8t4ZAaHjmPT1NS/9nlIGR7OsyshP7hs5OwqEYnVslm/eaWrQg5ZziB6r5IOxGmFUyB+G1muFPobVPA08L2sJg==}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2917,12 +2923,6 @@ packages:
   react-hooks@1.0.1:
     resolution: {integrity: sha512-PXU08tw4SvKwkW99qgnyV98x939RCmBC6aXqALPQXPjKq6+6EoH79Rz4KdUozzlpSyWmn2IiEm0vh3p+79aP5w==}
 
-  react-input-mask@2.0.4:
-    resolution: {integrity: sha512-1hwzMr/aO9tXfiroiVCx5EtKohKwLk/NT8QlJXHQ4N+yJJFyUuMT+zfTpLBwX/lK3PkuMlievIffncpMZ3HGRQ==}
-    peerDependencies:
-      react: '>=0.14.0'
-      react-dom: '>=0.14.0'
-
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -4222,6 +4222,14 @@ snapshots:
       resolve: 1.22.10
 
   '@microsoft/tsdoc@0.15.1': {}
+
+  '@mona-health/react-input-mask@3.0.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+    dependencies:
+      invariant: 2.2.4
+      prop-types: 15.8.1
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      warning: 4.0.3
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -6602,13 +6610,6 @@ snapshots:
       scheduler: 0.25.0
 
   react-hooks@1.0.1: {}
-
-  react-input-mask@2.0.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
-    dependencies:
-      invariant: 2.2.4
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
-      warning: 4.0.3
 
   react-is@16.13.1: {}
 
