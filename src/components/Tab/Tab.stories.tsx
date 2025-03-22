@@ -55,9 +55,9 @@ const tabsArray = [
 ];
 
 // TODO: Removes with next major version
-const Template: StoryFn<any> = () => <Tab size="md" tabs={tabsArray} padding={false} />;
+const Template: StoryFn<typeof Tab> = () => <Tab size="md" tabs={tabsArray} padding={false} />;
 
-const Template2: StoryFn<any> = (args) => (
+const Template2: StoryFn<typeof Tab> = (args) => (
   <Tab {...args}>
     <Tab.Panel title="Teste 1">
       <div className="h-full w-full rounded bg-primary-100">
@@ -87,5 +87,5 @@ const Template2: StoryFn<any> = (args) => (
   </Tab>
 );
 
-export const TabComponentProps = Template.bind({});
+export const TabComponentProps: StoryFn<typeof Tab> = Template.bind({});
 export const TabComponentChildren: Story = Template2;

@@ -25,25 +25,25 @@ const defaultArgs = {
   leftIcon: EnvelopeIcon,
 };
 
-export const Single = Template.bind({});
+export const Single: StoryFn<SelectProps> = Template.bind({});
 Single.args = {
   multiple: false,
   ...defaultArgs,
 };
 
-export const Multiple = Template.bind({});
+export const Multiple: StoryFn<SelectProps> = Template.bind({});
 Multiple.args = {
   multiple: true,
   ...defaultArgs,
 };
 
-export const Searchable = Template.bind({});
+export const Searchable: StoryFn<SelectProps> = Template.bind({});
 Searchable.args = {
   ...defaultArgs,
   isSearchable: true,
 };
 
-export const Error = Template.bind({});
+export const Error: StoryFn<SelectProps> = Template.bind({});
 Error.args = {
   error: true,
   errorMsg: "A validação falhou",

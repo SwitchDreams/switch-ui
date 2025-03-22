@@ -18,7 +18,7 @@ type PaginationProps = React.ComponentProps<typeof Pagination>;
 // Mais sobre a escrita de histórias com args: https://storybook.js.org/docs/react/writing-stories/args
 const Template: StoryFn<PaginationProps> = (args) => <Pagination {...args} />;
 
-export const Default = Template.bind({});
+export const Default: StoryFn<PaginationProps> = Template.bind({});
 Default.args = {
   pages: 5,
   currentPage: 1,

@@ -31,7 +31,7 @@ const Template: StoryFn<typeof SearchInput> = (args: SearchInputProps) => {
   );
 };
 
-export const Default = Template.bind({});
+export const Default: StoryFn<typeof SearchInput> = Template.bind({});
 Default.args = {
   name: "default",
   label: "Buscar",
@@ -61,7 +61,7 @@ const mockApiCall = async (query: string): Promise<SearchInputOption[]> => {
   });
 };
 
-export const WithMockedAPICall = Template.bind({});
+export const WithMockedAPICall: StoryFn<typeof SearchInput> = Template.bind({});
 WithMockedAPICall.args = {
   label: "Requisição para API",
   selectedValue: "",
@@ -78,7 +78,7 @@ const apiCall = async (query: string): Promise<SearchInputOption[]> => {
   return data.items.map((item: any) => ({ label: item.full_name, value: item.id }));
 };
 
-export const WithAPICall = Template.bind({});
+export const WithAPICall: StoryFn<typeof SearchInput> = Template.bind({});
 WithAPICall.args = {
   label: "Requisição de repositórios do GitHub",
   selectedValue: "",

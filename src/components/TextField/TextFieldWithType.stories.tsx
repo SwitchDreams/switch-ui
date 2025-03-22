@@ -1,6 +1,6 @@
-import { Meta, StoryFn } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 
-import { TextField, TextFieldProps } from "./index";
+import { TextField } from "./index";
 
 export default {
   title: "Forms/TextField",
@@ -14,13 +14,15 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<TextFieldProps> = (args) => (
-  <div className="w-full">
-    <TextField {...args} type="date" />
-  </div>
-);
+type Story = StoryObj<typeof TextField>;
 
-export const WithType = Template.bind({});
-WithType.args = {
-  className: "",
+export const WithType: Story = {
+  render: (args) => (
+    <div className="w-full">
+      <TextField {...args} type="date" />
+    </div>
+  ),
+  args: {
+    className: "",
+  },
 };

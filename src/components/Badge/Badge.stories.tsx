@@ -44,7 +44,7 @@ export default {
 
 const Template: StoryFn<typeof Badge> = (args) => <Badge {...args} />;
 
-export const Default = Template.bind({});
+export const Default: StoryFn<typeof Badge> = Template.bind({});
 Default.args = {
   label: "Default Badge",
   color: "primary",

@@ -1,5 +1,4 @@
 import { act, fireEvent, render, waitFor } from "@testing-library/react";
-import { expect } from "chai";
 
 import SearchInput from "./SearchInput";
 

@@ -35,7 +35,7 @@ export default {
 
 const Template: StoryFn<FloatingButtonProps> = (args) => <FloatingButton {...args} />;
 
-export const Variations = Template.bind({});
+export const Variations: StoryFn<FloatingButtonProps> = Template.bind({});
 
 Variations.args = {
   variant: "primary",

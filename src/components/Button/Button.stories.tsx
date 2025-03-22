@@ -25,7 +25,7 @@ export default {
 
 const Template: StoryFn<typeof Button> = (args: ButtonProps) => <Button {...args} />;
 
-export const Default = Template.bind({});
+export const Default: StoryFn<typeof Button> = Template.bind({});
 
 Default.args = {
   variant: "primary",
@@ -38,7 +38,7 @@ Default.args = {
   loading: false,
 };
 
-export const Loading = Template.bind({});
+export const Loading: StoryFn<typeof Button> = Template.bind({});
 
 Loading.args = {
   variant: "primary",
@@ -52,7 +52,7 @@ Loading.args = {
   spinnerColor: "border-r-coolGray-800",
 };
 
-export const WithIcon = Template.bind({});
+export const WithIcon: StoryFn<typeof Button> = Template.bind({});
 
 WithIcon.args = {
   variant: "primary",

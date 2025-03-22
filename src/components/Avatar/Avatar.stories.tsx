@@ -10,7 +10,7 @@ export default {
 
 const Template: StoryFn<typeof Avatar> = (args: AvatarProps) => <Avatar {...args} />;
 
-export const Variations = Template.bind({});
+export const Variations: StoryFn<typeof Avatar> = Template.bind({});
 
 Variations.args = {
   color: "primary",
