@@ -10,7 +10,7 @@ interface LabelProps {
 export const FormLabel = ({ label, name, className }: LabelProps) => {
   return (
     label && (
-      <label htmlFor={name} className={twMerge("text-sm font-medium text-coolGray-900", className)}>
+      <label htmlFor={name} className={twMerge("text-sm font-medium", className)}>
         {label}
       </label>
     )

@@ -51,3 +51,17 @@ Loading.args = {
   loading: true,
   spinnerColor: "border-r-coolGray-800",
 };
+
+export const WithIcon = Template.bind({});
+
+WithIcon.args = {
+  variant: "primary",
+  label: "Favorite",
+  disabled: false,
+  size: "md",
+  onClick: undefined,
+  icon: StarIcon,
+  className: "",
+  loading: false,
+  iconSide: "left",
+};

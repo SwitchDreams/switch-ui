@@ -1,6 +1,6 @@
+import InputMask from "@mona-health/react-input-mask";
 import { cva, VariantProps } from "class-variance-authority";
 import React, { ElementType, forwardRef } from "react";
-import InputMask from "react-input-mask";
 import SupportOrErrorMessage from "src/internal/SupportOrErrorMessage";
 import { twMerge } from "tailwind-merge";
 
@@ -29,7 +29,7 @@ export interface ITextFieldBase
 }
 
 const TextFieldBaseVariants = cva(
-  "sw-ui-rounded-curvature-md sw-ui-input my-2 w-full text-ellipsis border border-coolGray-400 text-md text-coolGray-900 hover:bg-coolGray-50 focus:outline-none",
+  "sw-ui-rounded-curvature-md sw-ui-input w-full text-ellipsis border border-coolGray-400 text-md text-coolGray-900 hover:bg-coolGray-50 focus:outline-none",
   {
     variants: {
       size: {
@@ -120,7 +120,7 @@ export const TextFieldBase = /* @__PURE__ */ forwardRef(
     const opacityClass = disabled ? "opacity-50 relative" : "relative";
 
     return (
-      <div className={opacityClass}>
+      <div className={`flex w-full flex-col gap-2 ${opacityClass}`}>
         <FormLabel label={label} name={name} className={labelClassName} />
         <div className="relative">
           <InputElement

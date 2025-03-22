@@ -62,34 +62,34 @@ describe("Color styles", () => {
     const badgeComponent = screen.getByText(/Hello world/i);
 
     expect(badgeComponent).toBeInTheDocument();
-    expect(badgeComponent.classList.contains("bg-primary-25")).toBe(true);
+    expect(badgeComponent.classList.contains("sw-ui-badge-primary")).toBe(true);
   });
   it("renders the Badge secondary", () => {
     render(<Badge label="Hello world" color="secondary" />);
     const badgeComponent = screen.getByText(/Hello world/i);
 
     expect(badgeComponent).toBeInTheDocument();
-    expect(badgeComponent.classList.contains("bg-secondary-25")).toBe(true);
+    expect(badgeComponent.classList.contains("sw-ui-badge-secondary")).toBe(true);
   });
   it("renders the Badge success", () => {
     render(<Badge label="Hello world" color="success" />);
     const badgeComponent = screen.getByText(/Hello world/i);
 
     expect(badgeComponent).toBeInTheDocument();
-    expect(badgeComponent.classList.contains("bg-success-100")).toBe(true);
+    expect(badgeComponent.classList.contains("sw-ui-badge-success")).toBe(true);
   });
   it("renders the Badge warning", () => {
     render(<Badge label="Hello world" color="warning" />);
     const badgeComponent = screen.getByText(/Hello world/i);
 
     expect(badgeComponent).toBeInTheDocument();
-    expect(badgeComponent.classList.contains("bg-warning-100")).toBe(true);
+    expect(badgeComponent.classList.contains("sw-ui-badge-warning")).toBe(true);
   });
   it("renders the Badge danger", () => {
     render(<Badge label="Hello world" color="danger" />);
     const badgeComponent = screen.getByText(/Hello world/i);
 
     expect(badgeComponent).toBeInTheDocument();
-    expect(badgeComponent.classList.contains("bg-error-100")).toBe(true);
+    expect(badgeComponent.classList.contains("sw-ui-badge-danger")).toBe(true);
   });
 });

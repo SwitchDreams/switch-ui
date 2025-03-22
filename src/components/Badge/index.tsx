@@ -16,11 +16,11 @@ const badgeVariants = cva(
   {
     variants: {
       color: {
-        primary: "bg-primary-25 text-primary-300",
-        secondary: "bg-secondary-25 text-secondary-800",
-        success: "bg-success-100 text-success-700",
-        warning: "bg-warning-100 text-warning-700",
-        danger: "bg-error-100 text-error-700",
+        primary: "sw-ui-badge-primary",
+        secondary: "sw-ui-badge-secondary",
+        success: "sw-ui-badge-success",
+        warning: "sw-ui-badge-warning",
+        danger: "sw-ui-badge-danger",
       },
       outline: {
         true: "border",
