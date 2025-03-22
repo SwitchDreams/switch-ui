@@ -8,9 +8,10 @@ A SwitchUI é a biblioteca de componentes em React para os produtos SwitchDreams
 
 ## Instalação
 
-> Antes da versão 1.3.0 era utilizado o github packages, portanto era necessário [mais passos para instalação](https://github.com/SwitchDreams/switch-ui/blob/main/docs/old-install-with-github-package.md)
+> Antes da versão 1.3.0 era utilizado o github packages, portanto era
+> necessário [mais passos para instalação](https://github.com/SwitchDreams/switch-ui/blob/main/docs/old-install-with-github-package.md)
 
-- Instale o pacote utilizando `yarn add @switchdreams/ui @headlessui/tailwindcss`
+- Instale os pacotes utilizando `pnpm install @switchdreams/ui @headlessui/tailwindcss`
 
 - No seu arquivo tailwind.config.js adicione o seguinte código:
 
@@ -50,8 +51,8 @@ module.exports = {
 
 ## Configuração dos componentes
 
-Os componentes em geral são configuráveis pela fonte, no caso especial é o componente do botão que possui um tema
-específico no tailwind, que é possível configurar dessa forma.
+Os componentes em geral são configuráveis via props, em alguns casos especiais precisamos varias as cores padrões dos
+componentes e eles são configurados no arquivo `tailwind.config.js`.
 
 ```js
 //... tailwind.config.js  
