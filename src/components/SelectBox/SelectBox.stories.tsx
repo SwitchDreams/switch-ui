@@ -36,7 +36,7 @@ export default {
 
 const Template: StoryFn<typeof SelectBox> = (args: SelectBoxProps) => <SelectBox {...args} />;
 
-export const Variations = Template.bind({});
+export const Variations: StoryFn<SelectBoxProps> = Template.bind({});
 
 const options = [
   { value: 1, label: "Option 1" },

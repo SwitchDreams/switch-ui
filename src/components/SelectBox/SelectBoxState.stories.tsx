@@ -38,7 +38,7 @@ const booleanOptions = [
   },
 ];
 
-const Template: StoryFn<any> = () => {
+const Template: StoryFn<typeof SelectBox> = () => {
   const [data, setData] = useState(1);
   return (
     <div className="w-full">
@@ -55,7 +55,7 @@ const Template: StoryFn<any> = () => {
   );
 };
 
-const TemplateTab: StoryFn<any> = () => {
+const TemplateTab: StoryFn<typeof Tab> = () => {
   const [data, setData] = useState(false);
 
   return (
@@ -80,5 +80,5 @@ const TemplateTab: StoryFn<any> = () => {
   );
 };
 
-export const WithState = Template;
-export const WithTab = TemplateTab;
+export const WithState: StoryFn<typeof SelectBox> = Template;
+export const WithTab: StoryFn<typeof Tab> = TemplateTab;

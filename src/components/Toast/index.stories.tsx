@@ -16,7 +16,7 @@ export default {
 
 const Template: StoryFn<typeof Toast> = (args: ToastProps) => <Toast {...args} />;
 
-export const Variations = Template.bind({});
+export const Variations: StoryFn<typeof Toast> = Template.bind({});
 
 Variations.args = {
   color: "primary",

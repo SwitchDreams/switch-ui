@@ -36,7 +36,7 @@ const loadOptions = (inputValue: string, callback: (options: SelectOptionProps[]
   }, 1000);
 };
 
-export const Default = Template.bind({});
+export const Default: StoryFn<AsyncSelectProps> = Template.bind({});
 Default.args = {
   multiple: false,
   loadOptions: loadOptions,

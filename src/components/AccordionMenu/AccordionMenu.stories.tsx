@@ -13,7 +13,7 @@ const Template: StoryFn<typeof AccordionMenu> = (args: AccordionMenuProps) => (
   <AccordionMenu {...args} />
 );
 
-export const Variations = Template.bind({});
+export const Variations: StoryFn<typeof AccordionMenu> = Template.bind({});
 
 Variations.args = {
   title: "This is a Accordion",
@@ -43,7 +43,7 @@ const accordionData: AccordionMenuProps[] = [
   },
 ];
 
-export const MultipleAccordions = () => (
+export const MultipleAccordions: StoryFn<typeof AccordionMenu> = () => (
   <React.Fragment>
     {accordionData.map((accordionProps, index) => (
       <AccordionMenu key={index} {...accordionProps} />
