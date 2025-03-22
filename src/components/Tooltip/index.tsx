@@ -11,7 +11,7 @@ export interface ITooltip {
   className?: string;
 }
 
-const TooltipVariants = cva("h-fit w-fit rounded p-2 text-xs text-white", {
+const TooltipVariants = cva("h-fit w-fit rounded-sm p-2 text-xs text-white", {
   variants: {
     color: {
       primary: "bg-gray-950 text-white",

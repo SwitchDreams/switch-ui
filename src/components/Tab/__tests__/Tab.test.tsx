@@ -58,7 +58,7 @@ describe("Tab", () => {
     render(
       <Tab>
         <Tab.Panel title="Tab 1">
-          <div className="h-full w-full rounded bg-primary-100">
+          <div className="h-full w-full rounded-sm bg-primary-100">
             Teste 1 Vorem ipsum dolor sit amet, consectetur Vorem ipsum dolor{" "}
           </div>
         </Tab.Panel>
