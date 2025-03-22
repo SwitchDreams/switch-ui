@@ -74,7 +74,7 @@ const controlStylesCalc = ({ size, error, className }: ControlStylesProps) => ({
 });
 
 const optionStyles = {
-  base: "hover:cursor-pointer px-3 py-2 mt-1 rounded text-md h-11",
+  base: "hover:cursor-pointer px-3 py-2 mt-1 rounded-sm text-md h-11",
   focus: "bg-coolGray-50",
   selected: "bg-primary-25 text-coolGray-900",
 };
@@ -100,7 +100,7 @@ export const selectClassName = ({ ...rest }: ControlStylesProps) => {
         optionStyles.base,
       ),
     noOptionsMessage: () =>
-      "text-gray-500 p-2 bg-gray-50 border border-dashed border-gray-200 rounded-sm",
+      "text-gray-500 p-2 bg-gray-50 border border-dashed border-gray-200 rounded-xs",
   };
 };
 

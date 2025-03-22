@@ -45,14 +45,14 @@ const Login = () => {
             <form>
               <TextField
                 name="email"
-                className="mb-5 rounded-sm focus:border-primary-400"
+                className="mb-5 rounded-xs focus:border-primary-400"
                 label="E-mail"
                 placeholder="Insira seu e-email"
                 type="email"
               />
               <TextField
                 name="password"
-                className="rounded-sm focus:border-primary-400"
+                className="rounded-xs focus:border-primary-400"
                 label="Senha"
                 placeholder="Insira sua senha"
                 type={showPassword ? "text" : "password"}
@@ -69,13 +69,13 @@ const Login = () => {
                 </Text>
               </a>
               <Button
-                className="mt-6 rounded-sm bg-gray-950 text-white hover:bg-gray-900 focus:bg-gray-900 active:bg-gray-800"
+                className="mt-6 rounded-xs bg-gray-950 text-white hover:bg-gray-900 focus:bg-gray-900 active:bg-gray-800"
                 label="Entrar"
                 size="lg"
               />
             </form>
             <Button
-              className="mt-4 rounded-sm border border-solid border-gray-100 text-gray-800 hover:bg-gray-100 focus:border-2 active:bg-gray-200"
+              className="mt-4 rounded-xs border border-solid border-gray-100 text-gray-800 hover:bg-gray-100 focus:border-2 active:bg-gray-200"
               label="Entrar com o Outlook"
               variant="outline"
               size="lg"

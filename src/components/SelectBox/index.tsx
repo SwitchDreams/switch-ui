@@ -194,7 +194,7 @@ function SelectBox({
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <ListboxOptions className="appearence-none absolute z-30 mt-1 max-h-60 w-full overflow-auto rounded border-primary-25 bg-white py-1 shadow shadow-primary-25 ring-2 ring-primary-25">
+                <ListboxOptions className="appearence-none absolute z-30 mt-1 max-h-60 w-full overflow-auto rounded-sm border-primary-25 bg-white py-1 shadow-sm shadow-primary-25 ring-2 ring-primary-25">
                   {options.map((option, index) => (
                     <ListboxOption
                       key={index}

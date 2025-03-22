@@ -21,7 +21,7 @@ const checkBoxVariants = cva(
     variants: {
       shape: {
         circle: "rounded-full",
-        square: "rounded-sm",
+        square: "rounded-xs",
       },
       size: {
         small: "h-4 w-4",
