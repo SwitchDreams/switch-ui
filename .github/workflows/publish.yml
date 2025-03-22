@@ -23,9 +23,17 @@ jobs:
           node-version: 20
           cache: 'pnpm'
 
+      - name: Set package version
+        run: |
+          # Commit the updated package.json
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          # Update the package.json version
+          pnpm version ${{ github.event.release.tag_name }}
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - run: pnpm build
-      - run: pnpm publish --new-version ${{ github.event.release.tag_name }} --access public
+      - run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
