@@ -66,7 +66,6 @@ const Avatar = ({
   ...rest
 }: AvatarProps) => {
   const avatarClass = twMerge(avatarVariants({ color, size, border }), className);
-  const avatarOnlineClass = twMerge(avatarOnlineVariants({ size }), className);
 
   const getInitials = (name: string | null) => {
     if (!name) {
@@ -99,7 +98,7 @@ const Avatar = ({
         ) : (
           <div className="text-center font-medium leading-[31.20px]">{getInitials(name)}</div>
         )}
-        {isOn && <div className={avatarOnlineClass}></div>}
+        {isOn && <div className={avatarOnlineVariants({ size })}></div>}
       </div>
     </>
   );
