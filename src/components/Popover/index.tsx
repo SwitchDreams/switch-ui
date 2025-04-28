@@ -43,7 +43,7 @@ const Popover = ({
       <PopoverButton>{button}</PopoverButton>
       <PopoverPanel
         anchor={positionTranslate(position)}
-        className={twMerge("fixed z-10 mt-2 w-fit rounded text-xs", className)}
+        className={twMerge("fixed z-10 mt-2 w-fit rounded-sm text-xs", className)}
         {...rest}
       >
         {children}

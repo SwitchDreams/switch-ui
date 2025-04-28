@@ -23,7 +23,7 @@ export interface IModalProps {
 }
 
 const ModalVariants = cva(
-  "fixed z-[100] h-auto w-full rounded-lg bg-white max-md:bottom-0 md:left-1/2 md:top-1/2 md:min-w-[40rem] md:max-w-[52rem] md:-translate-x-1/2 md:-translate-y-1/2",
+  "fixed z-100 h-auto w-full rounded-lg bg-white max-md:bottom-0 md:left-1/2 md:top-1/2 md:min-w-[40rem] md:max-w-[52rem] md:-translate-x-1/2 md:-translate-y-1/2",
   {
     variants: {
       open: {
