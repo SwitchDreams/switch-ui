@@ -191,4 +191,19 @@ describe("Complete Sidebar Component", () => {
     fireEvent.click(chevronIcon);
     expect(pokemonOption).toBeInTheDocument();
   });
+
+  it("allows overriding the mobile logo size", () => {
+    const { getByAltText } = render(
+      <Sidebar
+        logo="https://switchdreams.com.br/og_image.png"
+        mobileLogoClassName="left-1/2 h-16 w-32 object-contain"
+      />,
+    );
+
+    const mobileLogo = getByAltText("Logo");
+    expect(mobileLogo).toHaveClass("left-1/2");
+    expect(mobileLogo).toHaveClass("h-16");
+    expect(mobileLogo).toHaveClass("w-32");
+    expect(mobileLogo).toHaveClass("object-contain");
+  });
 });

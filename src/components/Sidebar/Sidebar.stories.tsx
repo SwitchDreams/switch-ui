@@ -119,3 +119,10 @@ export const Default: Story = {
     ),
   },
 };
+
+export const CustomMobileLogo: Story = {
+  args: {
+    ...Default.args,
+    mobileLogoClassName: "left-1/3 h-16 w-32 object-contain",
+  },
+};

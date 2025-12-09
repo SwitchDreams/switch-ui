@@ -18,11 +18,13 @@ const SidebarComponent = ({
   textColor = "text-gray-600",
   hoverColor = "bg-gray-50",
   openOnHover = false,
+  mobileLogoClassName,
 }: PropsWithChildren & any) => {
   return (
     <SidebarProvider hoverColor={hoverColor}>
       <SidebarMain
         mobileLogo={logo}
+        mobileLogoClassName={mobileLogoClassName}
         absolute={absolute}
         sideBarColor={sideBarColor}
         textColor={textColor}
