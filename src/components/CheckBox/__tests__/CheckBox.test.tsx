@@ -36,7 +36,7 @@ describe("CheckBox", () => {
     const classes = getTailwindClasses(checkBoxElement);
     expect(classes).toContain("h-5");
     expect(classes).toContain("w-5");
-    expect(classes).toContain("rounded-sm");
+    expect(classes).toContain("rounded-xs");
     expect(classes).toContain("sw-ui-checkbox-primary");
   });
 });
