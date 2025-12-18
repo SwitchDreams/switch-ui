@@ -6,6 +6,7 @@ import { SidebarContext } from "./SidebarContext";
 
 export interface SidebarVariant extends PropsWithChildren, ComponentProps<"div"> {
   mobileLogo?: string;
+  mobileLogoClassName?: string;
   absolute?: boolean;
   sideBarColor?: string;
   sideBarMobileColor?: string;
@@ -15,6 +16,7 @@ export interface SidebarVariant extends PropsWithChildren, ComponentProps<"div">
 
 const SidebarMain = ({
   mobileLogo,
+  mobileLogoClassName,
   absolute,
   children,
   sideBarColor = "bg-white",
@@ -30,6 +32,10 @@ const SidebarMain = ({
   const onMouseLeave = openOnHover ? () => setIsOpen(false) : undefined;
 
   const style = isOpen ? "w-72" : "w-24 max-md:w-0 max-md:absolute z-50";
+  const appliedMobileLogoClassName = twMerge(
+    "absolute left-[40%] h-12 w-20 object-cover",
+    mobileLogoClassName,
+  );
 
   return (
     <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
@@ -42,11 +48,7 @@ const SidebarMain = ({
             setIsOpen(!isOpen);
           }}
         />
-        <img
-          alt="Logo"
-          src={mobileLogo}
-          className="absolute left-[40%] h-12 w-20 object-cover"
-        ></img>
+        <img alt="Logo" src={mobileLogo} className={appliedMobileLogoClassName}></img>
       </div>
       <div
         className={twMerge(
